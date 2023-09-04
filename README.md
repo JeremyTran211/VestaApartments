@@ -16,11 +16,11 @@
 | Student      | Student Full Name |Student SFSU Email     | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:           |     :---:       |        :---:       |        :---:        | 
 |      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |        Lead         |
-|      #2      |                   |                       |                 |                    |                     |
-|      #3      |                   |                       |                 |                    |                     |
-|      #4      |                   |                       |                 |                    |                     |
-|      #5      |                   |                       |                 |                    |                     |
-|      #6      |                   |                       |                 |                    |                     |
+|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    Wario Yaeger    |                     |
+|      #3      |  Mozhgan Ahsant   | mahsant1@sfsu.edu     | AhsantMozhgan   |      Mozhgan       |                     |
+|      #4      |  Anthony Silva    | asilva32@sfsu.edu     | anthonySilva23  |   Anthony.Silva.5  |                     |
+|      #5      |  Aman Khera       | akhera@sfsu.edu       | Akhera24        |  cashiermoneymon   |                     |
+|      #6      | Ivan Ayala-Brito  |iayalabrito@mail.sfsu.edu |   IvanA1123  |     Ivan           |                     |
 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/dxATAsa9isXKbcBn7). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a team environment. 
