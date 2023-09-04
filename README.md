@@ -13,14 +13,14 @@
 3. Fill out the table below. Note that roles are not yet defined for members of the team, they can be added later on. However, the fields of "Student name", "Student Email", and "Github Username" are mandatory to be completed the same day the repository is created. 
 
 
-| Student      | Student Full Name |Student SFSU Email | GitHub Username | Discord Username   |        Role         |
-|    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |        :---:        | 
-|      #1      |                   |                   |                 |                    |        Lead         |
-|      #2      |                   |                   |                 |                    |                     |
-|      #3      |                   |                   |                 |                    |                     |
-|      #4      |                   |                   |                 |                    |                     |
-|      #5      |                   |                   |                 |                    |                     |
-|      #6      |                   |                   |                 |                    |                     |
+| Student      | Student Full Name |Student SFSU Email     | GitHub Username | Discord Username   |        Role         |
+|    :---:     |   :---:           |       :---:           |     :---:       |        :---:       |        :---:        | 
+|      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |        Lead         |
+|      #2      |                   |                       |                 |                    |                     |
+|      #3      |                   |                       |                 |                    |                     |
+|      #4      |                   |                       |                 |                    |                     |
+|      #5      |                   |                       |                 |                    |                     |
+|      #6      |                   |                       |                 |                    |                     |
 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/dxATAsa9isXKbcBn7). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a team environment. 
