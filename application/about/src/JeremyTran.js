@@ -7,7 +7,7 @@ function JeremyTran() {
         <h1>About Jeremy Tran</h1>
         {/* Biography */}
         <p>
-        Hi, I am Jeremy Tran and I am a 4th year student here at SF State. 
+        Hi 
         </p>
         {/* Contact Info */}
         <h2> Contact </h2>
