@@ -16,7 +16,7 @@
 | Student      | Student Full Name |Student SFSU Email     | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:           |     :---:       |        :---:       |        :---:        | 
 |      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |        Lead         |
-|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    warioyaeger    |                     |
+|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    warioyaeger    |          Front End           |
 |      #3      |  Mozhgan Ahsant   | mahsant1@sfsu.edu     | AhsantMozhgan   |      Mozhgan       |                     |
 |      #4      |  Anthony Silva    | asilva32@sfsu.edu     | anthonySilva23  |   Anthony.Silva.5  |                     |
 |      #5      |  Aman Khera       | akhera@sfsu.edu       | Akhera24        |  cashiermoneymon   |                     |
