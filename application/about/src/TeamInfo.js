@@ -14,7 +14,7 @@ const TeamInfo = () => {
                 <p id="p1">About the Team Members:</p>
                 <ol>
                     <li><Link to="Site Link"><button>Mozhgan Ahsant</button></Link></li>
-                    <li><Link to="Site Link"><button>Geovanni Valadez</button></Link></li>
+                    <li><Link to="/geovanni-valadez"><button>Geovanni Valadez</button></Link></li>
                     <li><Link to="Site Link"><button>Anthony Silva</button></Link></li>
                     <li><Link to="Site Link"><button>Aman Khera</button></Link></li>
                     <li><Link to="Site Link"><button>Ivan</button></Link></li>
