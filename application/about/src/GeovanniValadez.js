@@ -1,19 +1,19 @@
 
 import React from 'react';
 
-function JeremyTran() {
+function GeovanniValadez() {
   return (
     <div>
-        <h1>About Jeremy Tran</h1>
+        <h1>About Geovanni Valadez</h1>
         {/* Biography */}
         <p>
         Hi 
         </p>
         {/* Contact Info */}
         <h2> Contact </h2>
-        <p>Email: jtran43@mail.sfsu.edu</p>
+        <p>Email: gvaladez@sfsu.edu</p>
     </div>
   );
 }
 
-export default JeremyTran;
+export default GeovanniValadez;
