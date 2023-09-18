@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/Js4uHtYT)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11691893&assignment_repo_type=AssignmentRepo)
 # CSC648-848 Repository
 
@@ -12,14 +13,14 @@
 3. Fill out the table below. Note that roles are not yet defined for members of the team, they can be added later on. However, the fields of "Student name", "Student Email", and "Github Username" are mandatory to be completed the same day the repository is created. 
 
 
-| Student      | Student Full Name |Student SFSU Email | GitHub Username | Discord Username   |        Role         |
-|    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |        :---:        | 
-|      #1      |                   |                   |                 |                    |        Lead         |
-|      #2      |                   |                   |                 |                    |                     |
-|      #3      |                   |                   |                 |                    |                     |
-|      #4      |                   |                   |                 |                    |                     |
-|      #5      |                   |                   |                 |                    |                     |
-|      #6      |                   |                   |                 |                    |                     |
+| Student      | Student Full Name |Student SFSU Email     | GitHub Username | Discord Username   |        Role         |
+|    :---:     |   :---:           |       :---:           |     :---:       |        :---:       |        :---:        | 
+|      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |        Lead         |
+|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    warioyaeger    |          Front End           |
+|      #3      |  Mozhgan Ahsant   | mahsant1@sfsu.edu     | AhsantMozhgan   |      Mozhgan       |                     |
+|      #4      |  Anthony Silva    | asilva32@sfsu.edu     | anthonySilva23  |   Anthony.Silva.5  |                     |
+|      #5      |  Aman Khera       | akhera@sfsu.edu       | Akhera24        |  cashiermoneymon   |                     |
+|      #6      | Ivan Ayala-Brito  |iayalabrito@mail.sfsu.edu |   IvanA1123  |     Ivan           |                     |
 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/dxATAsa9isXKbcBn7). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a team environment. 
