@@ -6,6 +6,7 @@ import JeremyTran from './JeremyTran';  // Import the JeremyTran component
 import GeovanniValadez from './GeovanniValadez';
 import AnthonySilva from './AnthonySilva';
 import AmanKhera from './AmanKhera';
+import MozhganAhsant from './MozhganAhsant';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/geovanni-valadez" element={<GeovanniValadez />} />
                     <Route path="/anthony-silva" element={<AnthonySilva />} />
                     <Route path="/aman-khera" element={<AmanKhera />} />
+                    <Route path="/mozhgan-ahsant" element={<MozhganAhsant />} />
                 </Routes>
             </div>
         </Router>

@@ -13,7 +13,7 @@ const TeamInfo = () => {
             <main>
                 <p id="p1">About the Team Members:</p>
                 <ol>
-                    <li><Link to="Site Link"><button>Mozhgan Ahsant</button></Link></li>
+                    <li><Link to="/mozhgan-ahsant"><button>Mozhgan Ahsant</button></Link></li>
                     <li><Link to="/geovanni-valadez"><button>Geovanni Valadez</button></Link></li>
                     <li><Link to="/anthony-silva"><button>Anthony Silva</button></Link></li>
                     <li><Link to="/aman-khera"><button>Aman Khera</button></Link></li>
