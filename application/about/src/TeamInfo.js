@@ -17,7 +17,7 @@ const TeamInfo = () => {
                     <li><Link to="Site Link"><button>Geovanni Valadez</button></Link></li>
                     <li><Link to="Site Link"><button>Anthony Silva</button></Link></li>
                     <li><Link to="Site Link"><button>Aman Khera</button></Link></li>
-                    <li><Link to="Site Link"><button>Ivan</button></Link></li>
+                    <li><Link to="Site Link"><button>Ivan Ayala-Brito</button></Link></li>
                     <li><Link to="/jeremy-tran"><button>Jeremy Tran</button></Link></li>
                 </ol>
             </main>
