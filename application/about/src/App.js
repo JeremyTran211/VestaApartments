@@ -5,6 +5,7 @@ import TeamInfo from './TeamInfo';
 import JeremyTran from './JeremyTran';  // Import the JeremyTran component
 import GeovanniValadez from './GeovanniValadez';
 import AnthonySilva from './AnthonySilva';
+import AmanKhera from './AmanKhera';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/jeremy-tran" element={<JeremyTran />} />
                     <Route path="/geovanni-valadez" element={<GeovanniValadez />} />
                     <Route path="/anthony-silva" element={<AnthonySilva />} />
+                    <Route path="/aman-khera" element={<AmanKhera />} />
                 </Routes>
             </div>
         </Router>
