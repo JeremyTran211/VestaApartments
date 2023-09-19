@@ -7,7 +7,7 @@ function AnthonySilva() {
         <h1>About Anthony Silva</h1>
         {/* Biography */}
         <p>
-        Hi 
+        Hi
         </p>
         {/* Contact Info */}
         <h2> Contact </h2>
