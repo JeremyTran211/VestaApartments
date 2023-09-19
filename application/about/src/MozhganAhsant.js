@@ -8,7 +8,7 @@ function MozhganAhsant() {
         {/* Biography */}
         <p>
         Hi, my name is Mozhgan Ahsant. I am a fourth year Computer Science student at San Francisco State University. 
-        This website was created to help students find an apartment or room at SF State.
+        This website was created to help students find an apartment or roommates at SF State.
         </p>
         {/* Contact Info */}
         <h2> Contact </h2>
