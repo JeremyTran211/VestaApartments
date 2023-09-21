@@ -1,11 +1,17 @@
-In this file, write all the credentials needed to access to your application. For example, your app and database credentials.
-This information will be used by your CTO and leads to have access some components of your app. 
+Website URL: http://3.80.170.80/
 
-In addition, you should provide short tutorials to teach people how to access to all the 
-components of your application. For instance, if you created a MySQL instance, you must provide 
-a short description of how to use the credentials provided here to access to your database instance via ssh or 
-using MySQLWorkbench. 
+SSH URL: ec2-3-80-170-80.compute-1.amazonaws.com
+SSH Username: ubuntu
+SSH Password/ Key: download .pem file here, Gator.pem, https://drive.google.com/file/d/1ZoHZpDwavXRnl6txGnlk12taIutS1XWx/view?usp=drive_link
 
-Points will be deducted if teams do not add their credentials here once they have chosen their 
-technology stack or if their step-by-step descriptions are not clear enough. You have been warned! 
+Database URL: database-1.c8bx6xgcysm5.us-east-1.rds.amazonaws.com
+Database Username: admin
+Database Password: 921359982
 
+SSH into the instance: 
+1.  Run this command in terminal: ssh -i [path to your private key] [username]@[SSH URL]
+    Ex. ssh -i ~/.ssh/Gators.pem ubuntu@ec2-3-80-170-80.compute-1.amazonaws.com
+
+Access Database from instance:
+1. Run this command when inside the instance: mysql -h [endpoint] -P [port] -u [username] -p
+   Ex. mysql -h database-1.c8bx6xgcysm5.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
