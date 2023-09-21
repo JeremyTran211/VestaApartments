@@ -2,7 +2,7 @@ Website URL: http://3.80.170.80/
 
 SSH URL: ec2-3-80-170-80.compute-1.amazonaws.com
 SSH Username: ubuntu
-SSH Password/ Key: download .pem file here, Gator.pem, https://drive.google.com/file/d/1ZoHZpDwavXRnl6txGnlk12taIutS1XWx/view?usp=drive_link
+SSH Password/ Key: Gator.pem, https://drive.google.com/file/d/1ZoHZpDwavXRnl6txGnlk12taIutS1XWx/view?usp=drive_link
 
 Database URL: database-1.c8bx6xgcysm5.us-east-1.rds.amazonaws.com
 Database Username: admin
