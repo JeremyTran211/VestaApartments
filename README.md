@@ -29,7 +29,7 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
-|   Replace this text with your project's name  |              Replace this text with your application's URL or IP       |                                                        
+|   SFstudentRent  |            http://3.80.170.80/      |                                                        
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
