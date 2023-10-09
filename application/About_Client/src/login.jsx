@@ -9,11 +9,11 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform authentication logic here (e.g., sending data to a server or checking credentials)
-    // For simplicity, we'll just log the entered values
+    // Perform authentication logic here 
+    
     window.alert('Username: ' + username + ' Password:' + password);
 
-    // You can implement further validation and authentication steps here
+    
   };
 
 

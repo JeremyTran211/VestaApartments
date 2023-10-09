@@ -10,8 +10,8 @@ import MozhganAhsant from './About_Pages/MozhganAhsant';
 import IvanA from './About_Pages/IvanA';
 
 //added import 
-import LoginPage from './About_Pages/login';
-import Register from './About_Pages/register';
+import LoginPage from './src/login';
+import Register from './src/register';
 
 function App() {
     return (
