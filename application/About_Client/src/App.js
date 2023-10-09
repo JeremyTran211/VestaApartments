@@ -9,6 +9,9 @@ import AmanKhera from './About_Pages/AmanKhera';
 import MozhganAhsant from './About_Pages/MozhganAhsant';
 import IvanA from './About_Pages/IvanA';
 
+//added import 
+import LoginPage from './About_Pages/login';
+import Register from './About_Pages/register';
 
 function App() {
     return (
