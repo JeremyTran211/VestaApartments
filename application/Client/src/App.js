@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Styles/App.css';
-import TeamInfo from './Pages/About_Pages/TeamInfo';
-import JeremyTran from './Pages/About_Pages/JeremyTran';  
-import GeovanniValadez from './Pages/About_Pages/GeovanniValadez';
-import AnthonySilva from './Pages/About_Pages/AnthonySilva';
-import AmanKhera from './Pages/About_Pages/AmanKhera';
-import MozhganAhsant from './Pages/About_Pages/MozhganAhsant';
-import IvanA from './Pages/About_Pages/IvanA';
+import TeamInfo from './Pages/About/TeamInfo';
+import JeremyTran from './Pages/About/JeremyTran';  
+import GeovanniValadez from './Pages/About/GeovanniValadez';
+import AnthonySilva from './Pages/About/AnthonySilva';
+import AmanKhera from './Pages/About/AmanKhera';
+import MozhganAhsant from './Pages/About/MozhganAhsant';
+import IvanA from './Pages/About/IvanA';
 
 
 function App() {
