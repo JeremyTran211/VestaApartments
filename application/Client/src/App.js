@@ -8,6 +8,8 @@ import AnthonySilva from './Pages/About/AnthonySilva';
 import AmanKhera from './Pages/About/AmanKhera';
 import MozhganAhsant from './Pages/About/MozhganAhsant';
 import IvanA from './Pages/About/IvanA';
+import LoginPage from './Pages/Login/login';
+import Register from './Pages/Register/register';
 
 
 function App() {
@@ -22,6 +24,9 @@ function App() {
                     <Route path="/aman-khera" element={<AmanKhera />} />
                     <Route path="/mozhgan-ahsant" element={<MozhganAhsant />} />
                     <Route path="/ivan-ayala-brito" element={<IvanA />} />
+                    <Route path="/login" element={<LoginPage/>} />
+                    <Route path="/register" element={<Register/>} />
+
                 </Routes>
             </div>
         </Router>
