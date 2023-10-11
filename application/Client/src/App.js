@@ -10,6 +10,8 @@ import MozhganAhsant from './Pages/About/MozhganAhsant';
 import IvanA from './Pages/About/IvanA';
 import LoginPage from './Pages/Login/login';
 import Register from './Pages/Register/register';
+import MainPage from './Pages/MainPage/MainPage';
+import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
         <Router>
             <div className="App">
                 <Routes>
-                    <Route path="/" element={<TeamInfo />} />
+                    <Route path="/" element={<MainPage />} />
                     <Route path="/jeremy-tran" element={<JeremyTran />} />
                     <Route path="/geovanni-valadez" element={<GeovanniValadez />} />
                     <Route path="/anthony-silva" element={<AnthonySilva />} />
@@ -26,6 +28,8 @@ function App() {
                     <Route path="/ivan-ayala-brito" element={<IvanA />} />
                     <Route path="/login" element={<LoginPage/>} />
                     <Route path="/register" element={<Register/>} />
+                    <Route path="/under-construction" element={<UnderConstruction/>} />
+
 
                 </Routes>
             </div>
