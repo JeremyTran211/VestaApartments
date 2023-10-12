@@ -1,0 +1,100 @@
+.MainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+  }
+
+  header {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .login button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 60%;
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 20px;
+    }
+  }
+
+  .map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* Adjust the height to your preference */
+}
+
+.numbered-squares {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px; /* Adjust the gap between squares as needed */
+  width: 200px; /* Adjust the width of the square container */
+  height: 200px; /* Adjust the height of the square container */
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px; /* Adjust the font size as needed */
+}
