@@ -5,7 +5,7 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
     <div
       style={{
         display: "flex",
-        margin: "15px",
+        margin: "20px",
         border: "1px solid #ccc",
         padding: "10px",
         borderRadius: "5px",
