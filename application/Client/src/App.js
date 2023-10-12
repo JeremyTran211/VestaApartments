@@ -12,6 +12,7 @@ import LoginPage from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import MainPage from './Pages/MainPage/MainPage';
 import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
+import ListingsPage from './Pages/Listing/ApartmentListing';
 
 
 function App() {
@@ -29,8 +30,7 @@ function App() {
                     <Route path="/login" element={<LoginPage/>} />
                     <Route path="/register" element={<Register/>} />
                     <Route path="/under-construction" element={<UnderConstruction/>} />
-
-
+                    <Route path="/listings" element={<ListingsPage/>} />
                 </Routes>
             </div>
         </Router>

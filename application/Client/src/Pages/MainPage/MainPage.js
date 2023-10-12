@@ -16,9 +16,9 @@ const MainPage = () => {
       <main>
         <div className="search-container">
           <input type="text" placeholder="Search..." />
-          <button type="submit">Search</button>
-          {/* change to whatever for the postings page /}
-          {/ <Link to="/login"><button>Login</button></Link> */} 
+          <Link to="/listings"><button type="submit">Search</button></Link> 
+          
+    
         </div>
         <div className="map-container">
         <div className="numbered-squares">
