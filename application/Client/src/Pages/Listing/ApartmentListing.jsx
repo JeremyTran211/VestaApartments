@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
   return (
     <div
       style={{
         display: "flex",
-        margin: "15px",
+        margin: "21px",
         border: "1px solid #ccc",
         padding: "10px",
         borderRadius: "5px",
@@ -23,17 +23,10 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 
       {/* Details Section */}
       <div style={{ flex: 1 }}>
-        {/* Address */}
-        <div style={{ marginBottom: "10px" }}>{address}</div>
-
-        {/* Price */}
-        <div style={{ marginBottom: "10px", color: "green" }}>{price}</div>
-
-        {/* Bedroom Number */}
-        <div style={{ marginBottom: "10px" }}>{bedrooms} Bedrooms</div>
-
-        {/* Bathroom Number */}
-        <div style={{ marginBottom: "10px" }}>{bathrooms} Bathrooms</div>
+        <div style={{ fontWeight: "bold" }}>{address}</div>
+        <div style={{ color: "green", fontWeight: "bold" }}>{price}</div>
+        <div>{bedrooms} Bedrooms</div>
+        <div>{bathrooms} Bathrooms</div>
       </div>
 
       {/* View Listing Button */}
@@ -56,8 +49,90 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 };
 
 const ApartmentListing = () => {
+  const [filter, setFilter] = useState({
+    rent: "",
+    bedrooms: "",
+    bathrooms: "",
+  });
+  const [sort, setSort] = useState(""); // default sorting
+
   return (
     <div>
+      {/* Back to Home Button */}
+      <button
+        style={{
+          margin: "20px",
+          padding: "5px 10px",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Back to Home
+      </button>
+
+      {/* Filter and Sort Section */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "20px",
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
+      >
+        {/* Rent Filter */}
+        <div style={{ marginRight: "10px" }}>
+          <strong>Rent:</strong>
+          <input
+            value={filter.rent}
+            onChange={(e) => setFilter({ ...filter, rent: e.target.value })}
+            placeholder="Rent"
+          />
+          <button>Apply</button>
+        </div>
+
+        {/* Bedroom Filter */}
+        <div style={{ marginRight: "10px" }}>
+          <strong>Bedrooms:</strong>
+          <input
+            value={filter.bedrooms}
+            onChange={(e) => setFilter({ ...filter, bedrooms: e.target.value })}
+            placeholder="Bedrooms"
+          />
+          <button>Apply</button>
+        </div>
+
+        {/* Bathroom Filter */}
+        <div style={{ marginRight: "10px" }}>
+          <strong>Bathrooms:</strong>
+          <input
+            value={filter.bathrooms}
+            onChange={(e) =>
+              setFilter({ ...filter, bathrooms: e.target.value })
+            }
+            placeholder="Bathrooms"
+          />
+          <button>Apply</button>
+        </div>
+
+        {/* Sort Section */}
+        <div style={{ marginLeft: "auto" }}>
+          <strong>Sort:</strong>
+          <select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <option value="">Select</option>
+            <option value="lowHigh">Low to High</option>
+            <option value="highLow">High to Low</option>
+            <option value="video">Video</option>
+            <option value="3DTour">3D Tour</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Listings */}
       <SingleListing
         imageUrl="https://via.placeholder.com/200"
         address="123 Example St, Example City, EX 12345"
@@ -81,17 +156,10 @@ const ApartmentListing = () => {
       />
       <SingleListing
         imageUrl="https://via.placeholder.com/200"
-        address="101 Test Ave, Test City, TC 12345"
+        address="101 Another St, Some City, SC 67890"
         price="$1,500/month"
-        bedrooms="4"
-        bathrooms="2"
-      />
-      <SingleListing
-        imageUrl="https://via.placeholder.com/200"
-        address="202 Alpha St, Alpha City, AC 12345"
-        price="$1,100/month"
         bedrooms="3"
-        bathrooms="1.5"
+        bathrooms="2"
       />
     </div>
   );
