@@ -1,8 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './MainPage.css';
+import { useState } from 'react';
+
 
 const MainPage = () => {
+  const [searchInput, setSearchInput] = useState('');
+  const navigate = useNavigate(); 
+
+  const handleSearchClick = () => {
+    console.log("Search button was clicked with query:", searchInput);
+
+  if (searchInput) {
+    navigate('/listings', { state: { searchQuery: searchInput } });
+  }
+};
     return (
         <div className="MainPage">
       <header>
@@ -14,11 +26,15 @@ const MainPage = () => {
         </nav>
       </header>
       <main>
-        <div className="search-container">
-          <input type="text" placeholder="Search..." />
-          <Link to="/listings"><button type="submit">Search</button></Link> 
-          
-    
+      <div className="search-container">
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+           <button type="submit" onClick={handleSearchClick}>Search</button>
+  
         </div>
         <div className="map-container">
         <div className="numbered-squares">

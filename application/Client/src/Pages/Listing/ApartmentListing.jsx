@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from 'react-router-dom';
 
 const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
   return (
@@ -55,6 +56,46 @@ const ApartmentListing = () => {
     bathrooms: "",
   });
   const [sort, setSort] = useState(""); // default sorting
+  const[listings, setListing] = useState([
+    {
+      imageUrl: "https://via.placeholder.com/200",
+      address: "123 Example St, Example City, EX 12345",
+      price: "$1,000/month",
+      bedrooms: "2",
+      bathrooms: "1",
+    },
+    {
+      imageUrl: "https://via.placeholder.com/200",
+      address: "456 Sample Rd, Sample City, SC 12345",
+      price: "$1,200/month",
+      bedrooms: "3",
+      bathrooms: "2",
+    },
+    {
+      imageUrl:"https://via.placeholder.com/200",
+      address:"456 Sample Rd, Sample City, SC 12345",
+      price:"$1,200/month",
+      bedrooms:"3",
+      bathrooms:"2",
+    },
+    {
+      imageUrl: "https://via.placeholder.com/200",
+      address: "101 Another St, Some City, SC 67890",
+      price: "$1,500/month",
+      bedrooms: "3",
+      bathrooms: "2",
+    }
+  ]);
+  const [search, setSearch] = useState("");
+
+  // Get the searchQuery from the location state
+  const location = useLocation();
+  const searchQuery = location.state ? location.state.searchQuery : '';
+
+  const searchTerm = search || searchQuery;
+  const filteredListings = listings.filter(listing => 
+    listing.address.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -72,7 +113,22 @@ const ApartmentListing = () => {
       >
         Back to Home
       </button>
-
+      <input 
+                type="text" 
+                placeholder="Search by Address..." 
+                value={search} 
+                onChange={(e) => setSearch(e.target.value)} 
+        />
+      {filteredListings.map((listing, index) => (
+                <SingleListing
+                    key={index}
+                    imageUrl={listing.imageUrl}
+                    address={listing.address}
+                    price={listing.price}
+                    bedrooms={listing.bedrooms}
+                    bathrooms={listing.bathrooms}
+                />
+      ))}
       {/* Filter and Sort Section */}
       <div
         style={{
@@ -82,7 +138,8 @@ const ApartmentListing = () => {
           padding: "10px",
           border: "1px solid #ccc",
           borderRadius: "5px",
-        }}
+        }} 
+      
       >
         {/* Rent Filter */}
         <div style={{ marginRight: "10px" }}>
@@ -131,36 +188,6 @@ const ApartmentListing = () => {
           </select>
         </div>
       </div>
-
-      {/* Listings */}
-      <SingleListing
-        imageUrl="https://via.placeholder.com/200"
-        address="123 Example St, Example City, EX 12345"
-        price="$1,000/month"
-        bedrooms="2"
-        bathrooms="1"
-      />
-      <SingleListing
-        imageUrl="https://via.placeholder.com/200"
-        address="456 Sample Rd, Sample City, SC 12345"
-        price="$1,200/month"
-        bedrooms="3"
-        bathrooms="2"
-      />
-      <SingleListing
-        imageUrl="https://via.placeholder.com/200"
-        address="789 Demo Blvd, Demo City, DM 12345"
-        price="$900/month"
-        bedrooms="1"
-        bathrooms="1"
-      />
-      <SingleListing
-        imageUrl="https://via.placeholder.com/200"
-        address="101 Another St, Some City, SC 67890"
-        price="$1,500/month"
-        bedrooms="3"
-        bathrooms="2"
-      />
     </div>
   );
 };
