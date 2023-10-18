@@ -1,94 +1,125 @@
 import React, { useState } from "react";
 
 const PersonalityQuiz = () => {
-  const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState({});
 
   const questions = [
     {
-      question: "Do you like to keep things tidy?",
-      options: [
-        { answer: "Always", score: 3 },
-        { answer: "Most of the time", score: 2 },
-        { answer: "Occasionally", score: 1 },
-        { answer: "Never", score: 0 },
-      ],
-    },
-    {
-      question: "What are your hobbies?",
-      options: [
-        { answer: "Reading & Writing", score: 2 },
-        { answer: "Sports & Fitness", score: 1 },
-        { answer: "Arts & Crafts", score: 3 },
-        { answer: "Tech & Gaming", score: 1 },
-      ],
-    },
-    {
-      question: "Describe your personality:",
-      options: [
-        { answer: "Outgoing", score: 3 },
-        { answer: "Introverted", score: 1 },
-        { answer: "Friendly", score: 2 },
-        { answer: "Reserved", score: 0 },
-      ],
-    },
-    {
       question: "Are you a morning person or night owl?",
       options: [
-        { answer: "Morning person", score: 3 },
-        { answer: "Night owl", score: 1 },
+        { answer: "Morning Person", score: 1 },
+        { answer: "Night Owl", score: 2 },
       ],
     },
     {
       question: "Do you smoke or vape?",
       options: [
-        { answer: "Yes", score: 0 },
-        { answer: "No", score: 3 },
+        { answer: "Yes", score: -1 },
+        { answer: "No", score: 1 },
       ],
     },
     {
       question: "What is your worst habit?",
       options: [
-        { answer: "Procrastination", score: 1 },
-        { answer: "Untidiness", score: 0 },
-        { answer: "Being loud", score: 1 },
-        { answer: "Always running late", score: 0 },
+        { answer: "Procrastinating", score: -1 },
+        { answer: "Biting nails", score: -1 },
+        { answer: "Others", score: 0 },
+      ],
+    },
+    {
+      question: "What are your primary hobbies?",
+      options: [
+        { answer: "Reading", score: 1 },
+        { answer: "Sports", score: 2 },
+        { answer: "Music", score: 1 },
+        { answer: "Others", score: 0 },
+      ],
+    },
+    {
+      question: "How clean do you consider yourself?",
+      options: [
+        { answer: "Very clean", score: 2 },
+        { answer: "Average", score: 1 },
+        { answer: "Not so clean", score: -1 },
+      ],
+    },
+    {
+      question: "How would you describe your personality?",
+      options: [
+        { answer: "Introvert", score: 1 },
+        { answer: "Extrovert", score: 2 },
+        { answer: "Ambivert", score: 1.5 },
       ],
     },
   ];
 
   const handleAnswer = (question, selectedOption) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [question]: selectedOption,
+    setAnswers((prevState) => ({
+      ...prevState,
+      [question]: selectedOption.score,
     }));
-    setScore((prevScore) => prevScore + selectedOption.score);
   };
 
   const handleSubmit = () => {
-    console.log("User's final score:", score);
-    console.log("User's answers:", answers);
+    if (Object.keys(answers).length !== questions.length) {
+      alert("Please answer all the questions.");
+      return;
+    }
+
+    let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
+    alert(`Your score is: ${totalScore}`);
+  };
+
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+  };
+
+  const backToHomeStyle = {
+    position: "absolute",
+    top: "10px",
+    left: "10px",
+  };
+
+  const quizContainerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    border: "1px solid black",
+    padding: "20px",
+    borderRadius: "8px",
   };
 
   return (
-    <div>
-      {questions.map((q, index) => (
-        <div key={index}>
-          <p>{q.question}</p>
-          {q.options.map((option, optIndex) => (
-            <label key={optIndex}>
-              <input
-                type="radio"
-                name={q.question}
-                value={option.score}
-                onChange={() => handleAnswer(q.question, option)}
-              />
-              {option.answer}
-            </label>
-          ))}
-        </div>
-      ))}
-      <button onClick={handleSubmit}>Submit</button>
+    <div style={containerStyle}>
+      {/* Back to Home button */}
+      <div style={backToHomeStyle}>
+        <button>Back to Home</button>
+      </div>
+
+      {/* Quiz */}
+      <div style={quizContainerStyle}>
+        {questions.map((q, index) => (
+          <div key={index}>
+            <p>{q.question}</p>
+            {q.options.map((option, optIndex) => (
+              <label key={optIndex}>
+                <input
+                  type="radio"
+                  name={q.question}
+                  value={option.score}
+                  onChange={() => handleAnswer(q.question, option)}
+                />
+                {option.answer}
+              </label>
+            ))}
+          </div>
+        ))}
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
   );
 };
