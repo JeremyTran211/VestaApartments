@@ -34,7 +34,24 @@ async function updateListing(listing_id, listing){
   return {message};
 }
 
+ // for deleting a listing
+ async function removeListing(listing_id){
+  const result = await db.query(
+    `DELETE FROM Rental_Listing WHERE Listing_id=${listing_id}`
+  );
+
+  let message = 'Error in deleting rental listing';
+
+  if (result.affectedRows) {
+    message = 'Rental listing was deleted successfully';
+  }
+
+  return {message};
+}
+
+
 module.exports = {
   getListings,
-  updateListing
+  updateListing,
+  removeListing
 }

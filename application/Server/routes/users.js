@@ -1,0 +1,36 @@
+const express = require('express');
+const router = express.Router();
+const users = require('../services/users');
+
+module.exports = router;
+
+// for getting the users
+router.get('/', async function(req, res, next) {
+  try {
+    res.json(await users.getUsers(req.query.page));
+  } catch (err) {
+    console.error(`Error while getting Users from database `, err.message);
+    next(err);
+  }
+});
+
+// for updating the users
+router.put('/:user_id', async function(req, res, next) {
+  try {
+    res.json(await users.updateUser(req.params.user_id, req.body));
+  } catch (err) {
+    console.error(`Error while updating registered User`, err.message);
+    next(err);
+  }
+});
+
+
+// for deleting a user
+router.delete('/:user_id', async function(req, res, next) {
+  try {
+    res.json(await users.removeUser(req.params.user_id));
+  } catch (err) {
+    console.error(`Error while deleting User`, err.message);
+    next(err);
+  }
+});
