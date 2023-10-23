@@ -2,6 +2,23 @@ const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
+
+// for creating a listing
+async function createListing(listing) {
+  const result = await db.query(
+  `INSERT INTO Rental_Listing
+  (Listing_ID, Rooms, Bathrooms, Price, Property_Type, User_ID) 
+  VALUES 
+  (${listing.Listing_ID}, ${listing.Rooms},${listing.Bathrooms}, ${listing.Price}, '${listing.Property_Type}', ${listing.User_ID})`
+);
+let message = 'Error in creating Rental Listing';
+
+if (result.affectedRows) {
+  message = 'Rental Listing created successfully';
+}
+
+return {message};
+}
 // for retrieving and reading the listings in the Rental_Listing Table
 async function getListings(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
@@ -20,7 +37,7 @@ async function getListings(page = 1){
 async function updateListing(listing_id, listing){
   const result = await db.query(
     `UPDATE Rental_Listing
-    SET Rooms="${listing.Rooms}", Bathrooms=${listing.Bathrooms}, Price=${listing.Price}
+    SET Rooms=${listing.Rooms}, Bathrooms=${listing.Bathrooms}, Price=${listing.Price}
     WHERE Listing_ID=${listing_id}`
     //Property_Type=${listing.Property_Type}
   );
@@ -53,5 +70,6 @@ async function updateListing(listing_id, listing){
 module.exports = {
   getListings,
   updateListing,
-  removeListing
+  removeListing,
+  createListing
 }

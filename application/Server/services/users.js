@@ -2,6 +2,37 @@ const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
+
+async function create(programmingLanguage){
+  const result = await db.query(
+    `INSERT INTO programming_languages 
+    (name, released_year, githut_rank, pypl_rank, tiobe_rank) 
+    VALUES 
+    ('${programmingLanguage.name}', ${programmingLanguage.released_year}, ${programmingLanguage.githut_rank}, ${programmingLanguage.pypl_rank}, ${programmingLanguage.tiobe_rank})`
+  );
+
+  let message = 'Error in creating programming language';
+
+  if (result.affectedRows) {
+    message = 'Programming language created successfully';
+  }
+
+  return {message};
+}
+
+// for creating users
+async function createUser(user) {
+  const result = await db.query(
+  `INSERT INTO Registered_User (User_ID, Password)
+  VALUES 
+  (${user.User_ID}, '${user.Password}')`
+);
+let message = 'Error in creating Registered User';
+if (result.affectedRows) {
+  message = 'Registered User created successfully';
+}
+return {message};
+}
 // for retriving users
 async function getUsers(page = 1){
     const offset = helper.getOffset(page, config.listPerPage);
@@ -50,8 +81,10 @@ async function removeUser(user_id){
   }
 
   module.exports = {
+    createUser,
     getUsers,
     updateUser,
-    removeUser
+    removeUser, 
+  
   }
 

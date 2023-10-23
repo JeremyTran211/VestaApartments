@@ -4,6 +4,17 @@ const users = require('../services/users');
 
 module.exports = router;
 
+//for creating users
+router.post('/', async function(req, res, next) {
+  try {
+    res.json(await users.createUser(req.body));
+  } catch (err) {
+    console.error(`Error while creating a new User`, err.message);
+    next(err);
+  }
+});
+
+
 // for getting the users
 router.get('/', async function(req, res, next) {
   try {

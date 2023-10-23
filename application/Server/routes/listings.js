@@ -5,6 +5,7 @@ const registered_user = require('../services/users');
 
 module.exports = router;
 
+
 // for getting the listings
 router.get('/', async function(req, res, next) {
   try {
@@ -31,6 +32,16 @@ router.delete('/:listing_id', async function(req, res, next) {
     res.json(await listings.removeListing(req.params.listing_id));
   } catch (err) {
     console.error(`Error while deleting Listing`, err.message);
+    next(err);
+  }
+});
+
+//for creating listings
+router.post('/', async function(req, res, next) {
+  try {
+    res.json(await listings.createListing(req.body));
+  } catch (err) {
+    console.error(`Error while creating a new listing`, err.message);
     next(err);
   }
 });
