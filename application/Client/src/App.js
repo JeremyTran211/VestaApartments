@@ -15,6 +15,7 @@ import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 import ListingsPage from './Pages/Listing/ApartmentListing';
 import SocialPage from './Pages/SocialPage/SocialPage';
 import GroupsPage from './Pages/GroupsPage/GroupsPage';
+import BookmarksPage from './Pages/Bookmarks/BookmarksPage';
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/listings" element={<ListingsPage/>} />
                     <Route path="/SocialPage" element={<SocialPage/>} />
                     <Route path="/GroupsPage" element={<GroupsPage/>} />
+                    <Route path="/BookmarksPage" element={<BookmarksPage/>}/>
                 </Routes>
             </div>
         </Router>
