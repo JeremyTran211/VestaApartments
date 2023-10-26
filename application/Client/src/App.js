@@ -13,7 +13,7 @@ import Register from './Pages/Register/register';
 import MainPage from './Pages/MainPage/MainPage';
 import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 import ListingsPage from './Pages/Listing/ApartmentListing';
-
+import SocialPage from './Pages/SocialPage/SocialPage';
 
 function App() {
     return (
@@ -31,6 +31,7 @@ function App() {
                     <Route path="/register" element={<Register/>} />
                     <Route path="/under-construction" element={<UnderConstruction/>} />
                     <Route path="/listings" element={<ListingsPage/>} />
+                    <Route path="/SocialPage" element={<SocialPage/>} />
                 </Routes>
             </div>
         </Router>
