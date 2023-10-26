@@ -14,6 +14,7 @@ import MainPage from './Pages/MainPage/MainPage';
 import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 import ListingsPage from './Pages/Listing/ApartmentListing';
 import SocialPage from './Pages/SocialPage/SocialPage';
+import GroupsPage from './Pages/GroupsPage/GroupsPage';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/under-construction" element={<UnderConstruction/>} />
                     <Route path="/listings" element={<ListingsPage/>} />
                     <Route path="/SocialPage" element={<SocialPage/>} />
+                    <Route path="/GroupsPage" element={<GroupsPage/>} />
                 </Routes>
             </div>
         </Router>

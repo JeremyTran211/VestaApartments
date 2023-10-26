@@ -25,7 +25,7 @@ function SocialPage(){
       <a href="/home">(Home)</a>
       <a href="/propertylisting">(Property Listing)</a>
       <a href="/bookmarks"> (Bookmarks)</a>
-      <a href="/groups"> (Groups)</a>
+      <a href="/Groupspage"> (Groups)</a>
       <a href="/editprofile">(Edit Profile)</a>
       <a href="/editlistings"> (Edit Your listings)</a>
 
