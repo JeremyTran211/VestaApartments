@@ -48,7 +48,7 @@ async function updateUser(user_id, user){
 }
 
 // for comparing the given password for login
-async function loginUser(user_email, user_password){
+async function loginUser(user_email, user){
 
   // get user_id from database, table profile
   const result1 = await db.query(
@@ -79,7 +79,7 @@ async function loginUser(user_email, user_password){
   }
 
   // compare given password with databased password
-  const match = await bcrypt.compare(user_password, result2.values[0].password);
+  const match = await bcrypt.compare(user.password, result2.values[0].password);
   let message = "";
   if (match) {
     message = 'User login successfully';
