@@ -44,4 +44,6 @@ router.post('/', async function(req, res, next) {
     console.error(`Error while creating a new listing`, err.message);
     next(err);
   }
+
+
 });

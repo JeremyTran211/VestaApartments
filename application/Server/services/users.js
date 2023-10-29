@@ -3,23 +3,6 @@ const helper = require('../helper');
 const config = require('../config');
 
 
-async function create(programmingLanguage){
-  const result = await db.query(
-    `INSERT INTO programming_languages 
-    (name, released_year, githut_rank, pypl_rank, tiobe_rank) 
-    VALUES 
-    ('${programmingLanguage.name}', ${programmingLanguage.released_year}, ${programmingLanguage.githut_rank}, ${programmingLanguage.pypl_rank}, ${programmingLanguage.tiobe_rank})`
-  );
-
-  let message = 'Error in creating programming language';
-
-  if (result.affectedRows) {
-    message = 'Programming language created successfully';
-  }
-
-  return {message};
-}
-
 // for creating users
 async function createUser(user) {
   const result = await db.query(

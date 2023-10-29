@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const listingsRouter = require("./routes/listings");
 const usersRouter = require("./routes/users");
+const searchRouter = require("./routes/search");
 
 
 app.use(express.json());
@@ -15,7 +16,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Connection test is Valid" });
 });
 app.use("/listings", listingsRouter);
-
+app.use("/search", searchRouter);
 app.use("/users", usersRouter);
 
 /* Error handler middleware */
