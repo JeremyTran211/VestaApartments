@@ -1,0 +1,9 @@
+/* Map Default Background Color */
+path {
+  fill: #ccc;
+}
+
+/* Map Hover Background Color */
+path:hover {
+  fill: #da1709;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
   return (
@@ -100,6 +101,7 @@ const ApartmentListing = () => {
   return (
     <div>
       {/* Back to Home Button */}
+      <Link to="/" >
       <button
         style={{
           margin: "20px",
@@ -112,7 +114,7 @@ const ApartmentListing = () => {
         }}
       >
         Back to Home
-      </button>
+      </button></Link>
       <input 
                 type="text" 
                 placeholder="Search by Address..." 
