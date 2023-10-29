@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './Styles/App.css';
+//About Imports
 import TeamInfo from './Pages/About/TeamInfo';
 import JeremyTran from './Pages/About/JeremyTran';  
 import GeovanniValadez from './Pages/About/GeovanniValadez';
@@ -8,11 +9,23 @@ import AnthonySilva from './Pages/About/AnthonySilva';
 import AmanKhera from './Pages/About/AmanKhera';
 import MozhganAhsant from './Pages/About/MozhganAhsant';
 import IvanA from './Pages/About/IvanA';
+
+//Main Imports
+import MainPage from './Pages/MainPage/MainPage';
 import LoginPage from './Pages/Login/login';
 import Register from './Pages/Register/register';
-import MainPage from './Pages/MainPage/MainPage';
-import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 import ListingsPage from './Pages/Listing/ApartmentListing';
+import SocialPage from './Pages/SocialPage/SocialPage'
+
+
+//Social Pages
+import NotificationsPage from './Pages/Notifications/Notifications';
+import ViewProfile from './Pages/ProfilePage/ViewProfile';
+import GroupPage from './Pages/GroupsPage/GroupsPage';
+//Listing Pages
+
+
+import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
 
 
 function App() {
@@ -31,6 +44,10 @@ function App() {
                     <Route path="/register" element={<Register/>} />
                     <Route path="/under-construction" element={<UnderConstruction/>} />
                     <Route path="/listings" element={<ListingsPage/>} />
+                    <Route path="/view-profile" element={<ViewProfile/>}/>
+                    <Route path="/notifications" element={<NotificationsPage/>}/>
+                    <Route path="/social" element={<SocialPage/>}/>
+                    <Route path="/group-page" element={<GroupPage/>}/>
                 </Routes>
             </div>
         </Router>

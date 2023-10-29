@@ -1,6 +1,6 @@
-Website URL: http://3.80.170.80/  
+Website URL: 35.168.22.171   
 
-SSH URL: ec2-3-80-170-80.compute-1.amazonaws.com  
+SSH URL: ec2-35-168-22-171.compute-1.amazonaws.com 
 SSH Username: ubuntu  
 SSH Password/ Key: Gator.pem, https://drive.google.com/file/d/1ZoHZpDwavXRnl6txGnlk12taIutS1XWx/view?usp=drive_link
 

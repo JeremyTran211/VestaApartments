@@ -1,100 +1,78 @@
 .MainPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
 
-  header {
-    background-color: #333;
-    color: #fff;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .logo {
-    font-size: 24px;
-  }
-
-  .login button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-    width: 60%;
-  }
-
-  button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    .logo {
-      font-size: 20px;
-    }
-  }
-
-  .map-container {
+.main {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px; /* Adjust the height to your preference */
 }
-
-.numbered-squares {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 10px; /* Adjust the gap between squares as needed */
-  width: 200px; /* Adjust the width of the square container */
-  height: 200px; /* Adjust the height of the square container */
-}
-
-.square {
+/* Search bar and button */
+.search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #007bff;
-  color: #fff;
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  padding: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 20px; /* Adjust the font size as needed */
+  margin-right: 10px;
+  width: 100%;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+}
+
+/* Map Box */
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  height: 400px; /* Adjust the height to your preference */
+}
+
+button:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
