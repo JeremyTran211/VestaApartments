@@ -21,7 +21,7 @@ function Navbar() {
           </div>
           
           <div class="nav-links">
-            <a href="/view-profile">CURRENTLY TESTING </a>
+            <a href="/messages">CURRENTLY TESTING </a>
             <a href="/listings">FIND HOMES</a>
             <a href="/social">SOCIAL</a>
             <a href="/login">LOGIN</a>

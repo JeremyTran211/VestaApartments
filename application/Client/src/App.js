@@ -21,7 +21,10 @@ import SocialPage from './Pages/SocialPage/SocialPage'
 //Social Pages
 import NotificationsPage from './Pages/Notifications/Notifications';
 import ViewProfile from './Pages/ProfilePage/ViewProfile';
+import EditProfile from './Pages/ProfilePage/EditProfile';
 import GroupPage from './Pages/GroupsPage/GroupsPage';
+import PersonalityTest from './Pages/PersonalityTest/PersonalityTest';
+import MessagesPage from './Pages/Messages/Messages';
 //Listing Pages
 
 
@@ -48,6 +51,9 @@ function App() {
                     <Route path="/notifications" element={<NotificationsPage/>}/>
                     <Route path="/social" element={<SocialPage/>}/>
                     <Route path="/group-page" element={<GroupPage/>}/>
+                    <Route path="/edit-profile" element={<EditProfile/>}/>
+                    <Route path="/personality-test" element={<PersonalityTest/>}/>
+                    <Route path="/messages" element={<MessagesPage/>}/>
                 </Routes>
             </div>
         </Router>

@@ -4,7 +4,7 @@ import "./ViewProfile.css";
 import { useState } from "react";
 import Pfp from "../ProfilePage/pfp.jpg";
 
-const ViewPage = () => {
+const EditProfile = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
@@ -35,8 +35,7 @@ const ViewPage = () => {
                     <p class="text-muted font-size-sm">
                       I enjoy being joe and being a cool joe
                     </p>
-                    <button class="btn btn-primary"><Link to="/under-construction">Follow</Link></button>
-                    <button class="btn btn-outline-primary">Message</button>
+                    
                   </div>
                 </div>
               </div>
@@ -171,7 +170,9 @@ const ViewPage = () => {
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-12">
-                    
+                    <a class="btn btn-info " target="__blank">
+                      <Link to="/under-construction">Edit</Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -182,42 +183,12 @@ const ViewPage = () => {
             <div class="card h-100">
               <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3">
-                  <i class="material-icons text-info mr-2"></i>Based on both
-                  users
+                  <i class="material-icons text-info mr-2"></i>You Haven't Taken the Personality Test
                 </h6>
-                <small>Night Owls</small>
-                <div class="progress mb-3">
-                  <div
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-                <small>Hikes</small>
-                <div class="progress mb-3">
-                  <div
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    aria-valuenow="72"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-                <small>Cook</small>
-                <div class="progress mb-3">
-                  <div
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    aria-valuenow="89"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+                
                 <div class="button-holder">
                   <button class="btn btn-outline-primary">
-                    <Link to="/personality-test">Take Personality Test</Link>
+                    <Link to="/personality-test"><a>Take Personality Test</a></Link>
                   </button>
                 </div>
               </div>
@@ -229,4 +200,4 @@ const ViewPage = () => {
   );
 };
 
-export default ViewPage;
+export default EditProfile;
