@@ -48,11 +48,11 @@ router.delete('/:user_id', async function(req, res, next) {
 
 
 // for login the user
-router.login('/:user_email', async function(req, res, next) {
-  try {
-    res.json(await users.loginUser(req.params.user_email, req.body));
-  } catch (err) {
-    console.error(`Error while login user`, err.message);
-    next(err);
-  }
-});
+// router.login('/:user_email', async function(req, res, next) {
+//   try {
+//     res.json(await users.loginUser(req.params.user_email, req.body));
+//   } catch (err) {
+//     console.error(`Error while login user`, err.message);
+//     next(err);
+//   }
+// });
