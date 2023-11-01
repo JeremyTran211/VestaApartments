@@ -35,7 +35,7 @@ const ViewPage = () => {
                     <p class="text-muted font-size-sm">
                       I enjoy being joe and being a cool joe
                     </p>
-                    <button class="btn btn-primary"><Link to="/under-construction">Follow</Link></button>
+                    <Link to="/under-construction"><button class="btn btn-primary">Follow</button></Link>
                     <button class="btn btn-outline-primary">Message</button>
                   </div>
                 </div>

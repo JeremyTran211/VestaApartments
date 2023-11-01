@@ -19,6 +19,7 @@ const MainPage = () => {
   return (
     <div className="MainPage">
       <main>
+        <h1 class="title"> Off-Campus Living Made Simple in the Bay Area</h1>
         <div className="search-container">
           <input
             type="text"
@@ -30,7 +31,7 @@ const MainPage = () => {
             Search
           </button>
         </div>
-        <div className="map-container">
+        <div class="map-container">
           <SVGComponent width="400" height="400" />
         </div>
       </main>

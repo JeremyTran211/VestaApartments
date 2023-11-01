@@ -16,10 +16,13 @@ const Messages = () => {
   };
   return (
     <div class="main-body">
+      
   <div class="container1">
     <div class="row">    
       <section class="discussions">
+      
         <div class="discussion search">
+        <Link to="/social"><button>Socials</button></Link>
           <div class="searchbar">
             <input type="text" placeholder="Search..."></input>
           </div>
@@ -46,9 +49,9 @@ const Messages = () => {
         </div>
         <div class="messages-chat">
           <div class="message">
-            <div class="photo" >
+          <Link to="/view-profile"><div class="photo" >
               <div class="online"></div>
-            </div>
+            </div></Link>
             <p class="text"> Joe </p>
           </div>
           <div class="message text-only">
@@ -65,9 +68,9 @@ const Messages = () => {
           </div>
           
           <div class="message">
-            <div class="photo" >
+            <Link to="/view-profile"><div class="photo" >
               <div class="online"></div>
-            </div>
+            </div></Link>
             <p class="text"> Hey Joe!</p>
           </div>
           

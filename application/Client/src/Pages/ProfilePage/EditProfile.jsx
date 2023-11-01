@@ -187,9 +187,9 @@ const EditProfile = () => {
                 </h6>
                 
                 <div class="button-holder">
-                  <button class="btn btn-outline-primary">
-                    <Link to="/personality-test"><a>Take Personality Test</a></Link>
-                  </button>
+                <Link to="/personality-test"><button class="btn btn-outline-primary">
+                    <a>Take Personality Test</a>
+                  </button></Link>
                 </div>
               </div>
             </div>

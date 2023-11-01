@@ -24,7 +24,7 @@ const NotificationsPage = () => {
                 <p>
                   Click here to
                   {/* take to user page */}
-                  <a class="btn btn-sm" href="555">
+                  <a class="btn btn-sm" >
                     {" "}
                     <Link to="/view-profile">view</Link>
                   </a>
@@ -46,10 +46,10 @@ const NotificationsPage = () => {
                 <p>Notification: A new group invite has popped up!</p>
                 <p>
                   Click here to
-                  <a class="btn-btn-sm" href="555">
+                  <Link to="/group-page"><a class="btn-btn-sm" >
                     {" "}
-                    <Link to="/group-page">view</Link>
-                  </a>
+                    view
+                  </a></Link>
                 </p>
               </div>
             </div>
@@ -69,9 +69,9 @@ const NotificationsPage = () => {
                 <p>
                   Click here to
                   {/* take to messages page */}
-                  <a class="btn btn-sm" href="555">
+                  <a class="btn btn-sm" >
                     {" "}
-                    <Link to="/under-construction">view</Link>
+                    <Link to="/messages">view</Link>
                   </a>
                 </p>
               </div>
@@ -92,7 +92,7 @@ const NotificationsPage = () => {
                 <p>
                   Click here to
                   {/* take to social page */}
-                  <a class="btn btn-sm" href="555">
+                  <a class="btn btn-sm" >
                     {" "}
                     <Link to="/social">view</Link>
                   </a>
@@ -115,7 +115,7 @@ const NotificationsPage = () => {
                 <p>
                   Click here to
                   {/* take to listings page */}
-                  <a class="btn btn-sm" href="555">
+                  <a class="btn btn-sm" >
                     {" "}
                     <Link to="/listings">view</Link>
                   </a>
