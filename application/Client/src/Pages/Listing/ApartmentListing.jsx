@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
   return (
@@ -43,8 +44,8 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
             borderRadius: "5px",
             cursor: "pointer",
           }}
-        >
-          View Listing
+        ><Link to="/listing-details">
+          View Listing</Link>
         </button>
       </div>
     </div>
