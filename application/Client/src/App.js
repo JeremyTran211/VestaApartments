@@ -47,7 +47,7 @@ function App() {
                     <Route path="/listing-details" element={<ViewListing/>} /> {/* Needs fix on back to home button and many other buttons not in space properly. squares are funky(important)*/}
 
                     {/* Social Pages */}
-                    <Route path="/social" element={<SocialPage/>}/>{/* Not done at all added left side links, needs recentering, need post box, sample posts, small messages box right side (important)*/}
+                    <Route path="/social" element={<SocialPage/>}/>{/* Not done at all added left side links, needs recentering, sample posts, small messages box right side (important)*/}
                     <Route path="/view-profile" element={<ViewProfile/>}/> {/* Same as edit profile */}
                     <Route path="/personality-test" element={<PersonalityTest/>}/> {/* Fix back to home button, maybe make the container better, we can figure out questions at a different time*/}
                     <Route path="/edit-profile" element={<EditProfile/>}/> {/* Center personality test button , make title bigger?(not super important) */}
