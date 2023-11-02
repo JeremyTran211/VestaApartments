@@ -3,7 +3,17 @@ import { Link } from "react-router-dom";
 import "./SocialPage.css";
 function SocialPage() {
   const [textInput, setTextInput] = useState("");
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const handlePostButtonClick = () => {
+    setPopupVisible(true);
 
+    setTimeout(() => {
+      setPopupVisible(false);
+    }, 5000);
+  };
+  
+  
+  
   const handleInputChange = (event) => {
     setTextInput(event.target.value);
   };
@@ -74,8 +84,11 @@ function SocialPage() {
                   ></input>
                 </div>
                 <div class="post-actions__widget">
-                  <button class="">Post</button>
+                  <button onClick={handlePostButtonClick}>Post</button>
                 </div>
+              </div>
+              <div className={`popup-container ${isPopupVisible ? 'visible' : ''}`}>
+                <div className="popup">Posting...</div>
               </div>
             </form>
             
@@ -134,9 +147,9 @@ function SocialPage() {
           </div>
           <a>
           <Link to="/view-profile"><button>Search </button></Link>
-          </a>
-          
+          </a> 
         </div>
+        
       </div>
 
       {/* For now links, later implement */}

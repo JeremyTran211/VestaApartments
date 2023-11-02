@@ -206,3 +206,50 @@ ul {
 :-moz-placeholder {
   color: #666;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+}
+
+.popup-container {
+  display: none;
+  background: white;
+  color: black;
+  position: fixed;
+  width: 400px; 
+  padding: 20px;
+  z-index: 999;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.7s;
+  opacity: 0;
+}
+
+.popup-container.visible {
+  display: block;
+  opacity: 1;
+}
+
+.popup {
+  font-size: 30px;
+  text-align: center;
+}
+
+.popup-button {
+  background: #0074d9;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background: #0056b3;
+}
