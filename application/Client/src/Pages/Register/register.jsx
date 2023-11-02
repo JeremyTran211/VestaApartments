@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import "./register.css";
 
 function Register() {
   // State variables to store user input
@@ -51,7 +52,7 @@ function Register() {
     const mailRegex = /[A-Za-z0-9]+@m\./;
 
     if (!sfsuRegex.test(email) && !mailRegex.test(email)) {
-      setStatus("Please enter a valid SFSU email address");
+      setStatus("Please enter a valid email address");
     } else {
       setStatus('');
     }
@@ -80,7 +81,7 @@ function Register() {
           onChange={(e) => setEmail(e.target.value)}
           style={{ marginBottom: '10px' }}
         />
-        {email &&!status&& <div style={{ position: 'relative', display: 'inline-block' }}>
+        {email && !status && <div style={{ position: 'relative', display: 'inline-block' }}>
           <TextField
             required
             id="outlined-required"
@@ -115,7 +116,7 @@ function Register() {
             }}
           />
         </div>}
-        {email&&!status&&password&&<TextField
+        {email && !status && password && <TextField
           required
           id="outlined-required"
           label="First Name"
@@ -123,7 +124,7 @@ function Register() {
           onChange={(e) => setFirstname(e.target.value)}
           style={{ marginBottom: '10px' }}
         />}
-        {email&&!status&&password&&firstname&&<TextField
+        {email && !status && password && firstname && <TextField
           required
           id="outlined-required"
           label="Last Name"
@@ -131,13 +132,18 @@ function Register() {
           onChange={(e) => setLastname(e.target.value)}
           style={{ marginBottom: '10px' }}
         />}
-        {email&&!status&&password&&firstname&&lastname&&<div>
+        {email && !status && password && firstname && lastname && <div>
           <Button variant="outlined" onClick={handleclear} style={{ width: '50%', margin: "0 auto" }}>Clear</Button>
-          <Button variant="contained" type='Submit' style={{ width: '50%', margin: "0 auto" }}>Submit</Button>
+          <Button variant="outlined" type='Submit' style={{ width: '50%', margin: "0 auto" }}>Submit</Button>
         </div>}
+        <div className="button-container">
+            <a href="/login" className="square-button">
+              Already a user? Login
+            </a>
+          </div>
       </form>
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
+      
+      
     </div>
   );
 }
