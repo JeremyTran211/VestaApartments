@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
+
 function LoginPage() {
   // State variables to store user input
   const [email, setEmail] = useState('');
