@@ -56,9 +56,7 @@ function SocialPage() {
           </Link>
         </div>
         <div>
-          <a>
-          <Link to="/view-profile"><button>Search </button></Link>
-          </a> 
+        
         </div>
 
 
