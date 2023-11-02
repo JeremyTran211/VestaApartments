@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
+
+
 function Register() {
   // State variables to store user input
   const [isFirstRender, setIsFirstRender] = useState(true); // Used to prevent useEffect from running on first render
@@ -15,6 +17,8 @@ function Register() {
   const [showpassword, setShowpassword] = useState('password');
   const [showpasswordicon, setShowpasswordicon] = useState(false);
 
+
+
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +29,13 @@ function Register() {
     const mailRegex = /[A-Za-z0-9]+@mail\.sfsu\.edu/;
     if (!sfsuRegex.test(email) && !mailRegex.test(email)) {
       window.alert("Please enter a valid SFSU email address");
+
       return;
     }
 
+  } 
 
-    window.alert('Email: ' + email + ' Password:' + password + ' First Name:' + firstname + ' Last Name:' + lastname)
 
-    // You can implement further validation and authentication steps here
-  };
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
@@ -56,7 +59,7 @@ function Register() {
       setStatus('');
     }
   }, [email]);
-
+  //App.use 
 
   const handleclear = (e) => {
     e.preventDefault();

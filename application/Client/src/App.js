@@ -16,7 +16,7 @@ import LoginPage from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import ListingsPage from './Pages/Listing/ApartmentListing';
 import SocialPage from './Pages/SocialPage/SocialPage'
-
+// import PropertyListing from './Pages/PropertyListing.'
 
 //Social Pages
 import NotificationsPage from './Pages/Notifications/Notifications';
@@ -52,6 +52,7 @@ function App() {
             </div>
         </Router>
     );
+    
 }
 
 export default App;

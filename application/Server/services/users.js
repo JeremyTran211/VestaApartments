@@ -110,7 +110,6 @@ async function removeUser(user_id){
     getUsers,
     updateUser,
     removeUser, 
-    loginUser, 
   
   }
 
