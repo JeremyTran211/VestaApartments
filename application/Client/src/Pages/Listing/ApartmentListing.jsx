@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+const buttonStyle = {
+  padding: "10px 20px",
+  fontSize: "16px",
+  cursor: "pointer",
+  textTransform: "uppercase",
+  letterSpacing: "1px",
+  fontWeight: "bold",
+  borderRadius: "5px",
+  border: "none",
+  backgroundColor: "#4CAF50",
+  color: "#fff",
+  boxShadow: "0 4px #999",
+};
+
 const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
   return (
     <div
@@ -34,19 +48,11 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-      <Link to="/listing-details"><button
-          style={{
-            padding: "4px 8px",
-            fontSize: "0.85em",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+        <button
+          style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
         >
           View Listing
-        </button></Link>
+        </button>
       </div>
     </div>
   );
@@ -81,21 +87,17 @@ const ApartmentListing = () => {
 
       {/* Listings Container */}
       <div style={{ width: "40%", overflowY: "scroll" }}>
-        {/* Back to Home Button */}<Link to="/">
+        {/* Back to Home Button */}
         <button
           style={{
+            ...buttonStyle,
             margin: "10px",
             padding: "4px 8px",
             fontSize: "0.85em",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
           }}
         >
           Back to Home
-        </button></Link>
+        </button>
 
         {/* Filter and Sort Section */}
         <div
@@ -117,7 +119,11 @@ const ApartmentListing = () => {
               placeholder="Rent"
               style={{ fontSize: "0.85em", width: "80px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
+            <button
+              style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
+            >
+              Apply
+            </button>
           </div>
 
           {/* Bedroom Filter */}
@@ -131,7 +137,11 @@ const ApartmentListing = () => {
               placeholder="Bedrooms"
               style={{ fontSize: "0.85em", width: "50px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
+            <button
+              style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
+            >
+              Apply
+            </button>
           </div>
 
           {/* Bathroom Filter */}
@@ -145,7 +155,11 @@ const ApartmentListing = () => {
               placeholder="Bathrooms"
               style={{ fontSize: "0.85em", width: "60px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
+            <button
+              style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
+            >
+              Apply
+            </button>
           </div>
 
           {/* Sort Section for the Listings */}

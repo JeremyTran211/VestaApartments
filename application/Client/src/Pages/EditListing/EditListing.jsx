@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EditApartmentListing = () => {
   const [formData, setFormData] = useState({
@@ -22,21 +23,31 @@ const EditApartmentListing = () => {
   return (
     <div
       style={{
-        width: "100%",
+        width: "80%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         padding: "20px",
         position: "relative",
+        margin: "0 auto",
       }}
     >
       <button
         style={{
-          position: "absolute",
+          position: "fixed",
           top: "20px",
           left: "20px",
-          fontSize: "0.8rem",
-          padding: "5px 10px",
+          fontSize: "16px",
+          padding: "10px 1px",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+          fontWeight: "bold",
+          borderRadius: "5px",
+          border: "none",
+          backgroundColor: "#4CAF50",
+          color: "#fff",
+          boxShadow: "0 4px #999",
         }}
       >
         Back to Home
@@ -135,6 +146,7 @@ const EditApartmentListing = () => {
             <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
               {[...Array(5)].map((_, index) => (
                 <div
+                  key={index}
                   style={{
                     border: "1px solid gray",
                     width: "150px",
@@ -185,7 +197,21 @@ const EditApartmentListing = () => {
             </div>
             <button
               type="submit"
-              style={{ marginTop: "20px", alignSelf: "flex-end" }}
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                cursor: "pointer",
+                textAlign: "center",
+                textDecoration: "none",
+                outline: "none",
+                color: "#fff",
+                backgroundColor: "#4CAF50",
+                border: "none",
+                borderRadius: "15px",
+                boxShadow: "0 9px #999",
+                marginTop: "20px",
+                alignSelf: "flex-end",
+              }}
             >
               Publish
             </button>

@@ -94,6 +94,17 @@ const PersonalityQuiz = () => {
     position: "absolute",
     top: "10px",
     left: "10px",
+    padding: "5px 1px",
+    fontSize: "10px",
+    cursor: "pointer",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    fontWeight: "bold",
+    borderRadius: "5px",
+    border: "none",
+    backgroundColor: "#4CAF50",
+    color: "#fff",
+    boxShadow: "0 5px #999",
   };
 
   const quizContainerStyle = {
@@ -105,13 +116,25 @@ const PersonalityQuiz = () => {
     borderRadius: "8px",
   };
 
+  const buttonStyle = {
+    padding: "10px 20px",
+    fontSize: "16px",
+    cursor: "pointer",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    fontWeight: "bold",
+    borderRadius: "5px",
+    border: "none",
+    backgroundColor: "#4CAF50",
+    color: "#fff",
+    boxShadow: "0 4px #999",
+  };
+
   return (
     <div style={containerStyle}>
       {/* Back to Home button */}
       <div style={backToHomeStyle}>
-      <Link to="/"><button style={{ backgroundColor: "blue", color: "white" }}>
-          Back to Home
-        </button></Link>
+        <button style={buttonStyle}>Back to Home</button>
       </div>
 
       {/* Quiz */}
@@ -132,10 +155,7 @@ const PersonalityQuiz = () => {
             ))}
           </div>
         ))}
-        <button
-          style={{ backgroundColor: "blue", color: "white" }}
-          onClick={handleSubmit}
-        >
+        <button style={buttonStyle} onClick={handleSubmit}>
           Submit
         </button>
       </div>
