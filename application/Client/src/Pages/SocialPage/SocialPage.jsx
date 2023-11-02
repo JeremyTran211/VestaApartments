@@ -129,27 +129,13 @@ function SocialPage() {
           
         </div>
         <div class="static-container" id="right-container">
+        <div class="searchbar"style={{width: "50%"}}>
+            <input type="text" placeholder="Search for User"></input>
+          </div>
           <a>
-            <Link to="/">Home</Link>
+          <Link to="/view-profile"><button>Search </button></Link>
           </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
+          
         </div>
       </div>
 
