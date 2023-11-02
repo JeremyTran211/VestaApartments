@@ -7,7 +7,7 @@ const UnderConstruction = () => {
         <div className="MainPage">
       
       <main>
-      <p>HELLO. The page you clicked is currently under construction!<br></br>Click Home to go Home</p>
+      <p>HELLO. The page or feature you clicked is currently under construction!<br></br>Click Home to go Home</p>
         <div className="search-container">
           <Link to="/"><button type="submit">HOME</button></Link>
           {/* change to whatever for the postings page /}
