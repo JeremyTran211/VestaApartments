@@ -7,7 +7,6 @@ const EditApartmentListing = () => {
     bed: "",
     bath: "",
     price: "",
-    // ... more fields as needed
   });
   const [images, setImages] = useState([]);
 
@@ -18,7 +17,6 @@ const EditApartmentListing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform validations and then your submit logic here
   };
 
   return (
@@ -32,74 +30,104 @@ const EditApartmentListing = () => {
         position: "relative",
       }}
     >
-      <button style={{ position: "absolute", top: "20px", left: "20px" }}>
+      <button
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          fontSize: "0.8rem",
+          padding: "5px 10px",
+        }}
+      >
         Back to Home
       </button>
 
       <div
         style={{
-          width: "80%",
+          width: "95%",
           display: "flex",
           flexDirection: "column",
           gap: "30px",
           border: "1px solid #ccc",
           padding: "20px",
           borderRadius: "5px",
+          position: "relative",
         }}
       >
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Street"
-            value={formData.street}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, street: e.target.value }))
-            }
-            style={{ width: "100%" }}
-          />
-
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "30px",
+              paddingBottom: "30px",
+            }}
+          >
             <input
               type="text"
-              placeholder="Price"
-              value={formData.price}
+              placeholder="Street"
+              value={formData.street}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, price: e.target.value }))
+                setFormData((prev) => ({ ...prev, street: e.target.value }))
               }
+              style={{ width: "100%" }}
             />
-            <input
-              type="text"
-              placeholder="Bed"
-              value={formData.bed}
+            <div style={{ display: "flex", gap: "10px", width: "100%" }}>
+              <input
+                type="text"
+                placeholder="Price"
+                value={formData.price}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, price: e.target.value }))
+                }
+                style={{ flex: 1 }}
+              />
+              <input
+                type="text"
+                placeholder="Bed"
+                value={formData.bed}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, bed: e.target.value }))
+                }
+                style={{ flex: 1 }}
+              />
+              <input
+                type="text"
+                placeholder="Bath"
+                value={formData.bath}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, bath: e.target.value }))
+                }
+                style={{ flex: 1 }}
+              />
+            </div>
+            <textarea
+              placeholder="Description"
+              value={formData.description}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, bed: e.target.value }))
+                setFormData((prev) => ({
+                  ...prev,
+                  description: e.target.value,
+                }))
               }
-            />
-            <input
-              type="text"
-              placeholder="Bath"
-              value={formData.bath}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, bath: e.target.value }))
-              }
+              style={{
+                width: "100%",
+                height: "100px",
+                borderBottom: "1px solid #ccc",
+                paddingBottom: "20px",
+                marginBottom: "20px",
+              }}
             />
           </div>
-
-          <textarea
-            placeholder="Description"
-            value={formData.description}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, description: e.target.value }))
-            }
-            style={{ width: "100%", height: "100px", marginTop: "20px" }}
-          />
 
           <div
             style={{
               display: "flex",
               flexDirection: "column",
+              gap: "30px",
               alignItems: "center",
-              gap: "10px",
+              borderBottom: "1px solid #ccc",
+              paddingBottom: "30px",
             }}
           >
             <label>Upload Images: </label>
@@ -109,8 +137,8 @@ const EditApartmentListing = () => {
                 <div
                   style={{
                     border: "1px solid gray",
-                    width: "100px",
-                    height: "100px",
+                    width: "150px",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -137,12 +165,13 @@ const EditApartmentListing = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
+              flexDirection: "column",
               gap: "30px",
+              alignItems: "center",
+              marginTop: "30px",
             }}
           >
-            <div style={{ marginTop: "30px" }}>
+            <div>
               <h4>Open House:</h4>
               <label>
                 Date: <input type="date" />
@@ -154,7 +183,10 @@ const EditApartmentListing = () => {
                 End Time: <input type="time" />
               </label>
             </div>
-            <button type="submit" style={{ marginTop: "20px" }}>
+            <button
+              type="submit"
+              style={{ marginTop: "20px", alignSelf: "flex-end" }}
+            >
               Publish
             </button>
           </div>

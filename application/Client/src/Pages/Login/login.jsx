@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Link, useNavigate } from "react-router-dom";
 function LoginPage() {
   // State variables to store user input
   const [email, setEmail] = useState('');
@@ -46,8 +47,9 @@ function LoginPage() {
         />
         <div>
         <Button variant="outlined" onClick={handleclear} style={{width:'50%',margin:"0 auto"}}>Clear</Button>
-        <Button variant="contained" type='Submit' style={{width:'50%',margin:"0 auto"}}>Submit</Button>
+        <Link to="/"><button style={{width:'50%',margin:"0 auto"}}>Login</button></Link>
         </div>
+        
       </form>
       <a href="/register">Register</a>
       <a href="/login">Login</a>

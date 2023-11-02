@@ -1,29 +1,69 @@
-import React, { useState } from 'react';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../Notifications/NotificationsPage.css";
+import { useState } from "react";
 
-function BookmarksPage(){
-
+const BookmarksPage = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
 
   return (
-    <div className=" ">
-      <h2>Bookmarks Page</h2>
-      <form style={{display:'flex', justifyContent:'center',flexDirection:'column',width:'25%',margin:"0 auto"}} >
-       
-       {/* Add photo links button links and nav bar at the top */}
+    <div class="container-fluid-text-center">
+      <Link to="/">
+        <button class="button-35">BACK</button>
+      </Link>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="new-message-box">
+            <div class="new-message-box-alert">
+              <div class="info-tab tip-icon-alert" title="error">
+                <i></i>
+              </div>
+              <div class="tip-box-alert" id="friend-request">
+                <p>123 Example St, Example City, EX 12345</p>
+                <p>$1000 A month </p>
+                <p>2 Bed 1 Bath </p>
+                <p>
+                  Click here to
+                  {/* take to user page */}
+                  <a class="btn btn-sm" >
+                    {" "}
+                    <Link to="/listing-details">view</Link>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="new-message-box">
+            <div class="new-message-box-alert">
+              <div class="info-tab tip-icon-alert" title="error">
+                <i></i>
+              </div>
+              <div class="tip-box-alert" id="group-invite">
+                {/* take to groups page */}
+                <p>123 Example St, Example City, EX 12345</p>
+                <p>$1000 A month </p>
+                <p>2 Bed 1 Bath </p>
+                <p>
+                  Click here to
+                  <Link to="/listing-details"><a class="btn-btn-sm" >
+                    {" "}
+                    view
+                  </a></Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        {<a>This page in under construction</a>}
-       
-      </form>
-      {/* For now links, later implement */}
-      <a href="/home">(Home)</a>
-      <a href="/propertylisting">(Property Listing)</a>
-      <a href="/bookmarks"> (Bookmarks)</a>
-      <a href="/Groupspage"> (Groups)</a>
-      <a href="/editprofile">(Edit Profile)</a>
-      <a href="/editlistings"> (Edit Your listings)</a>
-
-
+      
     </div>
   );
-}
+};
 
 export default BookmarksPage;
