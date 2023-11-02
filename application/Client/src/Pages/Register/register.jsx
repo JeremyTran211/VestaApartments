@@ -5,19 +5,23 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import "./register.css";
 
+
+
 function Register() {
   // State variables to store user input
   const [isFirstRender, setIsFirstRender] = useState(true); // Used to prevent useEffect from running on first render
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [firstName, setfirstName] = useState('');
+  const [lastName, setlastName] = useState('');
   const [status, setStatus] = useState('');
   const [showpassword, setShowpassword] = useState('password');
   const [showpasswordicon, setShowpasswordicon] = useState(false);
 
+
+
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform authentication logic here (e.g., sending data to a server or checking credentials)
@@ -26,14 +30,31 @@ function Register() {
     const mailRegex = /[A-Za-z0-9]+@mail\.sfsu\.edu/;
     if (!sfsuRegex.test(email) && !mailRegex.test(email)) {
       window.alert("Please enter a valid SFSU email address");
+
       return;
     }
+    
+    try {
+      const response = await fetch('/register', { 
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          
+          body: JSON.stringify({ email, password, firstName, lastName })
+      });
+
+      const data = await response.json();  
+
+      window.alert(data.message);
+
+  } catch (error) {
+      window.alert('Error registering user: ' + error.message);
+  }
+
+    window.alert('Email: ' + email + ' Password:' + password + ' First Name:' + firstName + ' Last Name:' + lastName)
 
 
-    window.alert('Email: ' + email + ' Password:' + password + ' First Name:' + firstname + ' Last Name:' + lastname)
-
-    // You can implement further validation and authentication steps here
-  };
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
@@ -57,14 +78,14 @@ function Register() {
       setStatus('');
     }
   }, [email]);
-
+  //App.use 
 
   const handleclear = (e) => {
     e.preventDefault();
     setEmail('');
     setPassword('');
-    setFirstname('');
-    setLastname('');
+    setfirstName('');
+    setlastName('');
   }
 
 
@@ -120,19 +141,21 @@ function Register() {
           required
           id="outlined-required"
           label="First Name"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
+          value={firstName}
+          onChange={(e) => setfirstName(e.target.value)}
           style={{ marginBottom: '10px' }}
         />}
-        {email && !status && password && firstname && <TextField
+
+        {email&&!status&&password&&firstName&&<TextField
           required
           id="outlined-required"
           label="Last Name"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
+          value={lastName}
+          onChange={(e) => setlastName(e.target.value)}
           style={{ marginBottom: '10px' }}
         />}
-        {email && !status && password && firstname && lastname && <div>
+
+        {email&&!status&&password&&firstName&&lastName&&<div>
           <Button variant="outlined" onClick={handleclear} style={{ width: '50%', margin: "0 auto" }}>Clear</Button>
           <Button variant="outlined" type='Submit' style={{ width: '50%', margin: "0 auto" }}>Submit</Button>
         </div>}

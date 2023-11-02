@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+# dependencies
+/node_modules/bcrypt/bcrypt.js
+=======
+node_modules/
+>>>>>>> 6477530d461874cd7792ca5997d4ad4e3b66d2eb
