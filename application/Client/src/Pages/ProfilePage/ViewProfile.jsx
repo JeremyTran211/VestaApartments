@@ -36,7 +36,7 @@ const ViewPage = () => {
                       I enjoy being joe and being a cool joe
                     </p>
                     <Link to="/under-construction"><button class="btn btn-primary">Follow</button></Link>
-                    <button class="btn btn-outline-primary">Message</button>
+                    <Link to="/messages"><button class="btn btn-outline-primary">Message</button></Link>
                   </div>
                 </div>
               </div>

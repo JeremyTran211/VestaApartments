@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const PropertyDetailPage = () => {
   return (
@@ -10,7 +11,7 @@ const PropertyDetailPage = () => {
         padding: "20px",
       }}
     >
-      {/* Small Back to Home button at top-left */}
+      {/* Small Back to Home button at top-left */}<Link to="/">
       <button
         style={{
           fontSize: "10px",
@@ -21,7 +22,7 @@ const PropertyDetailPage = () => {
         }}
       >
         Back to Home
-      </button>
+      </button></Link>
 
       <div
         style={{

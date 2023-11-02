@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const PersonalityQuiz = () => {
   const [answers, setAnswers] = useState({});
@@ -108,9 +109,9 @@ const PersonalityQuiz = () => {
     <div style={containerStyle}>
       {/* Back to Home button */}
       <div style={backToHomeStyle}>
-        <button style={{ backgroundColor: "blue", color: "white" }}>
+      <Link to="/"><button style={{ backgroundColor: "blue", color: "white" }}>
           Back to Home
-        </button>
+        </button></Link>
       </div>
 
       {/* Quiz */}

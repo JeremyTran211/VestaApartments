@@ -34,7 +34,7 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <button
+      <Link to="/listing-details"><button
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -44,9 +44,9 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
             borderRadius: "5px",
             cursor: "pointer",
           }}
-        ><Link to="/listing-details">
-          View Listing</Link>
-        </button>
+        >
+          View Listing
+        </button></Link>
       </div>
     </div>
   );
@@ -81,7 +81,7 @@ const ApartmentListing = () => {
 
       {/* Listings Container */}
       <div style={{ width: "40%", overflowY: "scroll" }}>
-        {/* Back to Home Button */}
+        {/* Back to Home Button */}<Link to="/">
         <button
           style={{
             margin: "10px",
@@ -95,7 +95,7 @@ const ApartmentListing = () => {
           }}
         >
           Back to Home
-        </button>
+        </button></Link>
 
         {/* Filter and Sort Section */}
         <div
