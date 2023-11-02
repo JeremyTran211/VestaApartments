@@ -16,9 +16,15 @@ const buttonStyle = {
 };
 
 const PropertyDetailPage = () => {
+  const handleAlert = () => {
+  
+    alert(
+      `You clicked a feature that is not implemented in the backend`
+    );
+  };
   return (
     <div style={{ padding: "20px", position: "relative" }}>
-      <button style={buttonStyle}>Back to Home</button>
+      <Link to="/"><button style={buttonStyle}>Back to Home</button></Link>
 
       {/* Main content layout */}
       <div style={{ display: "flex", marginBottom: "20px" }}>
@@ -53,7 +59,7 @@ const PropertyDetailPage = () => {
             }}
           >
             <div>Phone Number: XXX-XXX-XXXX</div>
-            <button
+            <button onClick={handleAlert}
               style={{
                 ...buttonStyle,
                 marginTop: "10px",
@@ -63,7 +69,7 @@ const PropertyDetailPage = () => {
             >
               Request Tour
             </button>
-            <button
+            <button onClick={handleAlert}
               style={{
                 ...buttonStyle,
                 marginTop: "10px",
@@ -85,13 +91,13 @@ const PropertyDetailPage = () => {
             1 Day Ago
           </div>
 
-          <button
+          <button onClick={handleAlert}
             style={{ ...buttonStyle, marginBottom: "10px", width: "100%" }}
           >
             Bookmark
           </button>
 
-          <button
+          <button onClick={handleAlert}
             style={{
               ...buttonStyle,
               position: "absolute",

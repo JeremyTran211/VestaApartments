@@ -15,6 +15,13 @@ const ViewPage = () => {
       navigate("/listings", { state: { searchQuery: searchInput } });
     }
   };
+  const handleAlert = () => {
+  
+    alert(
+      `You clicked a feature that is not implemented in the backend`
+    );
+  };
+  
   return (
     <div>
       <div class="main-body">
@@ -35,7 +42,7 @@ const ViewPage = () => {
                     <p class="text-muted font-size-sm">
                       I enjoy being joe and being a cool joe
                     </p>
-                    <Link to="/under-construction"><button class="btn btn-primary">Follow</button></Link>
+                    <button onClick={handleAlert}class="btn btn-primary">Follow</button>
                     <Link to="/messages"><button class="btn btn-outline-primary">Message</button></Link>
                   </div>
                 </div>
@@ -216,9 +223,9 @@ const ViewPage = () => {
                   ></div>
                 </div>
                 <div class="button-holder">
-                  <button class="btn btn-outline-primary">
-                    <Link to="/personality-test">Take Personality Test</Link>
-                  </button>
+                <Link to="/personality-test"><button class="btn btn-outline-primary">
+                    Take Personality Test
+                  </button></Link>
                 </div>
               </div>
             </div>

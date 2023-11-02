@@ -134,7 +134,7 @@ const PersonalityQuiz = () => {
     <div style={containerStyle}>
       {/* Back to Home button */}
       <div style={backToHomeStyle}>
-        <button style={buttonStyle}>Back to Home</button>
+        <Link to="/"><button style={buttonStyle}>Back to Home</button></Link>
       </div>
 
       {/* Quiz */}

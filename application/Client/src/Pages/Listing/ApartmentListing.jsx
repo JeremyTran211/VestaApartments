@@ -48,11 +48,11 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <button
+       <Link to="/listing-details"> <button
           style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
         >
           View Listing
-        </button>
+        </button></Link>
       </div>
     </div>
   );
@@ -64,6 +64,12 @@ const ApartmentListing = () => {
     bedrooms: "",
     bathrooms: "",
   });
+  const handleAlert = () => {
+  
+    alert(
+      `You clicked a feature that is not implemented in the backend`
+    );
+  };
   const [sort, setSort] = useState("");
 
   return (
@@ -88,7 +94,7 @@ const ApartmentListing = () => {
       {/* Listings Container */}
       <div style={{ width: "40%", overflowY: "scroll" }}>
         {/* Back to Home Button */}
-        <button
+       <Link to="/"><button
           style={{
             ...buttonStyle,
             margin: "10px",
@@ -97,7 +103,7 @@ const ApartmentListing = () => {
           }}
         >
           Back to Home
-        </button>
+        </button></Link> 
 
         {/* Filter and Sort Section */}
         <div
@@ -119,7 +125,7 @@ const ApartmentListing = () => {
               placeholder="Rent"
               style={{ fontSize: "0.85em", width: "80px" }}
             />
-            <button
+            <button onClick={handleAlert}
               style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
             >
               Apply
@@ -137,7 +143,7 @@ const ApartmentListing = () => {
               placeholder="Bedrooms"
               style={{ fontSize: "0.85em", width: "50px" }}
             />
-            <button
+            <button onClick={handleAlert}
               style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
             >
               Apply
@@ -155,7 +161,7 @@ const ApartmentListing = () => {
               placeholder="Bathrooms"
               style={{ fontSize: "0.85em", width: "60px" }}
             />
-            <button
+            <button onClick={handleAlert}
               style={{ ...buttonStyle, fontSize: "0.85em", padding: "2px 4px" }}
             >
               Apply

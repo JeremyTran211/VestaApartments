@@ -14,6 +14,12 @@ const Messages = () => {
       navigate("/listings", { state: { searchQuery: searchInput } });
     }
   };
+  const handleAlert = () => {
+  
+    alert(
+      `You clicked a feature that is not implemented in the backend`
+    );
+  };
   return (
     <div class="main-body">
       
@@ -78,7 +84,7 @@ const Messages = () => {
         <div class="footer-chat">
           <i class="icon fa fa-smile-o clickable"  aria-hidden="true"></i>
           <input type="text" class="write-message" placeholder="Type your message here"></input>
-          <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i>
+          <i onClick={handleAlert} class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i>
         </div>
       </section>
     </div>

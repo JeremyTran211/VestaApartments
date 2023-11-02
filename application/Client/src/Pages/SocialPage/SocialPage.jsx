@@ -12,7 +12,12 @@ function SocialPage() {
     }, 5000);
   };
   
+  const handleAlert = () => {
   
+    alert(
+      `You clicked a feature that is not implemented in the backend`
+    );
+  };
   
   const handleInputChange = (event) => {
     setTextInput(event.target.value);
@@ -91,7 +96,7 @@ function SocialPage() {
                   ></input>
                 </div>
                 <div class="post-actions__widget">
-                  <button onClick={handlePostButtonClick}>Post</button>
+                  <button onClick={handleAlert}>Post</button>
                 </div>
               </div>
               <div className={`popup-container ${isPopupVisible ? 'visible' : ''}`}>
