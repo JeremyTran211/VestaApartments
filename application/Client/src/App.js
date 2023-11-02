@@ -15,14 +15,9 @@ import MainPage from './Pages/MainPage/MainPage';
 import LoginPage from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import ListingsPage from './Pages/Listing/ApartmentListing';
-<<<<<<< HEAD
-import SocialPage from './Pages/SocialPage/SocialPage'
-// import PropertyListing from './Pages/PropertyListing.'
-=======
 import SocialPage from './Pages/SocialPage/SocialPage';
 import ViewListing from './Pages/PropertyListing/PropertyListing';
 
->>>>>>> 6477530d461874cd7792ca5997d4ad4e3b66d2eb
 
 //Social Pages
 import NotificationsPage from './Pages/Notifications/Notifications';

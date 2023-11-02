@@ -33,10 +33,6 @@ function Register() {
       return;
     }
 
-<<<<<<< HEAD
-  } 
-
-=======
     try {
       const response = await fetch('/register', { 
           method: 'POST',
@@ -54,10 +50,9 @@ function Register() {
   } catch (error) {
       window.alert('Error registering user: ' + error.message);
   }
-
+  
     window.alert('Email: ' + email + ' Password:' + password + ' First Name:' + firstName + ' Last Name:' + lastName)
->>>>>>> 6477530d461874cd7792ca5997d4ad4e3b66d2eb
-
+}
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);

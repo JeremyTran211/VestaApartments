@@ -2,11 +2,7 @@
   "name": "about",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-  "proxy": "http://localhost:3000/",
-=======
   "proxy": "http://localhost:3000",
->>>>>>> 6477530d461874cd7792ca5997d4ad4e3b66d2eb
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
