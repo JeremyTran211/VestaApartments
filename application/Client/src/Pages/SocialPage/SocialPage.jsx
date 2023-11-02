@@ -50,6 +50,13 @@ function SocialPage() {
             <button class="square-button">Messages</button>
           </Link>
         </div>
+        <div>
+          <a>
+          <Link to="/view-profile"><button>Search </button></Link>
+          </a> 
+        </div>
+
+
         <div class="scrollable-container" id="middle-container">
           <div class="widget-post" aria-labelledby="post-header-title">
             <div class="widget-post__header"></div>
