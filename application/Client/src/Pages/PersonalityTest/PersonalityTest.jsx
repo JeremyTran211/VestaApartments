@@ -60,6 +60,13 @@ const PersonalityQuiz = () => {
     }));
   };
 
+  const compatibilityMessage = (score) => {
+    if (score >= 9) return "Highly Compatible";
+    if (score >= 6) return "Compatible";
+    if (score >= 3) return "Neutral";
+    return "Not Compatible";
+  };
+
   const handleSubmit = () => {
     if (Object.keys(answers).length !== questions.length) {
       alert("Please answer all the questions.");
@@ -67,7 +74,11 @@ const PersonalityQuiz = () => {
     }
 
     let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
-    alert(`Your score is: ${totalScore}`);
+    alert(
+      `Your score is: ${totalScore}. Compatibility: ${compatibilityMessage(
+        totalScore
+      )}`
+    );
   };
 
   const containerStyle = {
@@ -97,7 +108,9 @@ const PersonalityQuiz = () => {
     <div style={containerStyle}>
       {/* Back to Home button */}
       <div style={backToHomeStyle}>
-        <button>Back to Home</button>
+        <button style={{ backgroundColor: "blue", color: "white" }}>
+          Back to Home
+        </button>
       </div>
 
       {/* Quiz */}
@@ -118,7 +131,12 @@ const PersonalityQuiz = () => {
             ))}
           </div>
         ))}
-        <button onClick={handleSubmit}>Submit</button>
+        <button
+          style={{ backgroundColor: "blue", color: "white" }}
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );

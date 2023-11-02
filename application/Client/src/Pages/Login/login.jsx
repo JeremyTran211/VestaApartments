@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+<<<<<<< HEAD
 
 function GetAPIhook(email, password) {
 
@@ -29,6 +30,10 @@ function GetAPIhook(email, password) {
      return response
      };
      */
+=======
+import { Link, useNavigate } from "react-router-dom";
+
+>>>>>>> 6477530d461874cd7792ca5997d4ad4e3b66d2eb
 function LoginPage() {
   // State variables to store user input
   const [email, setEmail] = useState('');
@@ -99,8 +104,9 @@ function LoginPage() {
         />
         <div>
         <Button variant="outlined" onClick={handleclear} style={{width:'50%',margin:"0 auto"}}>Clear</Button>
-        <Button variant="contained" type='Submit' style={{width:'50%',margin:"0 auto"}}>Submit</Button>
+        <Link to="/"><button style={{width:'50%',margin:"0 auto"}}>Login</button></Link>
         </div>
+        
       </form>
       <a href="/register">Register</a>
       <a href="/login">Login</a>
