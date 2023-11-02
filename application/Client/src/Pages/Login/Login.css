@@ -1,0 +1,15 @@
+
+.square-button {
+  width: 90%;
+  height: 50px;
+  background-color: #515c64;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center; 
+  line-height: 50px; 
+  text-decoration: none;
+}

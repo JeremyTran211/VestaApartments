@@ -49,10 +49,13 @@ function LoginPage() {
         <Button variant="outlined" onClick={handleclear} style={{width:'50%',margin:"0 auto"}}>Clear</Button>
         <Link to="/"><button style={{width:'50%',margin:"0 auto"}}>Login</button></Link>
         </div>
-        
+        <div className="button-container">
+            <a href="/register" className="square-button">
+              Not Registered? Sign up
+            </a>
+          </div>
       </form>
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
+      
     </div>
   );
 }
