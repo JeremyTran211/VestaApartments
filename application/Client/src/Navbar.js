@@ -21,10 +21,10 @@ function Navbar() {
           </div>
           
           <div class="nav-links">
-            <a href="/messages">CURRENTLY TESTING </a>
-            <a href="/listings">FIND HOMES</a>
-            <a href="/social">SOCIAL</a>
-            <a href="/login">LOGIN</a>
+            <Link to="/messages"><a>CURRENTLY TESTING </a></Link>
+            <Link to="/listings"><a>FIND HOMES</a></Link>
+            <Link to="/social"><a>SOCIAL</a></Link>
+            <Link to="/login"><a>LOGIN</a></Link>
           </div>
         </div>
       </nav>

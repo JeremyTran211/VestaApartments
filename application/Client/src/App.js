@@ -32,11 +32,12 @@ import BookmarksPage from './Pages/Bookmarks/BookmarksPage';
 
 //Under Construction
 import UnderConstruction from './Pages/UnderConstruction/UnderConstruction';
-
+import Navbar from './Navbar.js';
 
 function App() {
     return (
         <Router>
+            <Navbar />
             <div className="App"> {/* Fix scrollability on height? for some reason its not showing everything*/}
                 <Routes>
                     {/* Main Pages */}
