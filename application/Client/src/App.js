@@ -30,7 +30,10 @@ import BookmarksPage from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
 
 //Under Construction
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
+
+//Design
 import Navbar from "./Navbar.js";
+import Footer from "./Footer.js";
 
 function App() {
   return (
@@ -71,6 +74,7 @@ function App() {
           <Route path="/bookmarks" element={<BookmarksPage />} />{" "}
           {/* Not done at all(important) */}
           {/* About Pages */}
+          <Route path="/team-info" element={<TeamInfo />} />
           <Route path="/jeremy-tran" element={<JeremyTran />} />
           <Route path="/geovanni-valadez" element={<GeovanniValadez />} />
           <Route path="/anthony-silva" element={<AnthonySilva />} />
@@ -81,6 +85,7 @@ function App() {
           <Route path="/under-construction" element={<UnderConstruction />} />
         </Routes>
       </div>
+      <Footer></Footer>
     </Router>
   );
 }
