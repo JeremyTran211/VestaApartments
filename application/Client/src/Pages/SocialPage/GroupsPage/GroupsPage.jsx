@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../Notifications/NotificationsPage.css";
+
 import { useState } from "react";
 
 const GroupsPage = () => {
@@ -25,7 +25,7 @@ const GroupsPage = () => {
                 <p>
                   Click here to
                   {/* take to user page */}
-                  <a class="btn btn-sm" >
+                  <a class="btn btn-sm">
                     {" "}
                     <Link to="/messages">chat</Link>
                   </a>
@@ -48,18 +48,15 @@ const GroupsPage = () => {
                 <p>Not Joe, Not Not Not Joe, Ted</p>
                 <p>
                   Click here to
-                  <Link to="/messages"><a class="btn-btn-sm" >
-                    {" "}
-                    chat
-                  </a></Link>
+                  <Link to="/messages">
+                    <a class="btn-btn-sm"> chat</a>
+                  </Link>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };
