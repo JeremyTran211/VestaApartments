@@ -1,4 +1,4 @@
-Website URL: 18.212.157.140   
+Website URL: 18.212.157.140 
 
 SSH URL: ec2-18-212-157-140.compute-1.amazonaws.com
 SSH Username: ubuntu  
