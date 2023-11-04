@@ -30,6 +30,7 @@ import BookmarksPage from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
 
 //Under Construction
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
+import Testing from "./Pages/UnderConstruction/testRegister.jsx";
 
 //Design
 import Navbar from "./Navbar.js";
@@ -67,11 +68,11 @@ function App() {
           {/* Not done at all (important)*/}
           <Route path="/messages" element={<MessagesPage />} />{" "}
           {/* search bar needs a button(not important)*/}
-          <Route path="/notifications" element={<NotificationsPage />} />{" "}
+          <Route path="/notifications" element={<NotificationsPage />} />
           {/* fix FA boxes and view a tag(not important now)*/}
-          <Route path="/edit-listing" element={<EditListing />} />{" "}
+          <Route path="/edit-listing" element={<EditListing />} />
           {/* Needs fix on back to home button (important)*/}
-          <Route path="/bookmarks" element={<BookmarksPage />} />{" "}
+          <Route path="/bookmarks" element={<BookmarksPage />} />
           {/* Not done at all(important) */}
           {/* About Pages */}
           <Route path="/team-info" element={<TeamInfo />} />
@@ -83,6 +84,7 @@ function App() {
           <Route path="/ivan-ayala-brito" element={<IvanA />} />
           {/* Under Construction */}
           <Route path="/under-construction" element={<UnderConstruction />} />
+          <Route path="/testing" element={<Testing />} />
         </Routes>
       </div>
       <Footer></Footer>

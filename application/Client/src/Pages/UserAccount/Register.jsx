@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./testRegister.css";
 
-
-
-function Register() {
-  // State variables to store user input
+const Testing = () => {
   const [isFirstRender, setIsFirstRender] = useState(true); // Used to prevent useEffect from running on first render
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setfirstName] = useState('');
-  const [lastName, setlastName] = useState('');
-  const [status, setStatus] = useState('');
-  const [showpassword, setShowpassword] = useState('password');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [status, setStatus] = useState("");
+  const [showpassword, setShowpassword] = useState("password");
   const [showpasswordicon, setShowpasswordicon] = useState(false);
-
-
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -34,132 +27,118 @@ function Register() {
     }
 
     try {
-      const response = await fetch('/register', { 
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          
-          body: JSON.stringify({ email, password, firstName, lastName })
+      const response = await fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({ email, password, firstName, lastName }),
       });
 
-      const data = await response.json();  
+      const data = await response.json();
 
       window.alert(data.message);
+    } catch (error) {
+      window.alert("Error registering user: " + error.message);
+    }
 
-  } catch (error) {
-      window.alert('Error registering user: ' + error.message);
-  }
-  
-    window.alert('Email: ' + email + ' Password:' + password + ' First Name:' + firstName + ' Last Name:' + lastName)
-}
+    window.alert(
+      "Email: " +
+        email +
+        " Password:" +
+        password +
+        " First Name:" +
+        firstName +
+        " Last Name:" +
+        lastName
+    );
+  };
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
       return;
     }
-    if (email === null || email === '') {
-      setStatus('');
+    if (email === null || email === "") {
+      setStatus("");
       return;
     }
     console.log(email);
-    console.log(status)
+    console.log(status);
     //const sfsuRegex = /[A-Za-z0-9]+@sfsu\.edu/;
     //const mailRegex = /[A-Za-z0-9]+@mail\.sfsu\.edu/;
-    //Removed regex so there is no student email needed 
+    //Removed regex so there is no student email needed
     const sfsuRegex = /[A-Za-z0-9]/;
     const mailRegex = /[A-Za-z0-9]+@m\./;
 
     if (!sfsuRegex.test(email) && !mailRegex.test(email)) {
       setStatus("Please enter a valid SFSU email address");
     } else {
-      setStatus('');
+      setStatus("");
     }
   }, [email]);
-  //App.use 
+  //App.use
 
   const handleclear = (e) => {
     e.preventDefault();
-    setEmail('');
-    setPassword('');
-    setfirstName('');
-    setlastName('');
+    setEmail("");
+    setPassword("");
+    setfirstName("");
+    setlastName("");
+  };
+
+  
+  function getDetails() {
+    var userName = document.getElementById("id1");
+    var email = document.getElementById("id2");
+    var password  = document.getElementById("id3");
+    window.alert("Value = " + "'" + userName.value + "'");
+    window.alert("Value = " + "'" + email.value + "'");
+    window.alert("Value = " + "'" + password.value + "'");
   }
-
-
   return (
-    <div className="login-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '25%', margin: "0 auto" }}>
-        {status && <div>{status}</div>}
-        <TextField
-          required
-          id="outlined-required"
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ marginBottom: '10px' }}
-        />
-        {email &&!status&& <div style={{ position: 'relative', display: 'inline-block' }}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Password"
-            type={showpassword}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ marginBottom: '10px', width: '100%' }}
-            InputProps={{
-              endAdornment: (
-                <div
-                  style={{
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    top: '50%',
-                    right: '10px',
-                    transform: 'translateY(-50%)'
-                  }}
-                  onClick={() => {
-                    if (showpasswordicon) {
-                      setShowpassword('password');
-                      setShowpasswordicon(false);
-                    } else {
-                      setShowpassword('text');
-                      setShowpasswordicon(true);
-                    }
-                  }}
-                >
-                  {showpasswordicon ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                </div>
-              )
-            }}
-          />
-        </div>}
-        {email&&!status&&password&&<TextField
-          required
-          id="outlined-required"
-          label="First Name"
-          value={firstName}
-          onChange={(e) => setfirstName(e.target.value)}
-          style={{ marginBottom: '10px' }}
-        />}
-        {email&&!status&&password&&firstName&&<TextField
-          required
-          id="outlined-required"
-          label="Last Name"
-          value={lastName}
-          onChange={(e) => setlastName(e.target.value)}
-          style={{ marginBottom: '10px' }}
-        />}
-        {email&&!status&&password&&firstName&&lastName&&<div>
-          <Button variant="outlined" onClick={handleclear} style={{ width: '50%', margin: "0 auto" }}>Clear</Button>
-          <Button variant="contained" type='Submit' style={{ width: '50%', margin: "0 auto" }}>Submit</Button>
-        </div>}
-      </form>
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
+    <div className="MainPage">
+      <main>
+        <div class="form-holder">
+          <div class="form-container">
+            <div class="form-container__details">
+              <div class="form-container__title">Register User</div>
+            </div>
+            <form class="form">
+              <div class="form__field">
+                <div class="form__label">UserName</div>
+                <input class="form__input" placeholder="JoeIsCool" id="id1" />
+              </div>
+              <div class="form__field">
+                <div class="form__label">Email</div>
+                <input class="form__input" placeholder="joeiscool@sfsu.edu" id="id2"/>
+              </div>
+              <div class="form__field">
+                <div class="form__label">Password</div>
+                <input
+                  class="form__input"
+                  type="password"
+                  placeholder="password" id="id3"
+                />
+              </div>
+              <button class="form__submit" onClick={getDetails}>
+                Sign Up
+              </button>
+            </form>
+            <div class="form-container__line-divider"></div>
+            <div class="form-container__links">
+              <Link to="/login">
+                <a  class="form-container__link">
+                  Login
+                </a>
+              </Link>
+              
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
-}
+};
 
-export default Register;
+export default Testing;

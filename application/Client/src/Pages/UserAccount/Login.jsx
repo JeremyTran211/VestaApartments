@@ -50,37 +50,55 @@ function LoginPage() {
     setPassword('');
   }
 
-
+  function getDetails() {
+    var userName = document.getElementById("id1");
+    var password  = document.getElementById("id2");
+    window.alert("Value = " + "'" + userName.value + "'");
+    window.alert("Value = " + "'" + password.value + "'");
+  }
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} style={{display:'flex', justifyContent:'center',flexDirection:'column',width:'25%',margin:"0 auto"}} >
-        <TextField
-          required
-          id="outlined-required"
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{marginBottom:'10px'}}
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{marginBottom:'10px'}}
-
-        />
-        <div>
-        <Button variant="outlined" onClick={handleclear} style={{width:'50%',margin:"0 auto"}}>Clear</Button>
-        <Link to="/"><button style={{width:'50%',margin:"0 auto"}}>Login</button></Link>
+    <div className="MainPage">
+    <main>
+      <div class="form-holder">
+        <div class="form-container">
+          <div class="form-container__details">
+            <div class="form-container__title">Login</div>
+          </div>
+          <form class="form">
+            <div class="form__field">
+              <div class="form__label">UserName</div>
+              <input class="form__input" placeholder="JoeIsCool" id="id1" />
+            </div>
+           
+            <div class="form__field">
+              <div class="form__label">Password</div>
+              <input
+                class="form__input"
+                type="password"
+                placeholder="password" id="id2"
+              />
+            </div>
+            <button class="form__submit" onClick={getDetails}>
+              Login
+            </button>
+          </form>
+          <div class="form-container__line-divider"></div>
+          <div class="form-container__links">
+            <Link to="/register">
+              <a class="form-container__link">
+                Sign Up
+              </a>
+            </Link>
+            <Link to="/under-construction">
+              <a class="form-container__link">
+                Forgot password
+              </a>
+            </Link>
+          </div>
         </div>
-        
-      </form>
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
-    </div>
+      </div>
+    </main>
+  </div>
   );
 }
 export default LoginPage;
