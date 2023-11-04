@@ -14,6 +14,7 @@ import IvanA from "./Pages/About/IvanA";
 import MainPage from "./Pages/MainPage/MainPage";
 import LoginPage from "./Pages/UserAccount/Login.jsx";
 import Register from "./Pages/UserAccount/Register";
+import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
 import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
 import SocialPage from "./Pages/SocialPage/SocialPage";
 import ViewListing from "./Pages/ListingsPages/PropertyListing.jsx";
@@ -41,16 +42,15 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-        {" "}
+   
         {/* Fix scrollability on height? for some reason its not showing everything*/}
         <Routes>
           {/* Main Pages */}
-          <Route path="/" element={<MainPage />} />{" "}
-          {/* Maybe put stock photo in title and search container put a div that holds some stock photo, maybe sharper edges on container(not improtant) */}
-          <Route path="/login" element={<LoginPage />} />{" "}
-          {/* funky, needs container for login, also register login buttons wack(important) */}
-          <Route path="/register" element={<Register />} />{" "}
-          {/* similar to login (important)*/}
+          <Route path="/" element={<MainPage />} /> {/* Maybe put stock photo in title and search container put a div that holds some stock photo, maybe sharper edges on container(not improtant) */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          
           <Route path="/listings" element={<ListingsPage />} />{" "}
           {/* Needs fix on back to home button, fix view listings buttons, add map(important) */}
           <Route path="/listing-details" element={<ViewListing />} />{" "}
