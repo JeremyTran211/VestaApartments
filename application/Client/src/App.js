@@ -14,6 +14,7 @@ import IvanA from "./Pages/About/IvanA";
 import MainPage from "./Pages/MainPage/MainPage";
 import LoginPage from "./Pages/UserAccount/Login.jsx";
 import Register from "./Pages/UserAccount/Register";
+import ForgotPasswordPage from "./Pages/UserAccount/ForgotPassword.jsx"
 import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
 import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
 import SocialPage from "./Pages/SocialPage/SocialPage";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/" element={<MainPage />} /> {/* Maybe put stock photo in title and search container put a div that holds some stock photo, maybe sharper edges on container(not improtant) */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           
           <Route path="/listings" element={<ListingsPage />} />{" "}

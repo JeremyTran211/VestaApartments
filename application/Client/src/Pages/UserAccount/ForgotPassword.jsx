@@ -62,24 +62,17 @@ function LoginPage() {
       <div class="form-holder">
         <div class="form-container">
           <div class="form-container__details">
-            <div class="form-container__title">Login</div>
+            <div class="form-container__title">Reset Password Request</div>
           </div>
           <form class="form">
             <div class="form__field">
-              <div class="form__label">UserName</div>
-              <input class="form__input" placeholder="JoeIsCool" id="id1" />
+              <div class="form__label">Email</div>
+              <input class="form__input" placeholder="JoeIsCool@gmail.com" id="id1" />
             </div>
            
-            <div class="form__field">
-              <div class="form__label">Password</div>
-              <input
-                class="form__input"
-                type="password"
-                placeholder="password" id="id2"
-              />
-            </div>
+           
             <button class="form__submit" onClick={getDetails}>
-              Login
+              Send Email Request
             </button>
           </form>
           <div class="form-container__line-divider"></div>
@@ -89,9 +82,9 @@ function LoginPage() {
                 Sign Up
               </a>
             </Link>
-            <Link to="/forgot-password">
+            <Link to="/login">
               <a class="form-container__link">
-                Forgot password
+                Login
               </a>
             </Link>
           </div>
