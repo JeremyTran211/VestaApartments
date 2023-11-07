@@ -194,6 +194,48 @@ const ApartmentListing = () => {
           bedrooms="3"
           bathrooms="2"
         />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="456 Sample Rd, Sample City, SC 12345"
+          price="$1,200/month"
+          bedrooms="3"
+          bathrooms="2"
+        />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="789 Demo Blvd, Demo City, DM 12345"
+          price="$900/month"
+          bedrooms="1"
+          bathrooms="1"
+        />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="101 Another St, Some City, SC 67890"
+          price="$1,500/month"
+          bedrooms="3"
+          bathrooms="2"
+        />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="456 Sample Rd, Sample City, SC 12345"
+          price="$1,200/month"
+          bedrooms="3"
+          bathrooms="2"
+        />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="789 Demo Blvd, Demo City, DM 12345"
+          price="$900/month"
+          bedrooms="1"
+          bathrooms="1"
+        />
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="101 Another St, Some City, SC 67890"
+          price="$1,500/month"
+          bedrooms="3"
+          bathrooms="2"
+        />
       </div>
     </div>
   );
