@@ -234,7 +234,7 @@ body {
 
 
 
-/* CSS */
+/* Main Button */
 .button-35 {
     margin-top: 20px;
     margin-left: 40px;
@@ -267,7 +267,10 @@ body {
 .button-35:hover {
   box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
-
+.btn-btn-sm{
+    color: black; 
+  text-decoration: none; 
+}
 .container-fluid-text-center{
     width: calc(60.33%); 
   margin: 0 auto; 
@@ -275,7 +278,3 @@ body {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.btn-btn-sm{
-    color: black; 
-  text-decoration: none; 
-}

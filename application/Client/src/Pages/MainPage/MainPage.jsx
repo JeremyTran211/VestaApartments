@@ -19,7 +19,7 @@ const MainPage = () => {
   return (
     <div className="MainPage">
       <main>
-        <h1 class="title"> Off-Campus Living Made Simple in the Bay Area</h1>
+        <h1 class="title"> Off-Campus Living Made Simple in the San Francisco Area</h1>
         <div className="search-container">
           <input
             type="text"
