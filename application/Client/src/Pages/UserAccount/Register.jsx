@@ -6,8 +6,8 @@ const Testing = () => {
   const [isFirstRender, setIsFirstRender] = useState(true); // Used to prevent useEffect from running on first render
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [status, setStatus] = useState("");
   const [showpassword, setShowpassword] = useState("password");
   const [showpasswordicon, setShowpasswordicon] = useState(false);
@@ -83,8 +83,8 @@ const Testing = () => {
     e.preventDefault();
     setEmail("");
     setPassword("");
-    setfirstName("");
-    setlastName("");
+    setFirstName("");
+    setLastName("");
   };
 
   
@@ -104,35 +104,56 @@ const Testing = () => {
             <div class="form-container__details">
               <div class="form-container__title">Register User</div>
             </div>
-            <form class="form">
+            <form class="form" onSubmit={handleSubmit}>
               <div class="form__field">
-                <div class="form__label">UserName</div>
-                <input class="form__input" placeholder="JoeIsCool" id="id1" />
+                <div class="form__label">First Name</div>
+                <input
+                  class="form__input"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div class="form__field">
+                <div class="form__label">Last Name</div>
+                <input
+                  class="form__input"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
               </div>
               <div class="form__field">
                 <div class="form__label">Email</div>
-                <input class="form__input" placeholder="joeiscool@sfsu.edu" id="id2"/>
+                <input
+                  class="form__input"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div class="form__field">
                 <div class="form__label">Password</div>
                 <input
                   class="form__input"
                   type="password"
-                  placeholder="password" id="id3"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button class="form__submit" onClick={getDetails}>
+              <button class="form__submit" type="submit">
                 Sign Up
               </button>
             </form>
+            <button class="form__clear" onClick={handleclear}>
+              Clear
+            </button>
             <div class="form-container__line-divider"></div>
             <div class="form-container__links">
-              <Link to="/login">
-                <a  class="form-container__link">
-                  Login
-                </a>
+              <Link to="/login" class="form-container__link">
+                Login
               </Link>
-              
             </div>
           </div>
         </div>
@@ -140,5 +161,6 @@ const Testing = () => {
     </div>
   );
 };
+
 
 export default Testing;

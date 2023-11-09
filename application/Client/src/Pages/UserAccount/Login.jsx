@@ -7,16 +7,13 @@ function LoginPage() {
   // State variables to store user input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
-
-
+  
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('/login', { 
-          method: 'GET',
+          method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
@@ -29,7 +26,7 @@ function LoginPage() {
       window.alert(data.message);
 
   } catch (error) {
-      window.alert('Error registering user: ' + error.message);
+    window.alert('Error logging in: ' + error.message);
     // Perform authentication logic here 
     window.alert('Email: ' + email + ' Password:' + password);
     //const response=this.CallAPI()
@@ -44,55 +41,63 @@ function LoginPage() {
     
     }
 }
-  const handleclear = (e) => {
-    e.preventDefault();
-    setEmail('');
-    setPassword('');
-  }
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   function getDetails() {
-    var userName = document.getElementById("id1");
+    var email = document.getElementById("id1");
     var password  = document.getElementById("id2");
-    window.alert("Value = " + "'" + userName.value + "'");
+    window.alert("Value = " + "'" + email.value + "'");
     window.alert("Value = " + "'" + password.value + "'");
   }
   return (
     <div className="MainPage">
     <main>
-      <div class="form-holder">
-        <div class="form-container">
-          <div class="form-container__details">
-            <div class="form-container__title">Login</div>
+      <div className="form-holder">
+        <div className="form-container">
+          <div className="form-container__details">
+            <div className="form-container__title">Login</div>
           </div>
-          <form class="form">
-            <div class="form__field">
-              <div class="form__label">UserName</div>
-              <input class="form__input" placeholder="JoeIsCool" id="id1" />
-            </div>
-           
-            <div class="form__field">
-              <div class="form__label">Password</div>
+          <form className="form" onSubmit={handleSubmit}> {/* Note the onSubmit here */}
+            <div className="form__field">
+              <div className="form__label">Email</div>
               <input
-                class="form__input"
-                type="password"
-                placeholder="password" id="id2"
+                className="form__input"
+                type="email"
+                placeholder="JoeIsCool@sfsu.edu"
+                value={email}
+                onChange={handleEmailChange} // Note the onChange here
+                id="email" // It's a good practice to use meaningful ids
               />
             </div>
-            <button class="form__submit" onClick={getDetails}>
+           
+            <div className="form__field">
+              <div className="form__label">Password</div>
+              <input
+                className="form__input"
+                type="password"
+                placeholder="password"
+                value={password}
+                onChange={handlePasswordChange} // Note the onChange here
+                id="password" // It's a good practice to use meaningful ids
+              />
+            </div>
+            <button className="form__submit" type="submit"> {/* Note the type="submit" here */}
               Login
             </button>
           </form>
-          <div class="form-container__line-divider"></div>
-          <div class="form-container__links">
-            <Link to="/register">
-              <a class="form-container__link">
-                Sign Up
-              </a>
+          <div className="form-container__line-divider"></div>
+          <div className="form-container__links">
+            <Link to="/register" className="form-container__link">
+              Sign Up
             </Link>
-            <Link to="/forgot-password">
-              <a class="form-container__link">
-                Forgot password
-              </a>
+            <Link to="/forgot-password" className="form-container__link">
+              Forgot password
             </Link>
           </div>
         </div>
@@ -102,4 +107,3 @@ function LoginPage() {
   );
 }
 export default LoginPage;
-// export {GetAPIhook};
