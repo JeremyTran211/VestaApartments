@@ -19,7 +19,7 @@ async function loginUser(Email, Password){
     }
 
     const match = await bcrypt.compare(Password, result1[0].Password);
-    //const match = await compare(Password, result1[0].Password);
+
     let message = "";
     if (match) {
       console.log ('User successfully logged in')

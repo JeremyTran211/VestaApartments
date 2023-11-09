@@ -63,7 +63,7 @@ function LoginPage() {
           <div className="form-container__details">
             <div className="form-container__title">Login</div>
           </div>
-          <form className="form" onSubmit={handleSubmit}> {/* Note the onSubmit here */}
+          <form className="form" onSubmit={handleSubmit}> {}
             <div className="form__field">
               <div className="form__label">Email</div>
               <input
@@ -71,8 +71,8 @@ function LoginPage() {
                 type="email"
                 placeholder="JoeIsCool@sfsu.edu"
                 value={email}
-                onChange={handleEmailChange} // Note the onChange here
-                id="email" // It's a good practice to use meaningful ids
+                onChange={handleEmailChange} 
+                id="email" 
               />
             </div>
            
@@ -83,11 +83,11 @@ function LoginPage() {
                 type="password"
                 placeholder="password"
                 value={password}
-                onChange={handlePasswordChange} // Note the onChange here
-                id="password" // It's a good practice to use meaningful ids
+                onChange={handlePasswordChange}
+                id="password" 
               />
             </div>
-            <button className="form__submit" type="submit"> {/* Note the type="submit" here */}
+            <button className="form__submit" type="submit"> {}
               Login
             </button>
           </form>
