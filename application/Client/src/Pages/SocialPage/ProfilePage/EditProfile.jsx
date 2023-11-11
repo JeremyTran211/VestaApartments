@@ -15,6 +15,37 @@ const EditProfile = () => {
       navigate("/listings", { state: { searchQuery: searchInput } });
     }
   };
+
+  // Use state hook to store the driver's license number
+  const [license, setLicense] = useState("");
+
+  // Use state hook to store the visibility of the popout form
+  const [visible, setVisible] = useState(false);
+
+  // Handle the change of the input field
+  const handleChange = (event) => {
+    // Get the input value
+    const value = event.target.value;
+    // Update the state with the new value
+    setLicense(value);
+  };
+
+  // Handle the submit of the form
+  const handleSubmit = (event) => {
+    // Prevent the default browser behavior
+    event.preventDefault();
+    // Do something with the license number, for example, send it to a server
+    console.log(license);
+    // Hide the popout form
+    setVisible(false);
+  };
+
+  // Handle the click of the button that shows the popout form
+  const handleClick = () => {
+    // Toggle the visibility of the popout form
+    setVisible(!visible);
+  };
+
   return (
     <div>
       <div class="main-body">
@@ -35,7 +66,6 @@ const EditProfile = () => {
                     <p class="text-muted font-size-sm">
                       I enjoy being joe and being a cool joe
                     </p>
-                    
                   </div>
                 </div>
               </div>
@@ -183,14 +213,66 @@ const EditProfile = () => {
             <div class="card h-100">
               <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3">
-                  <i class="material-icons text-info mr-2"></i>You Haven't Taken the Personality Test
+                  <i class="material-icons text-info mr-2"></i>You Haven't Taken
+                  the Personality Test
                 </h6>
-                
+
                 <div class="button-holder">
-                <Link to="/personality-test"><button class="btn btn-outline-primary">
-                    <a>Take Personality Test</a>
-                  </button></Link>
+                  <Link to="/personality-test">
+                    <button class="btn btn-outline-primary">
+                      <a>Take Personality Test</a>
+                    </button>
+                  </Link>
                 </div>
+
+                  <div>
+                    <button
+                      style={{
+                        // position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                        width: "200px",
+                        height: "40px",
+                      }}
+                      onClick={handleClick}
+                    >
+                      Verification Form
+                    </button>
+                    <form
+                      style={{
+                        top: "60px",
+                        right: "10px",
+                        width: "300px",
+                        height: "200px",
+                        border: "1px solid black",
+                        borderRadius: "10px",
+                        backgroundColor: "white",
+                        display: visible ? "block" : "none",
+                      }}
+                      onSubmit={handleSubmit}
+                    >
+                      <p>Please enter your driver's license number:</p>
+                      <input
+                        type="text"
+                        value={license}
+                        onChange={handleChange}
+                        style={{
+                          margin: "20px",
+                          width: "150px",
+                          height: "20px",
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        style={{
+                          margin: "20px",
+                          width: "100px",
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
               </div>
             </div>
           </div>
