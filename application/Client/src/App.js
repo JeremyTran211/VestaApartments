@@ -16,6 +16,7 @@ import LoginPage from "./Pages/UserAccount/Login.jsx";
 import Register from "./Pages/UserAccount/Register";
 import ForgotPasswordPage from "./Pages/UserAccount/ForgotPassword.jsx"
 import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
+import VerificationForm from "./Pages/UserAccount/VerificationForm.jsx";
 import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
 import SocialPage from "./Pages/SocialPage/SocialPage";
 import ViewListing from "./Pages/ListingsPages/PropertyListing.jsx";
@@ -52,7 +53,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
-          
+          <Route path="/verification-form" element={<VerificationForm />} />
           <Route path="/listings" element={<ListingsPage />} />{" "}
           {/* Needs fix on back to home button, fix view listings buttons, add map(important) */}
           <Route path="/listing-details" element={<ViewListing />} />{" "}
