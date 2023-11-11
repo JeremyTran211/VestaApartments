@@ -44,8 +44,8 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
             borderRadius: "5px",
             cursor: "pointer",
           }}
-        ><Link to="/listing-details">
-          View Listing</Link>
+        >
+          <Link to="/listing-details">View Listing</Link>
         </button>
       </div>
     </div>
@@ -58,6 +58,14 @@ const ApartmentListing = () => {
     bedrooms: "",
     bathrooms: "",
   });
+
+  const [income, setIncome] = useState(0);
+  const handleIncomeChange = (event) => {
+    const value = Number(event.target.value);
+    setIncome(value);
+  };
+
+  const percent = income * 0.3;
   const [sort, setSort] = useState("");
 
   return (
@@ -96,6 +104,50 @@ const ApartmentListing = () => {
         >
           Back to Home
         </button>
+
+        {/* Cost calculator or rent to income ratio */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            margin: "10px",
+            padding: "5px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+          }}
+        >
+            <h1
+              style={{
+                fontSize: "24px",
+                fontWeight: "bold",
+              }}
+            >
+              Income Calculator
+            </h1>
+            <p               style={{
+                fontSize: "16px",
+                paddingLeft: "15px",
+              }}>Enter your monthly income:</p>
+            <input
+              type="number"
+              value={income}
+              onChange={handleIncomeChange}
+              style={{
+                width: "200px",
+                margin: "10px",
+              }}
+            />
+            <p>Your rent should not be greater than:</p>
+            <p
+              style={{
+                fontSize: "18px",
+                color: "green",
+                textAlign: "center",
+              }}
+            >
+              {"$"+Math.round(percent)}
+            </p>
+        </div>
 
         {/* Filter and Sort Section */}
         <div
