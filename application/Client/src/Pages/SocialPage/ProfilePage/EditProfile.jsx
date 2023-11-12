@@ -15,7 +15,8 @@ const EditProfile = () => {
       navigate("/listings", { state: { searchQuery: searchInput } });
     }
   };
-
+  const status = "Pending";
+  const level = "Low" ;
   // Use state hook to store the driver's license number
   const [license, setLicense] = useState("");
 
@@ -213,10 +214,37 @@ const EditProfile = () => {
             <div class="card h-100">
               <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3">
+                  
                   <i class="material-icons text-info mr-2"></i>You Haven't Taken
                   the Personality Test
                 </h6>
-
+                <div
+                    style={{
+                      margin: "20px",
+                      padding: "20px",
+                      border: "1px solid black",
+                      borderRadius: "10px",
+                      fontFamily: "Arial",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        color: status === "Passed" ? "green" : "red",
+                      }}
+                    >
+                      Background Check Status: {status}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "16px",
+                        color: "blue",
+                      }}
+                    >
+                      Verification Level: {level}
+                    </p>
+                  </div>
                 <div class="button-holder">
                   <Link to="/personality-test">
                     <button class="btn btn-outline-primary">
