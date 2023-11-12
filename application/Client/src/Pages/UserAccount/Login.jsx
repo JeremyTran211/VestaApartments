@@ -26,7 +26,7 @@ function LoginPage() {
 
       if(response.ok){
         localStorage.setItem('accessToken', data.accessToken);
-        
+        console.log('Localstorage', localStorage.getItem('accessToken'));
         navigate('/');
 
       }else{
@@ -35,8 +35,6 @@ function LoginPage() {
 
   } catch (error) {
     window.alert('Error logging in: ' + error.message);
-    // Perform authentication logic here 
-    window.alert('Email: ' + email + ' Password:' + password);
     }
   }
   

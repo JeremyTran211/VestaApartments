@@ -1,3 +1,11 @@
+/*
+Login.js
+
+This file handles the login for users by verifying their email and password.
+If both checks pass then a JWT will be created and a session is started 
+for the user. 
+
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');

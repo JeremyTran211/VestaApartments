@@ -1,3 +1,10 @@
+/* 
+Registeration.js
+
+This handles the registration for users and inputs the infomation given
+by the Client side into the database for login.
+
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');

@@ -1,3 +1,10 @@
+/* 
+Authentication.js 
+
+This middleware is for authenicating JWT(json web token) that
+comes from client-side. 
+
+*/
 const jwt = require('jsonwebtoken');
 
 module.exports = authenticateToken;
