@@ -7,13 +7,17 @@ const usersRouter = require("./routes/users");
 const registrationRouter = require("./routes/registration");
 const searchRouter = require("./routes/search");
 const loginRouter = require("./routes/login");
+const authentication = require('./middleware/authentication');
+
 app.use(express.json());
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
-
+app.get('/protected', authentication, (req, res) => {
+  res.json({ message: 'Protected route accessed!' });
+});
 app.get("/", (req, res) => {
   res.json({ message: "Connection test is Valid" });
 });
@@ -33,3 +37,4 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Backend node express servicing REST API at http://localhost:${port}`);
 });
+

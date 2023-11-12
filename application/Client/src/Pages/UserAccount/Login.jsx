@@ -7,6 +7,7 @@ function LoginPage() {
   // State variables to store user input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -23,24 +24,22 @@ function LoginPage() {
 
       const data = await response.json();
 
-      window.alert(data.message);
+      if(response.ok){
+        localStorage.setItem('accessToken', data.accessToken);
+        
+        navigate('/');
+
+      }else{
+        throw new Error(data.message || 'Login Failed')
+      }
 
   } catch (error) {
     window.alert('Error logging in: ' + error.message);
     // Perform authentication logic here 
     window.alert('Email: ' + email + ' Password:' + password);
-    //const response=this.CallAPI()
-    //const data = response.json();
-    //console.log("Data returned by API call:" + response)
-    //this.callAPI(email, password );
-    //const response =  fetch("http://localhost:3000/login?" + email+"&"+ password);
-
-    //GetAPIhook(email, password);
-    //window.alert('API reponse = ' );
-
-    
     }
-}
+  }
+  
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
