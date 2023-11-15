@@ -13,6 +13,7 @@ import IvanA from "./Pages/About/IvanA";
 //Main Imports
 import MainPage from "./Pages/MainPage/MainPage";
 import LoginPage from "./Pages/UserAccount/Login.jsx";
+import VerificationTierTwo from "./Pages/UserAccount/VerificationTierTwo.jsx";
 import Register from "./Pages/UserAccount/Register";
 import ForgotPasswordPage from "./Pages/UserAccount/ForgotPassword.jsx"
 import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/verification-tier-two" element={<VerificationTierTwo/>} />
           <Route path="/listings" element={<ListingsPage />} />{" "}
           {/* Needs fix on back to home button, fix view listings buttons, add map(important) */}
           <Route path="/listing-details" element={<ViewListing />} />{" "}
