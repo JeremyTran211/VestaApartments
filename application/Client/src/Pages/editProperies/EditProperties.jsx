@@ -51,6 +51,7 @@ const editedPropertiesData = [
     baths: 1.5,
     status: "Active",
   },
+  // ... more properties as needed
 ];
 
 const EditedPropertiesPage = () => {
