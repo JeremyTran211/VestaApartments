@@ -11,7 +11,6 @@ const EditApartmentListing = () => {
     petPolicy: "No Pet",
     neighborhood: "",
     price: "",
-    // ... other fields if any
   });
 
   const [images, setImages] = useState([]);
@@ -23,7 +22,7 @@ const EditApartmentListing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Check if all fields are filled in
+
     const allFieldsFilled = Object.values(formData).every(
       (field) => field.trim() !== ""
     );
@@ -31,8 +30,6 @@ const EditApartmentListing = () => {
       alert("Please fill in all the fields.");
       return;
     }
-    // If all fields are filled, proceed with form submission logic
-    // ...
   };
 
   // Styles
