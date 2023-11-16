@@ -1,7 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
+const buttonStyle = {
+  padding: "10px 20px",
+  fontSize: "16px",
+  cursor: "pointer",
+  textTransform: "uppercase",
+  letterSpacing: "1px",
+  fontWeight: "bold",
+  borderRadius: "5px",
+  border: "none",
+  backgroundColor: "#4CAF50",
+  color: "#fff",
+  boxShadow: "0 4px #999",
+};
+
+const SingleListing = ({
+  imageUrl,
+  address,
+  minRent,
+  maxRent,
+  bedrooms,
+  bathrooms,
+}) => {
   return (
     <div
       style={{
@@ -26,7 +47,7 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
         <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          {price}
+          ${minRent} - ${maxRent}/month
         </div>
         <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
         <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
@@ -35,6 +56,7 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
         <button
+<<<<<<< HEAD
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -46,6 +68,11 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
           }}
         >
           <Link to="/listing-details">View Listing</Link>
+=======
+          style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
+        >
+          <Link to="/listing-details"> View Listing</Link>
+>>>>>>> 15d7d40dae1773eeef87cbf8c694ee1a7bde8306
         </button>
       </div>
     </div>
@@ -54,7 +81,8 @@ const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
 
 const ApartmentListing = () => {
   const [filter, setFilter] = useState({
-    rent: "",
+    minRent: "",
+    maxRent: "",
     bedrooms: "",
     bathrooms: "",
   });
@@ -68,10 +96,14 @@ const ApartmentListing = () => {
   const percent = income * 0.3;
   const [sort, setSort] = useState("");
 
+  const applyFilters = () => {
+    // Logic to apply filters goes here
+  };
+
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
-      <div style={{ width: "60%", borderRight: "1px solid #ccc" }}>
+      <div style={{ width: "60%", borderRight: "1px solid #ccc", top: "40px" }}>
         {/* Placeholder for the map */}
         <div
           style={{
@@ -88,18 +120,14 @@ const ApartmentListing = () => {
       </div>
 
       {/* Listings Container */}
-      <div style={{ width: "40%", overflowY: "scroll" }}>
+      <div style={{ width: "50%", overflowY: "scroll" }}>
         {/* Back to Home Button */}
         <button
           style={{
+            ...buttonStyle,
             margin: "10px",
             padding: "4px 8px",
             fontSize: "0.85em",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
           }}
         >
           Back to Home
@@ -157,52 +185,60 @@ const ApartmentListing = () => {
             margin: "10px",
             padding: "5px",
             border: "1px solid #ccc",
-            borderRadius: "5px",
+            borderRadius: "10px",
           }}
         >
           {/* Rent Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.85em" }}>Rent:</strong>
+            <strong style={{ fontSize: "0.70em" }}>Rent:</strong>
             <input
-              value={filter.rent}
-              onChange={(e) => setFilter({ ...filter, rent: e.target.value })}
-              placeholder="Rent"
-              style={{ fontSize: "0.85em", width: "80px" }}
+              value={filter.minRent}
+              onChange={(e) =>
+                setFilter({ ...filter, minRent: e.target.value })
+              }
+              placeholder="Min Rent"
+              style={{ fontSize: "0.70em", width: "60px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
+            -
+            <input
+              value={filter.maxRent}
+              onChange={(e) =>
+                setFilter({ ...filter, maxRent: e.target.value })
+              }
+              placeholder="Max Rent"
+              style={{ fontSize: "0.70em", width: "60px" }}
+            />
           </div>
 
           {/* Bedroom Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.85em" }}>Bedrooms:</strong>
+            <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
             <input
               value={filter.bedrooms}
               onChange={(e) =>
                 setFilter({ ...filter, bedrooms: e.target.value })
               }
-              placeholder="Bedrooms"
+              placeholder="Beds"
               style={{ fontSize: "0.85em", width: "50px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
           </div>
 
           {/* Bathroom Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.85em" }}>Bathrooms:</strong>
+            <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
             <input
               value={filter.bathrooms}
               onChange={(e) =>
                 setFilter({ ...filter, bathrooms: e.target.value })
               }
-              placeholder="Bathrooms"
+              placeholder="Baths"
               style={{ fontSize: "0.85em", width: "60px" }}
             />
-            <button style={{ fontSize: "0.85em" }}>Apply</button>
           </div>
 
           {/* Sort Section for the Listings */}
-          <div style={{ marginLeft: "auto" }}>
-            <strong style={{ fontSize: "0.85em" }}>Sort:</strong>
+          <div style={{ marginLeft: "auto", marginRight: "10px" }}>
+            <strong style={{ fontSize: "0.70em" }}>Sort:</strong>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
@@ -215,9 +251,25 @@ const ApartmentListing = () => {
               <option value="3DTour">3D Tour</option>
             </select>
           </div>
+
+          {/* Main Apply Button */}
+          <button
+            style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
+            onClick={applyFilters}
+          >
+            Apply
+          </button>
         </div>
 
         {/* Displaying the Listings */}
+        <SingleListing
+          imageUrl="https://via.placeholder.com/150"
+          address="123 Example St, Example City, EX 12345"
+          minRent="800"
+          maxRent="1000"
+          bedrooms="2"
+          bathrooms="1"
+        />
         <SingleListing
           imageUrl="https://via.placeholder.com/150"
           address="123 Example St, Example City, EX 12345"
