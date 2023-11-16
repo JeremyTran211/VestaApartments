@@ -1,0 +1,98 @@
+.flex-container {
+    display: flex;
+    background-color: rgb(62, 69, 77);
+  }
+
+  .flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }
+
+  .verifications-container {
+    padding: 60px;
+  }
+
+  .tier-two-container {
+    width: 100%;
+    padding: 30px;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: rgba(3, 3, 3, 0.1) 10px 0px 50px;
+    height: 500px;
+  }
+
+  .tier-two-container_title {
+    font-size: 72px;
+    color: #555;
+    margin-bottom: 7px;
+  }
+
+  .tier-two-container_info {
+    font-size: 27px;
+    color: #555;
+    margin-bottom: 7px;
+  }
+
+  .tier-three-container {
+    width: 100%;
+    padding: 30px;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: rgba(3, 3, 3, 0.1) 10px 0px 50px;
+    height: 500px;
+  }
+
+  .tier-three-container_title {
+    font-size: 72px;
+    color: #555;
+    margin-bottom: 7px;
+  }
+
+  .tier-three-container_info {
+    font-size: 27px;
+    color: #555;
+    margin-bottom: 7px;
+  }
+  .tier-two_button {  
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 25px 15px;
+    border: 0;
+    transition: all 0.8s;
+    font-size: 24px;
+  }
+
+  .tier-three_button {
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 25px 15px;
+    border: 0;
+    transition: all 0.8s;
+    font-size: 24px;
+  }
+
+  .tier-two_button:hover {
+    background: #03f303;
+  }
+
+  .tier-three_button:hover {
+    background: #03f303;
+  }
+
+  .tier-two-button-container {
+    margin-top: 45px;
+  }
+
+  .tier-three-button-container {
+    margin-top: 10px;
+  }

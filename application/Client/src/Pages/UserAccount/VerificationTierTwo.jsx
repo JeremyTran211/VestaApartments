@@ -24,10 +24,7 @@ function VerificationTierTwo() {
       const data = await response.json();
 
       if(response.ok){
-        localStorage.setItem('accessToken', data.accessToken);
-        console.log('Localstorage', localStorage.getItem('accessToken'));
-        navigate('/');
-
+        navigate('./Pages/SocialPage/SocialPage');
       }else{
         throw new Error(data.message || 'Verification failed')
       }
@@ -49,12 +46,6 @@ function VerificationTierTwo() {
     setphoneNumber(event.target.value);
   };
 
-  // function getDetails() {
-  //   var schoolEmail = document.getElementById("id1");
-  //   var school  = document.getElementById("id2");
-  //   window.alert("Value = " + "'" + email.value + "'");
-  //   window.alert("Value = " + "'" + password.value + "'");
-  // }
   return (
     <div className="MainPage">
     <main>

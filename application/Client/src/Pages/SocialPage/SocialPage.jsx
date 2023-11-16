@@ -39,7 +39,7 @@ function SocialPage() {
           <Link to="/messages">
             <button class="square-button">Messages</button>
           </Link>
-          <Link to="/verification-tier-two">
+          <Link to="/verification-page">
             <button class="square-button">Verification</button>
           </Link>
         </div>
