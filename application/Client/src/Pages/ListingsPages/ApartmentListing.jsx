@@ -56,7 +56,6 @@ const SingleListing = ({
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
         <button
-<<<<<<< HEAD
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -68,11 +67,6 @@ const SingleListing = ({
           }}
         >
           <Link to="/listing-details">View Listing</Link>
-=======
-          style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
-        >
-          <Link to="/listing-details"> View Listing</Link>
->>>>>>> 15d7d40dae1773eeef87cbf8c694ee1a7bde8306
         </button>
       </div>
     </div>
