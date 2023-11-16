@@ -16,7 +16,7 @@ app.use(
   })
 );
 app.get('/protected', authentication, (req, res) => {
-  res.json({ message: 'Protected route accessed!' });
+  res.json({ message: 'Protected route accessed' });
 });
 app.get("/", (req, res) => {
   res.json({ message: "Connection test is Valid" });
