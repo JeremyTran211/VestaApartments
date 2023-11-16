@@ -1,11 +1,10 @@
 /* Footer CSS */
-.footer-basic {
+.footer {
   padding: 40px 0;
   background-color: #ffffff;
   color: #4b4c4d;
 }
-
-.footer-basic ul {
+.footer ul {
   padding: 0;
   list-style: none;
   text-align: center;
@@ -13,22 +12,18 @@
   line-height: 1.6;
   margin-bottom: 0;
 }
-
-.footer-basic li {
+.footer li {
   padding: 0 10px;
 }
-
-.footer-basic ul a {
+.footer ul a {
   color: inherit;
   text-decoration: none;
   opacity: 0.8;
 }
-
-.footer-basic ul a:hover {
+.footer ul a:hover {
   opacity: 1;
 }
-
-.footer-basic .copyright {
+.footer .footer-copyright {
   margin-top: 15px;
   text-align: center;
   font-size: 13px;

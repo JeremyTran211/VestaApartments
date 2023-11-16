@@ -146,6 +146,7 @@ const Testing = () => {
                 Sign Up
               </button>
             </form>
+            {/* WHy is clear button needed / wanted */}
             <button class="form__clear" onClick={handleclear}>
               Clear
             </button>
