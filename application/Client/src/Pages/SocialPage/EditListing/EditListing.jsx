@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EditApartmentListing = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,14 @@ const EditApartmentListing = () => {
   const handleImageUpload = (event) => {
     const uploadedImages = Array.from(event.target.files);
     setImages([...images, ...uploadedImages]);
+  };
+
+  const handleUploadButtonClick = () => {
+    // Trigger the file dialog when the button is clicked
+    const imageInput = document.getElementById("imageInput");
+    if (imageInput) {
+      imageInput.click();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -61,11 +70,23 @@ const EditApartmentListing = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "800px",
+        margin: "0 auto",
+      }}
+    >
       <button
-        style={{ ...buttonStyle, position: "fixed", top: "20px", left: "20px" }}
+        style={{
+          ...buttonStyle,
+          position: "relative",
+          left: "-100px",
+          padding: "10px 20px",
+          zIndex: 999,
+        }}
       >
-        Back to Home
+        <Link to="/">Back to Home</Link>
       </button>
 
       <div style={formStyle}>
@@ -167,9 +188,27 @@ const EditApartmentListing = () => {
                 paddingBottom: "30px",
               }}
             >
-              <label>Upload Images: </label>
-              <input type="file" multiple onChange={handleImageUpload} />
-              <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+              <input
+                type="file"
+                multiple
+                onChange={handleImageUpload}
+                id="imageInput"
+                style={{ display: "none" }}
+              />
+              <button
+                type="button"
+                onClick={handleUploadButtonClick}
+                style={buttonStyle}
+              >
+                Upload Images
+              </button>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "10px",
+                }}
+              >
                 {[...Array(5)].map((_, index) => (
                   <div
                     key={index}
