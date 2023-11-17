@@ -8,6 +8,8 @@ const registrationRouter = require("./routes/registration");
 const searchRouter = require("./routes/search");
 const screeningRouter = require("./routes/screening");
 const loginRouter = require("./routes/login");
+const postRouter = require("./services/posts");
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -25,6 +27,7 @@ app.use("/screening", screeningRouter);
 app.use("/users", usersRouter);
 app.use('/register', registrationRouter);
 app.use('/login', loginRouter);
+app.use("/post", postRouter);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
