@@ -1,7 +1,24 @@
  import React, { useState } from "react";
 
 const PropertyDetailPage = () => {
+
   const [imageSet, setImageSet] = useState(1);
+
+
+  // cost calculator
+  const [cost, setCost] = useState(0);
+  /*
+  cost = pge+water+garbage+internet+price/rooms
+  
+  database missing utilites in rental_listing table
+  Property has no api call to gather listing info
+  and no variable declariations for listing info 
+   */
+  
+  const percent = 11 * 0.3;
+  async function calculator() {
+    setCost(percent);
+  };
 
   const handlePrevImages = () => {
     setImageSet(1);
@@ -113,6 +130,29 @@ const PropertyDetailPage = () => {
       padding: "20px",
       backgroundColor: "#fafafa",
     },
+    calculatorContainer: {
+      width: "30%",
+      margin: "0 auto",
+      border: "1px solid black",
+      padding: "10px",
+    },
+    calculatorText: {
+      fontSize: "18px",
+      display: "inline-block",
+      marginLeft: "20px",
+    },
+    calculatorValue: {
+      fontSize: "18px",
+      display: "inline-block",
+      marginLeft: "20px",
+      fontWeight: "bold",
+    },
+    calculatorHeader: {
+      textAlign: "center",
+      fontAize: "24px",
+      fontWeight: "bold",
+      color: "black",
+    },
     // ... other styles
   };
 
@@ -178,6 +218,13 @@ const PropertyDetailPage = () => {
           <p style={styles.detailsText}>
             <strong>Square Feet:</strong> 1,500
           </p>
+        </div>
+
+{/* Cost calculator or rent to income ratio */}
+<div style={styles.calculatorContainer}>
+            <h1 style={styles.calculatorHeader}>Cost Calculator</h1>
+            <p style={styles.calculatorText}>Rent per person = </p>
+            <p style={styles.calculatorValue}>{"$"+Math.round(percent)}</p>
         </div>
 
         {/* Contact Details */}
