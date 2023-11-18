@@ -28,6 +28,7 @@ router.get('/', async function(req, res, next) {
 // for updating the users
 router.put('/:user_id', async function(req, res, next) {
   try {
+    console.log ('The request body is ', req.body);
     res.json(await users.updateUser(req.params.user_id, req.body));
   } catch (err) {
     console.error(`Error while updating registered User`, err.message);

@@ -24,7 +24,7 @@ return {message};
 async function getListings(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    `SELECT Listing_ID, User_ID, Rooms, Bathrooms, Price , Property_Type, Location_ID 
+    `SELECT * 
     FROM Rental_Listing LIMIT ${offset},${config.listPerPage}`
   );
   const data = helper.emptyOrRows(rows);
@@ -34,14 +34,15 @@ async function getListings(page = 1){
     meta
   }
 }
-// for updating listings and gives status of operation
 async function updateListing(listing_id, listing){
   const result = await db.query(
     `UPDATE Rental_Listing
-    SET Rooms=${listing.Rooms}, User_ID ="${listing.User_ID}", Bathrooms=${listing.Bathrooms}, Price=${listing.Price}, 
-    Property_Type="${listing.Property_Type}"
+    SET User_ID ="${listing.User_ID}",Rooms= IF(${listing.Rooms}"="undefined, Rooms,${listing.Rooms}), 
+    Bathrooms=IF(${listing.Bathrooms}"="undefined, Bathrooms,${listing.Bathrooms}),
+    Price=IF("${listing.Price}"="undefined", Price,${listing.Price}), 
+    Property_Type=IF("${listing.Property_Type}"="undefined", Property_Type,"${listing.Property_Type}"),
+    Location_ID=IF(${listing.Location_ID}"="undefined, Location_ID,${listing.Location_ID}
     WHERE Listing_ID=${listing_id}`
-//Location_ID = ${listing.Location_ID}
   );
 
   let message = 'Error in updating Rental Listing';

@@ -7,6 +7,6 @@ const config = {
       connectTimeout: 60000,
       port: 3306
     },
-    listPerPage: 10,
+    listPerPage: 50,
   };
   module.exports = config;

@@ -17,8 +17,9 @@ async function loginUser(Email, Password){
     );
 
 
-    //console.log ("Db email is" + result1[0].Email + " db password is" + result1[0].Password)
-    if (result1.affectedRows) {
+    console.log ("Db email is" + result1[0].Email + " db password is" + result1[0].Password)
+    console.log ("Affected rows is " + result1.length)
+    if (result1.length > 0) {
       console.log ('Row returned for user search in database')
       
     }
