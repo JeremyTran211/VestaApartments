@@ -42,7 +42,7 @@ function Navbar() {
           </div>
           
           <div class="nav-links">
-            <Link to="/reset-password"><a>CURRENTLY TESTING </a></Link>
+            <Link to="/edit-properties"><a>CURRENTLY TESTING </a></Link>
             <Link to="/listings"><a>FIND HOMES</a></Link>
             <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
             <Link to="/login"><a>LOGIN</a></Link>

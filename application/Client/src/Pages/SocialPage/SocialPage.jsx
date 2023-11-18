@@ -33,7 +33,7 @@ function SocialPage() {
           <Link to="/edit-profile">
             <button class="square-button">Edit Profile</button>
           </Link>
-          <Link to="/edit-listing">
+          <Link to="/edit-properties">
             <button class="square-button">Edit Your Listings</button>
           </Link>
           <Link to="/messages">
