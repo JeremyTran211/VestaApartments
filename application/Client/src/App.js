@@ -21,6 +21,7 @@ import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
 import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
 import SocialPage from "./Pages/SocialPage/SocialPage";
 import ViewListing from "./Pages/ListingsPages/PropertyListing.jsx";
+import EditProperties from "./Pages/editProperies/EditProperties.jsx";
 
 //Social Pages
 import NotificationsPage from "./Pages/SocialPage/Notifications/Notifications.jsx";
@@ -76,6 +77,7 @@ function App() {
           <Route path="/notifications" element={<NotificationsPage />} />
           {/* fix FA boxes and view a tag(not important now)*/}
           <Route path="/edit-listing" element={<EditListing />} />
+          <Route path="/edit-properties" element={<EditProperties />} />{" "}
           {/* Needs fix on back to home button (important)*/}
           <Route path="/bookmarks" element={<BookmarksPage />} />
           {/* Not done at all(important) */}

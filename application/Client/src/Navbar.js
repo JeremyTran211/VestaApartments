@@ -3,7 +3,7 @@ import "./Styles/Navbar.css";
 import { Link} from "react-router-dom";
 function getDetails() {
   //call session check function
-  const session = false;
+  const session = true;
   if (session){
     return "/social";
   }
@@ -38,7 +38,7 @@ function Navbar() {
           </div>
           
           <div class="nav-links">
-            <Link to="/reset-password"><a>CURRENTLY TESTING </a></Link>
+            <Link to="/edit-properties"><a>CURRENTLY TESTING </a></Link>
             <Link to="/listings"><a>FIND HOMES</a></Link>
             <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
             <Link to="/login"><a>LOGIN</a></Link>

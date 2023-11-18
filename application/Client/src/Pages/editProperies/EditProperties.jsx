@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 
 const editedPropertiesData = [
   {
@@ -200,7 +201,7 @@ const EditedPropertiesPage = () => {
               <td style={styles.td}>{property.baths}</td>
               <td style={styles.td}>{property.status}</td>
               <td style={styles.td}>
-                <button style={styles.viewButton}>Edit Property</button>
+                <Link to="/edit-listing"><button style={styles.viewButton}>Edit Property</button></Link>
               </td>
             </tr>
           ))}
