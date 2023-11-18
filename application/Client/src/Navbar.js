@@ -3,8 +3,10 @@ import "./Styles/Navbar.css";
 import { Link} from "react-router-dom";
 function getDetails() {
 
-  //call session check function
-  const session = localStorage.getItem('accessToken');
+  //For live
+  //const session = localStorage.getItem('accessToken');
+  //For console
+  const session = true;
   console.log('Social page:', localStorage.getItem('accessToken'));
   
   if (session != null){
