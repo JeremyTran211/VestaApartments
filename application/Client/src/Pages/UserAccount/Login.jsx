@@ -25,6 +25,7 @@ function LoginPage() {
       const data = await response.json();
 
       if(response.ok){
+        
         localStorage.setItem('accessToken', data.accessToken);
         console.log('Localstorage', localStorage.getItem('accessToken'));
         navigate('/');

@@ -1,7 +1,24 @@
-import React from "react";
+import React,  { useState } from "react";
 import "./Styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+function getDetails() {
+  //call session check function
+  const session = false;
+  if (session){
+    return "/social";
+  }
+  else if (!session){
+    // window.alert("Case Not logged");
+    return "/login";
+  }
+  
+}
 function Navbar() {
+  const [socialLink, setSocialLink] = useState(getDetails());
+
+  const handleSocialLinkClick = () => {
+    setSocialLink(getDetails());
+  };
   return (
     <header>
       <nav>
@@ -23,7 +40,7 @@ function Navbar() {
           <div class="nav-links">
             <Link to="/reset-password"><a>CURRENTLY TESTING </a></Link>
             <Link to="/listings"><a>FIND HOMES</a></Link>
-            <Link to="/social"><a>SOCIAL</a></Link>
+            <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
             <Link to="/login"><a>LOGIN</a></Link>
           </div>
         </div>
