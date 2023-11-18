@@ -39,6 +39,9 @@ function SocialPage() {
           <Link to="/messages">
             <button class="square-button">Messages</button>
           </Link>
+          <Link to="/verification-page">
+            <button class="square-button">Verification</button>
+          </Link>
         </div>
         <div class="scrollable-container" id="middle-container">
           <div class="widget-post" aria-labelledby="post-header-title">

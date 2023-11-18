@@ -15,13 +15,14 @@
 
 | Student      | Student Full Name |Student SFSU Email     | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:           |     :---:       |        :---:       |        :---:        | 
-|      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |        Lead         |
-|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    warioyaeger    |          Front End           |
-|      #3      |  Mozhgan Ahsant   | mahsant1@sfsu.edu     | AhsantMozhgan   |      Mozhgan       |                     |
-|      #4      |  Anthony Silva    | asilva32@sfsu.edu     | anthonySilva23  |   Anthony.Silva.5  |                     |
-|      #5      |  Aman Khera       | akhera@sfsu.edu       | Akhera24        |  cashiermoneymon   |                     |
-|      #6      | Ivan Ayala-Brito  |iayalabrito@mail.sfsu.edu |   IvanA1123  |     Ivan           |                     |
-
+|      #1      |  Jeremy Tran      | jtran43@mail.sfsu.edu | JeremyTran211   |    Jeremy Tran     |     Lead            |
+|      #2      |  Geovanni Valadez | gvaladez@sfsu.edu     | gvaladezsfsu    |    warioyaeger     |     Front End Lead  |  
+|      #3      |  Mozhgan Ahsant   | mahsant1@sfsu.edu     | AhsantMozhgan   |      .mozhgan      |     Scrum Master    |
+|      #4      |  Anthony Silva    | asilva32@sfsu.edu     | anthonySilva23  |   Anthony.Silva.5  |     Database Lead   |
+|      #5      |  Aman Khera       | akhera@sfsu.edu       | Akhera24        |  cashiermoneymon   |     Back End Lead   |  
+|      #6      | Ivan Ayala-Brito  | iayalabrito@mail.sfsu.edu |  IvanA1123  |  shaquille.oatmeal |  Documenation Master|
+|      #7      | Alex Huang        | xhuang20@sfsu.edu     | alexlool        |      mr_spin       |     Back End        |
+|      #8      | Daniel Enriquez   |denriquez@mail.sfsu    | danyboytheone   | Daniel Enriquez    |     Front End       | 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/dxATAsa9isXKbcBn7). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a team environment. 
 

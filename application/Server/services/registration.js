@@ -1,3 +1,10 @@
+/* 
+Registeration.js
+
+This handles the registration for users and inputs the infomation given
+by the Client side into the database for login.
+
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
@@ -10,7 +17,7 @@ async function checkEmail(email) {
             `SELECT COUNT(*) as count FROM Registered_User WHERE Email = ?`,
             [email]
         );
-        return result[0].count == 1;
+        return result[0].count >= 1;
 
     } catch (err) {
         console.error('Error in checkEmail:', err);

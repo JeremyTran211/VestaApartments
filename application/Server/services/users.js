@@ -31,44 +31,51 @@ async function getUsers(page = 1){
     }
   }
 
-// for updating a password for a registered user and giving status of operation
 async function updateUser(user_id, user){
   console.log ('The user password is ', user.Password)
   // Updating Registered_User and retaining the existing values from the database if input parameters are undefinied or not specified in the put call  
-  const hashedPassword = 0;
-  if (user.Password != null) { 
+  let hashedPassword = 0;
+  if (user.Password !== undefined) { 
     // the password is getting hashed 
     hashedPassword = await bcrypt.hash(user.Password, 10); 
+    // query for only updating password if password paramter is given
     const result = await db.query(
 
-      `UPDATE Registered_User
+    `UPDATE Registered_User
   
       SET Password= "${hashedPassword}"`
     );
-  }
-  const result2 = await db.query(
-  `UPDATE Registered_User
+    let message = 'Error in updating Registerd User';
 
-    Email = IF("${user.Email}"="undefined", Email,"${user.Email}"), 
+    if (result.affectedRows) {
+      message = 'Registered User updated successfully';
+  }
+
+    return {message}
+  } // if
+  if (user.Password == undefined || user.Password !== undefined) { 
+    const result2 = await db.query(
+    `UPDATE Registered_User
+
+    SET Email = IF("${user.Email}"="undefined", Email,"${user.Email}"), 
     First_Name = IF("${user.First_Name}"="undefined", First_Name,"${user.First_Name}"), 
     Last_Name= IF("${user.Last_Name}"="undefined", Last_Name,"${user.Last_Name}")
     WHERE User_ID="${user_id}"`
 );
-if (result2.affectedRows){
-  message = 'Registed User updated successsfully';
-}
-  let message = 'Error in updating Registered User';
+    let message2 = 'Error in updating Registered User';
 
-  if (result.affectedRows) {
-    message = 'Registered User updated successfully';
+   if (result2.affectedRows) {
+      message2 = 'Registered User updated successfully';
   }
-  
-  
 
-  return {message};
-}
+    return {message2};
+  } // if
+
+
+} //method
 
 // for deleting a user
+
 async function removeUser(user_id){
     const result = await db.query(
       `DELETE FROM Registered_User WHERE User_id='${user_id}'`
