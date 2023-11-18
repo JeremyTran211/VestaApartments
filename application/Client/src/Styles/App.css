@@ -28,6 +28,3 @@ h1, h2, h3, h4 {
   justify-content: center;
 }
 
-.App{
-  overflow: auto; /* Enable scrolling when content overflows */
-}
