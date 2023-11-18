@@ -35,6 +35,8 @@ async function updateUser(user_id, user){
   console.log ('The user password is ', user.Password)
   // Updating Registered_User and retaining the existing values from the database if input parameters are undefinied or not specified in the put call  
   let hashedPassword = 0;
+  let message = '';
+  
   if (user.Password !== undefined) { 
     // the password is getting hashed 
     hashedPassword = await bcrypt.hash(user.Password, 10); 
@@ -43,35 +45,33 @@ async function updateUser(user_id, user){
 
     `UPDATE Registered_User
   
-      SET Password= "${hashedPassword}"`
+     SET Password= "${hashedPassword}" WHERE User_ID = "${user_id}"`
     );
-    let message = 'Error in updating Registerd User';
+     message = 'Error in updating Registerd User';
 
     if (result.affectedRows) {
       message = 'Registered User updated successfully';
   }
-
-    return {message}
-  } // if
-  if (user.Password == undefined || user.Password !== undefined) { 
+  } 
+  if (user.Email !== undefined || user.First_Name !== undefined || user.Last_Name !== undefined) { 
     const result2 = await db.query(
     `UPDATE Registered_User
 
-    SET Email = IF("${user.Email}"="undefined", Email,"${user.Email}"), 
-    First_Name = IF("${user.First_Name}"="undefined", First_Name,"${user.First_Name}"), 
-    Last_Name= IF("${user.Last_Name}"="undefined", Last_Name,"${user.Last_Name}")
+    SET Email = IF("${user.Email}"='undefined', Email,"${user.Email}"), 
+    First_Name = IF("${user.First_Name}"='undefined', First_Name,"${user.First_Name}"), 
+    Last_Name= IF("${user.Last_Name}"='undefined', Last_Name,"${user.Last_Name}")
     WHERE User_ID="${user_id}"`
 );
-    let message2 = 'Error in updating Registered User';
+     message = 'Error in updating Registered User';
 
    if (result2.affectedRows) {
-      message2 = 'Registered User updated successfully';
+      message = 'Registered User updated successfully 2';
   }
 
-    return {message2};
+   
   } // if
 
-
+  return {message};
 } //method
 
 // for deleting a user
