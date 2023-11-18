@@ -2,9 +2,12 @@ import React,  { useState } from "react";
 import "./Styles/Navbar.css";
 import { Link} from "react-router-dom";
 function getDetails() {
+
   //call session check function
-  const session = false;
-  if (session){
+  const session = localStorage.getItem('accessToken');
+  console.log('Social page:', localStorage.getItem('accessToken'));
+  
+  if (session != null){
     return "/social";
   }
   else if (!session){
@@ -19,6 +22,7 @@ function Navbar() {
   const handleSocialLinkClick = () => {
     setSocialLink(getDetails());
   };
+
   return (
     <header>
       <nav>

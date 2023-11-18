@@ -24,11 +24,16 @@ async function loginUser(Email, Password){
 
       if(result.length == 0){
         console.log('No user found with that email')
-        return { message: "No user found with that email" };
+        return { message: "No user found with that email", 
+                  success: false};
 
       }
 
+      console.log( result[0].Password);
+      console.log( Password);
+      
       const match = await bcrypt.compare(Password, result[0].Password);
+      console.log(match);
 
       let message = "";
 
