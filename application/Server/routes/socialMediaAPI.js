@@ -1,43 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const login = require('../services/socialMediaAPI');
-
+const socialMediaAPI = require('../services/socialMediaAPI');
 module.exports = router;
 
-router.get('/twitter/login', (req, res) =>{
-    //Update callback URL
-    const callbackUrl = 'http://localhost:3000/socialMedia/twitter/callback';
-    //Redirect user to Twitter login
-    res.redirect('https://api.twitter.com/oauth/authenticate');
-});
+//fucking works now its just getting the entire profile table
+//testing for getting the profile associated with a user_id
+router.get('/', async (req, res) =>{
+    try {
+        res.json(await socialMediaAPI.getProfile(req.query.page));
+        
+    } catch (error) {
+        console.error('Error in testing social media api callback:', error.message);
+        res.status(500).send('Error linking Twitter account.');
+    }
 
-router.get('/instagram/login', (req, res) => {
-    
-    res.redirect('https://api.instagram.com/oauth/authorize');
-  });
+})
 
-router.get('/twitter/callback', async (req, res) => {
-    const userData = await getUserData('twitter', req.query.oauth_token, req.query.oauth_verifier);
-    insertUserDataIntoDatabase(req.session.userId, 'twitter', userData);
-    res.redirect('/profile');
-});
-
-router.get('/instagram/callback', async (req, res) => {
-    const userData = await getUserData('instagram', req.query.code);
-    insertUserDataIntoDatabase(req.session.userId, 'instagram', userData);
-    res.redirect('/profile');
-});
-
-// Function to get user data from Twitter or Instagram
-async function getUserData(platform, ...params) {
-    // get user data using API calls to Twitter or Instagram
-    
-    return userData;
-}
-
-// Function to insert user data into the profile database
-function insertUserDataIntoDatabase(userId, accountType, userData) {
-    // insert user data into the profile database
-   
-}
-
+//for updating the account type and socialMedia link
+router.put('/:Profile_ID', async function(req,res,next){
+    try {
+        //unsure if correct parameters
+        res.json(await socialMediaAPI.updateProfileInfo(req.params.profile_id, req.params.socialMediaAPI, req.params.Account_Type))
+    } catch (error) {
+        console.error('Error in updating accountType and SocialMedia link', error.message);
+    }
+})

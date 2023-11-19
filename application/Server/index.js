@@ -8,6 +8,7 @@ const registrationRouter = require("./routes/registration");
 const searchRouter = require("./routes/search");
 const screeningRouter = require("./routes/screening");
 const loginRouter = require("./routes/login");
+const socialMediaAPI = require("./routes/socialMediaAPI");
 
 const numberVerificationRouter = require("./routes/number_verification");
 const postRouter = require("./routes/post");
@@ -36,6 +37,8 @@ app.use('/register', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/number_verification' , numberVerificationRouter);
 app.use("/post", postRouter);
+app.use("/socialMediaAPI", socialMediaAPI);
+
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
