@@ -36,7 +36,6 @@ html {
   height: 100%;
   margin: 0 33.33% 0; /* Margin to make space for the side containers */
   background-color: #ffffff;
-  overflow-y: scroll; /* Enable vertical scrolling */
   padding: 10px; /* Optional padding for content inside scrollable container */
 }
 
@@ -148,6 +147,7 @@ ul {
 .post-actions__attachments {
   display: inline-block;
   width: 60%;
+  padding-bottom: 20px;
 }
 .attachments--btn {
   background-color: #eaeaea;

@@ -90,7 +90,15 @@ const ApartmentListing = () => {
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
-      <div style={{ width: "60%", borderRight: "1px solid #ccc", top: "40px" }}>
+      <div
+        style={{
+          width: "60%",
+          position: "fixed", // Fixed position to keep it static
+          top: "70px",
+          bottom: 0,
+          borderRight: "1px solid #ccc",
+        }}
+      >
         {/* Placeholder for the map */}
         <div
           style={{
@@ -107,7 +115,14 @@ const ApartmentListing = () => {
       </div>
 
       {/* Listings Container */}
-      <div style={{ width: "50%", overflowY: "scroll" }}>
+      <div
+        className="listing-container" 
+        style={{
+          width: "50%",
+          marginLeft: "60%", 
+          overflowY: "auto", 
+        }}
+      >
         {/* Back to Home Button */}
         <button
           style={{
