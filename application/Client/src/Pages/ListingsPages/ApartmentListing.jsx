@@ -139,13 +139,13 @@ const ApartmentListing = () => {
         >
           {/* Rent Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Rent:</strong>
+            <strong style={{ fontSize: "0.70em" }}>Price:</strong>
             <input
               value={filter.minRent}
               onChange={(e) =>
                 setFilter({ ...filter, minRent: e.target.value })
               }
-              placeholder="Min Rent"
+              placeholder="Minimum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
             -
@@ -154,7 +154,7 @@ const ApartmentListing = () => {
               onChange={(e) =>
                 setFilter({ ...filter, maxRent: e.target.value })
               }
-              placeholder="Max Rent"
+              placeholder="Maximum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
           </div>
@@ -196,8 +196,7 @@ const ApartmentListing = () => {
               <option value="">Select</option>
               <option value="lowHigh">Low to High</option>
               <option value="highLow">High to Low</option>
-              <option value="video">Video</option>
-              <option value="3DTour">3D Tour</option>
+              
             </select>
           </div>
 
