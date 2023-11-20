@@ -77,17 +77,7 @@ const EditApartmentListing = () => {
         margin: "0 auto",
       }}
     >
-      <button
-        style={{
-          ...buttonStyle,
-          position: "relative",
-          left: "-100px",
-          padding: "10px 20px",
-          zIndex: 999,
-        }}
-      >
-        <Link to="/">Back to Home</Link>
-      </button>
+      
 
       <div style={formStyle}>
         <form onSubmit={handleSubmit}>
