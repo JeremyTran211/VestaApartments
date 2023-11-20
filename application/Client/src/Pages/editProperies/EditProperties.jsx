@@ -161,7 +161,6 @@ const EditedPropertiesPage = () => {
 
   return (
     <div style={styles.bookmarkPage}>
-      <button style={styles.backToSocialButton}>Back to Social</button>
       <h1 style={styles.header}>Properties</h1>
       <table style={styles.table}>
         <thead>
