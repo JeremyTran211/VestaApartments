@@ -55,7 +55,7 @@ const SingleListing = ({
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <button
+      <Link to="/listing-details"><button
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -66,8 +66,8 @@ const SingleListing = ({
             cursor: "pointer",
           }}
         >
-          <Link to="/listing-details">View Listing</Link>
-        </button>
+          View Listing
+        </button></Link>
       </div>
     </div>
   );
@@ -123,17 +123,8 @@ const ApartmentListing = () => {
           overflowY: "auto", 
         }}
       >
-        {/* Back to Home Button */}
-        <button
-          style={{
-            ...buttonStyle,
-            margin: "10px",
-            padding: "4px 8px",
-            fontSize: "0.85em",
-          }}
-        >
-          <Link to="/">Back to Home</Link>
-        </button>
+       
+       
 
         {/* Filter and Sort Section */}
         <div
