@@ -40,12 +40,12 @@ const Messages = () => {
         <div class="row">
           <section class="discussions">
             <div class="discussion search">
-              <Link to="/social">
-                <button>Socials</button>
-              </Link>
+              
               <div class="searchbar">
                 <input type="text" placeholder="Search..."></input>
+                <button>Search</button>
               </div>
+              
             </div>
             <div class="discussion message-active">
               <div class="photo">
