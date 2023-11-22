@@ -46,7 +46,7 @@ function SocialPage() {
           <Link to="/group-page">
             <button class="square-button">Groups</button>
           </Link>
-          <Link to="/edit-profile">
+          <Link to="/user-profile">
             <button class="square-button">Edit Profile</button>
           </Link>
           <Link to="/edit-properties">

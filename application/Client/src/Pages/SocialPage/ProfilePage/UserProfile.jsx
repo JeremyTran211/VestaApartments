@@ -47,14 +47,6 @@ const EditProfile = () => {
     setVisible(!visible);
   };
 
-  
-  function getDetails() {
-    var major = document.getElementById("major");
-    var password  = document.getElementById("id2");
-    window.alert("Value = " + "'" + major.value + "'");
-    window.alert("Value = " + "'" + password.value + "'");
-  }
-
   return (
     <div>
       <div class="main-body">
@@ -101,7 +93,7 @@ const EditProfile = () => {
                     Twitter
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://twitter.com"><input placeholder="@Joeiscool" /></Link>
+                    <Link to="https://twitter.com">@JoeIsCoolTwitter</Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -132,7 +124,7 @@ const EditProfile = () => {
                     Instagram
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://instagram.com"><input placeholder="@Joeiscool"/></Link>
+                    <Link to="https://instagram.com">@JoeIsCoolInstagram</Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -154,7 +146,7 @@ const EditProfile = () => {
                     Facebook
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://facebook.com"><input placeholder="@Joeiscool"/></Link>
+                    <Link to="https://facebook.com">@JoeIsCoolFacebook</Link>
                   </span>
                 </li>
               </ul>
@@ -180,16 +172,15 @@ const EditProfile = () => {
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Major</h6>
-                    
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Computer Science" id="major"/> </div>
+                  <div class="col-sm-9 text-secondary">Computer Science</div>
                 </div>
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Year</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" /></div>
+                  <div class="col-sm-9 text-secondary">Junior</div>
                 </div>
                 <hr></hr>
                 <div class="row">
@@ -197,14 +188,21 @@ const EditProfile = () => {
                     <h6 class="mb-0">About</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input placeholder="E.G. Hello I am me" />
+                    I am Joe. I really like being Joe. Joe is super cool. This
+                    about section is all about Joe. Joe wants to know what his
+                    about section looks with multiple lines so Joe is writing
+                    about Joe and how cool Joe is. Joe is simply being Joe. Fun
+                    fact, Joe is named Joe because he named himself Joe! Joe's
+                    story as to how exactly he became Joe really starts with his
+                    parents, Joe and Joe, who then spawned a new Joe. Then the
+                    new Joe became Joe. The end.
                   </div>
                 </div>
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-12">
                     <a class="btn btn-info " target="__blank">
-                      <Link to="" onClick={getDetails}>Submit</Link>
+                      <Link to="/edit-profile">Edit</Link>
                     </a>
                   </div>
                 </div>

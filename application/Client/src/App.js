@@ -26,7 +26,8 @@ import EditProperties from "./Pages/editProperies/EditProperties.jsx";
 //Social Pages
 import NotificationsPage from "./Pages/SocialPage/Notifications/Notifications.jsx";
 import ViewProfile from "./Pages/SocialPage/ProfilePage/ViewProfile";
-import EditProfile from "./Pages/SocialPage/ProfilePage/EditProfile";
+import UserProfile from "./Pages/SocialPage/ProfilePage/UserProfile";
+import EditProfile from "./Pages/SocialPage/ProfilePage/EditProfile.jsx"
 import GroupPage from "./Pages/SocialPage/GroupsPage/GroupsPage.jsx";
 import PersonalityTest from "./Pages/SocialPage/PersonalityTest/PersonalityTest.jsx";
 import MessagesPage from "./Pages/SocialPage/Messages/Messages.jsx";
@@ -50,37 +51,29 @@ function App() {
         {/* Fix scrollability on height? for some reason its not showing everything*/}
         <Routes>
           {/* Main Pages */}
-          <Route path="/" element={<MainPage />} /> {/* Maybe put stock photo in title and search container put a div that holds some stock photo, maybe sharper edges on container(not improtant) */}
+          <Route path="/" element={<MainPage />} /> 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/verification-tier-two" element={<VerificationTierTwo/>} />
           <Route path="/verification-page" element={<VerificationPage/>} />
-          <Route path="/listings" element={<ListingsPage />} />{" "}
-          {/* Needs fix on back to home button, fix view listings buttons, add map(important) */}
-          <Route path="/listing-details" element={<ViewListing />} />{" "}
-          {/* Needs fix on back to home button and many other buttons not in space properly. squares are funky(important)*/}
+          <Route path="/listings" element={<ListingsPage />} />
+          <Route path="/listing-details" element={<ViewListing />} />
+          
           {/* Social Pages */}
           <Route path="/social" element={<SocialPage />} />
-          {/* Not done at all added left side links, needs recentering, sample posts, small messages box right side (important)*/}
-          <Route path="/view-profile" element={<ViewProfile />} />{" "}
-          {/* Same as edit profile */}
-          <Route path="/personality-test" element={<PersonalityTest />} />{" "}
-          {/* Fix back to home button, maybe make the container better, we can figure out questions at a different time*/}
-          <Route path="/edit-profile" element={<EditProfile />} />{" "}
-          {/* Center personality test button , make title bigger?(not super important) */}
+          <Route path="/view-profile" element={<ViewProfile />} />
+          <Route path="/personality-test" element={<PersonalityTest />} />
+          <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/group-page" element={<GroupPage />} />
-          {/* Not done at all (important)*/}
-          <Route path="/messages" element={<MessagesPage />} />{" "}
-          {/* search bar needs a button(not important)*/}
+          <Route path="/messages" element={<MessagesPage />} />
           <Route path="/notifications" element={<NotificationsPage />} />
-          {/* fix FA boxes and view a tag(not important now)*/}
           <Route path="/edit-listing" element={<EditListing />} />
-          <Route path="/edit-properties" element={<EditProperties />} />{" "}
-          {/* Needs fix on back to home button (important)*/}
+          <Route path="/edit-profile" element={<EditProfile/>}/>
+          <Route path="/edit-properties" element={<EditProperties />} />
           <Route path="/bookmarks" element={<BookmarksPage />} />
-          {/* Not done at all(important) */}
+
           {/* About Pages */}
           <Route path="/team-info" element={<TeamInfo />} />
           <Route path="/jeremy-tran" element={<JeremyTran />} />
