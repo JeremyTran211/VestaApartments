@@ -43,7 +43,7 @@ function SocialPage() {
           <Link to="/bookmarks">
             <button class="square-button">Bookmarks</button>
           </Link>
-          <Link to="/group-page">
+          <Link to="/groups">
             <button class="square-button">Groups</button>
           </Link>
           <Link to="/user-profile">
@@ -55,7 +55,7 @@ function SocialPage() {
           <Link to="/messages">
             <button class="square-button">Messages</button>
           </Link>
-          <Link to="/verification-page">
+          <Link to="/verification">
             <button class="square-button">Verification</button>
           </Link>
         </div>

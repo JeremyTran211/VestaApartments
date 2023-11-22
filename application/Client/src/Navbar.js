@@ -1,15 +1,16 @@
 import React,  { useState } from "react";
 import "./Styles/Navbar.css";
 import { Link} from "react-router-dom";
-function getDetails() {
+const session = true;
+function checkLogin() {
 
   //For live
   //const session = localStorage.getItem('accessToken');
   //For console
-  const session = true;
+  
   console.log('Social page:', localStorage.getItem('accessToken'));
   
-  if (session != null){
+  if (session){
     return "/social";
   }
   else if (!session){
@@ -18,13 +19,35 @@ function getDetails() {
   }
   
 }
+
+function logInOut() {
+
+  //For live
+  //const session = localStorage.getItem('accessToken');
+  //For console
+  
+  console.log('Social page:', localStorage.getItem('accessToken'));
+  
+  if (session){
+    return "/";
+  }
+  else if (!session){
+    // window.alert("Case Not logged");
+    return "/login";
+  }
+  
+}
 function Navbar() {
-  const [socialLink, setSocialLink] = useState(getDetails());
+  const [socialLink, setSocialLink] = useState(checkLogin());
+  const [loginLink, setLogInLink] = useState(logInOut());
 
   const handleSocialLinkClick = () => {
-    setSocialLink(getDetails());
+    setSocialLink(checkLogin());
   };
-
+  const handleLogInOutLinkClick = () => {
+    setLogInLink(logInOut());
+  };
+  const TierStatus = logInOut();
   return (
     <header>
       <nav>
@@ -47,7 +70,7 @@ function Navbar() {
             <Link to="/edit-properties"><a>CURRENTLY TESTING </a></Link>
             <Link to="/listings"><a>FIND HOMES</a></Link>
             <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
-            <Link to="/login"><a>LOGIN</a></Link>
+            <Link to={loginLink} onClick={handleLogInOutLinkClick}><a>{TierStatus === "/" ? "LOGOUT" : "LOGIN"}</a></Link>
           </div>
         </div>
       </nav>

@@ -11,28 +11,28 @@ import MozhganAhsant from "./Pages/About/MozhganAhsant";
 import IvanA from "./Pages/About/IvanA";
 
 //Main Imports
-import MainPage from "./Pages/MainPage/MainPage";
-import LoginPage from "./Pages/UserAccount/Login.jsx";
+import Main from "./Pages/MainPage/MainPage";
+import Login from "./Pages/UserAccount/Login.jsx";
 import VerificationTierTwo from "./Pages/UserAccount/VerificationTierTwo.jsx";
-import VerificationPage from "./Pages/UserAccount/VerificationPage.jsx";
+import Verification from "./Pages/UserAccount/VerificationPage.jsx";
 import Register from "./Pages/UserAccount/Register";
-import ForgotPasswordPage from "./Pages/UserAccount/ForgotPassword.jsx"
-import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
-import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
-import SocialPage from "./Pages/SocialPage/SocialPage";
+import ForgotPassword from "./Pages/UserAccount/ForgotPassword.jsx"
+import ResetPassword from "./Pages/UserAccount/ResetPassword.jsx";
+import Listings from "./Pages/ListingsPages/ApartmentListing.jsx";
+import Social from "./Pages/SocialPage/SocialPage";
 import ViewListing from "./Pages/ListingsPages/PropertyListing.jsx";
 import EditProperties from "./Pages/editProperies/EditProperties.jsx";
 
 //Social Pages
-import NotificationsPage from "./Pages/SocialPage/Notifications/Notifications.jsx";
+import Notifications from "./Pages/SocialPage/Notifications/Notifications.jsx";
 import ViewProfile from "./Pages/SocialPage/ProfilePage/ViewProfile";
 import UserProfile from "./Pages/SocialPage/ProfilePage/UserProfile";
 import EditProfile from "./Pages/SocialPage/ProfilePage/EditProfile.jsx"
-import GroupPage from "./Pages/SocialPage/GroupsPage/GroupsPage.jsx";
+import Groups from "./Pages/SocialPage/GroupsPage/GroupsPage.jsx";
 import PersonalityTest from "./Pages/SocialPage/PersonalityTest/PersonalityTest.jsx";
-import MessagesPage from "./Pages/SocialPage/Messages/Messages.jsx";
+import Messages from "./Pages/SocialPage/Messages/Messages.jsx";
 import EditListing from "./Pages/SocialPage/EditListing/EditListing.jsx";
-import BookmarksPage from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
+import Bookmarks from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
 
 //Under Construction
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
@@ -47,33 +47,36 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-   
-        {/* Fix scrollability on height? for some reason its not showing everything*/}
         <Routes>
-          {/* Main Pages */}
-          <Route path="/" element={<MainPage />} /> 
-          <Route path="/login" element={<LoginPage />} />
+          {/* NavBar Main Pages */}
+          <Route path="/" element={<Main />} /> 
+          <Route path="/social" element={<Social />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/listings" element={<Listings />} />
+
+          {/* User Account  */}
           <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verification-tier-two" element={<VerificationTierTwo/>} />
-          <Route path="/verification-page" element={<VerificationPage/>} />
-          <Route path="/listings" element={<ListingsPage />} />
-          <Route path="/listing-details" element={<ViewListing />} />
+          <Route path="/verification" element={<Verification/>} />
           
           {/* Social Pages */}
-          <Route path="/social" element={<SocialPage />} />
-          <Route path="/view-profile" element={<ViewProfile />} />
-          <Route path="/personality-test" element={<PersonalityTest />} />
           <Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/group-page" element={<GroupPage />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/notifications" element={<NotificationsPage />} />
-          <Route path="/edit-listing" element={<EditListing />} />
+          <Route path="/view-profile" element={<ViewProfile />} />
           <Route path="/edit-profile" element={<EditProfile/>}/>
-          <Route path="/edit-properties" element={<EditProperties />} />
-          <Route path="/bookmarks" element={<BookmarksPage />} />
+          <Route path="/personality-test" element={<PersonalityTest />} />
+          
+          <Route path="/groups" element={<Groups />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/messages" element={<Messages />} />
 
+          {/* Listings */}
+          <Route path="/listing-details" element={<ViewListing />} />
+          <Route path="/edit-listing" element={<EditListing />} />
+          <Route path="/edit-properties" element={<EditProperties />} />
+          
           {/* About Pages */}
           <Route path="/team-info" element={<TeamInfo />} />
           <Route path="/jeremy-tran" element={<JeremyTran />} />
@@ -82,6 +85,7 @@ function App() {
           <Route path="/aman-khera" element={<AmanKhera />} />
           <Route path="/mozhgan-ahsant" element={<MozhganAhsant />} />
           <Route path="/ivan-ayala-brito" element={<IvanA />} />
+
           {/* Under Construction */}
           <Route path="/under-construction" element={<UnderConstruction />} />
           <Route path="/testing" element={<Testing />} />
