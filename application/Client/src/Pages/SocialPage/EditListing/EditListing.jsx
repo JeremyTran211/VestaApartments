@@ -86,6 +86,15 @@ const EditApartmentListing = () => {
           >
             <input
               type="text"
+              placeholder="Name your property"
+              value={formData.street}
+              onChange={(e) =>
+                setFormData({ ...formData, street: e.target.value })
+              }
+              style={inputStyle}
+            />
+            <input
+              type="text"
               placeholder="Street"
               value={formData.street}
               onChange={(e) =>
