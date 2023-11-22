@@ -138,7 +138,7 @@ const EditApartmentListing = () => {
               }
               style={inputStyle}
             />
-
+            
             <textarea
               placeholder="Description"
               value={formData.description}
