@@ -3,12 +3,10 @@ const helper = require('../helper');
 const config = require('../config');
 
 
-//for retrieving user_id and everything within the table
-//note must fix phonenumber since the space messes it up
 async function getProfile(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
-        `SELECT Profile_ID, User_ID, Phone number, Social_Media_Link, Account_Type FROM
+        `SELECT Profile_ID, User_ID, \`Phone number\`, Social_Media_Link, Account_Type FROM
         Profile`
     );
     const data = helper.emptyOrRows(rows);
@@ -20,21 +18,14 @@ async function getProfile(page = 1) {
 
 }
 
-//need to figure out which method to use/how are we going to distinguish between instagram and twitter
-
-async function updateProfileInfo(Profile_ID, Social_Media_Link, Account_Type ){
+async function updateProfileInfo(req){
     
-    let soicalMediaType = Account_Type;
-    if(Social_Media_Link.includes('instagram')){
-        soicalMediaType = 'instagram';
-    } else if(soicalMediaType.includes('twitter')){
-        soicalMediaType = 'twitter';
-    }
     const query = `UPDATE Profile
     SET Social_Media_Link = ?, 
+    \`Phone number\` = ?,
         Account_Type = ?
     WHERE Profile_ID = ?` 
-    const values = [Social_Media_Link, socialMediaType, Profile_ID];
+    const values = [req.body.Social_Media_Link, req.body[`Phone number`], req.body.Account_Type, req.params.Profile_ID];
     //Social Media link is link to either instagram or twitter profile/user account
     let message = `Error in updating profile info `;
     const result = await db.query(query,values);
@@ -43,13 +34,6 @@ async function updateProfileInfo(Profile_ID, Social_Media_Link, Account_Type ){
     }
     return {message}
 }
-
-
-
-
-
-
-
 
 module.exports = {
   getProfile,

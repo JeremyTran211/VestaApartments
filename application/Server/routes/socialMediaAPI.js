@@ -3,7 +3,7 @@ const router = express.Router();
 const socialMediaAPI = require('../services/socialMediaAPI');
 module.exports = router;
 
-//fucking works now its just getting the entire profile table
+
 //testing for getting the profile associated with a user_id
 router.get('/', async (req, res) =>{
     try {
@@ -11,7 +11,7 @@ router.get('/', async (req, res) =>{
         
     } catch (error) {
         console.error('Error in testing social media api callback:', error.message);
-        res.status(500).send('Error linking Twitter account.');
+        res.status(500).send('Error accessing user account.');
     }
 
 })
@@ -20,7 +20,7 @@ router.get('/', async (req, res) =>{
 router.put('/:Profile_ID', async function(req,res,next){
     try {
         //unsure if correct parameters
-        res.json(await socialMediaAPI.updateProfileInfo(req.params.profile_id, req.params.socialMediaAPI, req.params.Account_Type))
+        res.json(await socialMediaAPI.updateProfileInfo(req))
     } catch (error) {
         console.error('Error in updating accountType and SocialMedia link', error.message);
     }
