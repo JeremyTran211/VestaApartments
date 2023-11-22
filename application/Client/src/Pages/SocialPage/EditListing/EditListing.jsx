@@ -29,9 +29,9 @@ const EditApartmentListing = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const allFieldsFilled = Object.values(formData).every(
       (field) => field.trim() !== ""
     );
@@ -39,8 +39,48 @@ const EditApartmentListing = () => {
       alert("Please fill in all the fields.");
       return;
     }
-  };
+  /*
+    const formDataToSend = new FormData();
+    images.forEach((image) => {
+      formDataToSend.append('images', image);
+    });
+  
+    Object.keys(formData).forEach(key => {
+      formDataToSend.append(key, formData[key]);
+    });*/
+        console.log('Street:', formData.street);
+        console.log('Description:', formData.description);
+        console.log('Bed:', formData.bed);
+        console.log('Bath:', formData.bath);
+        console.log('Square Feet:', formData.squareFeet);
+        console.log('Furnished:', formData.furnished);
+        console.log('Pet Policy:', formData.petPolicy);
+        console.log('Neighborhood:', formData.neighborhood);
+        console.log('Price:', formData.price);
+        
+    try {
+      const response = await fetch('/listings', {
+        method: 'POST',
+        // body: formDataToSend,
+        // token authnication here
+      });
 
+      const data = await response.json();
+      
+      if (data.success) {
+        
+        // Handle success
+        alert('Listing submitted successfully!');
+        // Redirect or clear form here if needed
+      } else {
+        // Handle errors
+        alert('Failed to submit listing.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
   // Styles
   const formStyle = {
     padding: "20px",
@@ -88,7 +128,6 @@ const EditApartmentListing = () => {
       >
         <Link to="/">Back to Home</Link>
       </button>
-
       <div style={formStyle}>
         <form onSubmit={handleSubmit}>
           <div

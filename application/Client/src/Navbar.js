@@ -1,9 +1,12 @@
 import React,  { useState } from "react";
 import "./Styles/Navbar.css";
 import { Link} from "react-router-dom";
+
 function getDetails() {
   //call session check function
-  const session = false;
+  const session = localStorage.getItem('accessToken');
+  console.log('Social page:', session);
+  
   if (session){
     return "/social";
   }

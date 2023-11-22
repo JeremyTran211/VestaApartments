@@ -24,7 +24,7 @@ function LoginPage() {
 
       const data = await response.json();
 
-      if(response.ok){
+      if(data.success){
         
         localStorage.setItem('accessToken', data.accessToken);
         console.log('Localstorage', localStorage.getItem('accessToken'));

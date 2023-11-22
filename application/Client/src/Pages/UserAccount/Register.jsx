@@ -13,7 +13,7 @@ const Testing = () => {
   const [showpasswordicon, setShowpasswordicon] = useState(false);
 
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform authentication logic here (e.g., sending data to a server or checking credentials)
@@ -39,6 +39,7 @@ const Testing = () => {
       const data = await response.json();
 
       window.alert(data.message);
+      
     } catch (error) {
       window.alert("Error registering user: " + error.message);
     }
@@ -87,7 +88,6 @@ const Testing = () => {
     setLastName("");
   };
 
-  
   function getDetails() {
     var userName = document.getElementById("id1");
     var email = document.getElementById("id2");
