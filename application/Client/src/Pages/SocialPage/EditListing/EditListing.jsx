@@ -130,27 +130,6 @@ const EditApartmentListing = () => {
               style={inputStyle}
             />
 
-            <select
-              value={formData.furnished}
-              onChange={(e) =>
-                setFormData({ ...formData, furnished: e.target.value })
-              }
-              style={inputStyle}
-            >
-              <option value="Furnished">Furnished</option>
-              <option value="Unfurnished">Unfurnished</option>
-            </select>
-            <select
-              value={formData.petPolicy}
-              onChange={(e) =>
-                setFormData({ ...formData, petPolicy: e.target.value })
-              }
-              style={inputStyle}
-            >
-              <option value="Pet">Pet</option>
-              <option value="No Pet">No Pet</option>
-            </select>
-
             <textarea
               placeholder="Description"
               value={formData.description}
@@ -159,14 +138,7 @@ const EditApartmentListing = () => {
               }
               style={{ ...inputStyle, height: "100px" }}
             />
-            <textarea
-              placeholder="Neighborhood Description"
-              value={formData.neighborhood}
-              onChange={(e) =>
-                setFormData({ ...formData, neighborhood: e.target.value })
-              }
-              style={{ ...inputStyle, height: "100px" }}
-            />
+            
 
             <div
               style={{
