@@ -50,9 +50,17 @@ const EditProfile = () => {
   
   function getDetails() {
     var major = document.getElementById("major");
-    var password  = document.getElementById("id2");
+    var year  = document.getElementById("year");
+    var about = document.getElementById("about");
+    var twitter  = document.getElementById("twitter");
+    var facebook = document.getElementById("facebook");
+    var instagram  = document.getElementById("instagram");
     window.alert("Value = " + "'" + major.value + "'");
-    window.alert("Value = " + "'" + password.value + "'");
+    window.alert("Value = " + "'" + year.value + "'");
+    window.alert("Value = " + "'" + about.value + "'");
+    window.alert("Value = " + "'" + twitter.value + "'");
+    window.alert("Value = " + "'" + facebook.value + "'");
+    window.alert("Value = " + "'" + instagram.value + "'");
   }
 
   return (
@@ -101,7 +109,7 @@ const EditProfile = () => {
                     Twitter
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://twitter.com"><input placeholder="@Joeiscool" /></Link>
+                    <Link to="https://twitter.com"><input placeholder="@Joeiscool" id="twitter" /></Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -132,7 +140,7 @@ const EditProfile = () => {
                     Instagram
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://instagram.com"><input placeholder="@Joeiscool"/></Link>
+                    <Link to="https://instagram.com"><input placeholder="@Joeiscool" id="instagram"/></Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -154,7 +162,7 @@ const EditProfile = () => {
                     Facebook
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://facebook.com"><input placeholder="@Joeiscool"/></Link>
+                    <Link to="https://facebook.com"><input placeholder="@Joeiscool" id="facebook"/></Link>
                   </span>
                 </li>
               </ul>
@@ -189,7 +197,7 @@ const EditProfile = () => {
                   <div class="col-sm-3">
                     <h6 class="mb-0">Year</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" /></div>
+                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" id="year"/></div>
                 </div>
                 <hr></hr>
                 <div class="row">
@@ -197,7 +205,7 @@ const EditProfile = () => {
                     <h6 class="mb-0">About</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input placeholder="E.G. Hello I am me" />
+                  <input placeholder="E.G. Hello I am me" id="about" />
                   </div>
                 </div>
                 <hr></hr>
