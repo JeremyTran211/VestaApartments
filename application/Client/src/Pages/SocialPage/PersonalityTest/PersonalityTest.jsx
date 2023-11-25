@@ -36,7 +36,41 @@ const PersonalityQuiz = () => {
         { answer: "Yes", score: 1 },
         { answer: "No", score: 2 },
         { answer: "Sometimes", score: 1 },
-    
+
+      ],
+    },
+    {
+      question: "Do you drink alcohol?",
+      options: [
+        { answer: "Yes", score: 2 },
+        { answer: "No", score: 1 },
+        { answer: "Sometimes", score: -1 },
+      ],
+    },
+    {
+      question: "How would you describe your personality?",
+      options: [
+        { answer: "Introvert", score: 1 },
+        { answer: "Extrovert", score: 2 },
+        { answer: "Ambivert", score: 1.5 },
+      ],
+    },
+
+    //tesing questions
+    {
+      question: "Do you drink alcohol?",
+      options: [
+        { answer: "Yes", score: 2 },
+        { answer: "No", score: 1 },
+        { answer: "Sometimes", score: -1 },
+      ],
+    },
+    {
+      question: "How would you describe your personality?",
+      options: [
+        { answer: "Introvert", score: 1 },
+        { answer: "Extrovert", score: 2 },
+        { answer: "Ambivert", score: 1.5 },
       ],
     },
     {
@@ -104,32 +138,41 @@ const PersonalityQuiz = () => {
     flexDirection: "column",
     gap: "20px",
     border: "1px solid black",
-    padding: "20px",
     borderRadius: "8px",
+    maxHeight: '80%',
+    overflow: "auto",
   };
-
+  const quizItemsStyle = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    padding: "20px",
+    overflow: "auto",
+  };
   return (
     <div style={containerStyle}>
-      
+
 
       {/* Quiz */}
       <div style={quizContainerStyle}>
-        {questions.map((q, index) => (
-          <div key={index}>
-            <p>{q.question}</p>
-            {q.options.map((option, optIndex) => (
-              <label key={optIndex}>
-                <input
-                  type="radio"
-                  name={q.question}
-                  value={option.score}
-                  onChange={() => handleAnswer(q.question, option)}
-                />
-                {option.answer}
-              </label>
-            ))}
-          </div>
-        ))}
+        <div style={quizItemsStyle} >
+          {questions.map((q, index) => (
+            <div key={index}>
+              <p>{q.question}</p>
+              {q.options.map((option, optIndex) => (
+                <label key={optIndex}>
+                  <input
+                    type="radio"
+                    name={q.question}
+                    value={option.score}
+                    onChange={() => handleAnswer(q.question, option)}
+                  />
+                  {option.answer}
+                </label>
+              ))}
+            </div>
+          ))}
+        </div>
         <button
           style={{ backgroundColor: "blue", color: "white" }}
           onClick={handleSubmit}
