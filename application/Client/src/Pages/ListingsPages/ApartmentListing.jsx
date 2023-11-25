@@ -47,7 +47,7 @@ const SingleListing = ({
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
         <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          ${minRent} - ${maxRent}/month
+          ${minRent} - ${maxRent}/monthcd
         </div>
         <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
         <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
@@ -55,7 +55,7 @@ const SingleListing = ({
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-      <Link to="/listing-details"><button
+        <Link to="/listing-details"><button
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -116,15 +116,15 @@ const ApartmentListing = () => {
 
       {/* Listings Container */}
       <div
-        className="listing-container" 
+        className="listing-container"
         style={{
           width: "50%",
-          marginLeft: "60%", 
-          overflowY: "auto", 
+          marginLeft: "60%",
+          overflowY: "auto",
         }}
       >
-       
-       
+
+
 
         {/* Filter and Sort Section */}
         <div
@@ -162,27 +162,41 @@ const ApartmentListing = () => {
           {/* Bedroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
-            <input
+           
+            <select
               value={filter.bedrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bedrooms: e.target.value })
-              }
-              placeholder="Beds"
-              style={{ fontSize: "0.85em", width: "50px" }}
-            />
+              onChange={e => setFilter({ ...filter, bedrooms: e.target.value })}
+              style={{ fontSize: "0.85em", width: "80px" }}
+
+            >
+
+              <option value="">Select</option>
+              <option value="1 Bedroom">1 Bedroom</option>
+              <option value="2 Bedrooms" >2 Bedrooms</option>
+              <option value="3 Bedrooms" >3 Bedrooms</option>
+              <option value="4 Bedrooms" >4 Bedrooms</option>
+              <option value="5 Bedrooms" >5 Bedrooms</option>
+
+            </select>
           </div>
 
           {/* Bathroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
-            <input
+
+            <select
               value={filter.bathrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bathrooms: e.target.value })
-              }
-              placeholder="Baths"
-              style={{ fontSize: "0.85em", width: "60px" }}
-            />
+              onChange={e => setFilter({ ...filter, bathrooms: e.target.value })}
+              style={{ fontSize: "0.85em", width: "80px" }}
+
+            >
+              <option value="">Select</option>
+              <option value="1 Bathroom">1 Bathroom</option>
+              <option value="2 Bathrooms" >2 Bathrooms</option>
+              <option value="3 Bathrooms" >3 Bathrooms</option>
+              <option value="4 Bathrooms" >4 Bathrooms</option>
+              <option value="5 Bathrooms" >5 Bathrooms</option>
+            </select>
           </div>
 
           {/* Sort Section for the Listings */}
@@ -196,7 +210,7 @@ const ApartmentListing = () => {
               <option value="">Select</option>
               <option value="lowHigh">Low to High</option>
               <option value="highLow">High to Low</option>
-              
+
             </select>
           </div>
 

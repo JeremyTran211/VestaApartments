@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SocialPage.css";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 const SinglePost = ({
 }) => {
   return (
     <div>
       <div class="post-actions__attachments">
-                  <p>JoeIsCool</p>
-                </div>
-                <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac
-            tincidunt vitae semper quis. Faucibus pulvinar elementum integer
-            enim neque volutpat ac tincidunt vitae. Integer feugiat scelerisque
-          </p>
+        <p>JoeIsCool</p>
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac
+        tincidunt vitae semper quis. Faucibus pulvinar elementum integer
+        enim neque volutpat ac tincidunt vitae. Integer feugiat scelerisque
+      </p>
+        <ThumbUpIcon className="like-icon" />
     </div>
   );
 };
@@ -97,15 +100,15 @@ function SocialPage() {
                 </div>
               </div>
             </form>
-            
+
           </div>
           <div class="widget-post__actions post--actions" >
-          <SinglePost></SinglePost>
-          <SinglePost></SinglePost>
-          <SinglePost></SinglePost>
-          
-          
-          
+            <SinglePost></SinglePost>
+            <SinglePost></SinglePost>
+            <SinglePost></SinglePost>
+
+
+
           </div>
         </div>
         <div class="static-container" id="right-container">
