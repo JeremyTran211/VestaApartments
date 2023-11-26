@@ -75,7 +75,7 @@ function LoginPage() {
               <input class="form__input" placeholder="JoeIsCool@gmail.com" id="id1" />
             </div>
            
-            <button class="form__submit forgot_password " onClick={getDetails}  >
+            <button class="form__submit forgot_password "type='submit' onClick={getDetails}  >
               Send Email Request
             </button>
           </form>
