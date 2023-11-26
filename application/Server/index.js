@@ -10,6 +10,7 @@ const screeningRouter = require("./routes/screening");
 const loginRouter = require("./routes/login");
 const socialMediaAPI = require("./routes/socialMediaAPI");
 const accountType = require("./routes/accountType");
+const phoneNumberAPI = require("./routes/phoneNumberAPI");
 
 const numberVerificationRouter = require("./routes/number_verification");
 const postRouter = require("./routes/post");
@@ -40,6 +41,7 @@ app.use('/number_verification' , numberVerificationRouter);
 app.use("/post", postRouter);
 app.use("/socialMediaAPI", socialMediaAPI);
 app.use("/accountType", accountType);
+app.use("/phoneNumberAPI", phoneNumberAPI);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
