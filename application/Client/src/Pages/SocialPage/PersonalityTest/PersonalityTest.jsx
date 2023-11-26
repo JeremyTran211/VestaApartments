@@ -2,49 +2,46 @@ import React, { useState } from "react";
 
 const PersonalityQuiz = () => {
   const [answers, setAnswers] = useState({});
+  const [showPreview, setShowPreview] = useState(false);
 
   const questions = [
     {
-      question: "What time do you go to bed on weeknights?",
+      question: "Are you a morning person or night owl?",
       options: [
-        { answer: "10 PM or earlier", score: 1 },
-        { answer: "Between 10 PM and Midnight", score: 2 },
-        { answer: "Around Midnight", score: 3 },
-        { answer: "2 AM or later", score: 4 },
+        { answer: "Morning Person", score: 1 },
+        { answer: "Night Owl", score: 2 },
       ],
     },
     {
-      question: "Where do you typically do homework?",
-      options: [
-        { answer: "At my desk", score: 1 },
-        { answer: "In the library", score: 2 },
-        { answer: "In a study lounge or similar space", score: 3 },
-        { answer: "I don’t really do homework.", score: 4 },
-      ],
-    },
-    {
-      question: "Do you smoke weed?",
+      question: "Do you smoke or vape?",
       options: [
         { answer: "Yes", score: -1 },
         { answer: "No", score: 1 },
-        { answer: "Sometimes", score: 0 },
       ],
     },
     {
-      question: "Do you smoke weed cigarettes?",
+      question: "How often do you have friends over?",
       options: [
-        { answer: "Yes", score: 1 },
-        { answer: "No", score: 2 },
+        { answer: "Often", score: -1 },
         { answer: "Sometimes", score: 1 },
-    
+        { answer: "Rarely", score: 2 },
       ],
     },
     {
-      question: "Do you drink alcohol?",
+      question: "What are your primary hobbies?",
       options: [
-        { answer: "Yes", score: 2 },
-        { answer: "No", score: 1 },
-        { answer: "Sometimes", score: -1 },
+        { answer: "Reading", score: 1 },
+        { answer: "Sports", score: 2 },
+        { answer: "Music", score: 1 },
+        { answer: "Others", score: 0 },
+      ],
+    },
+    {
+      question: "How clean do you consider yourself?",
+      options: [
+        { answer: "Very clean", score: 2 },
+        { answer: "Average", score: 1 },
+        { answer: "Not so clean", score: -1 },
       ],
     },
     {
@@ -53,6 +50,30 @@ const PersonalityQuiz = () => {
         { answer: "Introvert", score: 1 },
         { answer: "Extrovert", score: 2 },
         { answer: "Ambivert", score: 1.5 },
+      ],
+    },
+    {
+      question: "Do you have any pets?",
+      options: [
+        { answer: "Yes", score: 1 },
+        { answer: "No", score: 0 },
+      ],
+    },
+    {
+      question: "How were your previous roommate experiences?",
+      options: [
+        { answer: "Positive", score: 2 },
+        { answer: "Neutral", score: 1 },
+        { answer: "Negative", score: -1 },
+        { answer: "Never had a roommate", score: 0 },
+      ],
+    },
+    {
+      question: "How long do you plan to stay?",
+      options: [
+        { answer: "Less than 6 months", score: -1 },
+        { answer: "6 months to a year", score: 1 },
+        { answer: "More than a year", score: 2 },
       ],
     },
   ];
@@ -64,19 +85,15 @@ const PersonalityQuiz = () => {
     }));
   };
 
-  const compatibilityMessage = (score) => {
-    if (score >= 9) return "Highly Compatible";
-    if (score >= 6) return "Compatible";
-    if (score >= 3) return "Neutral";
-    return "Not Compatible";
-  };
-
   const handleSubmit = () => {
     if (Object.keys(answers).length !== questions.length) {
       alert("Please answer all the questions.");
       return;
     }
+    setShowPreview(true);
+  };
 
+  const handleFinalSubmit = () => {
     let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
     alert(
       `Your score is: ${totalScore}. Compatibility: ${compatibilityMessage(
@@ -85,18 +102,20 @@ const PersonalityQuiz = () => {
     );
   };
 
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
+  const compatibilityMessage = (score) => {
+    if (score >= 9) return "Highly Compatible";
+    if (score >= 6) return "Compatible";
+    if (score >= 3) return "Neutral";
+    return "Not Compatible";
   };
 
-  const backToHomeStyle = {
-    position: "absolute",
-    top: "10px",
-    left: "10px",
+  const questionContainerStyle = {
+    backgroundColor: "#f9f9f9",
+    padding: "10px",
+    borderRadius: "8px",
+    boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+    margin: "5px 0",
+    textAlign: "left",
   };
 
   const quizContainerStyle = {
@@ -108,14 +127,42 @@ const PersonalityQuiz = () => {
     borderRadius: "8px",
   };
 
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "auto",
+    padding: "20px",
+  };
+
+  if (showPreview) {
+    return (
+      <div style={containerStyle}>
+        {/* Display user's choices here */}
+        <div style={quizContainerStyle}>
+          {questions.map((q, index) => (
+            <div key={index} style={questionContainerStyle}>
+              <p>{q.question}</p>
+              <p>Selected: {answers[q.question]}</p>
+            </div>
+          ))}
+        </div>
+        <button
+          style={{ backgroundColor: "green", color: "white" }}
+          onClick={handleFinalSubmit}
+        >
+          Confirm and Submit
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div style={containerStyle}>
-      
-
-      {/* Quiz */}
       <div style={quizContainerStyle}>
         {questions.map((q, index) => (
-          <div key={index}>
+          <div key={index} style={questionContainerStyle}>
             <p>{q.question}</p>
             {q.options.map((option, optIndex) => (
               <label key={optIndex}>
@@ -131,7 +178,7 @@ const PersonalityQuiz = () => {
           </div>
         ))}
         <button
-          style={{ backgroundColor: "blue", color: "white" }}
+          style={{ backgroundColor: "green", color: "white" }}
           onClick={handleSubmit}
         >
           Submit

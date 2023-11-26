@@ -80,7 +80,6 @@ const PropertyDetailPage = () => {
         <div className="property-details">
           <h3>Address</h3>
           <p>1234 Elm Street, Springfield, IL</p>
-          {/* ... other property details ... */}
         </div>
 
         {/* Cost calculator */}
