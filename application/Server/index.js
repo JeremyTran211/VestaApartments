@@ -9,7 +9,9 @@ const searchRouter = require("./routes/search");
 const screeningRouter = require("./routes/screening");
 const loginRouter = require("./routes/login");
 const socialMediaAPI = require("./routes/socialMediaAPI");
-const accountType = require("./routes/accountType");
+const accountTypeAPI = require("./routes/accountTypeAPI");
+const phoneNumberAPI = require("./routes/phoneNumberAPI");
+const locationListingAPI = require("./routes/locationListingAPI");
 
 const numberVerificationRouter = require("./routes/number_verification");
 const postRouter = require("./routes/post");
@@ -39,7 +41,9 @@ app.use('/login', loginRouter);
 app.use('/number_verification' , numberVerificationRouter);
 app.use("/post", postRouter);
 app.use("/socialMediaAPI", socialMediaAPI);
-app.use("/accountType", accountType);
+app.use("/accountTypeAPI", accountTypeAPI);
+app.use("/phoneNumberAPI", phoneNumberAPI);
+app.use("/locationListingAPI", locationListingAPI);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
