@@ -36,9 +36,6 @@ const GroupsPage = () => {
 
   return (
     <div class="container-fluid-text-center">
-      <Link to="/">
-        <button class="button-35">BACK</button>
-      </Link>
       <SingleGroup />
       <SingleGroup />
       <SingleGroup />

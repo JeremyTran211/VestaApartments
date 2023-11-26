@@ -5,42 +5,80 @@ const PersonalityQuiz = () => {
 
   const questions = [
     {
-      question: "Are you a morning person or night owl?",
+      question: "What time do you go to bed on weeknights?",
       options: [
-        { answer: "Morning Person", score: 1 },
-        { answer: "Night Owl", score: 2 },
+        { answer: "10 PM or earlier", score: 1 },
+        { answer: "Between 10 PM and Midnight", score: 2 },
+        { answer: "Around Midnight", score: 3 },
+        { answer: "2 AM or later", score: 4 },
       ],
     },
     {
-      question: "Do you smoke or vape?",
+      question: "Where do you typically do homework?",
+      options: [
+        { answer: "At my desk", score: 1 },
+        { answer: "In the library", score: 2 },
+        { answer: "In a study lounge or similar space", score: 3 },
+        { answer: "I don’t really do homework.", score: 4 },
+      ],
+    },
+    {
+      question: "Do you smoke weed?",
       options: [
         { answer: "Yes", score: -1 },
         { answer: "No", score: 1 },
+        { answer: "Sometimes", score: 0 },
       ],
     },
     {
-      question: "What is your worst habit?",
+      question: "Do you smoke weed cigarettes?",
       options: [
-        { answer: "Procrastinating", score: -1 },
-        { answer: "Biting nails", score: -1 },
-        { answer: "Others", score: 0 },
+        { answer: "Yes", score: 1 },
+        { answer: "No", score: 2 },
+        { answer: "Sometimes", score: 1 },
+
       ],
     },
     {
-      question: "What are your primary hobbies?",
+      question: "Do you drink alcohol?",
       options: [
-        { answer: "Reading", score: 1 },
-        { answer: "Sports", score: 2 },
-        { answer: "Music", score: 1 },
-        { answer: "Others", score: 0 },
+        { answer: "Yes", score: 2 },
+        { answer: "No", score: 1 },
+        { answer: "Sometimes", score: -1 },
       ],
     },
     {
-      question: "How clean do you consider yourself?",
+      question: "How would you describe your personality?",
       options: [
-        { answer: "Very clean", score: 2 },
-        { answer: "Average", score: 1 },
-        { answer: "Not so clean", score: -1 },
+        { answer: "Introvert", score: 1 },
+        { answer: "Extrovert", score: 2 },
+        { answer: "Ambivert", score: 1.5 },
+      ],
+    },
+
+    //tesing questions
+    {
+      question: "Do you drink alcohol?",
+      options: [
+        { answer: "Yes", score: 2 },
+        { answer: "No", score: 1 },
+        { answer: "Sometimes", score: -1 },
+      ],
+    },
+    {
+      question: "How would you describe your personality?",
+      options: [
+        { answer: "Introvert", score: 1 },
+        { answer: "Extrovert", score: 2 },
+        { answer: "Ambivert", score: 1.5 },
+      ],
+    },
+    {
+      question: "Do you drink alcohol?",
+      options: [
+        { answer: "Yes", score: 2 },
+        { answer: "No", score: 1 },
+        { answer: "Sometimes", score: -1 },
       ],
     },
     {
@@ -100,37 +138,41 @@ const PersonalityQuiz = () => {
     flexDirection: "column",
     gap: "20px",
     border: "1px solid black",
-    padding: "20px",
     borderRadius: "8px",
+    maxHeight: '80%',
+    overflow: "auto",
   };
-
+  const quizItemsStyle = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    padding: "20px",
+    overflow: "auto",
+  };
   return (
     <div style={containerStyle}>
-      {/* Back to Home button */}
-      <div style={backToHomeStyle}>
-        <button style={{ backgroundColor: "blue", color: "white" }}>
-          Back to Home
-        </button>
-      </div>
+
 
       {/* Quiz */}
       <div style={quizContainerStyle}>
-        {questions.map((q, index) => (
-          <div key={index}>
-            <p>{q.question}</p>
-            {q.options.map((option, optIndex) => (
-              <label key={optIndex}>
-                <input
-                  type="radio"
-                  name={q.question}
-                  value={option.score}
-                  onChange={() => handleAnswer(q.question, option)}
-                />
-                {option.answer}
-              </label>
-            ))}
-          </div>
-        ))}
+        <div style={quizItemsStyle} >
+          {questions.map((q, index) => (
+            <div key={index}>
+              <p>{q.question}</p>
+              {q.options.map((option, optIndex) => (
+                <label key={optIndex}>
+                  <input
+                    type="radio"
+                    name={q.question}
+                    value={option.score}
+                    onChange={() => handleAnswer(q.question, option)}
+                  />
+                  {option.answer}
+                </label>
+              ))}
+            </div>
+          ))}
+        </div>
         <button
           style={{ backgroundColor: "blue", color: "white" }}
           onClick={handleSubmit}

@@ -11,26 +11,28 @@ import MozhganAhsant from "./Pages/About/MozhganAhsant";
 import IvanA from "./Pages/About/IvanA";
 
 //Main Imports
-import MainPage from "./Pages/MainPage/MainPage";
-import LoginPage from "./Pages/UserAccount/Login.jsx";
+import Main from "./Pages/MainPage/MainPage";
+import Login from "./Pages/UserAccount/Login.jsx";
 import VerificationTierTwo from "./Pages/UserAccount/VerificationTierTwo.jsx";
-import VerificationPage from "./Pages/UserAccount/VerificationPage.jsx";
+import Verification from "./Pages/UserAccount/VerificationPage.jsx";
 import Register from "./Pages/UserAccount/Register";
-import ForgotPasswordPage from "./Pages/UserAccount/ForgotPassword.jsx"
-import ResetPasswordPage from "./Pages/UserAccount/ResetPassword.jsx";
-import ListingsPage from "./Pages/ListingsPages/ApartmentListing.jsx";
-import SocialPage from "./Pages/SocialPage/SocialPage";
+import ForgotPassword from "./Pages/UserAccount/ForgotPassword.jsx"
+import ResetPassword from "./Pages/UserAccount/ResetPassword.jsx";
+import Listings from "./Pages/ListingsPages/ApartmentListing.jsx";
+import Social from "./Pages/SocialPage/SocialPage";
 import ViewListing from "./Pages/ListingsPages/PropertyListing.jsx";
+import EditProperties from "./Pages/editProperies/EditProperties.jsx";
 
 //Social Pages
-import NotificationsPage from "./Pages/SocialPage/Notifications/Notifications.jsx";
+import Notifications from "./Pages/SocialPage/Notifications/Notifications.jsx";
 import ViewProfile from "./Pages/SocialPage/ProfilePage/ViewProfile";
-import EditProfile from "./Pages/SocialPage/ProfilePage/EditProfile";
-import GroupPage from "./Pages/SocialPage/GroupsPage/GroupsPage.jsx";
+import UserProfile from "./Pages/SocialPage/ProfilePage/UserProfile";
+import EditProfile from "./Pages/SocialPage/ProfilePage/EditProfile.jsx"
+import Groups from "./Pages/SocialPage/GroupsPage/GroupsPage.jsx";
 import PersonalityTest from "./Pages/SocialPage/PersonalityTest/PersonalityTest.jsx";
-import MessagesPage from "./Pages/SocialPage/Messages/Messages.jsx";
+import Messages from "./Pages/SocialPage/Messages/Messages.jsx";
 import EditListing from "./Pages/SocialPage/EditListing/EditListing.jsx";
-import BookmarksPage from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
+import Bookmarks from "./Pages/SocialPage/Bookmarks/BookmarksPage.jsx";
 
 //Under Construction
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
@@ -45,40 +47,36 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-   
-        {/* Fix scrollability on height? for some reason its not showing everything*/}
         <Routes>
-          {/* Main Pages */}
-          <Route path="/" element={<MainPage />} /> {/* Maybe put stock photo in title and search container put a div that holds some stock photo, maybe sharper edges on container(not improtant) */}
-          <Route path="/login" element={<LoginPage />} />
+          {/* NavBar Main Pages */}
+          <Route path="/" element={<Main />} /> 
+          <Route path="/social" element={<Social />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/listings" element={<Listings />} />
+
+          {/* User Account  */}
           <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verification-tier-two" element={<VerificationTierTwo/>} />
-          <Route path="/verification-page" element={<VerificationPage/>} />
-          <Route path="/listings" element={<ListingsPage />} />{" "}
-          {/* Needs fix on back to home button, fix view listings buttons, add map(important) */}
-          <Route path="/listing-details" element={<ViewListing />} />{" "}
-          {/* Needs fix on back to home button and many other buttons not in space properly. squares are funky(important)*/}
+          <Route path="/verification" element={<Verification/>} />
+          
           {/* Social Pages */}
-          <Route path="/social" element={<SocialPage />} />
-          {/* Not done at all added left side links, needs recentering, sample posts, small messages box right side (important)*/}
-          <Route path="/view-profile" element={<ViewProfile />} />{" "}
-          {/* Same as edit profile */}
-          <Route path="/personality-test" element={<PersonalityTest />} />{" "}
-          {/* Fix back to home button, maybe make the container better, we can figure out questions at a different time*/}
-          <Route path="/edit-profile" element={<EditProfile />} />{" "}
-          {/* Center personality test button , make title bigger?(not super important) */}
-          <Route path="/group-page" element={<GroupPage />} />
-          {/* Not done at all (important)*/}
-          <Route path="/messages" element={<MessagesPage />} />{" "}
-          {/* search bar needs a button(not important)*/}
-          <Route path="/notifications" element={<NotificationsPage />} />
-          {/* fix FA boxes and view a tag(not important now)*/}
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/view-profile" element={<ViewProfile />} />
+          <Route path="/edit-profile" element={<EditProfile/>}/>
+          <Route path="/personality-test" element={<PersonalityTest />} />
+          
+          <Route path="/groups" element={<Groups />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/messages" element={<Messages />} />
+
+          {/* Listings */}
+          <Route path="/listing-details" element={<ViewListing />} />
           <Route path="/edit-listing" element={<EditListing />} />
-          {/* Needs fix on back to home button (important)*/}
-          <Route path="/bookmarks" element={<BookmarksPage />} />
-          {/* Not done at all(important) */}
+          <Route path="/edit-properties" element={<EditProperties />} />
+          
           {/* About Pages */}
           <Route path="/team-info" element={<TeamInfo />} />
           <Route path="/jeremy-tran" element={<JeremyTran />} />
@@ -87,6 +85,7 @@ function App() {
           <Route path="/aman-khera" element={<AmanKhera />} />
           <Route path="/mozhgan-ahsant" element={<MozhganAhsant />} />
           <Route path="/ivan-ayala-brito" element={<IvanA />} />
+
           {/* Under Construction */}
           <Route path="/under-construction" element={<UnderConstruction />} />
           <Route path="/testing" element={<Testing />} />

@@ -1,11 +1,12 @@
 .flex-container {
     display: flex;
-    background-color: rgb(62, 69, 77);
+    
+    
   }
 
   .flex-container > div {
     background-color: #f1f1f1;
-    margin: 10px;
+    margin: 50px;
     padding: 20px;
     font-size: 30px;
   }
@@ -95,4 +96,8 @@
 
   .tier-three-button-container {
     margin-top: 10px;
+  }
+
+  .forgot_password {
+    color:#000000
   }

@@ -1,20 +1,21 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 
 const editedPropertiesData = [
   {
     id: 1,
     image: "https://via.placeholder.com/150?text=The+Cottage.png",
-    title: "The Cottage",
+    title: "Apartments",
     address: "123 Maple Drive, Lakeview",
     price: "$1,500/Month",
     beds: 4,
     baths: 1.5,
-    status: "Sold",
+    status: "Hidden",
   },
   {
     id: 2,
     image: "https://via.placeholder.com/150?text=Orchard+Valley.png",
-    title: "Orchard Valley",
+    title: "Apartments",
     address: "456 Oak Lane, Rivertown",
     price: "$700/Month",
     beds: 1,
@@ -24,7 +25,7 @@ const editedPropertiesData = [
   {
     id: 3,
     image: "https://via.placeholder.com/150?text=The+White+House.png",
-    title: "The White House",
+    title: "Condo",
     address: "789 Pine Street, Hilltop",
     price: "$1,000/Month",
     beds: 2,
@@ -34,7 +35,7 @@ const editedPropertiesData = [
   {
     id: 4,
     image: "https://via.placeholder.com/150?text=The+Old+Post+Office.png",
-    title: "The Old Post Office",
+    title: "Family Home",
     address: "321 Birch Road, Oldtown",
     price: "$1,200/Month",
     beds: 1,
@@ -44,7 +45,7 @@ const editedPropertiesData = [
   {
     id: 5,
     image: "https://via.placeholder.com/150?text=The+Nook.png",
-    title: "The Nook",
+    title: "Shared Home",
     address: "654 Cedar Ave, Westwood",
     price: "$1,115/Month",
     beds: 3,
@@ -62,7 +63,8 @@ const EditedPropertiesPage = () => {
 
   const styles = {
     bookmarkPage: {
-      width: "100%",
+      width: "90%",
+      margin: "0 auto", 
       padding: "20px",
       backgroundColor: "#f5f5f5",
     },
@@ -160,7 +162,6 @@ const EditedPropertiesPage = () => {
 
   return (
     <div style={styles.bookmarkPage}>
-      <button style={styles.backToSocialButton}>Back to Social</button>
       <h1 style={styles.header}>Properties</h1>
       <table style={styles.table}>
         <thead>
@@ -200,7 +201,7 @@ const EditedPropertiesPage = () => {
               <td style={styles.td}>{property.baths}</td>
               <td style={styles.td}>{property.status}</td>
               <td style={styles.td}>
-                <button style={styles.viewButton}>Edit Property</button>
+                <Link to="/edit-listing"><button style={styles.viewButton}>Edit Property</button></Link>
               </td>
             </tr>
           ))}

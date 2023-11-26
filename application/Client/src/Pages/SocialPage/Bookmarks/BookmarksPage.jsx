@@ -9,9 +9,6 @@ const BookmarksPage = () => {
 
   return (
     <div class="container-fluid-text-center">
-      <Link to="/">
-        <button class="button-35">BACK</button>
-      </Link>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
           <div class="new-message-box">

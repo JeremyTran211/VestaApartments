@@ -47,7 +47,7 @@ const SingleListing = ({
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
         <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          ${minRent} - ${maxRent}/month
+          ${minRent} - ${maxRent}/monthcd
         </div>
         <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
         <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
@@ -55,7 +55,7 @@ const SingleListing = ({
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <button
+        <Link to="/listing-details"><button
           style={{
             padding: "4px 8px",
             fontSize: "0.85em",
@@ -66,8 +66,8 @@ const SingleListing = ({
             cursor: "pointer",
           }}
         >
-          <Link to="/listing-details">View Listing</Link>
-        </button>
+          View Listing
+        </button></Link>
       </div>
     </div>
   );
@@ -90,7 +90,15 @@ const ApartmentListing = () => {
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
-      <div style={{ width: "60%", borderRight: "1px solid #ccc", top: "40px" }}>
+      <div
+        style={{
+          width: "60%",
+          position: "fixed", // Fixed position to keep it static
+          top: "70px",
+          bottom: 0,
+          borderRight: "1px solid #ccc",
+        }}
+      >
         {/* Placeholder for the map */}
         <div
           style={{
@@ -107,18 +115,16 @@ const ApartmentListing = () => {
       </div>
 
       {/* Listings Container */}
-      <div style={{ width: "50%", overflowY: "scroll" }}>
-        {/* Back to Home Button */}
-        <button
-          style={{
-            ...buttonStyle,
-            margin: "10px",
-            padding: "4px 8px",
-            fontSize: "0.85em",
-          }}
-        >
-          <Link to="/">Back to Home</Link>
-        </button>
+      <div
+        className="listing-container"
+        style={{
+          width: "50%",
+          marginLeft: "60%",
+          overflowY: "auto",
+        }}
+      >
+
+
 
         {/* Filter and Sort Section */}
         <div
@@ -133,13 +139,13 @@ const ApartmentListing = () => {
         >
           {/* Rent Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Rent:</strong>
+            <strong style={{ fontSize: "0.70em" }}>Price:</strong>
             <input
               value={filter.minRent}
               onChange={(e) =>
                 setFilter({ ...filter, minRent: e.target.value })
               }
-              placeholder="Min Rent"
+              placeholder="Minimum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
             -
@@ -148,7 +154,7 @@ const ApartmentListing = () => {
               onChange={(e) =>
                 setFilter({ ...filter, maxRent: e.target.value })
               }
-              placeholder="Max Rent"
+              placeholder="Maximum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
           </div>
@@ -156,27 +162,41 @@ const ApartmentListing = () => {
           {/* Bedroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
-            <input
+           
+            <select
               value={filter.bedrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bedrooms: e.target.value })
-              }
-              placeholder="Beds"
-              style={{ fontSize: "0.85em", width: "50px" }}
-            />
+              onChange={e => setFilter({ ...filter, bedrooms: e.target.value })}
+              style={{ fontSize: "0.85em", width: "80px" }}
+
+            >
+
+              <option value="">Select</option>
+              <option value="1 Bedroom">1 Bedroom</option>
+              <option value="2 Bedrooms" >2 Bedrooms</option>
+              <option value="3 Bedrooms" >3 Bedrooms</option>
+              <option value="4 Bedrooms" >4 Bedrooms</option>
+              <option value="5 Bedrooms" >5 Bedrooms</option>
+
+            </select>
           </div>
 
           {/* Bathroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
-            <input
+
+            <select
               value={filter.bathrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bathrooms: e.target.value })
-              }
-              placeholder="Baths"
-              style={{ fontSize: "0.85em", width: "60px" }}
-            />
+              onChange={e => setFilter({ ...filter, bathrooms: e.target.value })}
+              style={{ fontSize: "0.85em", width: "80px" }}
+
+            >
+              <option value="">Select</option>
+              <option value="1 Bathroom">1 Bathroom</option>
+              <option value="2 Bathrooms" >2 Bathrooms</option>
+              <option value="3 Bathrooms" >3 Bathrooms</option>
+              <option value="4 Bathrooms" >4 Bathrooms</option>
+              <option value="5 Bathrooms" >5 Bathrooms</option>
+            </select>
           </div>
 
           {/* Sort Section for the Listings */}
@@ -190,8 +210,7 @@ const ApartmentListing = () => {
               <option value="">Select</option>
               <option value="lowHigh">Low to High</option>
               <option value="highLow">High to Low</option>
-              <option value="video">Video</option>
-              <option value="3DTour">3D Tour</option>
+
             </select>
           </div>
 

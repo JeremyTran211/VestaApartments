@@ -29,9 +29,9 @@ const EditApartmentListing = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     const allFieldsFilled = Object.values(formData).every(
       (field) => field.trim() !== ""
     );
@@ -39,48 +39,8 @@ const EditApartmentListing = () => {
       alert("Please fill in all the fields.");
       return;
     }
-  /*
-    const formDataToSend = new FormData();
-    images.forEach((image) => {
-      formDataToSend.append('images', image);
-    });
-  
-    Object.keys(formData).forEach(key => {
-      formDataToSend.append(key, formData[key]);
-    });*/
-        console.log('Street:', formData.street);
-        console.log('Description:', formData.description);
-        console.log('Bed:', formData.bed);
-        console.log('Bath:', formData.bath);
-        console.log('Square Feet:', formData.squareFeet);
-        console.log('Furnished:', formData.furnished);
-        console.log('Pet Policy:', formData.petPolicy);
-        console.log('Neighborhood:', formData.neighborhood);
-        console.log('Price:', formData.price);
-        
-    try {
-      const response = await fetch('/listings', {
-        method: 'POST',
-        // body: formDataToSend,
-        // token authnication here
-      });
-
-      const data = await response.json();
-      
-      if (data.success) {
-        
-        // Handle success
-        alert('Listing submitted successfully!');
-        // Redirect or clear form here if needed
-      } else {
-        // Handle errors
-        alert('Failed to submit listing.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
   };
-  
+
   // Styles
   const formStyle = {
     padding: "20px",
@@ -117,22 +77,22 @@ const EditApartmentListing = () => {
         margin: "0 auto",
       }}
     >
-      <button
-        style={{
-          ...buttonStyle,
-          position: "relative",
-          left: "-100px",
-          padding: "10px 20px",
-          zIndex: 999,
-        }}
-      >
-        <Link to="/">Back to Home</Link>
-      </button>
+      
+
       <div style={formStyle}>
         <form onSubmit={handleSubmit}>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
+            <input
+              type="text"
+              placeholder="Name your property"
+              value={formData.street}
+              onChange={(e) =>
+                setFormData({ ...formData, street: e.target.value })
+              }
+              style={inputStyle}
+            />
             <input
               type="text"
               placeholder="Street"
@@ -178,28 +138,7 @@ const EditApartmentListing = () => {
               }
               style={inputStyle}
             />
-
-            <select
-              value={formData.furnished}
-              onChange={(e) =>
-                setFormData({ ...formData, furnished: e.target.value })
-              }
-              style={inputStyle}
-            >
-              <option value="Furnished">Furnished</option>
-              <option value="Unfurnished">Unfurnished</option>
-            </select>
-            <select
-              value={formData.petPolicy}
-              onChange={(e) =>
-                setFormData({ ...formData, petPolicy: e.target.value })
-              }
-              style={inputStyle}
-            >
-              <option value="Pet">Pet</option>
-              <option value="No Pet">No Pet</option>
-            </select>
-
+            
             <textarea
               placeholder="Description"
               value={formData.description}
@@ -208,14 +147,7 @@ const EditApartmentListing = () => {
               }
               style={{ ...inputStyle, height: "100px" }}
             />
-            <textarea
-              placeholder="Neighborhood Description"
-              value={formData.neighborhood}
-              onChange={(e) =>
-                setFormData({ ...formData, neighborhood: e.target.value })
-              }
-              style={{ ...inputStyle, height: "100px" }}
-            />
+            
 
             <div
               style={{

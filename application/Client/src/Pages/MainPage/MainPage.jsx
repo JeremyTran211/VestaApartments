@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./MainPage.css";
 import { useState } from "react";
 import SVGComponent from "./Map";
+import SFPhoto from "./sanfrancisco.jpg";
 
 const MainPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -19,6 +20,8 @@ const MainPage = () => {
   return (
     <div className="MainPage">
       <main>
+        {/* <div class="photo-container"> */}
+          {/* <img src={SFPhoto}></img> */}
         <h1 class="title"> Off-Campus Living Made Simple in the San Francisco Area</h1>
         <div className="search-container">
           <input
@@ -31,6 +34,7 @@ const MainPage = () => {
             Search
           </button>
         </div>
+        {/* </div> */}
         <div class="map-container">
           <SVGComponent width="400" height="400" />
         </div>

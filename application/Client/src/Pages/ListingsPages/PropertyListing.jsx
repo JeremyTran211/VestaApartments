@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 
 const PropertyDetailPage = () => {
 
@@ -14,7 +14,7 @@ const PropertyDetailPage = () => {
   Property has no api call to gather listing info
   and no variable declariations for listing info 
    */
-  
+
   const percent = 11 * 0.3;
   async function calculator() {
     setCost(percent);
@@ -135,6 +135,7 @@ const PropertyDetailPage = () => {
       margin: "0 auto",
       border: "1px solid black",
       padding: "10px",
+      marginRight:"30px",
     },
     calculatorText: {
       fontSize: "18px",
@@ -153,6 +154,9 @@ const PropertyDetailPage = () => {
       fontWeight: "bold",
       color: "black",
     },
+    aboutSections:{
+      display:"flex",
+    }
     // ... other styles
   };
 
@@ -220,11 +224,11 @@ const PropertyDetailPage = () => {
           </p>
         </div>
 
-{/* Cost calculator or rent to income ratio */}
-<div style={styles.calculatorContainer}>
-            <h1 style={styles.calculatorHeader}>Cost Calculator</h1>
-            <p style={styles.calculatorText}>Rent per person = </p>
-            <p style={styles.calculatorValue}>{"$"+Math.round(percent)}</p>
+        {/* Cost calculator or rent to income ratio */}
+        <div style={styles.calculatorContainer}>
+          <h1 style={styles.calculatorHeader}>Cost Calculator</h1>
+          <p style={styles.calculatorText}>Rent per person = </p>
+          <p style={styles.calculatorValue}>{"$" + Math.round(percent)}</p>
         </div>
 
         {/* Contact Details */}
@@ -233,52 +237,52 @@ const PropertyDetailPage = () => {
           <button onClick={handleAlert} style={styles.contactButton}>
             Request Tour
           </button>
-          <button onClick={handleAlert} style={styles.contactButton}>
-            Friend Request
-          </button>
+
           <button onClick={handleAlert} style={styles.contactButton}>
             Bookmark
           </button>
         </div>
       </div>
 
-      {/* About Property Section */}
-      <div style={styles.aboutSection}>
-        <h3 style={styles.detailsHeader}>About Property</h3>
-        <p style={styles.detailsText}>
-          This beautiful 3-bedroom home, located in a prime residential area,
-          offers a perfect blend of comfort and convenience. The property
-          features hardwood flooring throughout, adding warmth and elegance to
-          the space. A modern kitchen equipped with state-of-the-art appliances
-          makes it ideal for those who love cooking. The spacious backyard
-          serves as a serene retreat for relaxation or a delightful space for
-          gatherings. The home's proximity to essential amenities like shopping
-          centers, parks, and top-rated schools makes it an excellent choice for
-          families. Efficient public transportation, including bus and train
-          services, is within walking distance, ensuring easy commuting.
-        </p>
-        <ul style={styles.detailsText}>
-          <li>Furnished/Unfurnished: Unfurnished</li>
-          <li>Pet Policy: No Pets</li>
-        </ul>
-      </div>
+      <div style={styles.aboutSections} >
+        {/* About Property Section */}
+        <div style={styles.aboutSection}>
+          <h3 style={styles.detailsHeader}>About Property</h3>
+          <p style={styles.detailsText}>
+            This beautiful 3-bedroom home, located in a prime residential area,
+            offers a perfect blend of comfort and convenience. The property
+            features hardwood flooring throughout, adding warmth and elegance to
+            the space. A modern kitchen equipped with state-of-the-art appliances
+            makes it ideal for those who love cooking. The spacious backyard
+            serves as a serene retreat for relaxation or a delightful space for
+            gatherings. The home's proximity to essential amenities like shopping
+            centers, parks, and top-rated schools makes it an excellent choice for
+            families. Efficient public transportation, including bus and train
+            services, is within walking distance, ensuring easy commuting.
+          </p>
+          <ul style={styles.detailsText}>
+            <li>Furnished/Unfurnished: Unfurnished</li>
+            <li>Pet Policy: No Pets</li>
+          </ul>
+        </div>
 
-      {/* About Landlord Section */}
-      <div style={styles.aboutSection}>
-        <h3 style={styles.detailsHeader}>About Landlord</h3>
-        <p style={styles.detailsText}>
-          John Doe has been a dedicated property owner for over a decade, known
-          for his attention to detail and commitment to maintaining high-quality
-          living standards. With a background in architecture, John brings a
-          unique perspective to property management, ensuring that each home is
-          not only aesthetically pleasing but also functional and comfortable.
-          An avid community supporter, he actively participates in local events
-          and initiatives to improve the neighborhood. His hobbies include
-          gardening, which is evident in the well-kept landscapes of his
-          properties, biking along the city's scenic routes, and hiking in the
-          nearby mountains. John prides himself on being approachable and
-          responsive, always available to address tenants' needs and concerns.
-        </p>
+        {/* About Landlord Section */}
+        <div style={styles.aboutSection}>
+          <h3 style={styles.detailsHeader}>About Landlord</h3>
+          <p style={styles.detailsText}>
+            John Doe has been a dedicated property owner for over a decade, known
+            for his attention to detail and commitment to maintaining high-quality
+            living standards. With a background in architecture, John brings a
+            unique perspective to property management, ensuring that each home is
+            not only aesthetically pleasing but also functional and comfortable.
+            An avid community supporter, he actively participates in local events
+            and initiatives to improve the neighborhood. His hobbies include
+            gardening, which is evident in the well-kept landscapes of his
+            properties, biking along the city's scenic routes, and hiking in the
+            nearby mountains. John prides himself on being approachable and
+            responsive, always available to address tenants' needs and concerns.
+          </p>
+        </div>
       </div>
     </div>
   );
