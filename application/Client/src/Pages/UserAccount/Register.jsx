@@ -146,10 +146,7 @@ const Testing = () => {
                 Sign Up
               </button>
             </form>
-            {/* WHy is clear button needed / wanted */}
-            <button class="form__clear" onClick={handleclear}>
-              Clear
-            </button>
+            
             <div class="form-container__line-divider"></div>
             <div class="form-container__links">
               <Link to="/login" class="form-container__link">
