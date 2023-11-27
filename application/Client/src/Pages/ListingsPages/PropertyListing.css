@@ -109,7 +109,9 @@
   box-shadow: 0 9px #999;
   cursor: pointer;
 }
-
+.abouts-section{
+  display:flex;
+}
 .about-section {
   margin-top: 40px;
   padding: 20px;
@@ -121,6 +123,7 @@
   margin: 0 auto;
   border: 1px solid black;
   padding: 10px;
+  margin-right:30px;
 }
 
 .calculator-text,
@@ -140,4 +143,8 @@
 
 .calculator-value {
   font-weight: bold;
+}
+
+.address-section > p{
+margin:0px 20px;
 }

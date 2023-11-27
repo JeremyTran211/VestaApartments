@@ -53,14 +53,17 @@ const PropertyDetailPage = () => {
           {[...Array(totalImages)].map((_, i) => (
             <div
               key={i}
-              className={`image-section${
-                Math.ceil((i + 1) / imagesPerSet) === imageSet ? "" : " hidden"
-              }`}
+              className={`image-section${Math.ceil((i + 1) / imagesPerSet) === imageSet ? "" : " hidden"
+                }`}
             >
-              <img
-                src={`path/to/image${i + 1}.jpg`} // Replace with actual image paths
-                alt={`Property ${i + 1}`}
-              />
+              <div className="address-section" >
+                <img
+                  src={`https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`} // Replace with actual image paths
+                  alt={`Property ${i + 1}`}
+                />
+                <p> 456 Oak Avenue <br />
+                  San Francisco, CA 94110 </p>
+              </div>
             </div>
           ))}
 
@@ -100,43 +103,45 @@ const PropertyDetailPage = () => {
         </div>
       </div>
 
-      {/* About Property Section */}
-      <div className="about-section">
-        <h3>About Property</h3>
-        <p className="details-text">
-          This beautiful 3-bedroom home, located in a prime residential area,
-          offers a perfect blend of comfort and convenience. The property
-          features hardwood flooring throughout, adding warmth and elegance to
-          the space. A modern kitchen equipped with state-of-the-art appliances
-          makes it ideal for those who love cooking. The spacious backyard
-          serves as a serene retreat for relaxation or a delightful space for
-          gatherings. The home's proximity to essential amenities like shopping
-          centers, parks, and top-rated schools makes it an excellent choice for
-          families. Efficient public transportation, including bus and train
-          services, is within walking distance, ensuring easy commuting.
-        </p>
-        <ul className="details-text">
-          <li>Furnished/Unfurnished: Unfurnished</li>
-          <li>Pet Policy: No Pets</li>
-        </ul>
-      </div>
+      <div className='abouts-section'>
+        {/* About Property Section */}
+        <div className="about-section">
+          <h3>About Property</h3>
+          <p className="details-text">
+            This beautiful 3-bedroom home, located in a prime residential area,
+            offers a perfect blend of comfort and convenience. The property
+            features hardwood flooring throughout, adding warmth and elegance to
+            the space. A modern kitchen equipped with state-of-the-art appliances
+            makes it ideal for those who love cooking. The spacious backyard
+            serves as a serene retreat for relaxation or a delightful space for
+            gatherings. The home's proximity to essential amenities like shopping
+            centers, parks, and top-rated schools makes it an excellent choice for
+            families. Efficient public transportation, including bus and train
+            services, is within walking distance, ensuring easy commuting.
+          </p>
+          <ul className="details-text">
+            <li>Furnished/Unfurnished: Unfurnished</li>
+            <li>Pet Policy: No Pets</li>
+          </ul>
+        </div>
 
-      {/* About Landlord Section */}
-      <div className="about-section">
-        <h3>About Landlord</h3>
-        <p className="details-text">
-          John Doe has been a dedicated property owner for over a decade, known
-          for his attention to detail and commitment to maintaining high-quality
-          living standards. With a background in architecture, John brings a
-          unique perspective to property management, ensuring that each home is
-          not only aesthetically pleasing but also functional and comfortable.
-          An avid community supporter, he actively participates in local events
-          and initiatives to improve the neighborhood. His hobbies include
-          gardening, which is evident in the well-kept landscapes of his
-          properties, biking along the city's scenic routes, and hiking in the
-          nearby mountains. John prides himself on being approachable and
-          responsive, always available to address tenants' needs and concerns.
-        </p>
+        {/* About Landlord Section */}
+        <div className="about-section">
+          <h3>About Landlord</h3>
+          <p className="details-text">
+            John Doe has been a dedicated property owner for over a decade, known
+            for his attention to detail and commitment to maintaining high-quality
+            living standards. With a background in architecture, John brings a
+            unique perspective to property management, ensuring that each home is
+            not only aesthetically pleasing but also functional and comfortable.
+            An avid community supporter, he actively participates in local events
+            and initiatives to improve the neighborhood. His hobbies include
+            gardening, which is evident in the well-kept landscapes of his
+            properties, biking along the city's scenic routes, and hiking in the
+            nearby mountains. John prides himself on being approachable and
+            responsive, always available to address tenants' needs and concerns.
+          </p>
+        </div>
       </div>
     </div>
   );
