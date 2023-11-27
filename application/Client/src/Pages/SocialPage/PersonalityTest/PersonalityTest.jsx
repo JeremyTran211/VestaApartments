@@ -76,6 +76,15 @@ const PersonalityQuiz = () => {
         { answer: "More than a year", score: 2 },
       ],
     },
+    {
+      question: "What time do you go to bed on weeknights?",
+      options: [
+        { answer: "10 PM or earlier", score: 1 },
+        { answer: "Between 10 PM and Midnight", score: 2 },
+        { answer: "Around Midnight", score: 3 },
+        { answer: "2 AM or later", score: 4 },
+      ],
+    }
   ];
 
   const handleAnswer = (question, selectedOption) => {
