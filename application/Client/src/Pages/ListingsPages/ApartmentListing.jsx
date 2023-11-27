@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./ApartmentListing.css";
 
 const buttonStyle = {
   padding: "10px 20px",
@@ -27,7 +28,7 @@ const SingleListing = ({
     <div
       style={{
         display: "flex",
-        margin: "10px",
+        margin: "20px",
         border: "1px solid #ccc",
         padding: "10px",
         borderRadius: "5px",
@@ -55,19 +56,21 @@ const SingleListing = ({
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <Link to="/listing-details"><button
-          style={{
-            padding: "4px 8px",
-            fontSize: "0.85em",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          View Listing
-        </button></Link>
+        <Link to="/listing-details">
+          <button
+            style={{
+              padding: "4px 8px",
+              fontSize: "0.85em",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            View Listing
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -83,17 +86,16 @@ const ApartmentListing = () => {
 
   const [sort, setSort] = useState("");
 
-  const applyFilters = () => {
-    // Logic to apply filters goes here
-  };
+  const applyFilters = () => {};
 
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
       <div
         style={{
-          width: "60%",
-          position: "fixed", // Fixed position to keep it static
+          width: "100%",
+          height: "100%",
+          position: "relative",
           top: "70px",
           bottom: 0,
           borderRight: "1px solid #ccc",
@@ -103,7 +105,7 @@ const ApartmentListing = () => {
         <div
           style={{
             width: "100%",
-            height: "calc(100vh - 20px)",
+            height: "calc(100vh - 70px)",
             backgroundColor: "#e0e0e0",
             display: "flex",
             justifyContent: "center",
@@ -115,24 +117,14 @@ const ApartmentListing = () => {
       </div>
 
       {/* Listings Container */}
-      <div
-        className="listing-container"
-        style={{
-          width: "50%",
-          marginLeft: "60%",
-          overflowY: "auto",
-        }}
-      >
-
-
-
+      <div className="listing-container">
         {/* Filter and Sort Section */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            margin: "10px",
-            padding: "5px",
+            margin: "15px",
+            padding: "15px",
             border: "1px solid #ccc",
             borderRadius: "10px",
           }}
@@ -162,40 +154,36 @@ const ApartmentListing = () => {
           {/* Bedroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
-           
             <select
               value={filter.bedrooms}
-              onChange={e => setFilter({ ...filter, bedrooms: e.target.value })}
-              style={{ fontSize: "0.85em", width: "80px" }}
-
+              onChange={(e) =>
+                setFilter({ ...filter, bedrooms: e.target.value })
+              }
+              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
             >
-
-              <option value="">Select</option>
-              <option value="1 Bedroom">1 Bedroom</option>
-              <option value="2 Bedrooms" >2 Bedrooms</option>
-              <option value="3 Bedrooms" >3 Bedrooms</option>
-              <option value="4 Bedrooms" >4 Bedrooms</option>
-              <option value="5 Bedrooms" >5 Bedrooms</option>
-
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
             </select>
           </div>
 
           {/* Bathroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
-
             <select
               value={filter.bathrooms}
-              onChange={e => setFilter({ ...filter, bathrooms: e.target.value })}
-              style={{ fontSize: "0.85em", width: "80px" }}
-
+              onChange={(e) =>
+                setFilter({ ...filter, bathrooms: e.target.value })
+              }
+              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
             >
-              <option value="">Select</option>
-              <option value="1 Bathroom">1 Bathroom</option>
-              <option value="2 Bathrooms" >2 Bathrooms</option>
-              <option value="3 Bathrooms" >3 Bathrooms</option>
-              <option value="4 Bathrooms" >4 Bathrooms</option>
-              <option value="5 Bathrooms" >5 Bathrooms</option>
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
             </select>
           </div>
 
@@ -210,7 +198,6 @@ const ApartmentListing = () => {
               <option value="">Select</option>
               <option value="lowHigh">Low to High</option>
               <option value="highLow">High to Low</option>
-
             </select>
           </div>
 
@@ -223,9 +210,8 @@ const ApartmentListing = () => {
           </button>
         </div>
 
-        {/* Displaying the Listings */}
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartmentview1.jpg"
           address="123 Example St, Example City, EX 12345"
           minRent="800"
           maxRent="1000"
@@ -233,67 +219,39 @@ const ApartmentListing = () => {
           bathrooms="1"
         />
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartment2.jpg"
           address="123 Example St, Example City, EX 12345"
           price="$1,000/month"
           bedrooms="2"
           bathrooms="1"
         />
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartment3.jpg"
           address="456 Sample Rd, Sample City, SC 12345"
           price="$1,200/month"
           bedrooms="3"
           bathrooms="2"
         />
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartment4.jpg"
           address="789 Demo Blvd, Demo City, DM 12345"
           price="$900/month"
           bedrooms="1"
           bathrooms="1"
         />
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartment5.jpg"
           address="101 Another St, Some City, SC 67890"
           price="$1,500/month"
           bedrooms="3"
           bathrooms="2"
         />
         <SingleListing
-          imageUrl="https://via.placeholder.com/150"
+          imageUrl="./Apartment6.jpg"
           address="456 Sample Rd, Sample City, SC 12345"
           price="$1,200/month"
           bedrooms="3"
           bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="101 Another St, Some City, SC 67890"
-          price="$1,500/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
         />
       </div>
     </div>

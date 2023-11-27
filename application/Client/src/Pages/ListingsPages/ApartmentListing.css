@@ -16,7 +16,7 @@
   width: 60%;
   position: relative;
   border-right: 1px solid #ccc;
-  top: 70px; /* Move the map down to avoid overlapping with the header */
+  top: 70px;
   bottom: 0;
 }
 
@@ -24,7 +24,6 @@
   font-size: 16px;
 }
 
-/* Filter and Sort Section */
 .filter-sort-section {
   display: flex;
   align-items: center;
@@ -34,7 +33,6 @@
   border-radius: 10px;
 }
 
-/* Rent Filter */
 .rent-filter {
   margin-right: 5px;
 }
@@ -48,7 +46,6 @@
   width: 60px;
 }
 
-/* Bedroom Filter */
 .bedroom-filter {
   margin-right: 5px;
 }
@@ -62,7 +59,6 @@
   width: 50px;
 }
 
-/* Bathroom Filter */
 .bathroom-filter {
   margin-right: 5px;
 }
@@ -76,7 +72,6 @@
   width: 60px;
 }
 
-/* Sort Section for the Listings */
 .sort-section {
   margin-left: auto;
   margin-right: 10px;
@@ -90,7 +85,6 @@
   font-size: 0.85em;
 }
 
-/* Main Apply Button */
 .apply-button {
   padding: 4px 8px;
   font-size: 0.85em;
@@ -101,7 +95,6 @@
   cursor: pointer;
 }
 
-/* Displaying the Listings */
 .listing-container {
   width: 50%;
   overflow-y: auto;

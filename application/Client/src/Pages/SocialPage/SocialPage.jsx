@@ -33,6 +33,7 @@ function SocialPage() {
     }
     setTextInput(event.target.value);
   };
+
   return (
     <div className=" ">
       <h2>Social Page</h2>
@@ -40,7 +41,7 @@ function SocialPage() {
       {/* Add photo links button links and nav bar at the top */}
 
       <div class="container2">
-        <div class="static-container even-spacing " id="left-container">
+        <div class="static-container even-spacing" id="left-container">
           <Link to="/">
             <button class="square-button">Home</button>
           </Link>
@@ -90,6 +91,7 @@ function SocialPage() {
                   value={textInput}
                   onChange={handleInputChange}
                 ></textarea>
+               
               </div>
               <div
                 class="widget-post__options is--hidden"
@@ -104,7 +106,6 @@ function SocialPage() {
                     multiple
                   ></input>
                 </div>
-
                 <div class="post-stats-info">
                   <p>Max letters: 180</p>
                   <p>Letters : {textInput.length}</p>

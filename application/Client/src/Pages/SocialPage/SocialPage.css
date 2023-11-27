@@ -12,6 +12,7 @@ html {
   height: 100%;
 }
 
+
 .static-container {
   display: flex;
   flex-direction: column;
@@ -31,7 +32,7 @@ html {
 }
 
 #left-container {
-  left: 20px;
+  left: 5px;
 }
 
 #right-container {
@@ -197,6 +198,15 @@ ul {
   border-radius: 1.5em;
 }
 
+.post-actions__attachments {
+  display: inline-block;
+  width: 60%;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+
 .scroller::-webkit-scrollbar {
   display: none;
 }
@@ -238,12 +248,21 @@ ul {
   color: #666;
 }
 
+
 .like-icon-wrapper {
   display: flex;
   justify-content: end;
+
 }
 
 .like-icon {
   margin-left: 20px;
   cursor: pointer;
+}
+
+.single-post{
+  color:#000;
+}
+.post-stats-info {
+  color:#000;
 }
