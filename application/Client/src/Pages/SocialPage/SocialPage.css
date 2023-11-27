@@ -11,20 +11,27 @@ html {
   height: 100%;
 }
 
+
 .static-container {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  height: 100%;
   position: fixed;
   top: 80px;
-  bottom: 0;
+  bottom: 80px;
   width: calc(25.33% - 1rem);
   background-color: #f2f2f2;
   border: 1px solid #ddd;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.even-spacing {
+  justify-content: space-around;
 }
 
 #left-container {
-  left: 20px;
+  left: 5px;
 }
 
 #right-container {
@@ -158,7 +165,7 @@ ul {
 
 .post-actions__widget {
   display: inline-block;
-  width: 38%;
+  width: 100%;
   text-align: right;
 }
 .post-actions__publish {
@@ -169,6 +176,15 @@ ul {
 
   border-radius: 1.5em;
 }
+
+.post-actions__attachments {
+  display: inline-block;
+  width: 60%;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
 
 .scroller::-webkit-scrollbar {
   display: none;
@@ -205,4 +221,23 @@ ul {
 }
 :-moz-placeholder {
   color: #666;
+}
+
+
+.like-icon-wrapper {
+  display: flex;
+  justify-content: end;
+
+}
+
+.like-icon {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.single-post{
+  color:#000;
+}
+.post-stats-info {
+  color:#000;
 }
