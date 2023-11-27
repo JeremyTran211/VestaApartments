@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./PropertyListing.css";
 
 const PropertyDetailPage = () => {
@@ -61,8 +61,6 @@ const PropertyDetailPage = () => {
                   src={`https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`} // Replace with actual image paths
                   alt={`Property ${i + 1}`}
                 />
-                <p> 456 Oak Avenue <br />
-                  San Francisco, CA 94110 </p>
               </div>
             </div>
           ))}
@@ -76,7 +74,7 @@ const PropertyDetailPage = () => {
         </div>
 
         {/* Map placeholder */}
-        <div className="map-placeholder">Map Placeholder</div>
+        <div className="map-placeholder"  >Map Placeholder</div>
       </div>
 
       <div className="details-container">
