@@ -71,7 +71,7 @@ function LoginPage() {
             </div>
            
            
-            <button class="form__submit" onClick={getDetails}>
+            <button class="form__submit"type='submit' onClick={getDetails}>
               Send Email Request
             </button>
           </form>
