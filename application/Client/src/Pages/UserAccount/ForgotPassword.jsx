@@ -4,12 +4,6 @@ import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const styles={
-    ssendButton:{
-      background: "white",
-      color:"black",
-    }
-  }
   // State variables to store user input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,6 +20,7 @@ function LoginPage() {
           headers: {
               'Content-Type': 'application/json'
           },
+
           body: JSON.stringify({ email, password})
       });
 
@@ -75,7 +70,8 @@ function LoginPage() {
               <input class="form__input" placeholder="JoeIsCool@gmail.com" id="id1" />
             </div>
            
-            <button class="form__submit forgot_password "type='submit' onClick={getDetails}  >
+           
+            <button class="form__submit"type='submit' onClick={getDetails}>
               Send Email Request
             </button>
           </form>

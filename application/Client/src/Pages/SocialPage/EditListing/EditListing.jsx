@@ -43,7 +43,7 @@ const EditApartmentListing = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container1">
       <div className="form-center-container">
         <div className="form-style" style={{ textAlign: "relative" }}>
           <form onSubmit={handleSubmit}>
