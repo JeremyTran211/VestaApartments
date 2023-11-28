@@ -12,7 +12,8 @@ const socialMediaAPI = require("./routes/socialMediaAPI");
 const accountTypeAPI = require("./routes/accountTypeAPI");
 const phoneNumberAPI = require("./routes/phoneNumberAPI");
 const locationListingAPI = require("./routes/locationListingAPI");
-
+//testing for now
+const comments = require("./routes/comments");
 const numberVerificationRouter = require("./routes/number_verification");
 const postRouter = require("./routes/post");
 
@@ -44,7 +45,8 @@ app.use("/socialMediaAPI", socialMediaAPI);
 app.use("/accountTypeAPI", accountTypeAPI);
 app.use("/phoneNumberAPI", phoneNumberAPI);
 app.use("/locationListingAPI", locationListingAPI);
-
+//testing 
+app.use("/comments", comments);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
