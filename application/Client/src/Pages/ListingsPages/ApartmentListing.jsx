@@ -242,9 +242,9 @@ const applyFilters = () => {};
           <SingleListing
            key = {listing.Listing_ID}
            imageURL = {listing.Image_Path}
-           //address = listing={}
+           address = {listing.Address}
            price = {listing.Price}
-           bedrooms = {listing.Bedrooms}
+           bedrooms = {listing.Rooms}
            bathrooms = {listing.Bathrooms}
           />
         ))} 

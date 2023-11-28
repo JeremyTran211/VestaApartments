@@ -29,8 +29,10 @@ return {message};
 async function getListings(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    `SELECT * 
-    FROM Rental_Listing LIMIT ${offset},${config.listPerPage}`
+    `SELECT Rental_Listing.*, Location_Of_Rental_Listing.Address
+    FROM Rental_Listing 
+    INNER JOIN Location_Of_Rental_Listing ON Rental_Listing.Location_ID = Location_Of_Rental_Listing.Location_ID
+    LIMIT ${config.listPerPage};`
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};
