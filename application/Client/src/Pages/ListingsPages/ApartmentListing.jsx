@@ -1,4 +1,5 @@
 import React, { useState, Component } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ApartmentListing.css";
 
@@ -15,33 +16,43 @@ const buttonStyle = {
   color: "#fff",
   boxShadow: "0 4px #999",
 };
+
+
+
+const ApartmentListing = () => {
+  const [listings, setListings] = useState([]); 
+  const [filter, setFilter] = useState({
+    minRent: "",
+    maxRent: "",
+    bedrooms: "",
+    bathrooms: "",
+  });
+
+const [sort, setSort] = useState("");
+
+useEffect(() => {
+  getListings();
+}, []);
 // Function for getting the Listings data
 const getListings = async (e) => {
-  e.preventDefault();
-// function for making the API call to get Listings
-// const GetListings = async {
+  // function for making the API call to get Listings
+  try {
+    const response = await fetch("/listings", {
+      method: "GET",
+      headers: {
+      "Content-Type": "application/json",
+      }
       
-try {
-window.alert ("Calling to fetch Listings from API")
-// const [Listing, setListing] = useState("");
-const response = await fetch("/listings", {
-  method: "GET",
-  headers: {
-  "Content-Type": "application/json",
+    });
+    const data = await response.json();
+    console.log("Before: ", data);
+    setListings(data.data);
+    console.log(data);
+    } catch (error) {
+    console.log ("Error occured when fetching from API")
   }
-  //,body: JSON.stringify({ Listing }),
-});
 
-const data = await response.json();
-window.alert("API returned data length is: "+ JSON.stringify(data));
-// window.alert(data.message);
-
-} catch (error) {
-console.log ("Error occured when fetching from API")
-window.alert("Error when getting Rental Listings: " + error.message);
-}
-
-{/* END: For making the getListing API class from backened */}
+/* END: For making the getListing API class from backened */
 }
 const SingleListing = ({
   imageUrl,
@@ -94,7 +105,7 @@ const SingleListing = ({
               borderRadius: "5px",
               cursor: "pointer",
             }}
-            onClick={getListings}
+           // onClick={getListings}
           >
             View Listing
           </button>
@@ -104,17 +115,7 @@ const SingleListing = ({
   );
 };
 
-const ApartmentListing = () => {
-  const [filter, setFilter] = useState({
-    minRent: "",
-    maxRent: "",
-    bedrooms: "",
-    bathrooms: "",
-  });
-
-  const [sort, setSort] = useState("");
-
-  const applyFilters = () => {};
+const applyFilters = () => {};
 
   return (
     <div style={{ display: "flex" }}>
@@ -237,50 +238,16 @@ const ApartmentListing = () => {
             Apply
           </button>
         </div>
-
-        <SingleListing
-          imageUrl="./Apartmentview1.jpg"
-          address="123 Example St, Example City, EX 12345"
-          minRent="800"
-          maxRent="1000"
-          bedrooms="2"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="./Apartment2.jpg"
-          address="123 Example St, Example City, EX 12345"
-          price="$1,000/month"
-          bedrooms="2"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="./Apartment3.jpg"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="./Apartment4.jpg"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="./Apartment5.jpg"
-          address="101 Another St, Some City, SC 67890"
-          price="$1,500/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="./Apartment6.jpg"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
+          {Array.isArray(listings) && listings.map((listing) => (
+          <SingleListing
+           key = {listing.Listing_ID}
+           imageURL = {listing.Image_Path}
+           //address = listing={}
+           price = {listing.Price}
+           bedrooms = {listing.Bedrooms}
+           bathrooms = {listing.Bathrooms}
+          />
+        ))} 
       </div>
     </div>
   );
