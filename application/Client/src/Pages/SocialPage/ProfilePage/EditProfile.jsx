@@ -16,7 +16,7 @@ const EditProfile = () => {
     }
   };
   const status = "Pending";
-  const level = "Low" ;
+  const level = "Low";
   // Use state hook to store the driver's license number
   const [license, setLicense] = useState("");
 
@@ -47,14 +47,14 @@ const EditProfile = () => {
     setVisible(!visible);
   };
 
-  
+
   function getDetails() {
     var major = document.getElementById("major");
-    var year  = document.getElementById("year");
+    var year = document.getElementById("year");
     var about = document.getElementById("about");
-    var twitter  = document.getElementById("twitter");
+    var twitter = document.getElementById("twitter");
     var facebook = document.getElementById("facebook");
-    var instagram  = document.getElementById("instagram");
+    var instagram = document.getElementById("instagram");
     window.alert("Value = " + "'" + major.value + "'");
     window.alert("Value = " + "'" + year.value + "'");
     window.alert("Value = " + "'" + about.value + "'");
@@ -86,9 +86,7 @@ const EditProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card mt-3">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 class="mb-0">
@@ -140,7 +138,7 @@ const EditProfile = () => {
                     Instagram
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://instagram.com"><input placeholder="@Joeiscool" id="instagram"/></Link>
+                    <Link to="https://instagram.com"><input placeholder="@Joeiscool" id="instagram" /></Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -162,7 +160,7 @@ const EditProfile = () => {
                     Facebook
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://facebook.com"><input placeholder="@Joeiscool" id="facebook"/></Link>
+                    <Link to="https://facebook.com"><input placeholder="@Joeiscool" id="facebook" /></Link>
                   </span>
                 </li>
               </ul>
@@ -188,16 +186,16 @@ const EditProfile = () => {
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Major</h6>
-                    
+
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Computer Science" id="major"/> </div>
+                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Computer Science" id="major" /> </div>
                 </div>
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Year</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" id="year"/></div>
+                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" id="year" /></div>
                 </div>
                 <hr></hr>
                 <div class="row">
@@ -205,7 +203,7 @@ const EditProfile = () => {
                     <h6 class="mb-0">About</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input placeholder="E.G. Hello I am me" id="about" />
+                    <input placeholder="E.G. Hello I am me" id="about" />
                   </div>
                 </div>
                 <hr></hr>
@@ -222,40 +220,40 @@ const EditProfile = () => {
 
           <div class="col-sm-6">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body center-items">
                 <h6 class="d-flex align-items-center mb-3">
-                  
+
                   <i class="material-icons text-info mr-2"></i>You Haven't Taken
                   the Personality Test
                 </h6>
                 <div
+                  style={{
+                    margin: "20px",
+                    padding: "20px",
+                    border: "1px solid black",
+                    borderRadius: "10px",
+                    fontFamily: "Arial",
+                  }}
+                >
+                  <p
                     style={{
-                      margin: "20px",
-                      padding: "20px",
-                      border: "1px solid black",
-                      borderRadius: "10px",
-                      fontFamily: "Arial",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      color: status === "Passed" ? "green" : "red",
                     }}
                   >
-                    <p
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        color: status === "Passed" ? "green" : "red",
-                      }}
-                    >
-                      Background Check Status: {status}
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "16px",
-                        color: "blue",
-                      }}
-                    >
-                      Verification Level: {level}
-                    </p>
-                  </div>
-                <div class="button-holder">
+                    Background Check Status: {status}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "16px",
+                      color: "blue",
+                    }}
+                  >
+                    Verification Level: {level}
+                  </p>
+                </div>
+                <div class="button-holder center">
                   <Link to="/personality-test">
                     <button class="btn btn-outline-primary">
                       <a>Take Personality Test</a>
@@ -263,54 +261,54 @@ const EditProfile = () => {
                   </Link>
                 </div>
 
-                  <div>
+                <div>
+                  <button
+                    style={{
+                      // position: "absolute",
+                      top: "10px",
+                      right: "10px",
+                      width: "200px",
+                      height: "40px",
+                    }}
+                    onClick={handleClick}
+                  >
+                    Verification Form
+                  </button>
+                  <form
+                    style={{
+                      top: "60px",
+                      right: "10px",
+                      width: "300px",
+                      height: "200px",
+                      border: "1px solid black",
+                      borderRadius: "10px",
+                      backgroundColor: "white",
+                      display: visible ? "block" : "none",
+                    }}
+                    onSubmit={handleSubmit}
+                  >
+                    <p>Please enter your driver's license number:</p>
+                    <input
+                      type="text"
+                      value={license}
+                      onChange={handleChange}
+                      style={{
+                        margin: "20px",
+                        width: "150px",
+                        height: "20px",
+                      }}
+                    />
                     <button
+                      type="submit"
                       style={{
-                        // position: "absolute",
-                        top: "10px",
-                        right: "10px",
-                        width: "200px",
-                        height: "40px",
+                        margin: "20px",
+                        width: "100px",
                       }}
-                      onClick={handleClick}
                     >
-                      Verification Form
+                      Submit
                     </button>
-                    <form
-                      style={{
-                        top: "60px",
-                        right: "10px",
-                        width: "300px",
-                        height: "200px",
-                        border: "1px solid black",
-                        borderRadius: "10px",
-                        backgroundColor: "white",
-                        display: visible ? "block" : "none",
-                      }}
-                      onSubmit={handleSubmit}
-                    >
-                      <p>Please enter your driver's license number:</p>
-                      <input
-                        type="text"
-                        value={license}
-                        onChange={handleChange}
-                        style={{
-                          margin: "20px",
-                          width: "150px",
-                          height: "20px",
-                        }}
-                      />
-                      <button
-                        type="submit"
-                        style={{
-                          margin: "20px",
-                          width: "100px",
-                        }}
-                      >
-                        Submit
-                      </button>
-                    </form>
-                  </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
