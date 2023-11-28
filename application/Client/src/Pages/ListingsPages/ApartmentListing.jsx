@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import { Link } from "react-router-dom";
 import "./ApartmentListing.css";
 
@@ -15,7 +15,34 @@ const buttonStyle = {
   color: "#fff",
   boxShadow: "0 4px #999",
 };
+// Function for getting the Listings data
+const getListings = async (e) => {
+  e.preventDefault();
+// function for making the API call to get Listings
+// const GetListings = async {
+      
+try {
+window.alert ("Calling to fetch Listings from API")
+// const [Listing, setListing] = useState("");
+const response = await fetch("/listings", {
+  method: "GET",
+  headers: {
+  "Content-Type": "application/json",
+  }
+  //,body: JSON.stringify({ Listing }),
+});
 
+const data = await response.json();
+window.alert("API returned data length is: "+ JSON.stringify(data));
+// window.alert(data.message);
+
+} catch (error) {
+console.log ("Error occured when fetching from API")
+window.alert("Error when getting Rental Listings: " + error.message);
+}
+
+{/* END: For making the getListing API class from backened */}
+}
 const SingleListing = ({
   imageUrl,
   address,
@@ -67,6 +94,7 @@ const SingleListing = ({
               borderRadius: "5px",
               cursor: "pointer",
             }}
+            onClick={getListings}
           >
             View Listing
           </button>
