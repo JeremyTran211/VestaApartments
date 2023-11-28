@@ -33,6 +33,7 @@ const [sort, setSort] = useState("");
 useEffect(() => {
   getListings();
 }, []);
+
 // Function for getting the Listings data
 const getListings = async (e) => {
   // function for making the API call to get Listings
@@ -105,7 +106,7 @@ const SingleListing = ({
               borderRadius: "5px",
               cursor: "pointer",
             }}
-           // onClick={getListings}
+            // onClick={getListings}
           >
             View Listing
           </button>
@@ -115,7 +116,44 @@ const SingleListing = ({
   );
 };
 
-const applyFilters = () => {};
+  // http://localhost:3000/search?Rooms=1&Bathrooms=1&Price=12500&Property_Type=House
+  const applyFilters = async (e) => {
+    // Logic to apply filters goes here
+    e.preventDefault();
+// function for making the API call to get Listings
+// const GetListings = async {
+      
+try {
+  window.alert ("Calling to apply search based on filters: filter bedrooms value is"+ filter.bedrooms)
+// const [Listing, setListing] = useState("");
+  const bedrooms = filter.bedrooms;
+  const bathrooms = filter.bathrooms;
+  // const maxPrice = filter.maxRent;
+  const maxPrice = filter.maxRent;
+  const minPrice = filter.minRent;
+  const propertyType = "House";
+  const fetchURL = "/search?Rooms=" + bedrooms + "&Bathrooms=" + bathrooms + "&Min_Price=" + minPrice + "&Max_Price=" + maxPrice + "&Property_Type=" + propertyType;
+  window.alert ("Logging values for paramters in api calls "+ fetchURL)
+  const response = await fetch(fetchURL, {
+  method: "GET",
+  headers: {
+  "Content-Type": "application/json",
+  }
+  //,body: JSON.stringify({ Listing }),
+});
+
+const data = await response.json();
+  window.alert("API returned data length is: "+ JSON.stringify(data));
+  setListings(data.data);
+// window.alert(data.message);
+
+} catch (error) {
+  console.log ("Error occured when applying the search")
+  window.alert("Error when applying the search: " + error.message);
+}
+
+{/* END: For getting the Search API from backened */}
+  }
 
   return (
     <div style={{ display: "flex" }}>
@@ -234,6 +272,7 @@ const applyFilters = () => {};
           <button
             style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
             onClick={applyFilters}
+            
           >
             Apply
           </button>
