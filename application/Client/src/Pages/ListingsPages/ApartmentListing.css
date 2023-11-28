@@ -7,7 +7,6 @@
 
 .apartment-listing-container {
   display: flex;
-
   width: 100%;
   height: 100%;
 }
@@ -28,13 +27,17 @@
   display: flex;
   align-items: center;
   margin: 10px;
-  padding: 5px;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  flex-wrap: wrap;
 }
 
 .rent-filter {
   margin-right: 5px;
+  width: auto;
+  padding: 5px;
+  margin: 0 5px;
 }
 
 .rent-filter strong {
@@ -86,7 +89,7 @@
 }
 
 .apply-button {
-  padding: 4px 8px;
+  padding: 10px 20px;
   font-size: 0.85em;
   background-color: #4caf50;
   color: white;
