@@ -227,7 +227,6 @@ body {
 }
 
 
-
 /* Main Button */
 .button-35 {
     margin-top: 20px;
@@ -260,6 +259,9 @@ body {
 
 .button-35:hover {
   box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+a.btn-btn-sm{
+    text-decoration: none;
 }
 .btn-btn-sm{
     color: black; 

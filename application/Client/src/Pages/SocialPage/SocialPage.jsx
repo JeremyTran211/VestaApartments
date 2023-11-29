@@ -5,6 +5,8 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import NotificationEmbed from "./Notifications/Notifications.jsx";
 import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
 import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
+
+import NavigationEmbed from "./Navigation.jsx";
 const SinglePost = ({
   imageurl,
   content, 
@@ -89,33 +91,7 @@ function SocialPage() {
 
       <div class="container2">
         <div class="static-container even-spacing" id="left-container">
-          <Link to="/">
-            <button class="square-button">Home</button>
-          </Link>
-          <Link to="/listings">
-            <button class="square-button">View Listings</button>
-          </Link>
-          <Link to="/notifications">
-            <button class="square-button">Notifications</button>
-          </Link>
-          <Link to="/bookmarks">
-            <button class="square-button">Bookmarks</button>
-          </Link>
-          <Link to="/groups">
-            <button class="square-button">Groups</button>
-          </Link>
-          <Link to="/user-profile">
-            <button class="square-button">Edit Profile</button>
-          </Link>
-          <Link to="/edit-properties">
-            <button class="square-button">Edit Your Listings</button>
-          </Link>
-          <Link to="/messages">
-            <button class="square-button">Messages</button>
-          </Link>
-          <Link to="/verification">
-            <button class="square-button">Verification</button>
-          </Link>
+          <NavigationEmbed></NavigationEmbed>
         </div>
         <div class="scrollable-container" id="middle-container">
           <div class="widget-post" aria-labelledby="post-header-title">

@@ -25,10 +25,10 @@ const BookmarksPage = () => {
                   <p>
                     Click here to
                     {/* take to user page */}
-                    <a class="btn btn-sm" >
+                    
                       {" "}
-                      <Link to="/listing-details">view</Link>
-                    </a>
+                      <Link to="/listing-details"><a class="btn-btn-sm" >view</a></Link>
+                    
                   </p>
                 </div>
               </div>
