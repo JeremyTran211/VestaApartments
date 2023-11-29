@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SocialPage.css";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import NotificationEmbed from "./Notifications/Notifications.jsx"
+import NotificationEmbed from "./Notifications/Notifications.jsx";
+import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
+import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
 const SinglePost = ({
   imageurl,
   content, 
@@ -175,7 +177,9 @@ function SocialPage() {
           </div>
         </div>
         <div class="static-container even-spacing" id="right-container">
-          <NotificationEmbed></NotificationEmbed>
+          {/* <NotificationEmbed></NotificationEmbed> */}
+          {/* <GroupEmbed></GroupEmbed> */}
+            <BookMarksEmbed></BookMarksEmbed>
         </div>
       </div>
 
