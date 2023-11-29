@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 import "./ApartmentListing.css";
 
 const buttonStyle = {
@@ -20,6 +21,8 @@ const buttonStyle = {
 
 
 const ApartmentListing = () => {
+  const location = useLocation();
+  const { number } = location.state;
   const [listings, setListings] = useState([]); 
   const [filter, setFilter] = useState({
     minRent: "",
@@ -27,7 +30,7 @@ const ApartmentListing = () => {
     bedrooms: "",
     bathrooms: "",
   });
-
+console.log(number);
 const [sort, setSort] = useState("");
 
 useEffect(() => {

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./MainPage.css";
 import { useState } from "react";
 import SVGComponent from "./Map";
 import SFPhoto from "./sanfrancisco.jpg";
+import { useLocation } from 'react-router-dom';
 
 const MainPage = () => {
   const [searchInput, setSearchInput] = useState("");
