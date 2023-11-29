@@ -85,19 +85,19 @@ const getMapEmbed=(address)=>{
       </div>
 
       <div className="details-container">
-        <div className="property-details">
+        <div className="property-details card-box">
           <h3>Address</h3>
           <p>1234 Elm Street, Springfield, IL</p>
         </div>
 
         {/* Cost calculator */}
-        <div className="calculator-container">
+        <div className="calculator-container card-box">
           <h1>Cost Calculator</h1>
           <p className="calculator-text">Rent per person = </p>
           <p className="calculator-value">{"$" + Math.round(percent)}</p>
         </div>
 
-        <div className="contact-details">
+        <div className="contact-details card-box">
           <div>Phone Number: XXX-XXX-XXXX</div>
           <button onClick={handleAlert} className="contact-button">
             Request Tour
