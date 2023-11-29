@@ -91,6 +91,9 @@
     font-weight: 600;
     color: #777;
   }
+  .MainPage{
+      min-height: 100vh;
+  }
   
   @media (max-width: 600px) {
     .form-container {

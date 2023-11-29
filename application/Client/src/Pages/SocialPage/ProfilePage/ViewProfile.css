@@ -108,3 +108,8 @@ button {
   justify-content: center;
 
 }
+.center-items{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}

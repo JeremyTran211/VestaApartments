@@ -60,6 +60,7 @@ const EditedPropertiesPage = () => {
     useState(editedPropertiesData);
   const [selectedProperties, setSelectedProperties] = useState({});
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [showHideConfirmation, setShowHideConfirmation] = useState(false);
 
   const handleCheckboxChange = (id) => {
     setSelectedProperties((prevSelectedProperties) => ({
@@ -83,6 +84,26 @@ const EditedPropertiesPage = () => {
 
   const cancelDeletion = () => {
     setShowDeleteConfirmation(false);
+  };
+
+  const handleHideClick = () => {
+    setShowHideConfirmation(true);
+  };
+
+  const confirmHide = () => {
+    const newEditedProperties = editedProperties.map((property) => {
+      if (selectedProperties[property.id]) {
+        return { ...property, status: "Not Active" };
+      }
+      return property;
+    });
+    setEditedProperties(newEditedProperties);
+    setSelectedProperties({});
+    setShowHideConfirmation(false);
+  };
+
+  const cancelHide = () => {
+    setShowHideConfirmation(false);
   };
 
   return (
@@ -134,16 +155,30 @@ const EditedPropertiesPage = () => {
           ))}
         </tbody>
       </table>
-      {Object.values(selectedProperties).some((isSelected) => isSelected) && (
-        <button className="deleteButton" onClick={handleDeleteClick}>
-          Delete Listing
-        </button>
-      )}
+      <div className="actions">
+        {Object.values(selectedProperties).some((isSelected) => isSelected) && (
+          <>
+            <button className="deleteButton" onClick={handleDeleteClick}>
+              Delete Listing
+            </button>
+            <button className="hideButton" onClick={handleHideClick}>
+              Hide Listing
+            </button>
+          </>
+        )}
+      </div>
       {showDeleteConfirmation && (
         <div className="confirmationBox">
           <p>Are you sure you want to delete the selected listings?</p>
           <button onClick={confirmDeletion}>Confirm</button>
           <button onClick={cancelDeletion}>Cancel</button>
+        </div>
+      )}
+      {showHideConfirmation && (
+        <div className="confirmationBox">
+          <p>Are you sure you want to hide the selected listings?</p>
+          <button onClick={confirmHide}>Confirm</button>
+          <button onClick={cancelHide}>Cancel</button>
         </div>
       )}
     </div>

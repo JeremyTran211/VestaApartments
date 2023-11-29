@@ -25,6 +25,8 @@ const PropertyDetailPage = () => {
     alert("You clicked a feature that is not implemented in the backend");
   };
 
+
+
   // Image display logic
   const totalImages = 6; // Update this as per your number of images
   const imagesPerSet = 3; // Number of images per set
@@ -37,7 +39,9 @@ const PropertyDetailPage = () => {
   const handleNextImages = () => {
     setImageSet((prev) => Math.min(prev + 1, totalSets)); // Increase imageSet, maximum totalSets
   };
-
+const getMapEmbed=(address)=>{
+  return `https://www.google.com/maps?q=${address}&output=embed`
+}
   return (
     <div className="page-container">
       <div className="image-and-map-container">
@@ -74,7 +78,10 @@ const PropertyDetailPage = () => {
         </div>
 
         {/* Map placeholder */}
-        <div className="map-placeholder"  >Map Placeholder</div>
+        <div className="map-placeholder"  >
+          <iframe src={getMapEmbed("Union Square, San Francisco, CA")} width={300} height={300} >
+        </iframe>
+        </div>
       </div>
 
       <div className="details-container">

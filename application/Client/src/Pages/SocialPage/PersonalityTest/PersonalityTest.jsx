@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const PersonalityQuiz = () => {
   const [answers, setAnswers] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
   const [showPreview, setShowPreview] = useState(false);
 
   const questions = [
@@ -76,16 +77,15 @@ const PersonalityQuiz = () => {
         { answer: "More than a year", score: 2 },
       ],
     },
-    {
-      question: "What time do you go to bed on weeknights?",
-      options: [
-        { answer: "10 PM or earlier", score: 1 },
-        { answer: "Between 10 PM and Midnight", score: 2 },
-        { answer: "Around Midnight", score: 3 },
-        { answer: "2 AM or later", score: 4 },
-      ],
-    }
   ];
+
+  const questionsPerPage = 5;
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+  const currentQuestions = questions.slice(
+    indexOfFirstQuestion,
+    indexOfLastQuestion
+  );
 
   const handleAnswer = (question, selectedOption) => {
     setAnswers((prevState) => ({
@@ -118,6 +118,22 @@ const PersonalityQuiz = () => {
     return "Not Compatible";
   };
 
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevious = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const findAnswerText = (question, score) => {
+    const questionObj = questions.find((q) => q.question === question);
+    const optionObj = questionObj.options.find(
+      (option) => option.score === score
+    );
+    return optionObj ? optionObj.answer : "Not answered";
+  };
+
   const questionContainerStyle = {
     backgroundColor: "#f9f9f9",
     padding: "10px",
@@ -132,16 +148,8 @@ const PersonalityQuiz = () => {
     flexDirection: "column",
     gap: "20px",
     border: "1px solid black",
-    borderRadius: "8px",
-    maxHeight: '80%',
-    overflow: "auto",
-  };
-  const quizItemsStyle = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
     padding: "20px",
-    overflow: "auto",
+    borderRadius: "8px",
   };
 
   const containerStyle = {
@@ -156,21 +164,28 @@ const PersonalityQuiz = () => {
   if (showPreview) {
     return (
       <div style={containerStyle}>
-        {/* Display user's choices here */}
         <div style={quizContainerStyle}>
           {questions.map((q, index) => (
             <div key={index} style={questionContainerStyle}>
               <p>{q.question}</p>
-              <p>Selected: {answers[q.question]}</p>
+              <p>{findAnswerText(q.question, answers[q.question])}</p>
             </div>
           ))}
+          <button
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleFinalSubmit}
+          >
+            Confirm and Submit
+          </button>
         </div>
-        <button
-          style={{ backgroundColor: "green", color: "white" }}
-          onClick={handleFinalSubmit}
-        >
-          Confirm and Submit
-        </button>
       </div>
     );
   }
@@ -178,7 +193,7 @@ const PersonalityQuiz = () => {
   return (
     <div style={containerStyle}>
       <div style={quizContainerStyle}>
-        {questions.map((q, index) => (
+        {currentQuestions.map((q, index) => (
           <div key={index} style={questionContainerStyle}>
             <p>{q.question}</p>
             {q.options.map((option, optIndex) => (
@@ -187,6 +202,7 @@ const PersonalityQuiz = () => {
                   type="radio"
                   name={q.question}
                   value={option.score}
+                  checked={answers[q.question] === option.score}
                   onChange={() => handleAnswer(q.question, option)}
                 />
                 {option.answer}
@@ -194,30 +210,54 @@ const PersonalityQuiz = () => {
             ))}
           </div>
         ))}
-        <div style={quizItemsStyle} >
-          {questions.map((q, index) => (
-            <div key={index}>
-              <p>{q.question}</p>
-              {q.options.map((option, optIndex) => (
-                <label key={optIndex}>
-                  <input
-                    type="radio"
-                    name={q.question}
-                    value={option.score}
-                    onChange={() => handleAnswer(q.question, option)}
-                  />
-                  {option.answer}
-                </label>
-              ))}
-            </div>
-          ))}
-        </div>
-        <button
-          style={{ backgroundColor: "green", color: "white" }}
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
+        {currentPage > 1 && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handlePrevious}
+          >
+            Previous
+          </button>
+        )}
+        {currentPage * questionsPerPage < questions.length && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        )}
+        {currentPage * questionsPerPage >= questions.length && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );
