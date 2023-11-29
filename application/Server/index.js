@@ -6,6 +6,7 @@ const listingsRouter = require("./routes/listings");
 const usersRouter = require("./routes/users");
 const registrationRouter = require("./routes/registration");
 const searchRouter = require("./routes/search");
+const searchBarRouter = require("./routes/searchBar");
 const screeningRouter = require("./routes/screening");
 const loginRouter = require("./routes/login");
 const socialMediaAPI = require("./routes/socialMediaAPI");
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use("/listings", listingsRouter);
 app.use("/search", searchRouter);
+app.use("/searchBar", searchBarRouter);
 app.use("/screening", screeningRouter);
 app.use("/users", usersRouter);
 app.use('/register', registrationRouter);
