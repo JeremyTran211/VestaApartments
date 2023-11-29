@@ -2,26 +2,26 @@ const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
-// Posts_ID | User_ID | Post_Content           | Timestamp                  | Image_Path      | Like_Counter
+
 // for creating a post
 async function createPost(post) {
     const result = await db.query(
         `INSERT INTO Posts (Posts_ID, User_ID, Post_Content) 
-        VALUES ("${post.Post_ID}", "${post.User_ID}", "${post.Post_content$}")`);
+        VALUES ("${post.Posts_ID}", "${post.User_ID}", "${post.Post_content$}")`);
     let message = 'Error in creating post';
 
     if (result.affectedRows) {
         message = 'Post created successfully';
     }
-    return { message };
+    return { success: true };
 }
 
 // for retrieving and reading the posts in the posts Table
 async function getPosts(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
-        `SELECT * FROM Posts 
-        LIMIT ${offset},${config.listPerPage}`
+        `SELECT Posts_ID, User_ID,Post_Content, Like_Counter
+    FROM Posts LIMIT ${offset},${config.listPerPage}`
     );
     const data = helper.emptyOrRows(rows);
     const meta = { page };
@@ -36,7 +36,7 @@ async function updatePost(post_id, post) {
     const query = `UPDATE Posts SET  
     User_ID =IF("${post.User_ID}" = "undefined", User_ID, "${post.User_ID}"), 
     Post_Content =IF("${post.Post_Content}" = "undefined", Post_Content, "${post.Post_Content}") 
-    WHERE Post_ID = ${post_id} `
+    WHERE Posts_ID = ${post_id} `
 
     let message = 'Error in updating post';
     const result = await db.query(query)

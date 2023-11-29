@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./EditProperties.css";
 
 const editedPropertiesData = [
   {
     id: 1,
     image: "https://via.placeholder.com/150?text=The+Cottage.png",
-    title: "The Cottage",
+    title: "Apartments",
     address: "123 Maple Drive, Lakeview",
     price: "$1,500/Month",
     beds: 4,
     baths: 1.5,
-    status: "Sold",
+    status: "Hidden",
   },
   {
     id: 2,
     image: "https://via.placeholder.com/150?text=Orchard+Valley.png",
-    title: "Orchard Valley",
+    title: "Apartments",
     address: "456 Oak Lane, Rivertown",
     price: "$700/Month",
     beds: 1,
@@ -24,7 +26,7 @@ const editedPropertiesData = [
   {
     id: 3,
     image: "https://via.placeholder.com/150?text=The+White+House.png",
-    title: "The White House",
+    title: "Condo",
     address: "789 Pine Street, Hilltop",
     price: "$1,000/Month",
     beds: 2,
@@ -34,7 +36,7 @@ const editedPropertiesData = [
   {
     id: 4,
     image: "https://via.placeholder.com/150?text=The+Old+Post+Office.png",
-    title: "The Old Post Office",
+    title: "Family Home",
     address: "321 Birch Road, Oldtown",
     price: "$1,200/Month",
     beds: 1,
@@ -44,14 +46,13 @@ const editedPropertiesData = [
   {
     id: 5,
     image: "https://via.placeholder.com/150?text=The+Nook.png",
-    title: "The Nook",
+    title: "Shared Home",
     address: "654 Cedar Ave, Westwood",
     price: "$1,115/Month",
     beds: 3,
     baths: 1.5,
     status: "Active",
   },
-  // ... more properties as needed
 ];
 
 const EditedPropertiesPage = () => {
@@ -59,80 +60,7 @@ const EditedPropertiesPage = () => {
     useState(editedPropertiesData);
   const [selectedProperties, setSelectedProperties] = useState({});
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
-  const styles = {
-    bookmarkPage: {
-      width: "100%",
-      padding: "20px",
-      backgroundColor: "#f5f5f5",
-    },
-    header: {
-      textAlign: "center",
-      marginBottom: "20px",
-    },
-    table: {
-      width: "100%",
-      borderCollapse: "collapse",
-      marginTop: "20px",
-    },
-    th: {
-      border: "1px solid #ddd",
-      textAlign: "left",
-      padding: "8px",
-      backgroundColor: "#4CAF50",
-      color: "white",
-    },
-    td: {
-      border: "1px solid #ddd",
-      textAlign: "left",
-      padding: "8px",
-    },
-    image: {
-      width: "200px",
-      height: "200px",
-      objectFit: "cover",
-    },
-    backToSocialButton: {
-      padding: "10px 20px",
-      backgroundColor: "#4CAF50",
-      color: "white",
-      border: "none",
-      borderRadius: "4px",
-      cursor: "pointer",
-      position: "absolute",
-      top: "20px",
-      left: "20px",
-    },
-    viewButton: {
-      padding: "5px 10px",
-      backgroundColor: "#4CAF50",
-      color: "white",
-      border: "none",
-      borderRadius: "4px",
-      cursor: "pointer",
-    },
-    deleteButton: {
-      padding: "10px 20px",
-      backgroundColor: "red",
-      color: "white",
-      border: "none",
-      borderRadius: "4px",
-      cursor: "pointer",
-      marginTop: "20px",
-    },
-    confirmationBox: {
-      marginTop: "20px",
-      padding: "20px",
-      borderRadius: "4px",
-      backgroundColor: "#ffffff",
-      boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      zIndex: 2,
-    },
-  };
+  const [showHideConfirmation, setShowHideConfirmation] = useState(false);
 
   const handleCheckboxChange = (id) => {
     setSelectedProperties((prevSelectedProperties) => ({
@@ -158,64 +86,99 @@ const EditedPropertiesPage = () => {
     setShowDeleteConfirmation(false);
   };
 
+  const handleHideClick = () => {
+    setShowHideConfirmation(true);
+  };
+
+  const confirmHide = () => {
+    const newEditedProperties = editedProperties.map((property) => {
+      if (selectedProperties[property.id]) {
+        return { ...property, status: "Not Active" };
+      }
+      return property;
+    });
+    setEditedProperties(newEditedProperties);
+    setSelectedProperties({});
+    setShowHideConfirmation(false);
+  };
+
+  const cancelHide = () => {
+    setShowHideConfirmation(false);
+  };
+
   return (
-    <div style={styles.bookmarkPage}>
-      <button style={styles.backToSocialButton}>Back to Social</button>
-      <h1 style={styles.header}>Properties</h1>
-      <table style={styles.table}>
+    <div className="bookmarkPage">
+      <h1 className="header">Properties</h1>
+      <table className="table">
         <thead>
           <tr>
-            <th style={styles.th}></th>
-            <th style={styles.th}>Image</th>
-            <th style={styles.th}>Title</th>
-            <th style={styles.th}>Address</th>
-            <th style={styles.th}>Price</th>
-            <th style={styles.th}>Beds</th>
-            <th style={styles.th}>Baths</th>
-            <th style={styles.th}>Status</th>
-            <th style={styles.th}></th>
+            <th className="th"></th>
+            <th className="th">Image</th>
+            <th className="th">Title</th>
+            <th className="th">Address</th>
+            <th className="th">Price</th>
+            <th className="th">Beds</th>
+            <th className="th">Baths</th>
+            <th className="th">Status</th>
+            <th className="th"></th>
           </tr>
         </thead>
         <tbody>
           {editedProperties.map((property) => (
             <tr key={property.id}>
-              <td style={styles.td}>
+              <td className="td">
                 <input
                   type="checkbox"
                   checked={!!selectedProperties[property.id]}
                   onChange={() => handleCheckboxChange(property.id)}
                 />
               </td>
-              <td style={styles.td}>
+              <td className="td">
                 <img
                   src={property.image}
                   alt={`${property.title} thumbnail`}
-                  style={styles.image}
+                  className="image"
                 />
               </td>
-              <td style={styles.td}>{property.title}</td>
-              <td style={styles.td}>{property.address}</td>
-              <td style={styles.td}>{property.price}</td>
-              <td style={styles.td}>{property.beds}</td>
-              <td style={styles.td}>{property.baths}</td>
-              <td style={styles.td}>{property.status}</td>
-              <td style={styles.td}>
-                <button style={styles.viewButton}>Edit Property</button>
+              <td className="td">{property.title}</td>
+              <td className="td">{property.address}</td>
+              <td className="td">{property.price}</td>
+              <td className="td">{property.beds}</td>
+              <td className="td">{property.baths}</td>
+              <td className="td">{property.status}</td>
+              <td className="td">
+                <Link to="/edit-listing">
+                  <button className="viewButton">Edit Property</button>
+                </Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {Object.values(selectedProperties).some((isSelected) => isSelected) && (
-        <button style={styles.deleteButton} onClick={handleDeleteClick}>
-          Delete Listing
-        </button>
-      )}
+      <div className="actions">
+        {Object.values(selectedProperties).some((isSelected) => isSelected) && (
+          <>
+            <button className="deleteButton" onClick={handleDeleteClick}>
+              Delete Listing
+            </button>
+            <button className="hideButton" onClick={handleHideClick}>
+              Hide Listing
+            </button>
+          </>
+        )}
+      </div>
       {showDeleteConfirmation && (
-        <div style={styles.confirmationBox}>
+        <div className="confirmationBox">
           <p>Are you sure you want to delete the selected listings?</p>
           <button onClick={confirmDeletion}>Confirm</button>
           <button onClick={cancelDeletion}>Cancel</button>
+        </div>
+      )}
+      {showHideConfirmation && (
+        <div className="confirmationBox">
+          <p>Are you sure you want to hide the selected listings?</p>
+          <button onClick={confirmHide}>Confirm</button>
+          <button onClick={cancelHide}>Cancel</button>
         </div>
       )}
     </div>

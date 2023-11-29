@@ -2,41 +2,74 @@
 path {
   fill: #ccc;
 }
+path[id="1"] {
+  fill: #ffb3ba;
+}
+path[id="2"] {
+  fill:#ffdfba;
+}
+path[id="3"] {
+  fill: #ffffba;
+}
+path[id="4"] {
+  fill: #baffc9;
+}
+path[id="5"]{
+  fill: #c6adff;
+}
+path[id="9"] {
+  fill: #ffb3ba;
+}
+path[id="11"] {
+  fill:#ffdfba;
+}
+path[id="8"] {
+  fill: #ffffba;
+}
+path[id="6"] {
+  fill: #baffc9;
+}
+path[id="10"]{
+  fill: #c6adff;
+}
+path[id="7"] {
+  fill: #ffb3ba;
+}
+
 
 /* Map Hover Background Color */
 path[id="1"]:hover {
-  fill: rgb(9, 218, 19);
+  fill:#f73246;
 }
 path[id="2"]:hover {
-  fill: #da1709;
+  fill: #fdb562;
 }
 path[id="3"]:hover {
-  fill: #4109da;
+  fill: #f8f828;
 }
 path[id="4"]:hover {
-  fill: rgb(9, 218, 19);
+  fill: #27ff56;
 }
 path[id="5"]:hover {
-  fill: #da1709;
-}
-path[id="6"]:hover {
-  fill: #4109da;
-}
-
-path[id="7"]:hover {
-  fill: rgb(9, 218, 19);
-}
-path[id="8"]:hover {
-  fill: #da1709;
+  fill: #7b45fa;
 }
 path[id="9"]:hover {
-  fill: #4109da;
-}
-path[id="10"]:hover {
-  fill: rgb(9, 218, 19);
+  fill:#f73246;
 }
 path[id="11"]:hover {
-  fill: #da1709;
+  fill: #fdb562;
+}
+path[id="8"]:hover {
+  fill: #f8f828;
+}
+path[id="6"]:hover {
+  fill: #27ff56;
+}
+path[id="10"]:hover {
+  fill: #7b45fa;
+}
+path[id="7"]:hover {
+  fill: #f73246;
 }
 
 

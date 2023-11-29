@@ -17,9 +17,9 @@ const SingleGroup = () => {
               <p>Not Joe, Not Not Not Joe, Ted</p>
               <p>
                 Click here to
-                {/* take to user page */}
-                <a class="btn btn-sm">
-                  {" "}
+                
+                <a class="btn">
+                  
                   <Link to="/messages">chat</Link>
                 </a>
               </p>
@@ -35,15 +35,12 @@ const GroupsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div class="container-fluid-text-center">
-      <Link to="/">
-        <button class="button-35">BACK</button>
-      </Link>
+    <div class="">
       <SingleGroup />
       <SingleGroup />
       <SingleGroup />
       <SingleGroup />
-      <SingleGroup />
+      
     </div>
   );
 };

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./ApartmentListing.css";
 
 const buttonStyle = {
   padding: "10px 20px",
@@ -15,11 +17,48 @@ const buttonStyle = {
   boxShadow: "0 4px #999",
 };
 
+
+
+const ApartmentListing = () => {
+  const [listings, setListings] = useState([]); 
+  const [filter, setFilter] = useState({
+    minRent: "",
+    maxRent: "",
+    bedrooms: "",
+    bathrooms: "",
+  });
+
+const [sort, setSort] = useState("");
+
+useEffect(() => {
+  getListings();
+}, []);
+
+// Function for getting the Listings data
+const getListings = async (e) => {
+  // function for making the API call to get Listings
+  try {
+    const response = await fetch("/listings", {
+      method: "GET",
+      headers: {
+      "Content-Type": "application/json",
+      }
+      
+    });
+    const data = await response.json();
+    console.log("Before: ", data);
+    setListings(data.data);
+    console.log(data);
+    } catch (error) {
+    console.log ("Error occured when fetching from API")
+  }
+
+/* END: For making the getListing API class from backened */
+}
 const SingleListing = ({
   imageUrl,
   address,
-  minRent,
-  maxRent,
+  price, 
   bedrooms,
   bathrooms,
 }) => {
@@ -27,7 +66,7 @@ const SingleListing = ({
     <div
       style={{
         display: "flex",
-        margin: "10px",
+        margin: "20px",
         border: "1px solid #ccc",
         padding: "10px",
         borderRadius: "5px",
@@ -47,7 +86,7 @@ const SingleListing = ({
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
         <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          ${minRent} - ${maxRent}/month
+          ${price}/month
         </div>
         <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
         <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
@@ -55,47 +94,84 @@ const SingleListing = ({
 
       {/* View Listing Button to view the entire listing */}
       <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <button
-          style={{
-            padding: "4px 8px",
-            fontSize: "0.85em",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          <Link to="/listing-details">View Listing</Link>
-        </button>
+        <Link to="/listing-details">
+          <button
+            style={{
+              padding: "4px 8px",
+              fontSize: "0.85em",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+            // onClick={getListings}
+          >
+            View Listing
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-const ApartmentListing = () => {
-  const [filter, setFilter] = useState({
-    minRent: "",
-    maxRent: "",
-    bedrooms: "",
-    bathrooms: "",
-  });
-
-  const [sort, setSort] = useState("");
-
-  const applyFilters = () => {
+  // http://localhost:3000/search?Rooms=1&Bathrooms=1&Price=12500&Property_Type=House
+  const applyFilters = async (e) => {
     // Logic to apply filters goes here
-  };
+    e.preventDefault();
+// function for making the API call to get Listings
+// const GetListings = async {
+      
+try {
+  window.alert ("Calling to apply search based on filters: filter bedrooms value is"+ filter.bedrooms)
+// const [Listing, setListing] = useState("");
+  const bedrooms = filter.bedrooms;
+  const bathrooms = filter.bathrooms;
+  // const maxPrice = filter.maxRent;
+  const maxPrice = filter.maxRent;
+  const minPrice = filter.minRent;
+  const propertyType = "House";
+  const fetchURL = "/search?Rooms=" + bedrooms + "&Bathrooms=" + bathrooms + "&Min_Price=" + minPrice + "&Max_Price=" + maxPrice + "&Property_Type=" + propertyType;
+  window.alert ("Logging values for paramters in api calls "+ fetchURL)
+  const response = await fetch(fetchURL, {
+  method: "GET",
+  headers: {
+  "Content-Type": "application/json",
+  }
+  //,body: JSON.stringify({ Listing }),
+});
+
+const data = await response.json();
+  window.alert("API returned data length is: "+ JSON.stringify(data));
+  setListings(data.data);
+// window.alert(data.message);
+
+} catch (error) {
+  console.log ("Error occured when applying the search")
+  window.alert("Error when applying the search: " + error.message);
+}
+
+{/* END: For getting the Search API from backened */}
+  }
 
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
-      <div style={{ width: "60%", borderRight: "1px solid #ccc", top: "40px" }}>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          top: "70px",
+          bottom: 0,
+          borderRight: "1px solid #ccc",
+        }}
+      >
         {/* Placeholder for the map */}
         <div
           style={{
             width: "100%",
-            height: "calc(100vh - 20px)",
+            height: "calc(100vh - 70px)",
             backgroundColor: "#e0e0e0",
             display: "flex",
             justifyContent: "center",
@@ -107,39 +183,27 @@ const ApartmentListing = () => {
       </div>
 
       {/* Listings Container */}
-      <div style={{ width: "50%", overflowY: "scroll" }}>
-        {/* Back to Home Button */}
-        <button
-          style={{
-            ...buttonStyle,
-            margin: "10px",
-            padding: "4px 8px",
-            fontSize: "0.85em",
-          }}
-        >
-          <Link to="/">Back to Home</Link>
-        </button>
-
+      <div className="listing-container">
         {/* Filter and Sort Section */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            margin: "10px",
-            padding: "5px",
+            margin: "15px",
+            padding: "15px",
             border: "1px solid #ccc",
             borderRadius: "10px",
           }}
         >
           {/* Rent Filter */}
           <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Rent:</strong>
+            <strong style={{ fontSize: "0.70em" }}>Price:</strong>
             <input
               value={filter.minRent}
               onChange={(e) =>
                 setFilter({ ...filter, minRent: e.target.value })
               }
-              placeholder="Min Rent"
+              placeholder="Minimum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
             -
@@ -148,7 +212,7 @@ const ApartmentListing = () => {
               onChange={(e) =>
                 setFilter({ ...filter, maxRent: e.target.value })
               }
-              placeholder="Max Rent"
+              placeholder="Maximum"
               style={{ fontSize: "0.70em", width: "60px" }}
             />
           </div>
@@ -156,27 +220,37 @@ const ApartmentListing = () => {
           {/* Bedroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
-            <input
+            <select
               value={filter.bedrooms}
               onChange={(e) =>
                 setFilter({ ...filter, bedrooms: e.target.value })
               }
-              placeholder="Beds"
-              style={{ fontSize: "0.85em", width: "50px" }}
-            />
+              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
+            >
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
+            </select>
           </div>
 
           {/* Bathroom Filter */}
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
-            <input
+            <select
               value={filter.bathrooms}
               onChange={(e) =>
                 setFilter({ ...filter, bathrooms: e.target.value })
               }
-              placeholder="Baths"
-              style={{ fontSize: "0.85em", width: "60px" }}
-            />
+              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
+            >
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
+            </select>
           </div>
 
           {/* Sort Section for the Listings */}
@@ -190,8 +264,6 @@ const ApartmentListing = () => {
               <option value="">Select</option>
               <option value="lowHigh">Low to High</option>
               <option value="highLow">High to Low</option>
-              <option value="video">Video</option>
-              <option value="3DTour">3D Tour</option>
             </select>
           </div>
 
@@ -199,83 +271,22 @@ const ApartmentListing = () => {
           <button
             style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
             onClick={applyFilters}
+            
           >
             Apply
           </button>
         </div>
-
-        {/* Displaying the Listings */}
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="123 Example St, Example City, EX 12345"
-          minRent="800"
-          maxRent="1000"
-          bedrooms="2"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="123 Example St, Example City, EX 12345"
-          price="$1,000/month"
-          bedrooms="2"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="101 Another St, Some City, SC 67890"
-          price="$1,500/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="101 Another St, Some City, SC 67890"
-          price="$1,500/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="456 Sample Rd, Sample City, SC 12345"
-          price="$1,200/month"
-          bedrooms="3"
-          bathrooms="2"
-        />
-        <SingleListing
-          imageUrl="https://via.placeholder.com/150"
-          address="789 Demo Blvd, Demo City, DM 12345"
-          price="$900/month"
-          bedrooms="1"
-          bathrooms="1"
-        />
+          {Array.isArray(listings) && listings.map((listing) => (
+          <SingleListing
+           key = {listing.Listing_ID}
+           imageURL = {listing.Image_Path}
+           address = {listing.Address}
+           price = {listing.Price}
+           bedrooms = {listing.Rooms}
+           bathrooms = {listing.Bathrooms}
+          />
+        ))} 
+        <SingleListing></SingleListing>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const EditProfile = () => {
     }
   };
   const status = "Pending";
-  const level = "Low";
+  const level = "Low" ;
   // Use state hook to store the driver's license number
   const [license, setLicense] = useState("");
 
@@ -47,22 +47,6 @@ const EditProfile = () => {
     setVisible(!visible);
   };
 
-
-  function getDetails() {
-    var major = document.getElementById("major");
-    var year = document.getElementById("year");
-    var about = document.getElementById("about");
-    var twitter = document.getElementById("twitter");
-    var facebook = document.getElementById("facebook");
-    var instagram = document.getElementById("instagram");
-    window.alert("Value = " + "'" + major.value + "'");
-    window.alert("Value = " + "'" + year.value + "'");
-    window.alert("Value = " + "'" + about.value + "'");
-    window.alert("Value = " + "'" + twitter.value + "'");
-    window.alert("Value = " + "'" + facebook.value + "'");
-    window.alert("Value = " + "'" + instagram.value + "'");
-  }
-
   return (
     <div>
       <div class="main-body">
@@ -87,8 +71,8 @@ const EditProfile = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="card">
+
+            <div class="card mt-3">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 class="mb-0">
@@ -109,7 +93,7 @@ const EditProfile = () => {
                     Twitter
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://twitter.com"><input placeholder="@Joeiscool" id="twitter" /></Link>
+                    <Link to="https://twitter.com">@JoeIsCoolTwitter</Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -140,7 +124,7 @@ const EditProfile = () => {
                     Instagram
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://instagram.com"><input placeholder="@Joeiscool" id="instagram" /></Link>
+                    <Link to="https://instagram.com">@JoeIsCoolInstagram</Link>
                   </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -162,7 +146,7 @@ const EditProfile = () => {
                     Facebook
                   </h6>
                   <span class="text-secondary">
-                    <Link to="https://facebook.com"><input placeholder="@Joeiscool" id="facebook" /></Link>
+                    <Link to="https://facebook.com">@JoeIsCoolFacebook</Link>
                   </span>
                 </li>
               </ul>
@@ -188,16 +172,15 @@ const EditProfile = () => {
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Major</h6>
-
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Computer Science" id="major" /> </div>
+                  <div class="col-sm-9 text-secondary">Computer Science</div>
                 </div>
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Year</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary"><input placeholder="E.G. Senior" id="year" /></div>
+                  <div class="col-sm-9 text-secondary">Junior</div>
                 </div>
                 <hr></hr>
                 <div class="row">
@@ -205,14 +188,21 @@ const EditProfile = () => {
                     <h6 class="mb-0">About</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input placeholder="E.G. Hello I am me" id="about" />
+                    I am Joe. I really like being Joe. Joe is super cool. This
+                    about section is all about Joe. Joe wants to know what his
+                    about section looks with multiple lines so Joe is writing
+                    about Joe and how cool Joe is. Joe is simply being Joe. Fun
+                    fact, Joe is named Joe because he named himself Joe! Joe's
+                    story as to how exactly he became Joe really starts with his
+                    parents, Joe and Joe, who then spawned a new Joe. Then the
+                    new Joe became Joe. The end.
                   </div>
                 </div>
                 <hr></hr>
                 <div class="row">
                   <div class="col-sm-12">
                     <a class="btn btn-info " target="__blank">
-                      <Link to="" onClick={getDetails}>Submit</Link>
+                      <Link to="/edit-profile">Edit</Link>
                     </a>
                   </div>
                 </div>
@@ -222,40 +212,40 @@ const EditProfile = () => {
 
           <div class="col-sm-6">
             <div class="card h-100">
-              <div class="card-body center-items">
+              <div class="card-body">
                 <h6 class="d-flex align-items-center mb-3">
-
+                  
                   <i class="material-icons text-info mr-2"></i>You Haven't Taken
                   the Personality Test
                 </h6>
                 <div
-                  style={{
-                    margin: "20px",
-                    padding: "20px",
-                    border: "1px solid black",
-                    borderRadius: "10px",
-                    fontFamily: "Arial",
-                  }}
-                >
-                  <p
                     style={{
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      color: status === "Passed" ? "green" : "red",
+                      margin: "20px",
+                      padding: "20px",
+                      border: "1px solid black",
+                      borderRadius: "10px",
+                      fontFamily: "Arial",
                     }}
                   >
-                    Background Check Status: {status}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      color: "blue",
-                    }}
-                  >
-                    Verification Level: {level}
-                  </p>
-                </div>
-                <div class="button-holder center">
+                    <p
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        color: status === "Passed" ? "green" : "red",
+                      }}
+                    >
+                      Background Check Status: {status}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "16px",
+                        color: "blue",
+                      }}
+                    >
+                      Verification Level: {level}
+                    </p>
+                  </div>
+                <div class="button-holder">
                   <Link to="/personality-test">
                     <button class="btn btn-outline-primary">
                       <a>Take Personality Test</a>
@@ -263,54 +253,54 @@ const EditProfile = () => {
                   </Link>
                 </div>
 
-                <div>
-                  <button
-                    style={{
-                      // position: "absolute",
-                      top: "10px",
-                      right: "10px",
-                      width: "200px",
-                      height: "40px",
-                    }}
-                    onClick={handleClick}
-                  >
-                    Verification Form
-                  </button>
-                  <form
-                    style={{
-                      top: "60px",
-                      right: "10px",
-                      width: "300px",
-                      height: "200px",
-                      border: "1px solid black",
-                      borderRadius: "10px",
-                      backgroundColor: "white",
-                      display: visible ? "block" : "none",
-                    }}
-                    onSubmit={handleSubmit}
-                  >
-                    <p>Please enter your driver's license number:</p>
-                    <input
-                      type="text"
-                      value={license}
-                      onChange={handleChange}
-                      style={{
-                        margin: "20px",
-                        width: "150px",
-                        height: "20px",
-                      }}
-                    />
+                  <div>
                     <button
-                      type="submit"
                       style={{
-                        margin: "20px",
-                        width: "100px",
+                        // position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                        width: "200px",
+                        height: "40px",
                       }}
+                      onClick={handleClick}
                     >
-                      Submit
+                      Verification Form
                     </button>
-                  </form>
-                </div>
+                    <form
+                      style={{
+                        top: "60px",
+                        right: "10px",
+                        width: "300px",
+                        height: "200px",
+                        border: "1px solid black",
+                        borderRadius: "10px",
+                        backgroundColor: "white",
+                        display: visible ? "block" : "none",
+                      }}
+                      onSubmit={handleSubmit}
+                    >
+                      <p>Please enter your driver's license number:</p>
+                      <input
+                        type="text"
+                        value={license}
+                        onChange={handleChange}
+                        style={{
+                          margin: "20px",
+                          width: "150px",
+                          height: "20px",
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        style={{
+                          margin: "20px",
+                          width: "100px",
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
               </div>
             </div>
           </div>

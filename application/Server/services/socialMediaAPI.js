@@ -19,9 +19,13 @@ async function getProfile(page = 1) {
 }
 
 async function updateProfileInfo(req){
-    
+    //  Profile_ID | User_ID | Account_Type | Facebook | Twitter | Instagram | About   
     const query = `UPDATE Profile
     SET Social_Media_Link = ?, 
+    SET  Facebook = ?, 
+    Twitter = ?, 
+    Instagram = ?,
+    About = ?,
     \`Phone number\` = ?,
         Account_Type = ?
     WHERE Profile_ID = ?` 

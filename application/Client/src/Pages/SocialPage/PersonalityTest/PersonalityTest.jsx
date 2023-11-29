@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const PersonalityQuiz = () => {
   const [answers, setAnswers] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showPreview, setShowPreview] = useState(false);
 
   const questions = [
     {
@@ -19,11 +21,11 @@ const PersonalityQuiz = () => {
       ],
     },
     {
-      question: "What is your worst habit?",
+      question: "How often do you have friends over?",
       options: [
-        { answer: "Procrastinating", score: -1 },
-        { answer: "Biting nails", score: -1 },
-        { answer: "Others", score: 0 },
+        { answer: "Often", score: -1 },
+        { answer: "Sometimes", score: 1 },
+        { answer: "Rarely", score: 2 },
       ],
     },
     {
@@ -51,13 +53,62 @@ const PersonalityQuiz = () => {
         { answer: "Ambivert", score: 1.5 },
       ],
     },
+    {
+      question: "Do you have any pets?",
+      options: [
+        { answer: "Yes", score: 1 },
+        { answer: "No", score: 0 },
+      ],
+    },
+    {
+      question: "How were your previous roommate experiences?",
+      options: [
+        { answer: "Positive", score: 2 },
+        { answer: "Neutral", score: 1 },
+        { answer: "Negative", score: -1 },
+        { answer: "Never had a roommate", score: 0 },
+      ],
+    },
+    {
+      question: "How long do you plan to stay?",
+      options: [
+        { answer: "Less than 6 months", score: -1 },
+        { answer: "6 months to a year", score: 1 },
+        { answer: "More than a year", score: 2 },
+      ],
+    },
   ];
+
+  const questionsPerPage = 5;
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+  const currentQuestions = questions.slice(
+    indexOfFirstQuestion,
+    indexOfLastQuestion
+  );
 
   const handleAnswer = (question, selectedOption) => {
     setAnswers((prevState) => ({
       ...prevState,
       [question]: selectedOption.score,
     }));
+  };
+
+  const handleSubmit = () => {
+    if (Object.keys(answers).length !== questions.length) {
+      alert("Please answer all the questions.");
+      return;
+    }
+    setShowPreview(true);
+  };
+
+  const handleFinalSubmit = () => {
+    let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
+    alert(
+      `Your score is: ${totalScore}. Compatibility: ${compatibilityMessage(
+        totalScore
+      )}`
+    );
   };
 
   const compatibilityMessage = (score) => {
@@ -67,32 +118,29 @@ const PersonalityQuiz = () => {
     return "Not Compatible";
   };
 
-  const handleSubmit = () => {
-    if (Object.keys(answers).length !== questions.length) {
-      alert("Please answer all the questions.");
-      return;
-    }
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
-    let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
-    alert(
-      `Your score is: ${totalScore}. Compatibility: ${compatibilityMessage(
-        totalScore
-      )}`
+  const handlePrevious = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const findAnswerText = (question, score) => {
+    const questionObj = questions.find((q) => q.question === question);
+    const optionObj = questionObj.options.find(
+      (option) => option.score === score
     );
+    return optionObj ? optionObj.answer : "Not answered";
   };
 
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-  };
-
-  const backToHomeStyle = {
-    position: "absolute",
-    top: "10px",
-    left: "10px",
+  const questionContainerStyle = {
+    backgroundColor: "#f9f9f9",
+    padding: "10px",
+    borderRadius: "8px",
+    boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+    margin: "5px 0",
+    textAlign: "left",
   };
 
   const quizContainerStyle = {
@@ -104,19 +152,49 @@ const PersonalityQuiz = () => {
     borderRadius: "8px",
   };
 
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "auto",
+    padding: "20px",
+  };
+
+  if (showPreview) {
+    return (
+      <div style={containerStyle}>
+        <div style={quizContainerStyle}>
+          {questions.map((q, index) => (
+            <div key={index} style={questionContainerStyle}>
+              <p>{q.question}</p>
+              <p>{findAnswerText(q.question, answers[q.question])}</p>
+            </div>
+          ))}
+          <button
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleFinalSubmit}
+          >
+            Confirm and Submit
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={containerStyle}>
-      {/* Back to Home button */}
-      <div style={backToHomeStyle}>
-        <button style={{ backgroundColor: "blue", color: "white" }}>
-          Back to Home
-        </button>
-      </div>
-
-      {/* Quiz */}
       <div style={quizContainerStyle}>
-        {questions.map((q, index) => (
-          <div key={index}>
+        {currentQuestions.map((q, index) => (
+          <div key={index} style={questionContainerStyle}>
             <p>{q.question}</p>
             {q.options.map((option, optIndex) => (
               <label key={optIndex}>
@@ -124,6 +202,7 @@ const PersonalityQuiz = () => {
                   type="radio"
                   name={q.question}
                   value={option.score}
+                  checked={answers[q.question] === option.score}
                   onChange={() => handleAnswer(q.question, option)}
                 />
                 {option.answer}
@@ -131,12 +210,54 @@ const PersonalityQuiz = () => {
             ))}
           </div>
         ))}
-        <button
-          style={{ backgroundColor: "blue", color: "white" }}
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
+        {currentPage > 1 && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handlePrevious}
+          >
+            Previous
+          </button>
+        )}
+        {currentPage * questionsPerPage < questions.length && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        )}
+        {currentPage * questionsPerPage >= questions.length && (
+          <button
+            style={{
+              backgroundColor: "#4caf50",
+              color: "white",
+              marginTop: "20px",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );

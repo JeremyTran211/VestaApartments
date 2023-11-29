@@ -1,0 +1,106 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+  margin: 0;
+}
+
+.apartment-listing-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.map-container1 {
+  width: 60%;
+  position: relative;
+  border-right: 1px solid #ccc;
+  top: 70px;
+  bottom: 0;
+}
+
+.map-placeholder span {
+  font-size: 16px;
+}
+
+.filter-sort-section {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.rent-filter {
+  margin-right: 5px;
+  width: auto;
+  padding: 5px;
+  margin: 0 5px;
+}
+
+.rent-filter strong {
+  font-size: 0.7em;
+}
+
+.rent-filter input {
+  font-size: 0.7em;
+  width: 60px;
+}
+
+.bedroom-filter {
+  margin-right: 5px;
+}
+
+.bedroom-filter strong {
+  font-size: 0.85em;
+}
+
+.bedroom-filter input {
+  font-size: 0.85em;
+  width: 50px;
+}
+
+.bathroom-filter {
+  margin-right: 5px;
+}
+
+.bathroom-filter strong {
+  font-size: 0.7em;
+}
+
+.bathroom-filter input {
+  font-size: 0.85em;
+  width: 60px;
+}
+
+.sort-section {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.sort-section strong {
+  font-size: 0.7em;
+}
+
+.sort-section select {
+  font-size: 0.85em;
+}
+
+.apply-button {
+  padding: 10px 20px;
+  font-size: 0.85em;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.listing-container {
+  width: 50%;
+  overflow-y: auto;
+  margin: 15px;
+  padding: 15px;
+}

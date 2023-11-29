@@ -12,8 +12,7 @@
     padding: 30px;
     max-width: 450px;
     border-radius: 10px;
-    box-shadow: rgba(3, 3, 3, 0.1) 10px 0px 50px;
-  }
+   }
   
   .form-container__details {
     margin-bottom: 40px;
@@ -57,7 +56,7 @@
   }
   
   .form__submit {
-    background: #03f303;
+    /* background: #03f303; */
     color: #fff;
     font-weight: 600;
     width: 100%;
@@ -90,6 +89,9 @@
     font-size: 15px;
     font-weight: 600;
     color: #777;
+  }
+  .MainPage{
+      min-height: 100vh;
   }
   
   @media (max-width: 600px) {

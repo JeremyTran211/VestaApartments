@@ -1,14 +1,14 @@
-body{
-  
-  color: #1a202c;
+body {
   text-align: left;
-  background-color: #e2e8f0;    
 }
+
 .main-body {
   padding: 15px;
 }
+
 .card {
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+  margin-bottom: 20px;
 }
 
 .card {
@@ -19,9 +19,8 @@ body{
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 0 solid rgba(0,0,0,.125);
+  border: 0 solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
-  
 }
 
 .card-body {
@@ -35,50 +34,64 @@ body{
   margin-left: -8px;
 }
 
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
+.gutters-sm>.col,
+.gutters-sm>[class*=col-] {
   padding-right: 8px;
   padding-left: 8px;
 }
-.mb-3, .my-3 {
-  margin-bottom: 1rem!important;
+
+.mb-3,
+.my-3 {
+  margin-bottom: 1rem !important;
 }
 
 .bg-gray-300 {
   background-color: #e2e8f0;
 }
+
 .h-100 {
-  height: 100%!important;
+  height: 100% !important;
 }
+
 .shadow-none {
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 
 /* CSS for changing the position of cards within a row */
 .row.gutters-sm {
   display: flex;
   flex-wrap: wrap;
-  
+
 }
 
 .col-md-4.mb-3 {
-  flex: 0 0 calc(25.00% ); /* Adjust the width as needed */
-  
+  flex: 0 0 calc(25.00%);
+  /* Adjust the width as needed */
+
 }
+
 .col-md-4.mb-3:last-child {
-  margin-right: 0; /* Remove margin for the last card in a row */
+  margin-right: 0;
+  /* Remove margin for the last card in a row */
 }
 
 .col-md-8 {
-  flex: 0 0 calc(45.00%); /* Adjust the width as needed */
-  margin-right: rem; /* Add margin between cards */
+  flex: 0 0 calc(45.00%);
+  /* Adjust the width as needed */
+  margin-right: rem;
+  /* Add margin between cards */
 }
+
 .col-md-8:last-child {
-  margin-right: 0; /* Remove margin for the last card in a row */
+  margin-right: 0;
+  /* Remove margin for the last card in a row */
 }
-.col-sm-6{
-  flex: 0 0 calc(30.00% ); 
-  
+
+.col-sm-6 {
+  flex: 0 0 calc(30.00%);
+
 }
+
 button {
   align-items: center;
   background-color: #fff;
@@ -107,7 +120,14 @@ button {
   touch-action: manipulation;
   margin: 5px;
 }
-.button-holder{
+
+.button-holder {
   justify-content: center;
 
+}
+
+.center-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

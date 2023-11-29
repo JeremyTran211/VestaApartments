@@ -7,30 +7,44 @@ const config = require('../config');
 // Listing_ID | User_ID | Location_ID | Rooms | Bathrooms | Price | Property_Type | Description 
 // Gas_And_Electric | Internet | Water | Garbage | Square_Feet | Image_Path   | Time_Stamp         // |  Hidden | Title
 async function createListing(listing) {
+
+  let locationResult = await db.query(
+    'INSERT INTO Location_Of_Rental_Listing (Address, Region_ID) VALUES (?,?)', [listing.Address, listing.ZipCode]
+  );
+
+  let locationID = locationResult.insertId;
+
+  const values = [listing.User_ID, locationID, listing.Rooms, listing.Bathrooms, 
+    listing.Price, listing.Property_Type || null, listing.Description, listing.Gas_And_Electric || null,
+    listing.Internet || null, listing.Water || null, listing.Garbage || null, listing.Square_Feet, listing.Image_Path || null, listing.Hidden || null, listing.Title ]
+
+  console.log("Values being inserted:", values);
+
   const result = await db.query(
   `INSERT INTO Rental_Listing
-  (Listing_ID, User_ID, Location_ID, Rooms, Bathrooms, Price, Property_Type, Description, Gas_And_Electric, 
-    Internet, Water, Garbage, Square_Feet, Image_Path, Time_Stamp, Hidden, Title) 
+   (User_ID, Location_ID, Rooms, Bathrooms, Price, Property_Type, Description, Gas_And_Electric, 
+    Internet, Water, Garbage, Square_Feet, Image_Path, Hidden, Title) 
   VALUES 
-  (${listing.Listing_ID},'${listing.User_ID}',${listing.Location_ID},${listing.Rooms},${listing.Bathrooms}, 
-  ${listing.Price},'${listing.Property_Type}','${listing.Description}',${listing.Gas_And_Electric},
-  ${listing.Internet}, ${listing.Water}, ${listing.Garbage}, ${listing.Square_Feet},'${listing.Image_Path}', 
-  '${listing.Time_Stamp}', ${listing.Hidden},'${listing.Title}')`
-);
-let message = 'Error in creating Rental Listing';
+    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, values
+  );
 
-if (result.affectedRows) {
-  message = 'Rental Listing created successfully';
+  let message = 'Error in creating Rental Listing';
+
+  if (result.affectedRows) {
+    message = 'Rental Listing created successfully';
+  }
+
+  return {message};
 }
 
-return {message};
-}
 // for retrieving and reading the listings in the Rental_Listing Table
 async function getListings(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    `SELECT * 
-    FROM Rental_Listing LIMIT ${offset},${config.listPerPage}`
+    `SELECT Rental_Listing.*, Location_Of_Rental_Listing.Address
+    FROM Rental_Listing 
+    INNER JOIN Location_Of_Rental_Listing ON Rental_Listing.Location_ID = Location_Of_Rental_Listing.Location_ID
+    LIMIT ${config.listPerPage};`
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};

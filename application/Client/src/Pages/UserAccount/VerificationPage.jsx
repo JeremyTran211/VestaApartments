@@ -3,7 +3,18 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import "./VerificationPage.css";
-
+function checkTier() {
+  const session = true;
+  
+  if (session ){
+    return "Verify";
+  }
+  else if (!session){
+  
+    return "Locked";
+  }
+  
+}
 function VerificationPage() {
   // State variables to store user input
   const [email, setEmail] = useState("");
@@ -36,7 +47,7 @@ function VerificationPage() {
       window.alert("Error logging in: " + error.message);
     }
   };
-
+  
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -51,6 +62,7 @@ function VerificationPage() {
     window.alert("Value = " + "'" + email.value + "'");
     window.alert("Value = " + "'" + password.value + "'");
   }
+  const TierStatus = checkTier();
   return (
     <div className="MainPage">
       <main>
@@ -74,7 +86,7 @@ function VerificationPage() {
                 <div className="tier-three-container_info">Fill out background check form</div>
                 <div className="tier-three-button-container"> 
               <button className="tier-three_button">
-                Verify
+              {TierStatus === "Verify" ? "Verify" : "Locked"}
               </button>
               </div>
               </div>

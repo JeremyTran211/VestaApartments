@@ -1,47 +1,97 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SocialPage.css";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import NotificationEmbed from "./Notifications/Notifications.jsx";
+import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
+import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
+
+import NavigationEmbed from "./Navigation.jsx";
+const SinglePost = ({
+  imageurl,
+  content, 
+  likes
+}) => {
+  return (
+    <div className="single-post" >
+      <div class="post-actions__attachments">
+        {imageurl && <img src={imageurl} alt="Post" />}
+        <p>@JoeIsCool</p>
+      </div>
+      <p>{content}</p>
+      <div className="like-icon-wrapper">
+        <ThumbUpIcon className="like-icon" />
+          <div>{likes}</div>
+      </div>
+    </div>
+  );
+};
+
+
 function SocialPage() {
   const [textInput, setTextInput] = useState("");
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    try {
+      const reponse = await fetch ('/post');
+      const data = await reponse.json();
+      console.log(data);
+      setPosts(data.data);
+    } catch (error) { 
+      console.error('Error fetching post: ', error);
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try{
+      const reponse = await fetch('/post', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: textInput,
+        }),
+      });
+  
+      if(reponse.success){
+        const newPost = await reponse.json();
+        setPosts([...posts, newPost]);
+        setTextInput('');
+  
+      } else {
+          console.error('Server has returned an error')
+      }
+    } catch(error) {
+      console.error('Error submitting post: ', error);
+    }
+  }
+  
   const handleInputChange = (event) => {
+    let value= event.target.value
+    if(value.length>180){
+      return;
+    }
     setTextInput(event.target.value);
   };
+
   return (
-    <div className=" ">
+    <div className="social-page">
       <h2>Social Page</h2>
 
       {/* Add photo links button links and nav bar at the top */}
 
       <div class="container2">
-        <div class="static-container" id="left-container">
-          <Link to="/">
-            <button class="square-button">Home</button>
-          </Link>
-          <Link to="/listings">
-            <button class="square-button">View Listings</button>
-          </Link>
-          <Link to="/notifications">
-            <button class="square-button">Notifications</button>
-          </Link>
-          <Link to="/bookmarks">
-            <button class="square-button">Bookmarks</button>
-          </Link>
-          <Link to="/group-page">
-            <button class="square-button">Groups</button>
-          </Link>
-          <Link to="/edit-profile">
-            <button class="square-button">Edit Profile</button>
-          </Link>
-          <Link to="/edit-listing">
-            <button class="square-button">Edit Your Listings</button>
-          </Link>
-          <Link to="/messages">
-            <button class="square-button">Messages</button>
-          </Link>
-          <Link to="/verification-page">
-            <button class="square-button">Verification</button>
-          </Link>
+        <div class="static-container even-spacing" id="left-container">
+          <NavigationEmbed></NavigationEmbed>
         </div>
         <div class="scrollable-container" id="middle-container">
           <div class="widget-post" aria-labelledby="post-header-title">
@@ -51,6 +101,7 @@ function SocialPage() {
               class="widget-post__form"
               name="form"
               aria-label="post widget"
+              onSubmit = {handleSubmit}
             >
               <div class="widget-post__content">
                 <label for="post-content" class="sr-only">
@@ -61,7 +112,10 @@ function SocialPage() {
                   id="post-content"
                   class="widget-post__textarea scroller"
                   placeholder="Create a post"
+                  value={textInput}
+                  onChange={handleInputChange}
                 ></textarea>
+               
               </div>
               <div
                 class="widget-post__options is--hidden"
@@ -76,83 +130,32 @@ function SocialPage() {
                     multiple
                   ></input>
                 </div>
+                <div class="post-stats-info">
+                  <p>Max letters: 180</p>
+                  <p>Letters : {textInput.length}</p>
+                </div>
+
                 <div class="post-actions__widget">
                   <button class="">Post</button>
                 </div>
               </div>
             </form>
-            
+
           </div>
-          <div class="widget-post__actions post--actions" >
-                <div class="post-actions__attachments">
-                  <p>JoeIsCool</p>
-                </div>
-                <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac
-              tincidunt vitae semper quis. Faucibus pulvinar elementum integer
-              enim neque volutpat ac tincidunt vitae. Integer feugiat scelerisque
-              varius morbi enim. In nisl nisi scelerisque eu ultrices vitae
-              auctor. Nunc consequat interdum varius sit amet mattis vulputate.
-              Egestas congue quisque egestas diam in. Eget lorem dolor sed viverra
-              ipsum nunc. Scelerisque eleifend donec pretium vulputate. At erat
-              pellentesque adipiscing commodo elit at imperdiet dui. Amet mattis
-              vulputate enim nulla aliquet porttitor lacus luctus accumsan.
-              Ultrices neque ornare aenean euismod elementum nisi. Amet mattis
-              vulputate enim nulla aliquet porttitor lacus luctus. Nullam eget
-              felis eget nunc lobortis. Enim sit amet venenatis urna cursus. Felis
-              imperdiet proin fermentum leo vel. In hac habitasse platea dictumst
-              quisque sagittis. Tempor nec feugiat nisl pretium. Sed turpis
-              tincidunt id aliquet risus feugiat in. orem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac tiorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ac ti Non curabitur gravida arcu ac
-              tortor dignissim convallis. Integer eget aliquet nibh praesent
-              tristique magna sit amet purus. Diam vulputate ut pharetra sit amet
-              aliquam id diam. Mauris pharetra et ultrices neque ornare aenean
-              euismod. Mauris rhoncus aenean vel elit scelerisque mauris
-              pellentesque pulvinar. Sagittis purus sit amet volutpat consequat.
-              Elementum facilisis leo vel fringilla est ullamcorper eget nulla
-              facilisi. Morbi non arcu risus quis varius. In est ante in nibh
-              mauris cursus mattis molestie. Urna cursus eget nunc scelerisque.
-              Bibendum enim facilisis gravida neque.
-          </p>
-              </div>
-          
+            <div class="widget-post__actions post--actions" >
+                {posts.map(post => (
+                  <SinglePost 
+                  key = {post.id}
+                  content = {post.Post_Content}
+                  likes = {post.Like_Counter}
+                  />
+                ))}
+          </div>
         </div>
-        <div class="static-container" id="right-container">
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
+        <div class="static-container even-spacing" id="right-container">
+          {/* <NotificationEmbed></NotificationEmbed> */}
+          {/* <GroupEmbed></GroupEmbed> */}
+            <BookMarksEmbed></BookMarksEmbed>
         </div>
       </div>
 
