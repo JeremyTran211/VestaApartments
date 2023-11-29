@@ -22,7 +22,14 @@ const buttonStyle = {
 
 const ApartmentListing = () => {
   const location = useLocation();
-  const { number } = location.state;
+  var number;
+  if (location.state != null){
+      number  = location.state;
+  }
+  else{
+      number  = 0;
+  }
+  
   const [listings, setListings] = useState([]); 
   const [filter, setFilter] = useState({
     minRent: "",
