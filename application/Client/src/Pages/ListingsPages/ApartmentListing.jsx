@@ -71,6 +71,7 @@ const SingleListing = ({
         padding: "10px",
         borderRadius: "5px",
         position: "relative",
+        backgroundColor:'#fff',
       }}
     >
       {/* Image Section for Listing */}
