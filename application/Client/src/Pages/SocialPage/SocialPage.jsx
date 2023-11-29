@@ -1,31 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SocialPage.css";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const SinglePost = ({
+  imageurl,
+  content, 
+  likes
 }) => {
   return (
     <div className="single-post" >
       <div class="post-actions__attachments">
-        <img src="https://placehold.co/40" alt="PFP" />
+        {imageurl && <img src={imageurl} alt="Post" />}
         <p>@JoeIsCool</p>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac
-        tincidunt vitae semper quis. Faucibus pulvinar elementum integer
-        enim neque volutpat ac tincidunt vitae. Integer feugiat scelerisque
-      </p>
+      <p>{content}</p>
       <div className="like-icon-wrapper">
         <ThumbUpIcon className="like-icon" />
+          <div>{likes}</div>
       </div>
     </div>
   );
 };
+
+
 function SocialPage() {
   const [textInput, setTextInput] = useState("");
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    try {
+      const reponse = await fetch ('/post');
+      const data = await reponse.json();
+      console.log(data);
+      setPosts(data.data);
+    } catch (error) { 
+      console.error('Error fetching post: ', error);
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try{
+      const reponse = await fetch('/post', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: textInput,
+        }),
+      });
+  
+      if(reponse.success){
+        const newPost = await reponse.json();
+        setPosts([...posts, newPost]);
+        setTextInput('');
+  
+      } else {
+          console.error('Server has returned an error')
+      }
+    } catch(error) {
+      console.error('Error submitting post: ', error);
+    }
+  }
+  
   const handleInputChange = (event) => {
     let value= event.target.value
     if(value.length>180){
@@ -78,6 +123,7 @@ function SocialPage() {
               class="widget-post__form"
               name="form"
               aria-label="post widget"
+              onSubmit = {handleSubmit}
             >
               <div class="widget-post__content">
                 <label for="post-content" class="sr-only">
@@ -118,13 +164,14 @@ function SocialPage() {
             </form>
 
           </div>
-          <div class="widget-post__actions post--actions" >
-            <SinglePost></SinglePost>
-            <SinglePost></SinglePost>
-            <SinglePost></SinglePost>
-
-
-
+            <div class="widget-post__actions post--actions" >
+                {posts.map(post => (
+                  <SinglePost 
+                  key = {post.id}
+                  content = {post.Post_Content}
+                  likes = {post.Like_Counter}
+                  />
+                ))}
           </div>
         </div>
         <div class="static-container even-spacing" id="right-container">
