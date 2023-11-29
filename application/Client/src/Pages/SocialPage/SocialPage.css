@@ -10,6 +10,7 @@ html {
 .container2 {
   display: flex;
   height: 100%;
+
 }
 .social-page{
   height: 100vh;
@@ -30,12 +31,9 @@ html {
   overflow: hidden;
 }
 
-.even-spacing {
-  justify-content: space-around;
-}
-
 #left-container {
   left: 5px;
+  
 }
 
 #right-container {

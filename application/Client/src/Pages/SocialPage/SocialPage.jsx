@@ -7,6 +7,7 @@ import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
 import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
 
 import NavigationEmbed from "./Navigation.jsx";
+
 const SinglePost = ({
   imageurl,
   content, 
@@ -90,7 +91,7 @@ function SocialPage() {
       {/* Add photo links button links and nav bar at the top */}
 
       <div class="container2">
-        <div class="static-container even-spacing" id="left-container">
+        <div class="static-container " id="left-container">
           <NavigationEmbed></NavigationEmbed>
         </div>
         <div class="scrollable-container" id="middle-container">
@@ -152,7 +153,7 @@ function SocialPage() {
                 ))}
           </div>
         </div>
-        <div class="static-container even-spacing" id="right-container">
+        <div class="static-container" id="right-container">
           {/* <NotificationEmbed></NotificationEmbed> */}
           {/* <GroupEmbed></GroupEmbed> */}
             <BookMarksEmbed></BookMarksEmbed>
