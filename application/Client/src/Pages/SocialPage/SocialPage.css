@@ -11,7 +11,9 @@ html {
   display: flex;
   height: 100%;
 }
-
+.social-page{
+  height: 100vh;
+}
 
 .static-container {
   display: flex;

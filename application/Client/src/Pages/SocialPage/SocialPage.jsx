@@ -82,7 +82,7 @@ function SocialPage() {
   };
 
   return (
-    <div className=" ">
+    <div className="social-page">
       <h2>Social Page</h2>
 
       {/* Add photo links button links and nav bar at the top */}
