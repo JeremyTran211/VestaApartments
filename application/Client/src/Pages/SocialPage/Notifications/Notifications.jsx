@@ -8,7 +8,7 @@ const NotificationsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div class="container-fluid-text-center">
+    <div class="">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
           <div class="new-message-box">

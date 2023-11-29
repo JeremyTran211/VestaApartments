@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SocialPage.css";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-
+import NotificationEmbed from "./Notifications/Notifications.jsx"
 const SinglePost = ({
   imageurl,
   content, 
@@ -175,27 +175,7 @@ function SocialPage() {
           </div>
         </div>
         <div class="static-container even-spacing" id="right-container">
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
-          <a>
-            <Link to="/">Property Listing</Link>
-          </a>
-          <a>
-            <Link to="/">Home</Link>
-          </a>
+          <NotificationEmbed></NotificationEmbed>
         </div>
       </div>
 

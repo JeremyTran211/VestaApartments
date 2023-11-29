@@ -67,7 +67,7 @@ function Navbar() {
           </div>
           
           <div class="nav-links">
-            <Link to="/edit-properties"><a>CURRENTLY TESTING </a></Link>
+            <Link to="/listing-details"><a>CURRENTLY TESTING </a></Link>
             <Link to="/listings"><a>FIND HOMES</a></Link>
             <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
             <Link to={loginLink} onClick={handleLogInOutLinkClick}><a>{TierStatus === "/" ? "LOGOUT" : "LOGIN"}</a></Link>
