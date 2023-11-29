@@ -287,6 +287,7 @@ const data = await response.json();
            bathrooms = {listing.Bathrooms}
           />
         ))} 
+        <SingleListing></SingleListing>
       </div>
     </div>
   );
