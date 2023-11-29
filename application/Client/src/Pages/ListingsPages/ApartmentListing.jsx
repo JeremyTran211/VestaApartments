@@ -58,8 +58,7 @@ const getListings = async (e) => {
 const SingleListing = ({
   imageUrl,
   address,
-  minRent,
-  maxRent,
+  price, 
   bedrooms,
   bathrooms,
 }) => {
@@ -87,7 +86,7 @@ const SingleListing = ({
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
         <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          ${minRent} - ${maxRent}/monthcd
+          ${price}/month
         </div>
         <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
         <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
