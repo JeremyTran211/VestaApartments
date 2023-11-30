@@ -98,7 +98,6 @@ endpoint: http://localhost:3000/accountTypeAPI
 http://localhost:3000/accountType?User_ID=alice&AccountType=Landlord
 
 
-
 # To update accountType if it is "Renter"
 curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
@@ -116,17 +115,32 @@ curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
     --data '{  "AccountType": "Delete" }'
 
+# To update the phone number using postman
+/*
+Test method:
+Enter the URL: http://localhost:3000/phoneNumberAPI/alice
+Open Postman and create a PUT request, then open the Body tab, and select raw and then JSON.
+Input the following JSON in the body: {  "PhoneNumber": "987-654-3210" }
+Finally, click "Send" to execute the PUT request.
+*/
+
+# To delete the phone number using postman
+/*
+Test method:
+Enter the URL: http://localhost:3000/phoneNumberAPI/alice
+Open Postman and create a PUT request, then open the Body tab, and select raw and then JSON.
+Input the following JSON in the body: {  "PhoneNumber": "DELETE" }
+Finally, click "Send" to execute the PUT request.
+*/
+
 
 # Test for phoneNumberAPI
 http://localhost:3000/phoneNumberAPI/
-
-
 
 # To update the phone number
 curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/phoneNumberAPI/alice \
     --data '{  "PhoneNumber": "408-555-1234" }'
-
 
 # To test delete the phone number
 curl -i -X PUT -H 'Accept: application/json' \
