@@ -136,18 +136,17 @@ const PersonalityQuiz = () => {
 
   const questionContainerStyle = {
     backgroundColor: "#f9f9f9",
-    padding: "10px",
+    padding: "25px",
     borderRadius: "8px",
     boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
     margin: "5px 0",
-    textAlign: "left",
+    textAlign: "center",
   };
 
   const quizContainerStyle = {
     display: "flex",
     flexDirection: "column",
     gap: "20px",
-    // border: "1px solid black",
     backgroundColor: "#f9f9f9",
     padding: "20px",
     borderRadius: "8px",
