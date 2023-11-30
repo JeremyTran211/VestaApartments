@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 const PropertyDetailPage = () => {
   const location = useLocation();
   var address;
+  var addressWord = " ";
   if (location.state != null) {
     address = location.state;
   } else {
@@ -12,6 +13,12 @@ const PropertyDetailPage = () => {
 
 
   console.log(address);
+  var newAddress = JSON.stringify(address)
+  for (let i = 12; i < newAddress.length-2; i++){
+    addressWord = addressWord + newAddress[i]
+    }
+    console.log(addressWord)
+  var stringify = JSON.parse(newAddress);
 
   const [imageSet, setImageSet] = useState(1);
 
@@ -78,6 +85,10 @@ const getMapEmbed=(address)=>{
               </div>
             </div>
           ))}
+          {/* 123 Main St, South San Francisco, CA 94080 */}
+          <p className="Address">
+            The address is {addressWord}
+          </p>
 
           {/* Next Image Set Button */}
           {imageSet < totalSets && (
@@ -89,7 +100,7 @@ const getMapEmbed=(address)=>{
 
         {/* Map placeholder */}
         <div className="map-placeholder"  >
-          <iframe src={getMapEmbed("Union Square, San Francisco, CA")} width={300} height={300} >
+          <iframe src={getMapEmbed(addressWord)} width={300} height={300} >
         </iframe>
         </div>
       </div>

@@ -97,7 +97,7 @@ const ApartmentListing = () => {
 
         {/* View Listing Button to view the entire listing */}
         <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-          <Link to="/listing-details" state={{number: {address}}}>
+          <Link to="/listing-details" state={{address}}>
             <button
               style={{
                 padding: "4px 8px",
