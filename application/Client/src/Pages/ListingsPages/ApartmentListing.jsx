@@ -20,27 +20,27 @@ const buttonStyle = {
 
 const ApartmentListing = () => {
   const location = useLocation();
-  var number;
-  if (location.state != null) {
-    number = location.state;
-  } else {
-    number = 0;
-  }
-
-  
+  const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
+
   const [filter, setFilter] = useState({
     minRent: "",
     maxRent: "",
     bedrooms: "",
     bathrooms: "",
   });
-  console.log(number);
-  const [sort, setSort] = useState("");
 
   useEffect(() => {
-    getListings();
-  }, []);
+    
+    if(searchData) {
+      setListings(searchData.data);
+      console.log("After set:", searchData)
+    } else {
+      getListings();
+    }
+  }, [searchData]);
+
+  const [sort, setSort] = useState("");
 
   // Function for getting the Listings data
   const getListings = async (e) => {
@@ -53,15 +53,14 @@ const ApartmentListing = () => {
         },
       });
       const data = await response.json();
-      console.log("Before: ", data);
       setListings(data.data);
-      console.log(data);
+   
     } catch (error) {
       console.log("Error occured when fetching from API");
     }
 
-    /* END: For making the getListing API class from backened */
   };
+
   const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
     return (
       <div
@@ -302,7 +301,6 @@ const ApartmentListing = () => {
               bathrooms={listing.Bathrooms}
             />
           ))}
-        <SingleListing></SingleListing>
       </div>
     </div>
   );

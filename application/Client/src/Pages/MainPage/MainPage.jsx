@@ -18,7 +18,7 @@ const MainPage = () => {
         const response = await fetch(`/searchBar?searchParam=${encodeURIComponent(searchInput)}`);
         if (response.ok) {
           const data = await response.json();
-          navigate("/listings", { state: { searchData: data } });
+          navigate("/listings", { state: { searchQuery: searchInput, searchData: data } });
         } else {
           console.log("Search API has failed", response.status);
         }

@@ -26,16 +26,16 @@ function Navbar() {
 
   const handleLogInOutLinkClick = () => {
     const session = localStorage.getItem('accessToken');
+    
     if(session){
       localStorage.removeItem('accessToken');
       setSocialLink(checkLogin());
       setLogInLink(logInOut());
       navigate('/');
     }
-    else {
-      setLogInLink(logInOut);
-    }
+    
   };
+
   const TierStatus = logInOut();
   return (
     <header>
