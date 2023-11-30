@@ -112,6 +112,11 @@ curl -i -X PUT -H 'Accept: application/json' \
     --data '{  "AccountType": "Delete" }'
 
 
+# Test for phoneNumberAPI
+http://localhost:3000/phoneNumberAPI/
+
+
+
 # To update the phone number
 curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/phoneNumberAPI/alice \
