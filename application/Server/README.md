@@ -94,6 +94,11 @@ url http://localhost:3000/locationListingAPI/?RegionName=Downtown&Address=456 El
 endpoint: http://localhost:3000/accountTypeAPI
 
 
+# Test accountType API for user named alice
+http://localhost:3000/accountType?User_ID=alice&AccountType=Landlord
+
+
+
 # To update accountType if it is "Renter"
 curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
