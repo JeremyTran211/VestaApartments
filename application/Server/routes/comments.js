@@ -4,25 +4,17 @@ const comments = require('../services/comments');
 module.exports = router;
 
 //Test for getting all the info from the comment table
+//And all comments with a particular post_id
 router.get('/', async (req, res) =>{
     try {
+        if(req.query.Post_ID){
+            return res.json(await comments.getSpecificComments(req.query.Post_ID));
+        }
         res.json(await comments.getComments(req.query.page));       
     } catch (error) {
         console.error('Error in testing getComments', error.message);
         res.status(500).send('Error accessing user account.');
     }
-})
-
-//Using a Post ID, to get all the comments with that particular post
-router.get('/', async (req, res) =>{
-    try {
-        res.json(await comments.getSpecificComments(req.query.Post_ID));
-   
-    } catch (error) {
-        console.error('Error in testing getSpecificComments', error.message);
-        res.status(500).send('Error accessing user account.');
-    }
-
 })
 
 //to update the comments 

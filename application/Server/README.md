@@ -133,3 +133,41 @@ curl -i -X PUT -H 'Accept: application/json' \
     -H 'Content-type: application/json' http://localhost:3000/phoneNumberAPI/alice \
     --data '{  "PhoneNumber": "Delete" }'
 
+# To test getting all the comments available
+http://localhost:3000/comments
+
+# To test getting all comments with a specific post id
+http://localhost:3000/comments?Post_ID=3
+
+# To test updating a comment
+curl -X PUT -H "Content-Type: application/json" -d '{
+    "User_ID_Current": "charlie",
+    "User_ID": "charlie",
+    "Post_ID": "3",
+    "Text": "Spacious Living room",
+    "Timestamp": "2023-11-26T10:10:00.000",
+    "Like_Counter": "0"
+}' http://localhost:3000/comments/3
+
+
+# To test removing a comment 
+curl -X DELETE -H "Content-Type: application/json" -d '{
+    "User_ID_Current": "charlie",
+    "User_ID": "charlie",
+    "Post_ID": "3",
+    "Text": "Spacious Living room",
+    "Timestamp": "2023-11-26T10:10:00.000",
+    "Like_Counter": "0"
+}' http://localhost:3000/comments/3
+
+# To test posting a new comment
+curl -X POST -H "Content-Type: application/json" -d '{
+    "User_ID_Current": "charlie",
+    "User_ID": "charlie",
+    "Post_ID": "3",
+    "Text": "very Spacious Living room",
+    "Timestamp": "2023-11-26T10:10:00.000",
+    "Like_Counter": "0"
+}' http://localhost:3000/comments/2
+
+
