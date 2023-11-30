@@ -76,3 +76,10 @@ curl -G -v "http://localhost:3000/search" --data-urlencode "Rooms=1" --data-urle
 
 # To test post API 
 enpoint: http://localhost:3000/post
+
+# To test background Check API 
+endpoint: http://localhost:3000/backgroundCheck
+
+# To test delete background check by report id
+curl -i -X DELETE -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/backgroundCheck/1
