@@ -1,7 +1,18 @@
 import React, { useState ,useEffect} from "react";
 import "./PropertyListing.css";
-
+import { useLocation } from "react-router-dom";
 const PropertyDetailPage = () => {
+  const location = useLocation();
+  var address;
+  if (location.state != null) {
+    address = location.state;
+  } else {
+    address = 0;
+  }
+
+
+  console.log(address);
+
   const [imageSet, setImageSet] = useState(1);
 
   // cost calculator
@@ -15,7 +26,6 @@ const PropertyDetailPage = () => {
    */
 
   const percent = 11 * 0.3;
-
   async function calculator() {
     setCost(percent);
   }
