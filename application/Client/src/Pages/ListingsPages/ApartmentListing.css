@@ -1,8 +1,7 @@
 .body {
-  display: flex;
-  flex-direction: column;
-  min-height: 200vh;
   margin: 0;
+  padding: 0;
+  width: 100%; 
 }
 
 .apartment-listing-container {
@@ -24,78 +23,62 @@
 }
 
 .filter-sort-section {
+ 
   display: flex;
   align-items: center;
-  margin: 10px;
-  padding: 20px;
+  justify-content: flex-start; 
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+  width: 100%;
+  padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  flex-wrap: wrap;
+  margin: 10px auto;
 }
 
-.rent-filter {
-  margin-right: 5px;
-  width: auto;
-  padding: 5px;
-  margin: 0 5px;
-}
-
-.rent-filter strong {
-  font-size: 0.7em;
-}
-
-.rent-filter input {
-  font-size: 0.7em;
-  width: 60px;
-}
-
-.bedroom-filter {
-  margin-right: 5px;
-}
-
-.bedroom-filter strong {
-  font-size: 0.85em;
-}
-
-.bedroom-filter input {
-  font-size: 0.85em;
-  width: 50px;
-}
-
-.bathroom-filter {
-  margin-right: 5px;
-}
-
-.bathroom-filter strong {
-  font-size: 0.7em;
-}
-
-.bathroom-filter input {
-  font-size: 0.85em;
-  width: 60px;
-}
-
-.sort-section {
-  margin-left: auto;
+.filter-element {
+  flex-shrink: 0;
+  min-width: 100px;
   margin-right: 10px;
 }
 
-.sort-section strong {
-  font-size: 0.7em;
+
+.rent-filter,
+.bedroom-filter,
+.bathroom-filter,
+.sort-section {
+  margin-right: 10px;
+  padding: 5px;
 }
 
-.sort-section select {
+
+.filter-sort-section input,
+.filter-sort-section select {
   font-size: 0.85em;
+  min-width: 60px; 
 }
 
-.apply-button {
-  padding: 10px 20px;
-  font-size: 0.85em;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .filter-sort-section {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(100px, 1fr)
+    ); 
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-sort-section {
+    grid-template-columns: 1fr; 
+  }
+}
+
+.rent-filter,
+.bedroom-filter,
+.bathroom-filter,
+.sort-section {
+  width: 100%; 
+  margin-bottom: 10px; 
 }
 
 .listing-container {

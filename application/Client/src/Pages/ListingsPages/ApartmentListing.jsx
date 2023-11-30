@@ -1,26 +1,25 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./ApartmentListing.css";
 
 const buttonStyle = {
   padding: "10px 20px",
-  fontSize: "16px",
-  cursor: "pointer",
-  textTransform: "uppercase",
-  letterSpacing: "1px",
-  fontWeight: "bold",
-  borderRadius: "5px",
+  fontSize: "0.85em",
+  backgroundColor: "#4caf50",
+  color: "white",
   border: "none",
-  backgroundColor: "#4CAF50",
-  color: "#fff",
-  boxShadow: "0 4px #999",
+  borderRadius: "5px",
+  cursor: "pointer",
+  flexShrink: 0,
 };
 
-
-
 const ApartmentListing = () => {
-  const [listings, setListings] = useState([]); 
+  const location = useLocation();
+  const { searchData } = location.state || {};
+  const [listings, setListings] = useState([]);
+
   const [filter, setFilter] = useState({
     minRent: "",
     maxRent: "",
@@ -28,174 +27,188 @@ const ApartmentListing = () => {
     bathrooms: "",
   });
 
-const [sort, setSort] = useState("");
+  useEffect(() => {
+    if (searchData) {
+      setListings(searchData.data);
+      console.log("After set:", searchData);
+    } else {
+      getListings();
+    }
+  }, [searchData]);
 
-useEffect(() => {
-  getListings();
-}, []);
+  const [sort, setSort] = useState("");
 
-// Function for getting the Listings data
-const getListings = async (e) => {
-  // function for making the API call to get Listings
-  try {
-    const response = await fetch("/listings", {
-      method: "GET",
-      headers: {
-      "Content-Type": "application/json",
-      }
-      
-    });
-    const data = await response.json();
-    console.log("Before: ", data);
-    setListings(data.data);
-    console.log(data);
+  // Function for getting the Listings data
+  const getListings = async (e) => {
+    // function for making the API call to get Listings
+    try {
+      const response = await fetch("/listings", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setListings(data.data);
     } catch (error) {
-    console.log ("Error occured when fetching from API")
-  }
+      console.log("Error occured when fetching from API");
+    }
+  };
 
-/* END: For making the getListing API class from backened */
-}
-const SingleListing = ({
-  imageUrl,
-  address,
-  price, 
-  bedrooms,
-  bathrooms,
-}) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        margin: "20px",
-        border: "1px solid #ccc",
-        padding: "10px",
-        borderRadius: "5px",
-        position: "relative",
-      }}
-    >
-      {/* Image Section for Listing */}
-      <div style={{ marginRight: "10px" }}>
-        <img
-          src={imageUrl}
-          alt="Apartment Thumbnail"
-          style={{ width: "150px", height: "100px" }}
-        />
-      </div>
-
-      {/* Details Section for Listing */}
-      <div style={{ flex: 1 }}>
-        <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
-        <div style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}>
-          ${price}/month
+  const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          margin: "30px",
+          border: "1px solid #ccc",
+          padding: "40px",
+          borderRadius: "5px",
+          position: "relative",
+          backgroundColor: "#fff",
+        }}
+      >
+        {/* Image Section for Listing */}
+        <div style={{ marginRight: "10px" }}>
+          <img
+            src={imageUrl}
+            alt="Apartment Thumbnail"
+            style={{ width: "150px", height: "100px" }}
+          />
         </div>
-        <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
-        <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
-      </div>
 
-      {/* View Listing Button to view the entire listing */}
-      <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-        <Link to="/listing-details">
-          <button
-            style={{
-              padding: "4px 8px",
-              fontSize: "0.85em",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-            // onClick={getListings}
+        {/* Details Section for Listing */}
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: "bold", fontSize: "0.9em" }}>{address}</div>
+          <div
+            style={{ color: "green", fontWeight: "bold", fontSize: "0.9em" }}
           >
-            View Listing
-          </button>
-        </Link>
+            ${price}/month
+          </div>
+          <div style={{ fontSize: "0.85em" }}>{bedrooms} Bedrooms</div>
+          <div style={{ fontSize: "0.85em" }}>{bathrooms} Bathrooms</div>
+        </div>
+
+        {/* View Listing Button to view the entire listing */}
+        <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
+          <Link to="/listing-details" state={{ address }}>
+            <button
+              style={{
+                padding: "4px 8px",
+                fontSize: "0.85em",
+                backgroundColor: "#4CAF50",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+              // onClick={getListings}
+            >
+              View Listing
+            </button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
   // http://localhost:3000/search?Rooms=1&Bathrooms=1&Price=12500&Property_Type=House
   const applyFilters = async (e) => {
     // Logic to apply filters goes here
     e.preventDefault();
-// function for making the API call to get Listings
-// const GetListings = async {
-      
-try {
-  window.alert ("Calling to apply search based on filters: filter bedrooms value is"+ filter.bedrooms)
-// const [Listing, setListing] = useState("");
-  const bedrooms = filter.bedrooms;
-  const bathrooms = filter.bathrooms;
-  // const maxPrice = filter.maxRent;
-  const maxPrice = filter.maxRent;
-  const minPrice = filter.minRent;
-  const propertyType = "House";
-  const fetchURL = "/search?Rooms=" + bedrooms + "&Bathrooms=" + bathrooms + "&Min_Price=" + minPrice + "&Max_Price=" + maxPrice + "&Property_Type=" + propertyType;
-  window.alert ("Logging values for paramters in api calls "+ fetchURL)
-  const response = await fetch(fetchURL, {
-  method: "GET",
-  headers: {
-  "Content-Type": "application/json",
-  }
-  //,body: JSON.stringify({ Listing }),
-});
+    // function for making the API call to get Listings
+    // const GetListings = async {
 
-const data = await response.json();
-  window.alert("API returned data length is: "+ JSON.stringify(data));
-  setListings(data.data);
-// window.alert(data.message);
+    try {
+      window.alert(
+        "Calling to apply search based on filters: filter bedrooms value is" +
+          filter.bedrooms
+      );
+      // const [Listing, setListing] = useState("");
+      const bedrooms = filter.bedrooms;
+      const bathrooms = filter.bathrooms;
+      // const maxPrice = filter.maxRent;
+      const maxPrice = filter.maxRent;
+      const minPrice = filter.minRent;
+      const propertyType = "House";
+      const fetchURL =
+        "/search?Rooms=" +
+        bedrooms +
+        "&Bathrooms=" +
+        bathrooms +
+        "&Min_Price=" +
+        minPrice +
+        "&Max_Price=" +
+        maxPrice +
+        "&Property_Type=" +
+        propertyType;
+      window.alert("Logging values for paramters in api calls " + fetchURL);
+      const response = await fetch(fetchURL, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        //,body: JSON.stringify({ Listing }),
+      });
 
-} catch (error) {
-  console.log ("Error occured when applying the search")
-  window.alert("Error when applying the search: " + error.message);
-}
+      const data = await response.json();
+      window.alert("API returned data length is: " + JSON.stringify(data));
+      setListings(data.data);
+      // window.alert(data.message);
+    } catch (error) {
+      console.log("Error occured when applying the search");
+      window.alert("Error when applying the search: " + error.message);
+    }
+  };
 
-{/* END: For getting the Search API from backened */}
-  }
+  // Map location and API key
+  const mapLocation = "San Francisco, CA";
+  const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA";
+
+  // Google Maps embed URL
+  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
+    mapLocation
+  )}`;
 
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
       <div
         style={{
-          width: "100%",
+          flexBasis: "60%",
           height: "100%",
-          position: "relative",
-          top: "70px",
-          bottom: 0,
           borderRight: "1px solid #ccc",
         }}
       >
-        {/* Placeholder for the map */}
-        <div
-          style={{
-            width: "100%",
-            height: "calc(100vh - 70px)",
-            backgroundColor: "#e0e0e0",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <span>Map Placeholder</span>
-        </div>
+        <iframe
+          title="Google Map"
+          src={googleMapsEmbedUrl}
+          width="100%"
+          height="600px"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
       </div>
 
       {/* Listings Container */}
-      <div className="listing-container">
+      <div className="listing-container" style={{ flexBias: "50%" }}>
         {/* Filter and Sort Section */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            margin: "15px",
-            padding: "15px",
+            justifyContent: "flex-start",
+            flexWrap: "nowrap",
+            overflowX: "auto",
             border: "1px solid #ccc",
+            margin: "0 auto",
+            padding: "10px",
             borderRadius: "10px",
           }}
         >
           {/* Rent Filter */}
+
           <div style={{ marginRight: "5px" }}>
             <strong style={{ fontSize: "0.70em" }}>Price:</strong>
             <input
@@ -271,22 +284,21 @@ const data = await response.json();
           <button
             style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
             onClick={applyFilters}
-            
           >
             Apply
           </button>
         </div>
-          {Array.isArray(listings) && listings.map((listing) => (
-          <SingleListing
-           key = {listing.Listing_ID}
-           imageURL = {listing.Image_Path}
-           address = {listing.Address}
-           price = {listing.Price}
-           bedrooms = {listing.Rooms}
-           bathrooms = {listing.Bathrooms}
-          />
-        ))} 
-        <SingleListing></SingleListing>
+        {Array.isArray(listings) &&
+          listings.map((listing) => (
+            <SingleListing
+              key={listing.Listing_ID}
+              imageURL={listing.Image_Path}
+              address={listing.Address}
+              price={listing.Price}
+              bedrooms={listing.Rooms}
+              bathrooms={listing.Bathrooms}
+            />
+          ))}
       </div>
     </div>
   );

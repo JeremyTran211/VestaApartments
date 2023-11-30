@@ -57,16 +57,6 @@ td {
   cursor: pointer;
 }
 
-.deleteButton {
-  padding: 10px 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
 .confirmationBox {
   margin-top: 20px;
   padding: 20px;
@@ -78,4 +68,24 @@ td {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.deleteButton,
+.hideButton,
+.addListingButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.hideButton {
+  background-color: #4caf50;
 }

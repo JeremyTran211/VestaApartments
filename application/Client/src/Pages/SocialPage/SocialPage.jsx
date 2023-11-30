@@ -5,8 +5,9 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import NotificationEmbed from "./Notifications/Notifications.jsx";
 import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
 import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
-
+import { jwtDecode } from 'jwt-decode';
 import NavigationEmbed from "./Navigation.jsx";
+
 const SinglePost = ({
   imageurl,
   content, 
@@ -30,6 +31,7 @@ const SinglePost = ({
 
 function SocialPage() {
   const [textInput, setTextInput] = useState("");
+  const [userID, setUserID] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -48,6 +50,15 @@ function SocialPage() {
     }
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const userID = decodedToken.id;
+      setUserID(userID);
+    }
+  }, []); 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -58,7 +69,9 @@ function SocialPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          User_ID: userID,
           content: textInput,
+          
         }),
       });
   
@@ -90,7 +103,7 @@ function SocialPage() {
       {/* Add photo links button links and nav bar at the top */}
 
       <div class="container2">
-        <div class="static-container even-spacing" id="left-container">
+        <div class="static-container " id="left-container">
           <NavigationEmbed></NavigationEmbed>
         </div>
         <div class="scrollable-container" id="middle-container">
@@ -152,7 +165,7 @@ function SocialPage() {
                 ))}
           </div>
         </div>
-        <div class="static-container even-spacing" id="right-container">
+        <div class="static-container" id="right-container">
           {/* <NotificationEmbed></NotificationEmbed> */}
           {/* <GroupEmbed></GroupEmbed> */}
             <BookMarksEmbed></BookMarksEmbed>

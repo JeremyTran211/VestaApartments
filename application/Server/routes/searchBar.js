@@ -8,8 +8,8 @@ module.exports = router;
 // for getting the listings from the searchbar
 router.get('/', async function(req, res, next) {
   try {
-    console.log ("The Zipcdoe is = " + req.query.Region_ID + ", The Address is "+ req.query.Address)
-    res.json(await searchBar.retrieveListings(req.query.Region_ID, req.query.Address));
+    console.log ("The Zipcode is = " + req.query.searchParam + ", The Address is "+ req.query.searchParam)
+    res.json(await searchBar.retrieveListings(req.query.searchParam));
 
   } catch (err) {
     console.error(`Error while getting listings from database for search bar`, err.message);

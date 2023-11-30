@@ -110,6 +110,7 @@ const EditedPropertiesPage = () => {
     <div className="bookmarkPage">
       <h1 className="header">Properties</h1>
       <table className="table">
+        {/* Table headers and body */}
         <thead>
           <tr>
             <th className="th"></th>
@@ -155,9 +156,23 @@ const EditedPropertiesPage = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Add Listing Button (initial position) */}
+      {!Object.values(selectedProperties).some((isSelected) => isSelected) && (
+        <div className="addListingButtonContainer">
+          <Link to="/add-listing">
+            <button className="addListingButton">Add Listing</button>
+          </Link>
+        </div>
+      )}
+
       <div className="actions">
         {Object.values(selectedProperties).some((isSelected) => isSelected) && (
           <>
+            {/* Add Listing Button (shifted position) */}
+            <Link to="/add-listing">
+              <button className="addListingButton">Add Listing</button>
+            </Link>
             <button className="deleteButton" onClick={handleDeleteClick}>
               Delete Listing
             </button>
@@ -167,6 +182,8 @@ const EditedPropertiesPage = () => {
           </>
         )}
       </div>
+
+      {/* Confirmation Modals */}
       {showDeleteConfirmation && (
         <div className="confirmationBox">
           <p>Are you sure you want to delete the selected listings?</p>
@@ -176,6 +193,7 @@ const EditedPropertiesPage = () => {
       )}
       {showHideConfirmation && (
         <div className="confirmationBox">
+          {/* Confirmation Box for Hide */}
           <p>Are you sure you want to hide the selected listings?</p>
           <button onClick={confirmHide}>Confirm</button>
           <button onClick={cancelHide}>Cancel</button>
