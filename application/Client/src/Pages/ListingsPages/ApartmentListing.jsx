@@ -26,7 +26,7 @@ const ApartmentListing = () => {
     bedrooms: "",
     bathrooms: "",
   });
-  
+
   useEffect(() => {
     if (searchData) {
       setListings(searchData.data);
@@ -163,9 +163,9 @@ const ApartmentListing = () => {
 
   // Map location and API key
   const mapLocation = "San Francisco, CA";
-  const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA"; // Replace with your actual API key
+  const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA";
 
-  // Generate the Google Maps embed URL
+  // Google Maps embed URL
   const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
     mapLocation
   )}`;
