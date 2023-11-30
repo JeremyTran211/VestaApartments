@@ -76,3 +76,23 @@ curl -G -v "http://localhost:3000/search" --data-urlencode "Rooms=1" --data-urle
 
 # To test post API 
 enpoint: http://localhost:3000/post
+
+# To test Renter Screening API
+endpoint: http://localhost:3000/screening?Status=Approved&Credit_Score=750&Income=50000&Saved_Properties_ID=1 
+
+# To test Location of Rental Listing
+endpoint: http://localhost:3000/locationListingAPI
+
+to test for partial address input
+
+url http://localhost:3000/locationListingAPI/?RegionName=Downtown
+or
+url http://localhost:3000/locationListingAPI/?RegionName=Downtown&Address=456 Elm St, South San Francisco, CA 94080
+
+
+# test to get the last changes in the Profile table
+http://localhost:3000/accountTypeAPI
+
+
+
+
