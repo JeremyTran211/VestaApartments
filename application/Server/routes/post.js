@@ -38,6 +38,7 @@ router.delete('/:post_id', async function(req, res, next) {
 //for creating listings
 router.post('/', async function(req, res, next) {
   try {
+    console.log(req.body);
     res.json(await posts.createPost(req.body));
   } catch (err) {
     console.error(`Error while creating a new post`, err.message);

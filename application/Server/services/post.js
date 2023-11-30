@@ -5,15 +5,19 @@ const config = require('../config');
 
 // for creating a post
 async function createPost(post) {
+    console.log(post);
     const result = await db.query(
-        `INSERT INTO Posts (Posts_ID, User_ID, Post_Content) 
-        VALUES ("${post.Posts_ID}", "${post.User_ID}", "${post.Post_content$}")`);
+        `INSERT INTO Posts (User_ID, Post_Content) 
+        VALUES ("${post.User_ID}", "${post.content}")`);
     let message = 'Error in creating post';
 
     if (result.affectedRows) {
         message = 'Post created successfully';
     }
-    return { success: true };
+    return {
+        message,
+        success: true
+    };
 }
 
 // for retrieving and reading the posts in the posts Table

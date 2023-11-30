@@ -5,7 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import NotificationEmbed from "./Notifications/Notifications.jsx";
 import GroupEmbed from "./GroupsPage/GroupsPage.jsx";
 import BookMarksEmbed from "./Bookmarks/BookmarksPage.jsx";
-
+import { jwtDecode } from 'jwt-decode';
 import NavigationEmbed from "./Navigation.jsx";
 
 const SinglePost = ({
@@ -31,6 +31,7 @@ const SinglePost = ({
 
 function SocialPage() {
   const [textInput, setTextInput] = useState("");
+  const [userID, setUserID] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -49,6 +50,15 @@ function SocialPage() {
     }
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const userID = decodedToken.id;
+      setUserID(userID);
+    }
+  }, []); 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -59,7 +69,9 @@ function SocialPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          User_ID: userID,
           content: textInput,
+          
         }),
       });
   

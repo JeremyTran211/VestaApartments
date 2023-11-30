@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./EditListing.css";
 import { jwtDecode } from 'jwt-decode';
 import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 const EditApartmentListing = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,7 @@ const EditApartmentListing = () => {
   });
 
   const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -70,12 +73,15 @@ const EditApartmentListing = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Submission successful', data);
+        navigate('/listings');
        
       } else {
         console.error('Submission failed', await response.text());
+
       }
     } catch (error) {
       console.error('Problem with fetching:', error.message);
+
     }
   };
 
