@@ -86,10 +86,10 @@ const getMapEmbed=(address)=>{
             </div>
           ))}
           {/* 123 Main St, South San Francisco, CA 94080 */}
-          <p className="Address">
+          {/*<p className="Address">
             The address is {addressWord}
           </p>
-
+          */}
           {/* Next Image Set Button */}
           {imageSet < totalSets && (
             <button onClick={handleNextImages} className="nav-button">
