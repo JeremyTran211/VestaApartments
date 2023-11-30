@@ -71,7 +71,7 @@ function VerificationTierTwo() {
               <div className="form__label">School</div>
               <input
                 className="form__input"
-                type="text"
+                type="email"
                 placeholder= "San Francisco State University"
                 value={school}
                 onChange={handleSchoolChange}
@@ -91,9 +91,9 @@ function VerificationTierTwo() {
               />
             </div>
 
-            <button className="form__submit" type="submit"> {}
+           <Link to="/social"><button className="form__submit" type="submit"> {}
               Verification
-            </button>
+            </button></Link> 
           </form>
           <div className="form-container__line-divider"></div>
         </div>
