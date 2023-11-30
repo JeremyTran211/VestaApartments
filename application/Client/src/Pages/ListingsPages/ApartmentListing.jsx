@@ -6,16 +6,13 @@ import "./ApartmentListing.css";
 
 const buttonStyle = {
   padding: "10px 20px",
-  fontSize: "16px",
-  cursor: "pointer",
-  textTransform: "uppercase",
-  letterSpacing: "1px",
-  fontWeight: "bold",
-  borderRadius: "5px",
+  fontSize: "0.85em",
+  backgroundColor: "#4caf50",
+  color: "white",
   border: "none",
-  backgroundColor: "#4CAF50",
-  color: "#fff",
-  boxShadow: "0 4px #999",
+  borderRadius: "5px",
+  cursor: "pointer",
+  flexShrink: 0,
 };
 
 const ApartmentListing = () => {
@@ -31,10 +28,9 @@ const ApartmentListing = () => {
   });
 
   useEffect(() => {
-    
-    if(searchData) {
+    if (searchData) {
       setListings(searchData.data);
-      console.log("After set:", searchData)
+      console.log("After set:", searchData);
     } else {
       getListings();
     }
@@ -54,11 +50,9 @@ const ApartmentListing = () => {
       });
       const data = await response.json();
       setListings(data.data);
-   
     } catch (error) {
       console.log("Error occured when fetching from API");
     }
-
   };
 
   const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
@@ -97,7 +91,7 @@ const ApartmentListing = () => {
 
         {/* View Listing Button to view the entire listing */}
         <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-          <Link to="/listing-details" state={{address}}>
+          <Link to="/listing-details" state={{ address }}>
             <button
               style={{
                 padding: "4px 8px",
@@ -165,47 +159,51 @@ const ApartmentListing = () => {
       console.log("Error occured when applying the search");
       window.alert("Error when applying the search: " + error.message);
     }
-
   };
+
+  // Map location and API key
+  const mapLocation = "San Francisco, CA";
+  const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA"; // Replace with your actual API key
+
+  // Generate the Google Maps embed URL
+  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
+    mapLocation
+  )}`;
 
   return (
     <div style={{ display: "flex" }}>
       {/* Map Container */}
       <div
         style={{
-          width: "50%",
+          flexBasis: "60%",
           height: "100%",
-          position: "relative",
-          bottom: 0,
           borderRight: "1px solid #ccc",
         }}
       >
-        {/* Placeholder for the map */}
-        <div
-          style={{
-            width: "100%",
-            height: "calc(100vh - 70px)",
-            backgroundColor: "#e0e0e0",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <span>Map Placeholder</span>
-        </div>
+        <iframe
+          title="Google Map"
+          src={googleMapsEmbedUrl}
+          width="100%"
+          height="600px"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
       </div>
 
       {/* Listings Container */}
-      <div className="listing-container">
+      <div className="listing-container" style={{ flexBias: "50%" }}>
         {/* Filter and Sort Section */}
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
-            margin: "10px",
-            padding: "30px",
+            justifyContent: "flex-start",
+            flexWrap: "nowrap",
+            overflowX: "auto",
             border: "1px solid #ccc",
+            margin: "0 auto",
+            padding: "10px",
             borderRadius: "10px",
           }}
         >
