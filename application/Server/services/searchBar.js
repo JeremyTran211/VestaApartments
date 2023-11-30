@@ -12,9 +12,9 @@ async function retrieveListings(searchParam, page=1){
     const conditions = [];
     console.log("The length of the parameter is " + searchParam.length);
       // taking user input and adding to query if user input matches the database 
-    if (!isNaN(searchParam) && searchParam.length ==5 )   {
-        console.log("The Search Param with isNan is " + isNaN(searchParam))
+    if (!isNaN(searchParam) && searchParam.length == 5 )   {
         conditions.push(`Region_ID = ${searchParam}`);
+
       } else {
         conditions.push(`Address LIKE "%${searchParam}%"`);
     }

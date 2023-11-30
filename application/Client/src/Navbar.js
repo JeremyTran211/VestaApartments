@@ -1,51 +1,40 @@
 import React,  { useState } from "react";
 import "./Styles/Navbar.css";
-import { Link} from "react-router-dom";
-const session = true;
-function checkLogin() {
+import { Link, useNavigate } from "react-router-dom";
 
-  //For live
-  //const session = localStorage.getItem('accessToken');
-  //For console
-  
-  console.log('Social page:', localStorage.getItem('accessToken'));
-  
-  if (session){
-    return "/social";
-  }
-  else if (!session){
-    // window.alert("Case Not logged");
-    return "/login";
-  }
-  
-}
-
-function logInOut() {
-
-  //For live
-  //const session = localStorage.getItem('accessToken');
-  //For console
-  
-  console.log('Social page:', localStorage.getItem('accessToken'));
-  
-  if (session){
-    return "/";
-  }
-  else if (!session){
-    // window.alert("Case Not logged");
-    return "/login";
-  }
-  
-}
 function Navbar() {
+  const navigate = useNavigate();
+
+  const checkLogin = () => {
+    const session = localStorage.getItem('accessToken');
+    console.log('Social page: ', session);
+    return session ? "/social" : "/login";
+  }
+
+  const logInOut = () => {
+    const session = localStorage.getItem('accessToken');
+    console.log('Login status: ', session);
+    return session ? "/" : "/login";
+  }
+
   const [socialLink, setSocialLink] = useState(checkLogin());
   const [loginLink, setLogInLink] = useState(logInOut());
 
   const handleSocialLinkClick = () => {
     setSocialLink(checkLogin());
   };
+
   const handleLogInOutLinkClick = () => {
-    setLogInLink(logInOut());
+    const session = localStorage.getItem('accessToken');
+    if(session){
+      localStorage.removeItem('accessToken');
+      setSocialLink(checkLogin());
+      setLogInLink(logInOut());
+      navigate('/');
+    }
+    else {
+      setLogInLink(logInOut);
+    }
   };
   const TierStatus = logInOut();
   return (

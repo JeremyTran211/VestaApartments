@@ -27,6 +27,7 @@ const ApartmentListing = () => {
     number = 0;
   }
 
+  
   const [listings, setListings] = useState([]);
   const [filter, setFilter] = useState({
     minRent: "",
@@ -166,9 +167,6 @@ const ApartmentListing = () => {
       window.alert("Error when applying the search: " + error.message);
     }
 
-    {
-      /* END: For getting the Search API from backened */
-    }
   };
 
   return (
