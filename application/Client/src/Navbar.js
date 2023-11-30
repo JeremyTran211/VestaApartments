@@ -2,6 +2,8 @@ import React,  { useState } from "react";
 import "./Styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 
+
+
 function Navbar() {
   const navigate = useNavigate();
 
@@ -14,6 +16,7 @@ function Navbar() {
   const logInOut = () => {
     const session = localStorage.getItem('accessToken');
     console.log('Login status: ', session);
+
     return session ? "/" : "/login";
   }
 
@@ -26,7 +29,7 @@ function Navbar() {
 
   const handleLogInOutLinkClick = () => {
     const session = localStorage.getItem('accessToken');
-    
+
     if(session){
       localStorage.removeItem('accessToken');
       setSocialLink(checkLogin());

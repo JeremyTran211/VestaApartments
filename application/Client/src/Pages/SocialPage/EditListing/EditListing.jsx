@@ -1,21 +1,37 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./EditListing.css";
+import { jwtDecode } from 'jwt-decode';
+import { useEffect } from "react";
 
 const EditApartmentListing = () => {
   const [formData, setFormData] = useState({
-    street: "",
-    description: "",
-    bed: "",
-    bath: "",
-    squareFeet: "",
-    furnished: "Unfurnished",
-    petPolicy: "No Pet",
-    neighborhood: "",
-    price: "",
+    User_ID: "",
+    Address: "",
+    ZipCode: "",
+    Description: "",
+    Rooms: "",
+    Bathrooms: "",
+    Square_Feet: "",
+    Price: "",
   });
 
   const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const userID = decodedToken.id;
+      
+      if (userID && formData.User_ID !== userID) {
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          User_ID: userID
+        }));
+      }
+    }
+  }, []); 
 
   const handleImageUpload = (event) => {
     const uploadedImages = Array.from(event.target.files);
@@ -30,15 +46,36 @@ const EditApartmentListing = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
+    console.log(formData);
     const allFieldsFilled = Object.values(formData).every(
       (field) => field.trim() !== ""
     );
     if (!allFieldsFilled) {
       alert("Please fill in all the fields.");
       return;
+    }
+
+    try {
+      const response = await fetch('/listings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Submission successful', data);
+       
+      } else {
+        console.error('Submission failed', await response.text());
+      }
+    } catch (error) {
+      console.error('Problem with fetching:', error.message);
     }
   };
 
@@ -50,73 +87,73 @@ const EditApartmentListing = () => {
             <div className="input-field-container">
               <input
                 type="text"
-                placeholder="Name your property"
-                value={formData.street}
+                placeholder="Title"
+                value={formData.Title}
                 onChange={(e) =>
-                  setFormData({ ...formData, street: e.target.value })
+                  setFormData({ ...formData, Title: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
-                placeholder="Street"
+                placeholder="Address"
                 value={formData.street}
                 onChange={(e) =>
-                  setFormData({ ...formData, street: e.target.value })
+                  setFormData({ ...formData, Address: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
-                placeholder="Street"
-                value={formData.street}
+                placeholder="Zip-Code"
+                value={formData.ZipCode}
                 onChange={(e) =>
-                  setFormData({ ...formData, street: e.target.value })
+                  setFormData({ ...formData, ZipCode: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
                 placeholder="Monthly Rent"
-                value={formData.price}
+                value={formData.Price}
                 onChange={(e) =>
-                  setFormData({ ...formData, price: e.target.value })
+                  setFormData({ ...formData, Price: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
                 placeholder="Bed"
-                value={formData.bed}
+                value={formData.Rooms}
                 onChange={(e) =>
-                  setFormData({ ...formData, bed: e.target.value })
+                  setFormData({ ...formData, Rooms: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
                 placeholder="Bath"
-                value={formData.bath}
+                value={formData.Bathrooms}
                 onChange={(e) =>
-                  setFormData({ ...formData, bath: e.target.value })
+                  setFormData({ ...formData, Bathrooms: e.target.value })
                 }
                 className="input-field"
               />
               <input
                 type="text"
                 placeholder="Square Feet"
-                value={formData.squareFeet}
+                value={formData.Square_Feet}
                 onChange={(e) =>
-                  setFormData({ ...formData, squareFeet: e.target.value })
+                  setFormData({ ...formData, Square_Feet: e.target.value })
                 }
                 className="input-field"
               />
 
               <textarea
                 placeholder="Description"
-                value={formData.description}
+                value={formData.Description}
                 onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
+                  setFormData({ ...formData, Description: e.target.value })
                 }
                 className="textarea-field"
               />

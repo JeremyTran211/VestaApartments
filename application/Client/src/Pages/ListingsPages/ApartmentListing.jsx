@@ -26,7 +26,7 @@ const ApartmentListing = () => {
     bedrooms: "",
     bathrooms: "",
   });
-
+  
   useEffect(() => {
     if (searchData) {
       setListings(searchData.data);

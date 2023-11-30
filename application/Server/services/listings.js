@@ -13,6 +13,8 @@ async function createListing(listing) {
   );
 
   let locationID = locationResult.insertId;
+  
+  console.log(locationID);
 
   const values = [listing.User_ID, locationID, listing.Rooms, listing.Bathrooms, 
     listing.Price, listing.Property_Type || null, listing.Description, listing.Gas_And_Electric || null,
