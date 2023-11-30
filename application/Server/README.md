@@ -90,9 +90,36 @@ or
 url http://localhost:3000/locationListingAPI/?RegionName=Downtown&Address=456 Elm St, South San Francisco, CA 94080
 
 
-# test to get the last changes in the Profile table
-http://localhost:3000/accountTypeAPI
+# Test to get the last changes in the Profile table
+endpoint: http://localhost:3000/accountTypeAPI
 
 
+# To update accountType if it is "Renter"
+curl -i -X PUT -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
+    --data '{  "AccountType": "Renter" }'
 
+
+# To update the account type if it is "Landlord"
+curl -i -X PUT -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
+    --data '{  "AccountType": "Landlord" }'
+
+
+# To update the account type if it is "Delete"
+curl -i -X PUT -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/accountTypeAPI/alice \
+    --data '{  "AccountType": "Delete" }'
+
+
+# To update the phone number
+curl -i -X PUT -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/phoneNumberAPI/alice \
+    --data '{  "PhoneNumber": "408-555-1234" }'
+
+
+# To test delete the phone number
+curl -i -X PUT -H 'Accept: application/json' \
+    -H 'Content-type: application/json' http://localhost:3000/phoneNumberAPI/alice \
+    --data '{  "PhoneNumber": "Delete" }'
 
