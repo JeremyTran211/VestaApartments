@@ -1,6 +1,6 @@
 const config = {
     db: {
-      host: "ec2-18-212-157-140.compute-1.amazonaws.com",
+      host: "ec2-54-198-188-175.compute-1.amazonaws.com",
       user: "admin",
       password: "921359982@Gators",
       database: "SFStudentRent",

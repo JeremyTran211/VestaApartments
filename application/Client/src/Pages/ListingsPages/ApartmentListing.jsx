@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./ApartmentListing.css";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const buttonStyle = {
   padding: "10px 20px",
@@ -15,7 +16,40 @@ const buttonStyle = {
   flexShrink: 0,
 };
 
+const containerStyle = {
+  width: "90%",
+  height: "100%",
+  marginLeft: "50px",
+  borderRadius: "130px",
+  padding: "50px",
+  backgroundColor: "#4caf50",
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523,
+};
+
 const ApartmentListing = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA",
+  });
+
+  const [map, setMap] = React.useState(null);
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map);
+  }, []);
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
@@ -162,145 +196,185 @@ const ApartmentListing = () => {
   };
 
   // Map location and API key
-  const mapLocation = "San Francisco, CA";
-  const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA";
+  // const mark1 = "851-897 Ashbury St, San Francisco, CA 94117";
+  // const mark2 = "750 Post St, San Francisco, CA 94109";
 
-  // Google Maps embed URL
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
-    mapLocation
-  )}`;
+  // const mapLocation = "San Francisco, CA";
+  // const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA";
 
-  return (
-    <div style={{ display: "flex" }}>
-      {/* Map Container */}
+  // // Google Maps embed URL
+  // const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
+  //   mapLocation
+  // )}`;
+
+  //test getting the geocoding
+  // var geocoder = new google.maps.Geocoder();
+  // Geocode the address
+  // geocoder.geocode({ address: mark1 }, function (results, status) {
+  //   if (status == "OK") {
+  //     // Get the coordinate from the results
+  //     var position = results[0].geometry.location;
+  //     // Create a marker object
+  //     var marker = new google.maps.Marker({
+  //       position: position,
+  //       map: googleMapsEmbedUrl,
+  //     });
+  //   } else {
+  //     alert("Geocode was not successful for the following reason: " + status);
+  //   }
+  // });
+
+  // geocoder.geocode({ address: mark2 }, function (results, status) {
+  //   if (status == "OK") {
+  //     // Get the coordinate from the results
+  //     var position = results[0].geometry.location;
+  //     // Create a marker object
+  //     var marker = new google.maps.Marker({
+  //       position: position,
+  //       map: googleMapsEmbedUrl,
+  //     });
+  //   } else {
+  //     alert("Geocode was not successful for the following reason: " + status);
+  //   }
+  // });
+
+  return isLoaded ? (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {/* Filter bar Container */}
+      {/* Filter and Sort Section */}
       <div
         style={{
-          flexBasis: "60%",
-          height: "100%",
-          borderRight: "1px solid #ccc",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          flexWrap: "nowrap",
+          overflowX: "auto",
+          border: "1px solid #ccc",
+          margin: "0 auto",
+          padding: "10px",
+          borderRadius: "10px",
         }}
       >
-        <iframe
-          title="Google Map"
-          src={googleMapsEmbedUrl}
-          width="100%"
-          height="600px"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-        ></iframe>
+        {/* Rent Filter */}
+
+        <div style={{ marginRight: "5px" }}>
+          <strong style={{ fontSize: "0.70em" }}>Price:</strong>
+          <input
+            value={filter.minRent}
+            onChange={(e) => setFilter({ ...filter, minRent: e.target.value })}
+            placeholder="Minimum"
+            style={{ fontSize: "0.70em", width: "60px" }}
+          />
+          -
+          <input
+            value={filter.maxRent}
+            onChange={(e) => setFilter({ ...filter, maxRent: e.target.value })}
+            placeholder="Maximum"
+            style={{ fontSize: "0.70em", width: "60px" }}
+          />
+        </div>
+
+        {/* Bedroom Filter */}
+        <div style={{ marginRight: "5px" }}>
+          <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
+          <select
+            value={filter.bedrooms}
+            onChange={(e) => setFilter({ ...filter, bedrooms: e.target.value })}
+            style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
+          >
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+
+        {/* Bathroom Filter */}
+        <div style={{ marginRight: "5px" }}>
+          <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
+          <select
+            value={filter.bathrooms}
+            onChange={(e) =>
+              setFilter({ ...filter, bathrooms: e.target.value })
+            }
+            style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
+          >
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+
+        {/* Sort Section for the Listings */}
+        <div style={{ marginLeft: "auto", marginRight: "10px" }}>
+          <strong style={{ fontSize: "0.70em" }}>Sort:</strong>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            style={{ fontSize: "0.85em" }}
+          >
+            <option value="">Select</option>
+            <option value="lowHigh">Low to High</option>
+            <option value="highLow">High to Low</option>
+          </select>
+        </div>
+
+        {/* Main Apply Button */}
+        <button
+          style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
+          onClick={applyFilters}
+        >
+          Apply
+        </button>
       </div>
 
-      {/* Listings Container */}
-      <div className="listing-container" style={{ flexBias: "50%" }}>
-        {/* Filter and Sort Section */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            flexWrap: "nowrap",
-            overflowX: "auto",
-            border: "1px solid #ccc",
-            margin: "0 auto",
-            padding: "10px",
-            borderRadius: "10px",
-          }}
-        >
-          {/* Rent Filter */}
-
-          <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Price:</strong>
-            <input
-              value={filter.minRent}
-              onChange={(e) =>
-                setFilter({ ...filter, minRent: e.target.value })
-              }
-              placeholder="Minimum"
-              style={{ fontSize: "0.70em", width: "60px" }}
-            />
-            -
-            <input
-              value={filter.maxRent}
-              onChange={(e) =>
-                setFilter({ ...filter, maxRent: e.target.value })
-              }
-              placeholder="Maximum"
-              style={{ fontSize: "0.70em", width: "60px" }}
-            />
-          </div>
-
-          {/* Bedroom Filter */}
-          <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.85em" }}>Beds:</strong>
-            <select
-              value={filter.bedrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bedrooms: e.target.value })
-              }
-              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
-            >
-              <option value="">Any</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4+</option>
-            </select>
-          </div>
-
-          {/* Bathroom Filter */}
-          <div style={{ marginRight: "5px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Bath:</strong>
-            <select
-              value={filter.bathrooms}
-              onChange={(e) =>
-                setFilter({ ...filter, bathrooms: e.target.value })
-              }
-              style={{ fontSize: "0.85em", width: "60px" }} // Set the width to control dropdown width
-            >
-              <option value="">Any</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4+</option>
-            </select>
-          </div>
-
-          {/* Sort Section for the Listings */}
-          <div style={{ marginLeft: "auto", marginRight: "10px" }}>
-            <strong style={{ fontSize: "0.70em" }}>Sort:</strong>
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              style={{ fontSize: "0.85em" }}
-            >
-              <option value="">Select</option>
-              <option value="lowHigh">Low to High</option>
-              <option value="highLow">High to Low</option>
-            </select>
-          </div>
-
-          {/* Main Apply Button */}
-          <button
-            style={{ ...buttonStyle, padding: "4px 8px", fontSize: "0.85em" }}
-            onClick={applyFilters}
+      {/* Map and Listings Container */}
+      <div
+        style={{
+          display: "flex",
+          height: "700px",
+        }}
+      >
+        {/* Map Container */}
+        <div className="map-container1">
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
           >
-            Apply
-          </button>
+            {/* Child components, such as markers, info windows, etc. */}
+            <Marker position={{ lat: -3.745, lng: -38.523 }} />
+            <></>
+          </GoogleMap>
         </div>
-        {Array.isArray(listings) &&
-          listings.map((listing) => (
-            <SingleListing
-              key={listing.Listing_ID}
-              imageURL={listing.Image_Path}
-              address={listing.Address}
-              price={listing.Price}
-              bedrooms={listing.Rooms}
-              bathrooms={listing.Bathrooms}
-            />
-          ))}
+        {/* Listings Container */}
+        <div className="listing-container" style={{ flexBias: "50%" }}>
+          {Array.isArray(listings) &&
+            listings.map((listing) => (
+              <SingleListing
+                key={listing.Listing_ID}
+                imageURL={listing.Image_Path}
+                address={listing.Address}
+                price={listing.Price}
+                bedrooms={listing.Rooms}
+                bathrooms={listing.Bathrooms}
+              />
+            ))}
+        </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 
