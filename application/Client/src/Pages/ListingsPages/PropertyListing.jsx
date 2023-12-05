@@ -6,8 +6,6 @@ const PropertyDetailPage = () => {
   const location = useLocation();
   const { address, description, title, price } = location.state || {};
  
-  var addressWord = " ";
- 
   console.log("Passed in:", address, description, title, price);
   //console.log(address);
   
@@ -108,7 +106,10 @@ const getMapEmbed=(address)=>{
         <div className="calculator-container card-box">
           <h1>Cost Calculator</h1>
           <p className="calculator-text"> Estimated Yearly Salary = </p>
-          <p className="calculator-value">{"$" + (price/.3) * 12}</p>
+          <p className="calculator-value">
+             {"$" + ((price / 0.3) * 12).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </p>
+
         </div>
 
         <div className="contact-details card-box">
