@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./EditProperties.css";
 
+//Hardcoded data for properties to be edited
 const editedPropertiesData = [
   {
     id: 1,
@@ -56,12 +57,16 @@ const editedPropertiesData = [
 ];
 
 const EditedPropertiesPage = () => {
+  //State to manage the properties and selected properties for editing
   const [editedProperties, setEditedProperties] =
     useState(editedPropertiesData);
   const [selectedProperties, setSelectedProperties] = useState({});
+
+  //State for managing the visibility of confirmation modals
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showHideConfirmation, setShowHideConfirmation] = useState(false);
 
+  //Handler to toggle selection of properties
   const handleCheckboxChange = (id) => {
     setSelectedProperties((prevSelectedProperties) => ({
       ...prevSelectedProperties,
@@ -69,10 +74,12 @@ const EditedPropertiesPage = () => {
     }));
   };
 
+  //Handlers for showing confirmation modals
   const handleDeleteClick = () => {
     setShowDeleteConfirmation(true);
   };
 
+  //Confirm and cancel handlers for deletion
   const confirmDeletion = () => {
     const newEditedProperties = editedProperties.filter(
       (property) => !selectedProperties[property.id]
@@ -90,6 +97,7 @@ const EditedPropertiesPage = () => {
     setShowHideConfirmation(true);
   };
 
+  //Confirm and cancel handlers for hiding properties
   const confirmHide = () => {
     const newEditedProperties = editedProperties.map((property) => {
       if (selectedProperties[property.id]) {

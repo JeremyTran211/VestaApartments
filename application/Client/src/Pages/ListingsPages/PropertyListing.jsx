@@ -1,8 +1,12 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./PropertyListing.css";
 import { useLocation } from "react-router-dom";
+
 const PropertyDetailPage = () => {
+  //Using useLocation to access the router's location object
   const location = useLocation();
+
+  //Extracting and parsing the address from the location state
   var address;
   var addressWord = " ";
   if (location.state != null) {
@@ -11,18 +15,20 @@ const PropertyDetailPage = () => {
     address = 0;
   }
 
-
+  //Converting the address object to a string and extracting the address text
   console.log(address);
-  var newAddress = JSON.stringify(address)
-  for (let i = 12; i < newAddress.length-2; i++){
-    addressWord = addressWord + newAddress[i]
-    }
-    console.log(addressWord)
+  var newAddress = JSON.stringify(address);
+  for (let i = 12; i < newAddress.length - 2; i++) {
+    addressWord = addressWord + newAddress[i];
+  }
+  console.log(addressWord);
+  //Parsing the stringified address back to a JSON object
   var stringify = JSON.parse(newAddress);
-
+  //State for managing the image set being displayed
   const [imageSet, setImageSet] = useState(1);
 
   // cost calculator
+  //State for calculating cost (currently placeholder object)
   const [cost, setCost] = useState(0);
   /*
   cost = pge+water+garbage+internet+price/rooms
@@ -33,6 +39,7 @@ const PropertyDetailPage = () => {
    */
 
   const percent = 11 * 0.3;
+  //Function for calculating costs (currently placeholder)
   async function calculator() {
     setCost(percent);
   }
@@ -42,11 +49,9 @@ const PropertyDetailPage = () => {
     alert("You clicked a feature that is not implemented in the backend");
   };
 
-
-
   // Image display logic
-  const totalImages = 6; // Update this as per your number of images
-  const imagesPerSet = 3; // Number of images per set
+  const totalImages = 6;
+  const imagesPerSet = 3;
   const totalSets = Math.ceil(totalImages / imagesPerSet); // Calculate total sets
 
   const handlePrevImages = () => {
@@ -56,9 +61,11 @@ const PropertyDetailPage = () => {
   const handleNextImages = () => {
     setImageSet((prev) => Math.min(prev + 1, totalSets)); // Increase imageSet, maximum totalSets
   };
-const getMapEmbed=(address)=>{
-  return `https://www.google.com/maps?q=${address}&output=embed`
-}
+
+  //Function to get the embed URL for Google Maps based on the address
+  const getMapEmbed = (address) => {
+    return `https://www.google.com/maps?q=${address}&output=embed`;
+  };
   return (
     <div className="page-container">
       <div className="image-and-map-container">
@@ -74,21 +81,22 @@ const getMapEmbed=(address)=>{
           {[...Array(totalImages)].map((_, i) => (
             <div
               key={i}
-              className={`image-section${Math.ceil((i + 1) / imagesPerSet) === imageSet ? "" : " hidden"
-                }`}
+              className={`image-section${
+                Math.ceil((i + 1) / imagesPerSet) === imageSet ? "" : " hidden"
+              }`}
             >
-              <div className="address-section" >
+              <div className="address-section">
                 <img
-                  src={`https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`} // Replace with actual image paths
+                  src={`https://picsum.photos/id/${Math.floor(
+                    Math.random() * 100
+                  )}/200`} // Replace with actual image paths
                   alt={`Property ${i + 1}`}
                 />
               </div>
             </div>
           ))}
           {/* 123 Main St, South San Francisco, CA 94080 */}
-          <p className="Address">
-            The address is {addressWord}
-          </p>
+          <p className="Address">The address is {addressWord}</p>
 
           {/* Next Image Set Button */}
           {imageSet < totalSets && (
@@ -99,9 +107,12 @@ const getMapEmbed=(address)=>{
         </div>
 
         {/* Map placeholder */}
-        <div className="map-placeholder"  >
-          <iframe src={getMapEmbed(addressWord)} width={300} height={300} >
-        </iframe>
+        <div className="map-placeholder">
+          <iframe
+            src={getMapEmbed(addressWord)}
+            width={300}
+            height={300}
+          ></iframe>
         </div>
       </div>
 
@@ -129,7 +140,7 @@ const getMapEmbed=(address)=>{
         </div>
       </div>
 
-      <div className='abouts-section'>
+      <div className="abouts-section">
         {/* About Property Section */}
         <div className="about-section">
           <h3>About Property</h3>
@@ -137,13 +148,14 @@ const getMapEmbed=(address)=>{
             This beautiful 3-bedroom home, located in a prime residential area,
             offers a perfect blend of comfort and convenience. The property
             features hardwood flooring throughout, adding warmth and elegance to
-            the space. A modern kitchen equipped with state-of-the-art appliances
-            makes it ideal for those who love cooking. The spacious backyard
-            serves as a serene retreat for relaxation or a delightful space for
-            gatherings. The home's proximity to essential amenities like shopping
-            centers, parks, and top-rated schools makes it an excellent choice for
-            families. Efficient public transportation, including bus and train
-            services, is within walking distance, ensuring easy commuting.
+            the space. A modern kitchen equipped with state-of-the-art
+            appliances makes it ideal for those who love cooking. The spacious
+            backyard serves as a serene retreat for relaxation or a delightful
+            space for gatherings. The home's proximity to essential amenities
+            like shopping centers, parks, and top-rated schools makes it an
+            excellent choice for families. Efficient public transportation,
+            including bus and train services, is within walking distance,
+            ensuring easy commuting.
           </p>
           <ul className="details-text">
             <li>Furnished/Unfurnished: Unfurnished</li>
@@ -155,17 +167,18 @@ const getMapEmbed=(address)=>{
         <div className="about-section">
           <h3>About Landlord</h3>
           <p className="details-text">
-            John Doe has been a dedicated property owner for over a decade, known
-            for his attention to detail and commitment to maintaining high-quality
-            living standards. With a background in architecture, John brings a
-            unique perspective to property management, ensuring that each home is
-            not only aesthetically pleasing but also functional and comfortable.
-            An avid community supporter, he actively participates in local events
-            and initiatives to improve the neighborhood. His hobbies include
-            gardening, which is evident in the well-kept landscapes of his
-            properties, biking along the city's scenic routes, and hiking in the
-            nearby mountains. John prides himself on being approachable and
-            responsive, always available to address tenants' needs and concerns.
+            John Doe has been a dedicated property owner for over a decade,
+            known for his attention to detail and commitment to maintaining
+            high-quality living standards. With a background in architecture,
+            John brings a unique perspective to property management, ensuring
+            that each home is not only aesthetically pleasing but also
+            functional and comfortable. An avid community supporter, he actively
+            participates in local events and initiatives to improve the
+            neighborhood. His hobbies include gardening, which is evident in the
+            well-kept landscapes of his properties, biking along the city's
+            scenic routes, and hiking in the nearby mountains. John prides
+            himself on being approachable and responsive, always available to
+            address tenants' needs and concerns.
           </p>
         </div>
       </div>

@@ -25,11 +25,13 @@ const containerStyle = {
   backgroundColor: "#4caf50",
 };
 
+// Default center coordinates for the Google Map
 const center = {
   lat: -3.745,
   lng: -38.523,
 };
 
+// Loading Google Maps API
 const ApartmentListing = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -38,6 +40,7 @@ const ApartmentListing = () => {
 
   const [map, setMap] = React.useState(null);
 
+  // Callback function for map load and unmount events
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -50,6 +53,7 @@ const ApartmentListing = () => {
     setMap(null);
   }, []);
 
+  //Retrieving data passed through React Router's location state
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
@@ -61,7 +65,9 @@ const ApartmentListing = () => {
     bathrooms: "",
   });
 
+  //useEffect hook to handle component mount/update logic
   useEffect(() => {
+    // If searchData is available, used to set listing, else fetch listing
     if (searchData) {
       setListings(searchData.data);
       console.log("After set:", searchData);
@@ -89,6 +95,7 @@ const ApartmentListing = () => {
     }
   };
 
+  // Components for rendering a single listing
   const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
     return (
       <div
@@ -147,12 +154,14 @@ const ApartmentListing = () => {
   };
 
   // http://localhost:3000/search?Rooms=1&Bathrooms=1&Price=12500&Property_Type=House
+  //Function to apply filters to the listings
   const applyFilters = async (e) => {
     // Logic to apply filters goes here
     e.preventDefault();
     // function for making the API call to get Listings
     // const GetListings = async {
 
+    //Logic to apply filters and fetch filtered data from API
     try {
       window.alert(
         "Calling to apply search based on filters: filter bedrooms value is" +
@@ -238,6 +247,7 @@ const ApartmentListing = () => {
   //   }
   // });
 
+  //Main component render
   return isLoaded ? (
     <div
       style={{
@@ -374,7 +384,7 @@ const ApartmentListing = () => {
       </div>
     </div>
   ) : (
-    <></>
+    <></> //Render nothing if Google Maps API is not loaded
   );
 };
 

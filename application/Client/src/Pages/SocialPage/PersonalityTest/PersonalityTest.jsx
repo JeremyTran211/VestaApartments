@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const PersonalityQuiz = () => {
+  // State variables to manage user's answer, current page, and preview status
   const [answers, setAnswers] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [showPreview, setShowPreview] = useState(false);
@@ -79,6 +80,7 @@ const PersonalityQuiz = () => {
     },
   ];
 
+  // Determines the number of questions per page and calulates the indices of the first and last question to display on the current page
   const questionsPerPage = 5;
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
@@ -87,6 +89,8 @@ const PersonalityQuiz = () => {
     indexOfLastQuestion
   );
 
+  // A function to handle answer selection. It updates the answers state with the score of the selected option.
+  //Uses a funtional update to merge the new answer with existing answers
   const handleAnswer = (question, selectedOption) => {
     setAnswers((prevState) => ({
       ...prevState,
@@ -94,6 +98,7 @@ const PersonalityQuiz = () => {
     }));
   };
 
+  // A function to handle 'Submit' action. Checks if all questions are answered and toggles the 'showPreview' state to true to display the answer preview
   const handleSubmit = () => {
     if (Object.keys(answers).length !== questions.length) {
       alert("Please answer all the questions.");
@@ -102,6 +107,7 @@ const PersonalityQuiz = () => {
     setShowPreview(true);
   };
 
+  //A function to handle the final submission after the preview, calulates the total score from the answers state and dislays score
   const handleFinalSubmit = () => {
     let totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
     alert(
@@ -118,6 +124,7 @@ const PersonalityQuiz = () => {
     return "Not Compatible";
   };
 
+  // Functions to navigate between quiz pages
   const handleNext = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -126,6 +133,8 @@ const PersonalityQuiz = () => {
     setCurrentPage(currentPage - 1);
   };
 
+  // Finds and returns the text of the answer based on the question and score
+  //Useful for displaying slected answers in preview
   const findAnswerText = (question, score) => {
     const questionObj = questions.find((q) => q.question === question);
     const optionObj = questionObj.options.find(
@@ -191,6 +200,8 @@ const PersonalityQuiz = () => {
     );
   }
 
+  // Layout for the quiz, maps through current set of questions and renders them
+  // Also conditionally renders navigation buttons based on the current page of the quiz
   return (
     <div style={containerStyle}>
       <div style={quizContainerStyle}>
