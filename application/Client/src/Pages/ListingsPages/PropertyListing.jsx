@@ -1,25 +1,16 @@
 import React, { useState ,useEffect} from "react";
 import "./PropertyListing.css";
 import { useLocation } from "react-router-dom";
+
 const PropertyDetailPage = () => {
   const location = useLocation();
-  var address;
+  const { address, description, title, price } = location.state || {};
+ 
   var addressWord = " ";
-  if (location.state != null) {
-    address = location.state;
-  } else {
-    address = 0;
-  }
-
-
-  console.log(address);
-  var newAddress = JSON.stringify(address)
-  for (let i = 12; i < newAddress.length-2; i++){
-    addressWord = addressWord + newAddress[i]
-    }
-    console.log(addressWord)
-  var stringify = JSON.parse(newAddress);
-
+ 
+  console.log("Passed in:", address, description, title, price);
+  //console.log(address);
+  
   const [imageSet, setImageSet] = useState(1);
 
   // cost calculator
@@ -60,6 +51,7 @@ const getMapEmbed=(address)=>{
   return `https://www.google.com/maps?q=${address}&output=embed`
 }
   return (
+    //<div><h1>{title}</h1>
     <div className="page-container">
       <div className="image-and-map-container">
         <div className="image-navigation-section">
@@ -100,22 +92,23 @@ const getMapEmbed=(address)=>{
 
         {/* Map placeholder */}
         <div className="map-placeholder"  >
-          <iframe src={getMapEmbed(addressWord)} width={300} height={300} >
+          <iframe src={getMapEmbed(address)} width={300} height={300} >
         </iframe>
         </div>
       </div>
+    
 
       <div className="details-container">
         <div className="property-details card-box">
           <h3>Address</h3>
-          <p>1234 Elm Street, Springfield, IL</p>
+          <p>{ address }</p>
         </div>
 
         {/* Cost calculator */}
         <div className="calculator-container card-box">
           <h1>Cost Calculator</h1>
-          <p className="calculator-text">Rent per person = </p>
-          <p className="calculator-value">{"$" + Math.round(percent)}</p>
+          <p className="calculator-text"> Estimated Yearly Salary = </p>
+          <p className="calculator-value">{"$" + (price/.3) * 12}</p>
         </div>
 
         <div className="contact-details card-box">
@@ -134,21 +127,8 @@ const getMapEmbed=(address)=>{
         <div className="about-section">
           <h3>About Property</h3>
           <p className="details-text">
-            This beautiful 3-bedroom home, located in a prime residential area,
-            offers a perfect blend of comfort and convenience. The property
-            features hardwood flooring throughout, adding warmth and elegance to
-            the space. A modern kitchen equipped with state-of-the-art appliances
-            makes it ideal for those who love cooking. The spacious backyard
-            serves as a serene retreat for relaxation or a delightful space for
-            gatherings. The home's proximity to essential amenities like shopping
-            centers, parks, and top-rated schools makes it an excellent choice for
-            families. Efficient public transportation, including bus and train
-            services, is within walking distance, ensuring easy commuting.
+            { description }
           </p>
-          <ul className="details-text">
-            <li>Furnished/Unfurnished: Unfurnished</li>
-            <li>Pet Policy: No Pets</li>
-          </ul>
         </div>
 
         {/* About Landlord Section */}

@@ -55,7 +55,7 @@ const ApartmentListing = () => {
     }
   };
 
-  const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
+  const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms, description, title }) => {
     return (
       <div
         style={{
@@ -91,7 +91,11 @@ const ApartmentListing = () => {
 
         {/* View Listing Button to view the entire listing */}
         <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-          <Link to="/listing-details" state={{ address }}>
+          <Link to="/listing-details" state={{ 
+                address, 
+                description, 
+                title, 
+                price }}>
             <button
               style={{
                 padding: "4px 8px",
@@ -297,6 +301,8 @@ const ApartmentListing = () => {
               price={listing.Price}
               bedrooms={listing.Rooms}
               bathrooms={listing.Bathrooms}
+              description={listing.Description}
+              title={listing.Title}
             />
           ))}
       </div>
