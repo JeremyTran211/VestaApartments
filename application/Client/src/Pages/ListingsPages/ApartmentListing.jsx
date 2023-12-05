@@ -30,19 +30,21 @@ const center = {
 
 // Loading Google Maps API
 const ApartmentListing = () => {
+  const [map, setMap] = React.useState(null);
+  const [mapCenter, setMapCenter] = React.useState(null);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA",
   });
 
-  const [map, setMap] = React.useState(null);
-
-  // Callback function for map load and unmount events
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+    const geocoder = new window.google.maps.Geocoder();
 
-    setMap(map);
+    geocoder.geocode({ address: "San Francisco" }, (results) => {
+      const location = results[0].geometry.location;
+      setMapCenter(location);
+    });
+
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -314,13 +316,12 @@ const ApartmentListing = () => {
         <div className="map-container">
           <GoogleMap
             mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
+            center={mapCenter}
+            zoom={12}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
             {/* Child components, such as markers, info windows, etc. */}
-            <Marker position={{ lat: -3.745, lng: -38.523 }} />
             <></>
           </GoogleMap>
         </div>
