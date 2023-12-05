@@ -12,12 +12,11 @@
 
 
 
-.map-container1 {
+.map-container {
   width: 60%;
   position: relative;
   border-right: 1px solid #ccc;
   top: 70px;
-  bottom: 0;
 }
 
 .map-placeholder span {

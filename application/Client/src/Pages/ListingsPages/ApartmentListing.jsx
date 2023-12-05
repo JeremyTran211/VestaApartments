@@ -17,12 +17,9 @@ const buttonStyle = {
 };
 
 const containerStyle = {
-  width: "90%",
+  width: "100%",
   height: "100%",
-  marginLeft: "50px",
-  borderRadius: "130px",
-  padding: "50px",
-  backgroundColor: "#4caf50",
+  borderRadius: "5px",
 };
 
 // Default center coordinates for the Google Map
@@ -42,7 +39,6 @@ const ApartmentListing = () => {
 
   // Callback function for map load and unmount events
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
@@ -204,48 +200,9 @@ const ApartmentListing = () => {
     }
   };
 
-  // Map location and API key
+  // Mark testing
   // const mark1 = "851-897 Ashbury St, San Francisco, CA 94117";
   // const mark2 = "750 Post St, San Francisco, CA 94109";
-
-  // const mapLocation = "San Francisco, CA";
-  // const googleMapsEmbedApiKey = "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA";
-
-  // // Google Maps embed URL
-  // const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbedApiKey}&q=${encodeURIComponent(
-  //   mapLocation
-  // )}`;
-
-  //test getting the geocoding
-  // var geocoder = new google.maps.Geocoder();
-  // Geocode the address
-  // geocoder.geocode({ address: mark1 }, function (results, status) {
-  //   if (status == "OK") {
-  //     // Get the coordinate from the results
-  //     var position = results[0].geometry.location;
-  //     // Create a marker object
-  //     var marker = new google.maps.Marker({
-  //       position: position,
-  //       map: googleMapsEmbedUrl,
-  //     });
-  //   } else {
-  //     alert("Geocode was not successful for the following reason: " + status);
-  //   }
-  // });
-
-  // geocoder.geocode({ address: mark2 }, function (results, status) {
-  //   if (status == "OK") {
-  //     // Get the coordinate from the results
-  //     var position = results[0].geometry.location;
-  //     // Create a marker object
-  //     var marker = new google.maps.Marker({
-  //       position: position,
-  //       map: googleMapsEmbedUrl,
-  //     });
-  //   } else {
-  //     alert("Geocode was not successful for the following reason: " + status);
-  //   }
-  // });
 
   //Main component render
   return isLoaded ? (
@@ -354,7 +311,7 @@ const ApartmentListing = () => {
         }}
       >
         {/* Map Container */}
-        <div className="map-container1">
+        <div className="map-container">
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
