@@ -343,7 +343,7 @@ const ApartmentListing = () => {
         }}
       >
         {/* Map Container */}
-        <div className="map-container">
+        <div className="map-container1">
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
