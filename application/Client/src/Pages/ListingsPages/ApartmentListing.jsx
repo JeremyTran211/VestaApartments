@@ -22,39 +22,48 @@ const containerStyle = {
   borderRadius: "5px",
 };
 
+const addresses = [
+  "1656 Fulton St, San Francisco, CA 94117",
+  "2066 McAllister St",
+  "2730 Fulton St, San Francisco, CA 94118",
+  "574 7th Ave, San Francisco, CA 94118",
+  "1255 24th Ave, San Francisco, CA 94122",
+];
+
+const sanFranciscoCoords = [
+  { lat: 37.7749, lng: -122.4194 },
+  { lat: 37.7749, lng: -122.5149 },
+  { lat: 37.7081, lng: -122.5149 },
+  { lat: 37.7081, lng: -122.4194 },
+];
+
 // Default center coordinates for the Google Map
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 37.773972,
+  lng: -122.431297,
 };
 
 // Loading Google Maps API
 const ApartmentListing = () => {
   const [map, setMap] = React.useState(null);
   const [mapCenter, setMapCenter] = React.useState(null);
+  const [markers, setMarkers] = React.useState([]);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA",
   });
 
-  const onLoad = React.useCallback(function callback(map) {
-    const geocoder = new window.google.maps.Geocoder();
-
-    geocoder.geocode({ address: "San Francisco" }, (results) => {
-      const location = results[0].geometry.location;
-      setMapCenter(location);
-    });
-
-  }, []);
-
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
+
 
   //Retrieving data passed through React Router's location state
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
+
 
   const [filter, setFilter] = useState({
     minRent: "",
@@ -71,6 +80,7 @@ const ApartmentListing = () => {
       console.log("After set:", searchData);
     } else {
       getListings();
+      getMarkers();
     }
   }, [searchData]);
 
@@ -91,6 +101,29 @@ const ApartmentListing = () => {
     } catch (error) {
       console.log("Error occured when fetching from API");
     }
+  };
+
+  //get position of listing if address exists
+  const getLatLng = async (address) => {
+    console.log(address);
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA`);
+    console.log(response);
+    if(response === undefined){return null}else {    const data = await response.json();
+    return data.results[0].geometry.location;}
+
+  };
+
+  // get markers for listings to add to the map
+  const getMarkers = async () => {
+    const allMarks = [];
+    for (const listing of addresses) {
+          console.log(listing);
+      const latLng = await getLatLng(listing);
+      if(latLng){      console.log(latLng);
+      allMarks.push(latLng);}
+
+    }
+     setMarkers(allMarks);
   };
 
   // Components for rendering a single listing
@@ -202,9 +235,6 @@ const ApartmentListing = () => {
     }
   };
 
-  // Mark testing
-  // const mark1 = "851-897 Ashbury St, San Francisco, CA 94117";
-  // const mark2 = "750 Post St, San Francisco, CA 94109";
 
   //Main component render
   return isLoaded ? (
@@ -316,13 +346,14 @@ const ApartmentListing = () => {
         <div className="map-container">
           <GoogleMap
             mapContainerStyle={containerStyle}
-            center={mapCenter}
+            center={center}
             zoom={12}
-            onLoad={onLoad}
             onUnmount={onUnmount}
           >
-            {/* Child components, such as markers, info windows, etc. */}
-            <></>
+            {/* Add markers to the map */}
+           {markers.map((marker) => (
+        <Marker position={marker} />
+           ))}
           </GoogleMap>
         </div>
         {/* Listings Container */}
