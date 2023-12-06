@@ -81,6 +81,8 @@ const ApartmentListing = () => {
       });
       const data = await response.json();
       setListings(data.data);
+      getMarkers(data.data);
+      
     } catch (error) {
       console.log("Error occured when fetching from API");
     }
@@ -92,22 +94,33 @@ const ApartmentListing = () => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA`
     );
-    console.log(response);
-    if (response === undefined) {
-      return null;
-    } else {
-      const data = await response.json();
-      return data.results[0].geometry.location;
-    }
-  };
+    const data = await response.json();
+    console.log("Response data:", data);
+
+  if (data.results.length === 0) {
+    console.error('No results found for address:', address);
+    return null;
+  }
+
+  return data.results[0].geometry.location;
+};
 
   // get markers for listings to add to the map
-  const getMarkers = async () => {
+  const getMarkers = async ( listings ) => {
     const allMarks = [];
-    for (const listing of listings) {
+    
+    if (!Array.isArray(listings)) {
+      console.error('Error: listings is not an array');
+      return;
+    }
+
+    console.log("The listings:", listings);
+    for (const listing of listings ) {
       const latLng = await getLatLng(listing.Address);
+      console.log("Addresses: ", listing.Address)
+      
       if (latLng) {
-        console.log(latLng);
+        console.log("LatLng:", latLng);
         allMarks.push(latLng);
       }
     }
