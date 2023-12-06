@@ -22,21 +22,6 @@ const containerStyle = {
   borderRadius: "5px",
 };
 
-const addresses = [
-  "1656 Fulton St, San Francisco, CA 94117",
-  "2066 McAllister St",
-  "2730 Fulton St, San Francisco, CA 94118",
-  "574 7th Ave, San Francisco, CA 94118",
-  "1255 24th Ave, San Francisco, CA 94122",
-];
-
-const sanFranciscoCoords = [
-  { lat: 37.7749, lng: -122.4194 },
-  { lat: 37.7749, lng: -122.5149 },
-  { lat: 37.7081, lng: -122.5149 },
-  { lat: 37.7081, lng: -122.4194 },
-];
-
 // Default center coordinates for the Google Map
 const center = {
   lat: 37.773972,
@@ -58,12 +43,10 @@ const ApartmentListing = () => {
     setMap(null);
   }, []);
 
-
   //Retrieving data passed through React Router's location state
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
-
 
   const [filter, setFilter] = useState({
     minRent: "",
@@ -106,24 +89,29 @@ const ApartmentListing = () => {
   //get position of listing if address exists
   const getLatLng = async (address) => {
     console.log(address);
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA`);
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDPi4QXNXDnR3snfSiHfhOlzo_BPc3b7jA`
+    );
     console.log(response);
-    if(response === undefined){return null}else {    const data = await response.json();
-    return data.results[0].geometry.location;}
-
+    if (response === undefined) {
+      return null;
+    } else {
+      const data = await response.json();
+      return data.results[0].geometry.location;
+    }
   };
 
   // get markers for listings to add to the map
   const getMarkers = async () => {
     const allMarks = [];
-    for (const listing of addresses) {
-          console.log(listing);
-      const latLng = await getLatLng(listing);
-      if(latLng){      console.log(latLng);
-      allMarks.push(latLng);}
-
+    for (const listing of listings) {
+      const latLng = await getLatLng(listing.Address);
+      if (latLng) {
+        console.log(latLng);
+        allMarks.push(latLng);
+      }
     }
-     setMarkers(allMarks);
+    setMarkers(allMarks);
   };
 
   // Components for rendering a single listing
@@ -234,7 +222,6 @@ const ApartmentListing = () => {
       window.alert("Error when applying the search: " + error.message);
     }
   };
-
 
   //Main component render
   return isLoaded ? (
@@ -351,9 +338,9 @@ const ApartmentListing = () => {
             onUnmount={onUnmount}
           >
             {/* Add markers to the map */}
-           {markers.map((marker) => (
-        <Marker position={marker} />
-           ))}
+            {markers.map((marker) => (
+              <Marker position={marker} />
+            ))}
           </GoogleMap>
         </div>
         {/* Listings Container */}
