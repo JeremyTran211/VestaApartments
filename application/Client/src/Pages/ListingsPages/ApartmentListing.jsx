@@ -19,7 +19,7 @@ const ApartmentListing = () => {
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
-
+  
   const [filter, setFilter] = useState({
     minRent: "",
     maxRent: "",
