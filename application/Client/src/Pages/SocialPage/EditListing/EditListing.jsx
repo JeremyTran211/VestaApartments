@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./EditListing.css";
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const EditApartmentListing = () => {
+  //State the store form data
   const [formData, setFormData] = useState({
     User_ID: "",
     Address: "",
@@ -18,29 +18,33 @@ const EditApartmentListing = () => {
     Price: "",
   });
 
+  //State to manage uploaded images and navigate to other routes
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
+  //Effect to decode JWT token from localStorage and update User_ID in form data
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem("accessToken");
     if (token) {
       const decodedToken = jwtDecode(token);
       const userID = decodedToken.id;
-      
+
       if (userID && formData.User_ID !== userID) {
-        setFormData(prevFormData => ({
+        setFormData((prevFormData) => ({
           ...prevFormData,
-          User_ID: userID
+          User_ID: userID,
         }));
       }
     }
-  }, []); 
+  }, []);
 
+  //Handler for file input change (image upload)
   const handleImageUpload = (event) => {
     const uploadedImages = Array.from(event.target.files);
     setImages([...images, ...uploadedImages]);
   };
 
+  //Handler for file input change (image upload)
   const handleUploadButtonClick = () => {
     // Trigger the file dialog when the button is clicked
     const imageInput = document.getElementById("imageInput");
@@ -49,9 +53,10 @@ const EditApartmentListing = () => {
     }
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    //Validate that all fields are filled
     const allFieldsFilled = Object.values(formData).every(
       (field) => field.trim() !== ""
     );
@@ -60,28 +65,26 @@ const EditApartmentListing = () => {
       return;
     }
 
+    //API call to submit form data
     try {
-      const response = await fetch('/listings', {
-        method: 'POST',
+      const response = await fetch("/listings", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
-        console.log('Submission successful', data);
-        navigate('/listings');
-       
+        console.log("Submission successful", data);
+        navigate("/listings");
       } else {
-        console.error('Submission failed', await response.text());
-
+        console.error("Submission failed", await response.text());
       }
     } catch (error) {
-      console.error('Problem with fetching:', error.message);
-
+      console.error("Problem with fetching:", error.message);
     }
   };
 

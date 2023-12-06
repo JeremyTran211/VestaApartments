@@ -10,12 +10,14 @@
   height: 100%;
 }
 
+
+
 .map-container1 {
   width: 60%;
   position: relative;
   border-right: 1px solid #ccc;
-  top: 70px;
-  bottom: 0;
+  top: 0px;
+
 }
 
 .map-placeholder span {

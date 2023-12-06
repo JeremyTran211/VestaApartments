@@ -8,7 +8,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const checkLogin = () => {
-    const session = localStorage.getItem('accessToken');
+    const session = true;
     console.log('Social page: ', session);
     return session ? "/social" : "/login";
   }
