@@ -5,26 +5,11 @@ import { useLocation } from "react-router-dom";
 const PropertyDetailPage = () => {
   //Using useLocation to access the router's location object
   const location = useLocation();
-
-  //Extracting and parsing the address from the location state
-  var address;
-  var addressWord = " ";
-  if (location.state != null) {
-    address = location.state;
-  } else {
-    address = 0;
-  }
-
-  //Converting the address object to a string and extracting the address text
-  console.log(address);
-  var newAddress = JSON.stringify(address);
-  for (let i = 12; i < newAddress.length - 2; i++) {
-    addressWord = addressWord + newAddress[i];
-  }
-  console.log(addressWord);
-  //Parsing the stringified address back to a JSON object
-  var stringify = JSON.parse(newAddress);
-  //State for managing the image set being displayed
+  const { address, description, title, price } = location.state || {};
+ 
+  console.log("Passed in:", address, description, title, price);
+  //console.log(address);
+  
   const [imageSet, setImageSet] = useState(1);
 
   // cost calculator
@@ -67,6 +52,7 @@ const PropertyDetailPage = () => {
     return `https://www.google.com/maps?q=${address}&output=embed`;
   };
   return (
+    //<div><h1>{title}</h1>
     <div className="page-container">
       <div className="image-and-map-container">
         <div className="image-navigation-section">
@@ -96,8 +82,10 @@ const PropertyDetailPage = () => {
             </div>
           ))}
           {/* 123 Main St, South San Francisco, CA 94080 */}
-          <p className="Address">The address is {addressWord}</p>
-
+          {/*<p className="Address">
+            The address is {addressWord}
+          </p>
+          */}
           {/* Next Image Set Button */}
           {imageSet < totalSets && (
             <button onClick={handleNextImages} className="nav-button">
@@ -107,26 +95,27 @@ const PropertyDetailPage = () => {
         </div>
 
         {/* Map placeholder */}
-        <div className="map-placeholder">
-          <iframe
-            src={getMapEmbed(addressWord)}
-            width={300}
-            height={300}
-          ></iframe>
+        <div className="map-placeholder"  >
+          <iframe src={getMapEmbed(address)} width={300} height={300} >
+        </iframe>
         </div>
       </div>
+    
 
       <div className="details-container">
         <div className="property-details card-box">
           <h3>Address</h3>
-          <p>1234 Elm Street, Springfield, IL</p>
+          <p>{ address }</p>
         </div>
 
         {/* Cost calculator */}
         <div className="calculator-container card-box">
           <h1>Cost Calculator</h1>
-          <p className="calculator-text">Rent per person = </p>
-          <p className="calculator-value">{"$" + Math.round(percent)}</p>
+          <p className="calculator-text"> Estimated Yearly Salary = </p>
+          <p className="calculator-value">
+             {"$" + ((price / 0.3) * 12).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </p>
+
         </div>
 
         <div className="contact-details card-box">
@@ -145,40 +134,15 @@ const PropertyDetailPage = () => {
         <div className="about-section">
           <h3>About Property</h3>
           <p className="details-text">
-            This beautiful 3-bedroom home, located in a prime residential area,
-            offers a perfect blend of comfort and convenience. The property
-            features hardwood flooring throughout, adding warmth and elegance to
-            the space. A modern kitchen equipped with state-of-the-art
-            appliances makes it ideal for those who love cooking. The spacious
-            backyard serves as a serene retreat for relaxation or a delightful
-            space for gatherings. The home's proximity to essential amenities
-            like shopping centers, parks, and top-rated schools makes it an
-            excellent choice for families. Efficient public transportation,
-            including bus and train services, is within walking distance,
-            ensuring easy commuting.
+            { description }
           </p>
-          <ul className="details-text">
-            <li>Furnished/Unfurnished: Unfurnished</li>
-            <li>Pet Policy: No Pets</li>
-          </ul>
         </div>
 
         {/* About Landlord Section */}
         <div className="about-section">
           <h3>About Landlord</h3>
           <p className="details-text">
-            John Doe has been a dedicated property owner for over a decade,
-            known for his attention to detail and commitment to maintaining
-            high-quality living standards. With a background in architecture,
-            John brings a unique perspective to property management, ensuring
-            that each home is not only aesthetically pleasing but also
-            functional and comfortable. An avid community supporter, he actively
-            participates in local events and initiatives to improve the
-            neighborhood. His hobbies include gardening, which is evident in the
-            well-kept landscapes of his properties, biking along the city's
-            scenic routes, and hiking in the nearby mountains. John prides
-            himself on being approachable and responsive, always available to
-            address tenants' needs and concerns.
+            John Doe has been a dedicated property owner for over a decade.
           </p>
         </div>
       </div>

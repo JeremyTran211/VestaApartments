@@ -25,6 +25,7 @@ async function searchListing(Rooms,Bathrooms, Min_Price, Max_Price, Property_Typ
     query += conditions.length > 0 ? conditions.join(" AND ") : "1=1";
     
     const rows = await db.query(query);
+    console.log(rows);
     const data = helper.emptyOrRows(rows);
     const meta = {page};
 

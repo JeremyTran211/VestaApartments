@@ -47,7 +47,7 @@ const ApartmentListing = () => {
   const location = useLocation();
   const { searchData } = location.state || {};
   const [listings, setListings] = useState([]);
-
+  
   const [filter, setFilter] = useState({
     minRent: "",
     maxRent: "",
@@ -88,6 +88,7 @@ const ApartmentListing = () => {
     }
   };
 
+  
   //get position of listing if address exists
   const getLatLng = async (address) => {
     console.log(address);
@@ -128,7 +129,7 @@ const ApartmentListing = () => {
   };
 
   // Components for rendering a single listing
-  const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms }) => {
+  const SingleListing = ({ imageUrl, address, price, bedrooms, bathrooms, description, title }) => {
     return (
       <div
         style={{
@@ -164,7 +165,11 @@ const ApartmentListing = () => {
 
         {/* View Listing Button to view the entire listing */}
         <div style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-          <Link to="/listing-details" state={{ address }}>
+          <Link to="/listing-details" state={{ 
+                address, 
+                description, 
+                title, 
+                price }}>
             <button
               style={{
                 padding: "4px 8px",
@@ -195,10 +200,10 @@ const ApartmentListing = () => {
 
     //Logic to apply filters and fetch filtered data from API
     try {
-      window.alert(
-        "Calling to apply search based on filters: filter bedrooms value is" +
-          filter.bedrooms
-      );
+      //window.alert(
+        //"Calling to apply search based on filters: filter bedrooms value is" +
+        // filter.bedrooms
+      //);
       // const [Listing, setListing] = useState("");
       const bedrooms = filter.bedrooms;
       const bathrooms = filter.bathrooms;
@@ -217,7 +222,7 @@ const ApartmentListing = () => {
         maxPrice +
         "&Property_Type=" +
         propertyType;
-      window.alert("Logging values for paramters in api calls " + fetchURL);
+      // window.alert("Logging values for paramters in api calls " + fetchURL);
       const response = await fetch(fetchURL, {
         method: "GET",
         headers: {
@@ -227,7 +232,7 @@ const ApartmentListing = () => {
       });
 
       const data = await response.json();
-      window.alert("API returned data length is: " + JSON.stringify(data));
+      // window.alert("API returned data length is: " + JSON.stringify(data));
       setListings(data.data);
       // window.alert(data.message);
     } catch (error) {
@@ -370,6 +375,19 @@ const ApartmentListing = () => {
               />
             ))}
         </div>
+        {Array.isArray(listings) &&
+          listings.map((listing) => (
+            <SingleListing
+              key={listing.Listing_ID}
+              imageURL={listing.Image_Path}
+              address={listing.Address}
+              price={listing.Price}
+              bedrooms={listing.Rooms}
+              bathrooms={listing.Bathrooms}
+              description={listing.Description}
+              title={listing.Title}
+            />
+          ))}
       </div>
     </div>
   ) : (

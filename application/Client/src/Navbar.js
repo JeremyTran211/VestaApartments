@@ -32,14 +32,16 @@ function Navbar() {
 
     if(session){
       localStorage.removeItem('accessToken');
-      setSocialLink(checkLogin());
-      setLogInLink(logInOut());
+      //setSocialLink(checkLogin());
+      //setLogInLink(logInOut());
       navigate('/');
+    } else {
+      navigate('/login');
     }
     
   };
 
-  const TierStatus = logInOut();
+  const TierStatus =  localStorage.getItem('accessToken') ? "LOGOUT" : "LOGIN";
   return (
     <header>
       <nav>
@@ -57,12 +59,12 @@ function Navbar() {
               <span></span>
             </label>
           </div>
-          
+         
           <div class="nav-links">
-            <Link to="/social"><a>CURRENTLY TESTING </a></Link>
+            {/* <Link to="/social"><a>CURRENTLY TESTING </a></Link>*/}
             <Link to="/listings"><a>FIND HOMES</a></Link>
             <Link to ={socialLink} onClick={handleSocialLinkClick}><a>SOCIAL</a></Link>
-            <Link to={loginLink} onClick={handleLogInOutLinkClick}><a>{TierStatus === "/" ? "LOGOUT" : "LOGIN"}</a></Link>
+            <a onClick={handleLogInOutLinkClick}>{TierStatus}</a>
           </div>
         </div>
       </nav>

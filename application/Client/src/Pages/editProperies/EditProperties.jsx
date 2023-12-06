@@ -117,6 +117,11 @@ const EditedPropertiesPage = () => {
   return (
     <div className="bookmarkPage">
       <h1 className="header">Properties</h1>
+      <h2>
+          <Link to="/edit-listing">
+            <button className="addListingButton">Add Listing</button>
+          </Link>
+        </h2>
       <table className="table">
         {/* Table headers and body */}
         <thead>
@@ -169,7 +174,7 @@ const EditedPropertiesPage = () => {
       {!Object.values(selectedProperties).some((isSelected) => isSelected) && (
         <div className="addListingButtonContainer">
           <Link to="/add-listing">
-            <button className="addListingButton">Add Listing</button>
+           {/* <button className="addListingButton">Add Listing</button>*/}
           </Link>
         </div>
       )}

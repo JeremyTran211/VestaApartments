@@ -32,7 +32,7 @@ const Navigation = (props) => {
         <button class="square-button">Edit Profile</button>
       </Link>
       <Link to="/edit-properties">
-        <button class="square-button">Edit Your Listings</button>
+        <button class="square-button">Add/Edit Your Listings</button>
       </Link>
       <Link to="/messages">
         <button class="square-button">Messages</button>
