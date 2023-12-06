@@ -13,6 +13,7 @@ const SVGComponent =  ( props ) => {
 
       if (response.ok) {
         const listingsData = await response.json();
+        console.log("Listing Data: ", listingsData);
         navigate("/listings", { state: { regionNumber, searchData: listingsData } });
 
       } else {

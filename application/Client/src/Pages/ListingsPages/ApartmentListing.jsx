@@ -60,6 +60,7 @@ const ApartmentListing = () => {
     // If searchData is available, used to set listing, else fetch listing
     if (searchData) {
       setListings(searchData.data);
+      getMarkers(searchData.data);
       console.log("After set:", searchData);
     } else {
       getListings();
@@ -101,9 +102,12 @@ const ApartmentListing = () => {
   if (data.results.length === 0) {
     console.error('No results found for address:', address);
     return null;
+  } else {
+    for(const result of data.results)
+    console.log("Working Data:", result.formatted_address);
   }
 
-  return data.results[0].geometry.location;
+  return data;
 };
 
   // get markers for listings to add to the map
@@ -118,11 +122,12 @@ const ApartmentListing = () => {
     console.log("The listings:", listings);
     for (const listing of listings ) {
       const latLng = await getLatLng(listing.Address);
-      console.log("Addresses: ", listing.Address)
+  
       
-      if (latLng) {
-        console.log("LatLng:", latLng);
-        allMarks.push(latLng);
+      if (latLng && latLng.results.length > 0) {
+        for (const result of latLng.results) {
+          allMarks.push(result.geometry.location);
+        }
       }
     }
     setMarkers(allMarks);
@@ -375,19 +380,6 @@ const ApartmentListing = () => {
               />
             ))}
         </div>
-        {Array.isArray(listings) &&
-          listings.map((listing) => (
-            <SingleListing
-              key={listing.Listing_ID}
-              imageURL={listing.Image_Path}
-              address={listing.Address}
-              price={listing.Price}
-              bedrooms={listing.Rooms}
-              bathrooms={listing.Bathrooms}
-              description={listing.Description}
-              title={listing.Title}
-            />
-          ))}
       </div>
     </div>
   ) : (

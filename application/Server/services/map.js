@@ -6,7 +6,7 @@ async function retrieveListings(searchParam, page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     console.log("Search Parameter: " + searchParam);
 
-    let query = `SELECT Rental_Listing.* 
+    let query = `SELECT Rental_Listing.*, Location_Of_Rental_Listing.Address
                 FROM Rental_Listing  
                 JOIN Location_Of_Rental_Listing ON Rental_Listing.Location_ID = Location_Of_Rental_Listing.Location_ID
                 JOIN Region  ON Location_Of_Rental_Listing.Region_ID = Region.Region_ID 
