@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 function VerificationTierTwo() {
   // State variables to store user input
   const [birth, setBirth] = useState('');
   const [phoneNumber, setphoneNumber] = useState('');
+  const [userID, setUser] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const user_ID = decodedToken.id;
+      console.log("USER ID: ", user_ID);
+
+      setUser(user_ID);
+    }
+  }, []);
   
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Set variables: ", birth, phoneNumber);
+      console.log("Set variables: ", userID,  birth, phoneNumber);
       const response = await fetch('/verificaitonTierTwo', { 
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
 
-          body: JSON.stringify({ birth, phoneNumber})
+          body: JSON.stringify({userID, birth, phoneNumber})
       });
 
       const data = await response.json();
