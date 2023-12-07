@@ -1,5 +1,5 @@
-/* This file serves as a function to create, get, and remove background checks from our database.
-*  
+/* backgroundChecks.js
+*This file serves as a function to create, get, and remove background checks from our database.  
 */
 const db = require('./db');
 const helper = require('../helper');

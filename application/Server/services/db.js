@@ -1,3 +1,7 @@
+/* db.js
+This file serves to establish a connected to our database
+*/
+
 const mysql = require('mysql2/promise');
 const config = require('../config');
 

@@ -1,3 +1,6 @@
+/* locationListingAPI.js
+This file serves as a function to handle retreiving rentalings based on a specific region.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');

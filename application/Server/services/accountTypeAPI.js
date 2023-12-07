@@ -1,6 +1,7 @@
-/* This file serves as a function to retrieve account types from the database, update/delete
-*  account types based on specific conditions with error handling and also logging to determine
-*  sucess.
+/* accountTypeAPI.js
+* This file serves as a function to retrieve account types from the database, update/delete
+* account types based on specific conditions with error handling and also logging to determine
+* sucess.
 */
 const db = require('./db');
 const helper = require('../helper');

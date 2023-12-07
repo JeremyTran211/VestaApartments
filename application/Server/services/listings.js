@@ -1,13 +1,17 @@
+/* listing.js 
+* This file serves as functions to create, get, remove, and update a listing
+* with error handling and also logging to determine sucess.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
 
-// for creating a listing
+// For creating a listing
 // Listing_ID | User_ID | Location_ID | Rooms | Bathrooms | Price | Property_Type | Description 
 // Gas_And_Electric | Internet | Water | Garbage | Square_Feet | Image_Path   | Time_Stamp         // |  Hidden | Title
 async function createListing(listing) {
-
+  //insert location info into location of Location_Of_Rental_Listing table.
   let locationResult = await db.query(
     'INSERT INTO Location_Of_Rental_Listing (Address, Region_ID) VALUES (?,?)', [listing.Address, listing.ZipCode]
   );
@@ -15,13 +19,13 @@ async function createListing(listing) {
   let locationID = locationResult.insertId;
   
   console.log(locationID);
-
+  //Prepares values to insert into our Rental_Listing table.
   const values = [listing.User_ID, locationID, listing.Rooms, listing.Bathrooms, 
     listing.Price, listing.Property_Type || null, listing.Description, listing.Gas_And_Electric || null,
     listing.Internet || null, listing.Water || null, listing.Garbage || null, listing.Square_Feet, listing.Image_Path || null, listing.Hidden || null, listing.Title ]
 
   console.log("Values being inserted:", values);
-
+  // Insert into the 'Rental_Listing' table.
   const result = await db.query(
   `INSERT INTO Rental_Listing
    (User_ID, Location_ID, Rooms, Bathrooms, Price, Property_Type, Description, Gas_And_Electric, 
@@ -29,7 +33,7 @@ async function createListing(listing) {
   VALUES 
     (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, values
   );
-
+  //Error message to determine success or fail.
   let message = 'Error in creating Rental Listing';
 
   if (result.affectedRows) {
@@ -42,6 +46,7 @@ async function createListing(listing) {
 // for retrieving and reading the listings in the Rental_Listing Table
 async function getListings(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
+  // Join Rental_Listing and Location_Of_Rental_Listing tables to include address.
   const rows = await db.query(
     `SELECT Rental_Listing.*, Location_Of_Rental_Listing.Address
     FROM Rental_Listing 
@@ -55,9 +60,11 @@ async function getListings(page = 1){
     meta
   }
 }
+//For updating a listing.
 // Listing_ID | User_ID | Location_ID | Rooms | Bathrooms | Price | Property_Type | Description 
 // Gas_And_Electric | Internet | Water | Garbage | Square_Feet | Image_Path   | Time_Stamp         // |  Hidden | Title
 async function updateListing(listing_id, listing){
+  //Use conditonal updates to prevent undefine data from overwriting existing ones.
   const result = await db.query(
     `UPDATE Rental_Listing
 
@@ -80,7 +87,7 @@ async function updateListing(listing_id, listing){
     WHERE Listing_ID=${listing_id}`
 
   );
-
+  //Error message to determine success or fail.
   let message = 'Error in updating Rental Listing';
 
   if (result.affectedRows) {
@@ -92,10 +99,11 @@ async function updateListing(listing_id, listing){
 
  // for deleting a listing
 async function removeListing(listing_id){
+  //Delete listing from Rental_Listing table.
   const result = await db.query(
     `DELETE FROM Rental_Listing WHERE Listing_id=${listing_id}`
   );
-
+  // Error message to determine success or fail.
   let message = 'Error in deleting rental listing';
 
   if (result.affectedRows) {

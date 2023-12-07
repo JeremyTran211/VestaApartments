@@ -1,4 +1,5 @@
-/* This file serves as a function to retrieve account types from the database, update/delete
+/* accountTypeAPI2.js
+*  This file serves as a function to retrieve account types from the database, update/delete
 *  account types based on specific conditions with error handling and also logging to determine
 *  sucess.
 */

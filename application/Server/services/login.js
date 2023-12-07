@@ -1,10 +1,7 @@
-/*
-Login.js
-
-This file handles the login for users by verifying their email and password.
-If both checks pass then a JWT will be created and a session is started 
-for the user. 
-
+/* login.js
+* This file handles the login for users by verifying their email and password.
+* If both checks pass then a JWT will be created and a session is started 
+* for the user. 
 */
 const db = require('./db');
 const helper = require('../helper');
@@ -17,11 +14,11 @@ require('dotenv').config();
 // for comparing the given password for login
 async function loginUser(Email, Password){
   try{
-      //console.log ("Email = " + Email + "Password = " + Password);
+      //Retrieve user info based on the provided email.
       const result = await db.query(
         `SELECT * FROM Registered_User WHERE Email = ?`, [Email]
       );
-
+      //Error message to determine if a user is found with that email.
       if(result.length == 0){
         console.log('No user found with that email')
         return { message: "No user found with that email", 
@@ -31,12 +28,12 @@ async function loginUser(Email, Password){
 
       console.log( result[0].Password);
       console.log( Password);
-      
+      // compare the given password with the hashed passwords stored in database.
       const match = await bcrypt.compare(Password, result[0].Password);
       console.log(match);
 
       let message = "";
-
+      // If the password matches, generate an access token for the user.
       if (match){
         console.log ('User successfully logged in')
         
@@ -56,7 +53,7 @@ async function loginUser(Email, Password){
         };
 
       } else {
-      
+         // If the password does not match, return a login failure message.
         return{
           success: false,
           message: 'Login failed'};
