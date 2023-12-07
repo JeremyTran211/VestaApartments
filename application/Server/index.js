@@ -14,10 +14,11 @@ const accountTypeAPI = require("./routes/accountTypeAPI");
 const phoneNumberAPI = require("./routes/phoneNumberAPI");
 const locationListingAPI = require("./routes/locationListingAPI");
 const mapAPI = require("./routes/map");
-//testing for now
 const comments = require("./routes/comments");
 const numberVerificationRouter = require("./routes/number_verification");
 const postRouter = require("./routes/post");
+const imageRouter = require("./routes/getS3ImageURL");
+const createUserRouter = require("./routes/createTestUser");
 
 
 const authentication = require('./middleware/authentication');
@@ -49,6 +50,9 @@ app.use("/accountTypeAPI", accountTypeAPI);
 app.use("/phoneNumberAPI", phoneNumberAPI);
 app.use("/locationListingAPI", locationListingAPI);
 app.use("/map-listings", mapAPI);
+app.use("/getS3ImageURL", imageRouter);
+app.use("/createTestUser", createUserRouter);
+
 
 //testing 
 app.use("/comments", comments);
