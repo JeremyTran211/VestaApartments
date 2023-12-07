@@ -1,3 +1,6 @@
+/* screening.js
+* This file handles renter screening based on the parameters given by the user
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');

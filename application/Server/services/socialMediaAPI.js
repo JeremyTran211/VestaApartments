@@ -1,10 +1,15 @@
+/* socialMediaAPI.js
+* This file handles the social media API allow users to link their social medias to
+* their SFSU rent profile.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
-
+//for getting a profile.
 async function getProfile(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
+    //Query to retrieve user profile data from database
     const rows = await db.query(
         `SELECT Profile_ID, User_ID, \`Phone number\`, Social_Media_Link, Account_Type FROM
         Profile`
@@ -17,7 +22,7 @@ async function getProfile(page = 1) {
     }
 
 }
-
+// for updating profile info
 async function updateProfileInfo(req){
     //  Profile_ID | User_ID | Account_Type | Facebook | Twitter | Instagram | About   
     const query = `UPDATE Profile
@@ -33,6 +38,7 @@ async function updateProfileInfo(req){
     //Social Media link is link to either instagram or twitter profile/user account
     let message = `Error in updating profile info `;
     const result = await db.query(query,values);
+    //check affected rows to determine success or fail.
     if(result.affectedRows){
         message = `Updated social media link and account type successfully`;
     }

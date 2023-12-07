@@ -1,11 +1,15 @@
+/* map.js
+* this file serves as a function to retrieve a listing based on given search parameter.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
+// Retrieve rental listings based on a search parameter.
 async function retrieveListings(searchParam, page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     console.log("Search Parameter: " + searchParam);
-
+    //Query to retrieve rental listing based on a specific region.
     let query = `SELECT Rental_Listing.*, Location_Of_Rental_Listing.Address
                 FROM Rental_Listing  
                 JOIN Location_Of_Rental_Listing ON Rental_Listing.Location_ID = Location_Of_Rental_Listing.Location_ID
@@ -13,6 +17,7 @@ async function retrieveListings(searchParam, page = 1) {
                 WHERE Region.Region_name = ?`;
     
     try {
+      // Execute query and return listings.
         const rows = await db.query(query, [searchParam]); 
         const data = helper.emptyOrRows(rows);
         return { data };

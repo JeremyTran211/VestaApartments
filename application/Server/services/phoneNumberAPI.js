@@ -1,3 +1,7 @@
+/* phoneNumberAPI.js
+* this file serves as a function that will use phone number as a form of
+* tier two verfication.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
@@ -6,6 +10,7 @@ const config = require('../config');
 // http://localhost:3000/phoneNumberAPI
 async function getPhoneNumbers(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
+    //Query database to retrieve phone numbers.
     const rows = await db.query(
         `SELECT * FROM Tier_Two_Varification`
     );
@@ -23,7 +28,7 @@ async function updateDeletePhoneNumber(User_ID, PhoneNumber) {
 
     // Verifying delete request or phone number
     PhoneNumber = (PhoneNumber == 'Delete') ? "" : PhoneNumber;
-
+    // Query to update the phone number in the database.
     const query = `UPDATE Tier_Two_Varification 
                     SET Phone_Number = ? 
                     WHERE User_ID = ?`;
@@ -32,14 +37,16 @@ async function updateDeletePhoneNumber(User_ID, PhoneNumber) {
     let message = "";
     try {
         const result = await db.query(query, values);
+        // Error message to determine update success or fail.
         message = (result.affectedRows) 
                 ? `Updated phone number successfully!` 
                 : `Error in updating phone number!`;
+    // Handle errors.
     } catch (error) {
         console.error('Error updating phone number:', error.message);
         throw new Error('Error updating Phone_Number!');
     }
-
+    // Return message determine success or fail.
     return { message };
 }
 

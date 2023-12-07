@@ -1,9 +1,12 @@
+/* searchBar.js
+* This file handles the search bar in the homepage which will allow
+* users to search by address or zipcode.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
 // this api will allow to use searchbar on main homepage and allow to search by address or zipcode
-
 // for retrieving listings from Location_Of_Rental_Listing Table by zipcode and address
 async function retrieveListings(searchParam, page=1){
     // offset if you want to only display a certain page
