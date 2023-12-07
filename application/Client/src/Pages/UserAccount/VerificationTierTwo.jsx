@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function VerificationTierTwo() {
   // State variables to store user input
-  const [schoolEmail, setSchoolEmail] = useState('');
-  const [school, setSchool] = useState('');
+  const [birth, setBirth] = useState('');
   const [phoneNumber, setphoneNumber] = useState('');
   const navigate = useNavigate();
   
@@ -12,13 +11,14 @@ function VerificationTierTwo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("Set variables: ", birth, phoneNumber);
       const response = await fetch('/verificaitonTierTwo', { 
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
 
-          body: JSON.stringify({ schoolEmail, school, phoneNumber})
+          body: JSON.stringify({ birth, phoneNumber})
       });
 
       const data = await response.json();
@@ -33,13 +33,9 @@ function VerificationTierTwo() {
     window.alert('Error verifying user : ' + error.message);
     }
   }
-  
-  const handleSchoolEmaillChange = (event) => {
-    setSchoolEmail(event.target.value);
-  };
 
-  const handleSchoolChange = (event) => {
-    setSchool(event.target.value);
+  const handleBirthChange = (event) => {
+    setBirth(event.target.value);
   };
 
   const handlePhoneNumberChange = (event) => {
@@ -55,26 +51,15 @@ function VerificationTierTwo() {
             <div className="form-container__title">User Verification</div>
           </div>
           <form className="form" onSubmit={handleSubmit}> {}
+    
             <div className="form__field">
-              <div className="form__label">School Email</div>
+              <div className="form__label">Date of Birth</div>
               <input
                 className="form__input"
-                type="email"
-                placeholder="JoeIsCool@sfsu.edu"
-                value={schoolEmail}
-                onChange={handleSchoolEmaillChange} 
-                id="schoolEmail" 
-              />
-            </div>
-           
-            <div className="form__field">
-              <div className="form__label">School</div>
-              <input
-                className="form__input"
-                type="email"
-                placeholder= "San Francisco State University"
-                value={school}
-                onChange={handleSchoolChange}
+                type="text"
+                placeholder= "22-05-1990"
+                value={birth}
+                onChange={handleBirthChange}
                 id="school" 
               />
             </div>
@@ -82,18 +67,17 @@ function VerificationTierTwo() {
               <div className="form__label">Phone Number</div>
               <input
                 className="form__input"
-                type="tel"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required
+                type="test"
+                placeholder="14159999999" pattern="[0-9]{11}" required
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
                 id="phoneNumber" 
               />
             </div>
 
-           <Link to="/social"><button className="form__submit" type="submit"> {}
+           <button className="form__submit" type="submit"> {}
               Verification
-            </button></Link> 
+            </button>
           </form>
           <div className="form-container__line-divider"></div>
         </div>

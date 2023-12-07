@@ -70,7 +70,7 @@ function VerificationPage() {
           <div className="flex-container">
 
               <div className="tier-two-container">
-                <div className="tier-two-container_title">Tier 2</div>
+                <div className="tier-two-container_title">Background Check</div>
                 <div className="tier-two-container_info">Fill out identification form</div>
               <div className="tier-two-button-container"> 
               <Link to="/verification-tier-two">
@@ -81,15 +81,7 @@ function VerificationPage() {
               </div>
 
               </div>
-              <div className="tier-three-container">
-                <div className="tier-three-container_title">Tier 3</div>
-                <div className="tier-three-container_info">Fill out background check form</div>
-                <div className="tier-three-button-container"> 
-              <button className="tier-three_button">
-              {TierStatus === "Verify" ? "Verify" : "Locked"}
-              </button>
-              </div>
-              </div>
+
             
           </div>
         </div>
