@@ -1,3 +1,7 @@
+/* This file serves as a function to retrieve account types from the database, update/delete
+*  account types based on specific conditions with error handling and also logging to determine
+*  sucess.
+*/
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
@@ -13,7 +17,7 @@ async function getAccountTypes(page = 1) {
 }
 
 // Update the account type if it is "Landlord" or "Renter" or "Delete", 
-// otherwise it does not do anything if the given account type is invalid.
+// Otherwise it does not do anything if the given account type is invalid.
 // It removes the account type from the database if the given AccountType is "Delete" 
 async function updateDeleteAccountType(User_ID, AccountType) {
 
@@ -21,23 +25,27 @@ async function updateDeleteAccountType(User_ID, AccountType) {
 
     // Verifying invalid account type and delete request
     switch (AccountType) {
+        // If AccountType is delete, then set to an empty string.
         case "Delete":
             AccountType = "";
         case "Landlord":
         case "Renter":
             break;
+        // Return error message if AccounType is none of the above
         default:
             return { message };
     }
 
     const query = `UPDATE Profile SET Account_Type = ? WHERE User_ID = ?`;
     const values = [AccountType, User_ID];
-    
+    // Execute sql query to update account type in database
     try {
         const result = await db.query(query, values);
+        // Check the affected rows and determine success or fail
         message = (result.affectedRows) 
                 ? `Updated account type successfully!` 
                 : `Error in updating account type!`;
+    // Handle errors that may come up during the query
     } catch (error) {
         console.error('Error updating account type:', error.message);
         throw new Error('Error updating Account_Type!');
