@@ -1,1 +1,0 @@
-M2V1 and M2V2 pdf files must be uploaded to this directory. Your code for your vertical prototype must be hosted in application/verticalPrototype/ folder 
