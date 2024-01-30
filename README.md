@@ -7,15 +7,15 @@ community of like-minded individuals.
 
 Features: 
 
-  Posts - 
+> Posts - 
 
-  Background Checks - 
+> Background Checks - 
 
-  Rental Listings - 
+> Rental Listings - 
 
-  User Profiles - 
+> User Profiles - 
 
-  Search and Filter - 
+> Search and Filter - 
 
 Getting Started: 
 
