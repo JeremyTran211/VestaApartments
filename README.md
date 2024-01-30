@@ -5,17 +5,17 @@ Similar to Zillow.com and Apartment.com but with a unique addition of social med
 checks. Our service allows users to explore a wide range of rental listings while connecting with a 
 community of like-minded individuals.
 
-Features: 
+Features:
 
-> Posts - 
+* Posts - 
 
-> Background Checks - 
+* Background Checks - 
 
-> Rental Listings - 
+* Rental Listings - 
 
-> User Profiles - 
+* User Profiles - 
 
-> Search and Filter - 
+* Search and Filter - 
 
 Getting Started: 
 
@@ -28,5 +28,5 @@ Support
 
 For any assistance, questions or feedback, please reach out to [email/contact]
 
-License:
+License
 
